@@ -11,21 +11,24 @@ public class TestSuiteGui : MonoBehaviour {
 	private Color armColor = Color.white;
 	private Color legColor = Color.white;
 	private Color earColor = Color.white;
-	
+
+	private string[] eyes = {"0","2","4"};
+	private int numEye = 1;
+	private int eyeSizeInt = 1;
 	private Color eyeColor = Color.white;
 
 	private string[] size = {"Small","Medium","Big"};
-	private int bodySizeInt;
+	private int bodySizeInt = 1;
 
-	private int headSizeInt;
+	private int headSizeInt = 1;
 
-	private int tailSizeInt;
+	private int tailSizeInt = 1;
 
-	private int armSizeInt;
+	private int armSizeInt = 1;
 
-	private int legSizeInt;
+	private int legSizeInt = 1;
 
-	private int earSizeInt;
+	private int earSizeInt = 1;
 
 	private string[] teeth = {"Carnivore", "Vegetarian"};
 	private int vege;
@@ -117,6 +120,12 @@ public class TestSuiteGui : MonoBehaviour {
 		// Place the mouth type Toolbar
 		vege = GUILayout.Toolbar (vege, teeth);
 
+		//Label
+		GUILayout.Box ("Number of eyes?");
+		
+		// Place the eye size Toolbar
+		numEye = GUILayout.Toolbar (numEye, eyes);
+
 		// End the Area
 		GUILayout.EndArea();
 
@@ -158,6 +167,12 @@ public class TestSuiteGui : MonoBehaviour {
 		
 		// Place the ear size Toolbar
 		earSizeInt = GUILayout.Toolbar (earSizeInt, size);
+
+		//Label
+		GUILayout.Box ("Eye size");
+		
+		// Place the eye size Toolbar
+		eyeSizeInt = GUILayout.Toolbar (eyeSizeInt, size);
 		
 		// End the Area
 		GUILayout.EndArea();
@@ -195,7 +210,14 @@ public class TestSuiteGui : MonoBehaviour {
 		head.transform.position = GameObject.Find ("head joint").transform.position;
 		head.transform.parent = animal.transform;
 
-		GameObject.Find("eye").GetComponent<SpriteRenderer>().color = eyeColor;
+		for (int i = 0; i<numEye; i++) {
+			GameObject eye = (GameObject)Instantiate (Resources.Load ("Prefabs/dino eye"));
+			eye.transform.position = GameObject.Find("eye joint "+i).transform.position;
+			eye.transform.parent = head.transform;
+			Scale (eye.transform, eyeSizeInt);
+			eye.GetComponent<SpriteRenderer>().color = eyeColor;
+		}
+
 		GameObject.Find ("mouth").GetComponent<SpriteRenderer>().sprite = (vege == 1) ? Resources.Load<Sprite>("Sprites/dino vmouth") : Resources.Load<Sprite>("Sprites/dino mouth");
 
 		//build tail, scale/colour as needed
