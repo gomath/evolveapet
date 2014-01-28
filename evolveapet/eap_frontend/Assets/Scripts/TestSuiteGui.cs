@@ -17,6 +17,8 @@ public class TestSuiteGui : MonoBehaviour {
 	private int eyeSizeInt = 1;
 	private Color eyeColor = Color.white;
 
+
+	private float[] sizes = {0.75f,1f,1.25f};
 	private string[] size = {"Small","Medium","Big"};
 	private int bodySizeInt = 1;
 
@@ -229,13 +231,21 @@ public class TestSuiteGui : MonoBehaviour {
 
 		//build arms, replace with legs if bipedal and scale/colour as needed
 		GameObject arm = (bipedalInt==0) ? (GameObject)Instantiate(Resources.Load ("Prefabs/dino front leg")) : (GameObject)Instantiate(Resources.Load ("Prefabs/dino front arm"));
-		Scale(arm.transform, armSizeInt);
+		if (bipedalInt == 0) {
+			Scale(arm.transform, legSizeInt);
+		} else {
+			Scale(arm.transform, armSizeInt);
+		}
 		arm.GetComponent<SpriteRenderer>().color = armColor;
 		arm.transform.position = GameObject.Find ("arm joint").transform.position;
 		arm.transform.parent = animal.transform;
 
 		arm = (bipedalInt==0) ? (GameObject)Instantiate(Resources.Load ("Prefabs/dino front leg")) : (GameObject)Instantiate(Resources.Load ("Prefabs/dino front arm"));
-		Scale(arm.transform, armSizeInt);
+		if (bipedalInt == 0) {
+			Scale(arm.transform, legSizeInt);
+		} else {
+			Scale(arm.transform, armSizeInt);
+		}
 		arm.GetComponent<SpriteRenderer>().color = armColor;
 		arm.transform.position = GameObject.Find ("arm joint").transform.position;
 		arm.transform.parent = animal.transform;
@@ -256,7 +266,6 @@ public class TestSuiteGui : MonoBehaviour {
 
 	//Parse the scale ints and scale accordingly
 	void Scale (Transform t, int size) {
-		float f = (size+1)/2F;
-		t.localScale = new Vector2(f,f);
+		t.localScale = new Vector2(sizes[size],sizes[size]);
 	}
 }
