@@ -8,87 +8,58 @@ namespace EvolveAPet
 {
     public class Animal
     {
-
-        private readonly LinkedList<Animal> _children;
-        private readonly Animal[] _parent;
+        private readonly Animal[] _parents;
         private readonly Genome _genome;
+        public int Generation { set; get; }
         public string Name { set; get; }
         public Genome Genome { get { return _genome; } }
-        public LinkedList<Animal> Children { get { return _children; } }
         public Animal[] Parent { get { return _parent; } }
-        public Body Body { get; private set; }
-        // each animal will be given a genome and its parent
-        public Animal(Genome g, Animal[] parent)
+        public BodyPart[] BodyPartArray { get; private set; }
+        // each animal will be given a genome and handed both its parents
+        public bool Egg { get; set; }
+        private readonly int bodyPartNumber = 7;
+
+        public Animal(Chromosome[] chromA, Chomosome[] chromB, Animal parent1, Animal parent2)
         {
-
-            _genome = g;
-            _children = new LinkedList<Animal>();
-            _parent = parent;
-            Body = new Body();
-
-
-        }
-
-        public Animal(byte[] binary)
-        {
-
-            //deserialize the binary and load the animal
-
-        }
-
-        public void Hatch()
-        {
-
-
-            CreateBody();
-
-        }
-
-        public void CreateFamilyTree()
-        {
-
-            // might not be void
-            // creates the family tree we want
-            throw new NotImplementedException("Familty tree");
-
-        }
-
-        private void CreateBody()
-        {
-            Dictionary<BodyPartType, LinkedList<object>> allTraits = new Dictionary<BodyPartType, LinkedList<object>>();
-            int size = Enum.GetNames(typeof(BodyPartType)).Length;
-            for (int i = 0; i < size; i++)
+            Egg = true; //Animals will alwyas be in egg form when created
+            //Firstly, populate all the genes in the genome
+            _genome = new Genome(chromA, chromB);
+            Parent = new Animal[] { parent1, parent2 };
+            BodyPartArray = new BodyPart[bodyPartNumber]; 
+            for (int n = 0; n < bodyPartNumber; n++)
             {
-                allTraits.Add((BodyPartType)i, _genome.Decode((BodyPartType)i));
-
+           BodyPartArray[n] = createBodyPart(n);
             }
-            Body.Hatch(allTraits);
-
-
         }
-
-
-        public void Mutate(string serializedGene, BodyPartType index, ChromosomePair cp)
+        public void Mutate(int chromosomeNumber, int geneNumber, int genePairNumber, Gene newGene)
         {
-            Gene gene = new Gene(serializedGene);
-            LinkedList<object> traits = _genome.Mutate(gene, index, cp);
-            Body.Change(index, traits);
-
-
+            _genome.Mutate(chromosomeNumber, geneNumber, genePairNumber, newGene);
         }
-
-        public Animal Breed(Animal mate)
+        public void hatch()
         {
-            // the breeding process
-            throw new NotImplementedException("breeding");
+            Egg = false;
         }
-
-        public byte[] serialize()
-        {
-            throw new NotImplementedException("serialize animal");
-
+        private bodyPart createBodyPart(EnumBodyPart e){
+            StdBodyPart bPart = new StdBodyPart();
+            int traitPos;
+            traitPos =  _genome.getTraitIndex(0);// queries the genome for the position of the gene coding for colour
+            bPart.Colour = _genome.getTrait(e,traitPos); 
+            traitPos =  _genome.getTraitIndex(4); //position of shape trait
+            bPart.Shape =_genome.getTrait(e,traitPos);                         
+            traitPos =  _genome.getTraitIndex(1);//size
+            bPart.Size =_genome.getTrait(e,traitPos); 
+            traitPos =  _genome.getTraitIndex(2);//pattern
+            bPart.Pattern =;
+            switch (e){
+                case 1://EYES
+                    break;
+                case 3://HEAD
+                case 4://ARMS
+                    break;
+                case 5://LEGS
+                    break;
+            }
+            return bPart;
         }
-
-
     }
 }
