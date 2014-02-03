@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
-using Common;
+using EvolveAPet;
 
 
 namespace EvolveAPet
-{
-    public class StandardBodyPart : SimpleBodyPart
+{   [Serializable]
+    public abstract class StdBodyPart : BodyPart
     {
         public Color Color { get; protected set; }
-        public BodyPartSize Size { get; protected set; }
-        public BodyPartPattern Pattern { get; protected set; }
+        public EnumSize Size { get; protected set; }
+        public EnumPattern Pattern { get; protected set; }
 
-        public StandardBodyPart(BodyPartType type, BodyPartShape shape, Color color, BodyPartSize size, BodyPartPattern pattern)
+        public StdBodyPart(EnumBodyPart type, int shape, Color color, EnumSize size, EnumPattern pattern)
             : base(type, shape)
         {
 
@@ -23,22 +23,7 @@ namespace EvolveAPet
 
 
         }
-        //WARNING:is might contain aditional (unwanted) data
-        public StandardBodyPart(string serializedBodyPart)
-            : base(serializedBodyPart)
-        {
-
-
-            // deserialize the body part
-        }
-
-        public override string Serialize()
-        {
-            throw new NotImplementedException("serialize standardbodypart");
-        }
-
-
-
-
+        
+        
     }
 }

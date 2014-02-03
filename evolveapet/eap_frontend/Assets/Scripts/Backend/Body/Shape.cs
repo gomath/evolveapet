@@ -3,46 +3,96 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Common
+namespace EvolveAPet
 {
-    public class BodyPartShape
+    public class Shape
     {
         private readonly Enum _shape;
-        public Enum Shape { get { return _shape; } }
+        public string ShapeName { get { return Enum.GetName(_shape.GetType(), _shape); } }
 
-        public BodyPartShape(BodyPartType type, int index)
+        public Shape(EnumBodyPart type,int index)
         {
 
             switch (type)
             {
-                case BodyPartType.HEAD: _shape = (HeadShape)index; break;
-                case BodyPartType.TEETH: _shape = (TeethShape)index; break;
-                case BodyPartType.ARMS: _shape = (ArmShape)index; break;
-                case BodyPartType.EARS: _shape = (EarShape)index; break;
-                case BodyPartType.EYES: _shape = (EyeShape)index; break;
-                case BodyPartType.TORSO: _shape = (TorsoShape)index; break;
-                case BodyPartType.TAIL: _shape = (TailShape)index; break;
-                case BodyPartType.LEGS: _shape = (LegShape)index; break;
+                case EnumBodyPart.HEAD: _shape = (EnumHeadShape)index; break;
+                case EnumBodyPart.ARMS: _shape = (EnumArmShape)index; break;
+                case EnumBodyPart.EARS: _shape = (EnumEarShape)index; break;
+                case EnumBodyPart.EYES: _shape = (EnumEyeShape)index; break;
+                case EnumBodyPart.TORSO: _shape = (EnumTorsoShape)index; break;
+                case EnumBodyPart.TAIL: _shape = (EnumTailShape)index; break;
+                case EnumBodyPart.LEGS: _shape = (EnumLegShape)index; break;
+                default:_shape= (EnumTeeth)index; break;
             }
 
         }
 
-        public static bool IsCorrectIndex(BodyPartType type, int index)
+        public static bool IsCorrectIndex(EnumBodyPart type, int index)
         {
             switch (type)
             {
-                case BodyPartType.HEAD: return Enum.IsDefined(typeof(HeadShape), index);
-                case BodyPartType.TEETH: return Enum.IsDefined(typeof(TeethShape), index);
-                case BodyPartType.ARMS: return Enum.IsDefined(typeof(ArmShape), index);
-                case BodyPartType.EARS: return Enum.IsDefined(typeof(EarShape), index);
-                case BodyPartType.EYES: return Enum.IsDefined(typeof(EyeShape), index);
-                case BodyPartType.TORSO: return Enum.IsDefined(typeof(TorsoShape), index);
-                case BodyPartType.TAIL: return Enum.IsDefined(typeof(TailShape), index);
-                case BodyPartType.LEGS: return Enum.IsDefined(typeof(LegShape), index);
-
+                case EnumBodyPart.HEAD: return Enum.IsDefined(typeof(EnumHeadShape), index);
+                case EnumBodyPart.ARMS: return Enum.IsDefined(typeof(EnumArmShape), index);
+                case EnumBodyPart.EARS: return Enum.IsDefined(typeof(EnumEarShape), index);
+                case EnumBodyPart.EYES: return Enum.IsDefined(typeof(EnumEyeShape), index);
+                case EnumBodyPart.TORSO: return Enum.IsDefined(typeof(EnumTorsoShape), index);
+                case EnumBodyPart.TAIL: return Enum.IsDefined(typeof(EnumTailShape), index);
+                case EnumBodyPart.LEGS: return Enum.IsDefined(typeof(EnumLegShape), index);
+    
             }
             return false;
 
         }
+
+        private  enum EnumHeadShape
+        {
+            dino,
+            wolf
+
+        }
+        private  enum EnumArmShape
+        {
+            dino,
+            wolf
+
+        }
+        private  enum EnumEarShape
+        {
+            dino,
+            wolf
+
+        }
+        private  enum EnumTorsoShape
+        {
+            dino,
+            wolf
+
+        }
+        private  enum EnumTailShape
+        {
+            dino,
+            wolf
+
+        }
+        private  enum EnumEyeShape
+        {
+            grumpy,
+            angry
+
+        }
+        private  enum EnumLegShape
+        {
+            dino,
+            wolf
+
+        }
+        private  enum EnumTeeth
+        {
+            carnivour,
+            herbivour
+
+        }
+        
+
     }
 }

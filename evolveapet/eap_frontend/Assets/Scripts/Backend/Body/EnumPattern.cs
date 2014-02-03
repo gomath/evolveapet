@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Common
-{
-    public enum BodyPartPattern
+namespace EvolveAPet
+{   [Serializable]
+    public enum EnumPattern
     {
         NOPATTERN,
         SPOTS,
