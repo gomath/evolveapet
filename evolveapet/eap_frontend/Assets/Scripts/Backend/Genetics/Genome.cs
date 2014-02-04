@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Common;
+//using Common;
 
 namespace EvolveAPet
 {
@@ -51,7 +51,7 @@ namespace EvolveAPet
         
         }
 
-        public LinkedList<object> Mutate(Gene gene, BodyPartType index, ChromosomePair cp)
+        /*public LinkedList<object> Mutate(Gene gene, BodyPartType index, ChromosomePair cp)
         {
 
             if (Enum.Equals(cp, ChromosomePair.FATHER))
@@ -67,7 +67,7 @@ namespace EvolveAPet
             // this returns a list of enum/int that we can feed in the constructor
             throw new NotImplementedException("Decode Chromosome pair to bodypart");
 
-        }
+        }*/
 
 
         public string[] Serialize()

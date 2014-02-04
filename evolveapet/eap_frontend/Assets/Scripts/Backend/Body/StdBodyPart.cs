@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Drawing;
+using UnityEngine;
+//using System.Drawing;
 using EvolveAPet;
 
 
@@ -10,7 +11,7 @@ namespace EvolveAPet
 {   [Serializable]
     public abstract class StdBodyPart : BodyPart
     {
-        public Color Color { get; protected set; }
+        public Color color { get; protected set; }
         public EnumSize Size { get; protected set; }
         public EnumPattern Pattern { get; protected set; }
 
@@ -18,7 +19,7 @@ namespace EvolveAPet
             : base(type, shape)
         {
 
-            Color = color;
+            this.color = color;
             Size = size;
 
 

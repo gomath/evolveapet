@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Common;
+//using Common;
 
 namespace EvolveAPet
 {
@@ -23,12 +23,12 @@ namespace EvolveAPet
             // deserializing a chromosome
         }
 
-        public Gene GetGene(Trait trait)
+        public Gene GetGene(EnumTrait trait)
         {
 
             foreach (Gene gene in Gene)
             {
-                if (Enum.Equals(gene.Trait, trait))
+                if (Enum.Equals(gene.trait, trait))
                     return gene;
             }
             return null;
@@ -39,7 +39,7 @@ namespace EvolveAPet
         public void Mutate(Gene gene)
         {
 
-            Gene.Find(GetGene(gene.Trait)).Value = gene;
+            Gene.Find(GetGene(gene.trait)).Value = gene;
 
         }
 
