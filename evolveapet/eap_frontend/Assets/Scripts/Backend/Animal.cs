@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 //using Common;
+using System.Collections;
 using UnityEngine;
 
 namespace EvolveAPet
@@ -80,5 +81,60 @@ namespace EvolveAPet
 			}
             return bPart;
         }*/
+
+		/*
+		 * Below is Unity specific code
+		 * Author: Tom Lefley
+		 * 
+		 */
+
+		private Vector2 lastPos;
+		private float delta;
+		private bool touched;
+
+		void Start() {
+			StartCoroutine("twitch");
+			StartCoroutine("blink");
+		}
+
+		void Update() {
+			tickle ();
+		}
+
+		void setTouched(bool b) {
+			touched = b;
+		}
+
+		void tickle() {
+			if ( Input.GetMouseButtonDown(0) ) {
+				lastPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			} else if ( Input.GetMouseButton(0) ) {
+				delta += Mathf.Abs(Vector2.Distance(Camera.main.ScreenToWorldPoint(Input.mousePosition),lastPos));
+				lastPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			} else if ( Input.GetMouseButtonUp(0) ) {
+				delta = 0f;
+				touched = false;
+			}
+
+			if ((delta > 20f) && touched) {
+				GetComponent<Animator>().SetTrigger("Tickle");
+				delta = 0f;
+				touched = false;
+			}
+		}
+
+		IEnumerator twitch() {
+			for(;;) {
+				GetComponent<Animator>().SetTrigger("Twitch");
+				yield return new WaitForSeconds(UnityEngine.Random.Range (10f, 20f));
+			}	
+		}
+
+		IEnumerator blink() {
+			for(;;) {
+				GetComponent<Animator>().SetTrigger("Blink");
+				yield return new WaitForSeconds(UnityEngine.Random.Range (2f, 5f));
+			}	
+		}
     }
 }

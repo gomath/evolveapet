@@ -280,4 +280,6 @@ public class TestSuiteGui : MonoBehaviour {
 	void Scale (Transform t, int size) {
 		t.localScale = new Vector3(sizes[size],sizes[size], 1);
 	}
+
+
 }
