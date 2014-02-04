@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace EvolveAPet
 {
-    public class Animal
+    public class Animal : MonoBehaviour
     {
         private readonly Animal[] _parents;
         private readonly Genome _genome;
