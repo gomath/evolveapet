@@ -55,7 +55,11 @@ namespace EvolveAPet
             return s.ToString();
         }
 
+		public static int getTraitPosition(int traitNo, int bodyPartNo){
+		//NEED A METHOD TO WORK OUT WHERE THE GENE FOR A TRAIT IS LOCATED SINCE WE ARE PLACING THEM ACROSS THE GENE IN DIFFERENT POSITIONS - essentially lookup table.
 
+			//RETURNS NULL IF TRAIT IS NOT FOUND!
+		}
 
     }
 }
