@@ -22,7 +22,7 @@ namespace EvolveAPet
         private readonly int bodyPartNumber = 7; // to allow easy changing of number of body parts
 		private readonly int traitNumber = 6; // to allow easy changing of number of traits
 
-		public Animal(LinkedList<Chromosome> chromA, LinkedList<Chromosome> chromB, Animal parent1, Animal parent2)
+		public Animal(Chromosome[] chromA, Chromosome[] chromB, Animal parent1, Animal parent2)
         {
             Egg = true; //Animals will alwyas be in egg form when created
             //Firstly, populate all the genes in the genome
@@ -95,16 +95,14 @@ namespace EvolveAPet
 						randomNumber = rnd.Next(0, ((int)maxNumberInEnum+1)); // generates a value between 0 and the maximum size of the enum
 						isDominant = flipCoin(); // generates true or false
 						//WARNING: STRING FOR GENE CONSTRUCTOR IS NOT WELL DEFINED
-						//NOTE: ADDING TEMP CHAR TO ALLOW COMPILE
-						newGene = new Gene('T', (EnumTrait)t, randomNumber);
+						newGene = new Gene(t, randomNumber);
 						//THIS IS A CHROMOSOME ARRAY, NOT FOR GENES
 						//chromA[genePos] = newGene;
 
 
 						randomNumber = rnd.Next(0, ((int)maxNumberInEnum+1)); // generates a value between 0 and the maximum size of the enum
 						isDominant = flipCoin();
-						//NOTE: ADDING TEMP CHAR TO ALLOW COMPILE
-						newGene	= new Gene('T',(EnumTrait)t,randomNumber);
+						newGene	= new Gene(t,randomNumber);
 						//THIS IS A CHROMOSOME ARRAY, NOT FOR GENES
 						//chromB[genePos] = newGene;
 					}

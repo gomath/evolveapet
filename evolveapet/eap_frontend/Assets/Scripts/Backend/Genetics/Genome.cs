@@ -9,8 +9,8 @@ namespace EvolveAPet
 	public class Genome
     {
 		// elements at index i of both arrays together logically codes for one trait
-		private Chromosome[] _motherChromosome { get; }
-		private Chromosome[] _fatherChromosome { get; }
+		private Chromosome[] _motherChromosome { set; get; }
+		private Chromosome[] _fatherChromosome { set; get; }
 		private int _numOfChromosomes;
 		
         /// <summary>
@@ -33,7 +33,7 @@ namespace EvolveAPet
 		/// <param name="c1">C1.</param>
 		/// <param name="c2">C2.</param>
         private Chromosome[] CrossOver(Chromosome c1, Chromosome c2){
-        	
+			return null;
 		}
 
 		/// <summary>
@@ -42,7 +42,7 @@ namespace EvolveAPet
 		/// </summary>
 		/// <returns>The tetrads for breeding.</returns>
 		public Chromosome[] CreateTetradsForBreeding(){
-			
+			return null;
 		}
 
 		/// <summary>
@@ -53,7 +53,7 @@ namespace EvolveAPet
 		/// <param name="g1">G1.</param>
 		/// <param name="g2">G2.</param>
 		public int DecodeTrait(Gene g1, Gene g2){
-			
+			return 0;
 		}
 
         /// <summary>
@@ -64,25 +64,24 @@ namespace EvolveAPet
         /// <param name="trait"></param>
         /// <returns></returns>
         public int GetTrait(int chromosome, int trait) { 
-        
+			return 0;
         }
-
-<<<<<<< HEAD
+		
         /// <summary>
         /// Returns index to the EnumTrait for the particular gene on the given chromosome.
         /// </summary>
         /// <param name="chromose"></param>
         /// <param name="trait"></param>
         /// <returns></returns>
-        public int GetTraitIndex(int chromosome, int gene) { 
+        /*public int GetTraitIndex(int chromosome, int gene) { 
 			if (chromosome >= _numOfChromosomes) {
 				return -1;			
 			} else{
-				Chromosome temp = _fatherChromosome[chromosome]
+				Chromosome temp = _fatherChromosome[chromosome];
 
-				for(int i=0; if<temp.nu)
+				//for(int i=0; if<temp.nu)
 			}
-=======
+		}*/
         /*public LinkedList<object> Mutate(Gene gene, BodyPartType index, ChromosomePair cp)
         {
 
@@ -98,7 +97,6 @@ namespace EvolveAPet
         {
             // this returns a list of enum/int that we can feed in the constructor
             throw new NotImplementedException("Decode Chromosome pair to bodypart");
->>>>>>> a810a69262c5608e92e523304919b285f62b00ca
 
         }*/
 

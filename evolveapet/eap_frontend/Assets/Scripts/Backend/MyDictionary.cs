@@ -30,7 +30,7 @@ namespace EvolveAPet
 	public class MyDictionary
 	{
 		public static int temp = 1;
-		private readonly static String[] auxColorName = {
+		private readonly static String[][] auxColorName = {
 			{"c","colour"}
 		};
 		private readonly static String[][] auxColourAdditional = {
