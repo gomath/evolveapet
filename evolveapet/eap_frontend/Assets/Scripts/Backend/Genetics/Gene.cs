@@ -21,6 +21,8 @@ namespace EvolveAPet
 
         public Gene(char symbol, EnumTrait trait, int data = 0)
         {
+
+			//NEEDS CHANGED, THIS NEEDS TO WORK FOR EVERY GENE AND TRAIT INCLUDING COLOUR. DATA ARRAY MAY BE NEATER?
             _trait = trait;
             _symbol = symbol;
             _data = data;
