@@ -9,6 +9,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 212: {fileID: 21200000}
+  - 114: {fileID: 11400000}
+  - 60: {fileID: 6000000}
   m_Layer: 0
   m_Name: dino back arm
   m_TagString: Untagged
@@ -23,10 +25,60 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.402361751, y: .345174551, z: -.797550201}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!60 &6000000
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Poly:
+    m_Paths:
+    - - {x: .355220318, y: .0253477283}
+      - {x: .305220336, y: .195347726}
+      - {x: .195220336, y: .28534773}
+      - {x: .0952203348, y: .315347731}
+      - {x: .0752203315, y: .315347731}
+      - {x: -.104779661, y: .315347731}
+      - {x: -.474779665, y: .145347729}
+      - {x: -.814779639, y: .115347728}
+      - {x: -.874779642, y: .135347724}
+      - {x: -1.14477968, y: .165347725}
+      - {x: -1.2347796, y: .105347723}
+      - {x: -1.2347796, y: -.044652272}
+      - {x: -1.20477962, y: -.0646522716}
+      - {x: -1.18477964, y: -.0646522716}
+      - {x: -1.20477962, y: -.0946522728}
+      - {x: -1.22477961, y: -.154652268}
+      - {x: -1.22477961, y: -.204652265}
+      - {x: -1.15477967, y: -.224652261}
+      - {x: -1.07477963, y: -.184652269}
+      - {x: -1.02477968, y: -.264652252}
+      - {x: -.974779665, y: -.274652272}
+      - {x: -.854779661, y: -.184652269}
+      - {x: -.654779673, y: -.274652272}
+      - {x: -.564779639, y: -.294652253}
+      - {x: -.254779667, y: -.294652253}
+      - {x: .285220325, y: -.124652267}
+      - {x: .355220318, y: -.0746522695}
+      - {x: .355220318, y: -.0646522716}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21f9410ff4a540e44a88d63edec3244d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

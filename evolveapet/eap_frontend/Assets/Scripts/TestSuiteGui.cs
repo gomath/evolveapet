@@ -196,76 +196,90 @@ public class TestSuiteGui : MonoBehaviour {
 		//Create new animal
 		GameObject animal = (GameObject)Instantiate(Resources.Load ("Prefabs/animal"));
 
+		//Find transforms
+		Transform tBody = GameObject.FindGameObjectWithTag("Body").transform;
+		Transform tHead = GameObject.FindGameObjectWithTag("Head").transform;
+		Transform tTail = GameObject.FindGameObjectWithTag("Tail").transform;
+		Transform tFrontLeg = GameObject.FindGameObjectWithTag("Front Leg").transform;
+		Transform tBackLeg = GameObject.FindGameObjectWithTag("Back Leg").transform;
+		Transform tFrontArm = GameObject.FindGameObjectWithTag("Front Arm").transform;
+		Transform tBackArm = GameObject.FindGameObjectWithTag("Back Arm").transform;
+		Transform[] tEyes = {GameObject.FindGameObjectWithTag("Eye 0").transform, GameObject.FindGameObjectWithTag("Eye 1").transform, GameObject.FindGameObjectWithTag("Eye 2").transform};
+		Transform tEar = GameObject.FindGameObjectWithTag("Ear").transform;
+
 		//Build body, rotate if bipedal and scale/colour as needed
 		GameObject body = (GameObject)Instantiate(Resources.Load ("Prefabs/dino body"));
-		Scale(body.transform, bodySizeInt);
 		body.GetComponent<SpriteRenderer>().color = bodyColor;
 		if (bipedalInt == 1) {
 			body.transform.Rotate(new Vector3(0,0,-30));
 		}
-		body.transform.parent = animal.transform;
+		body.transform.parent = tBody;
+		Scale(tBody, bodySizeInt);
 
 		//build head, color eyes, choose mouth and scale/colour as needed
 		GameObject head = (GameObject)Instantiate(Resources.Load ("Prefabs/dino head"));
-		Scale(head.transform, headSizeInt);
 		head.GetComponent<SpriteRenderer>().color = headColor;
-		head.transform.position = GameObject.Find ("head joint").transform.position;
-		head.transform.parent = animal.transform;
+		head.transform.position = tHead.position = GameObject.Find ("head joint").transform.position;
+		head.transform.parent = tHead;
 
 		for (int i = 0; i<numEye; i++) {
 			GameObject eye = (GameObject)Instantiate (Resources.Load ("Prefabs/dino eye"));
-			eye.transform.position = GameObject.Find("eye joint "+i).transform.position;
-			eye.transform.parent = head.transform;
-			Scale (eye.transform, eyeSizeInt);
+			eye.transform.position = tEyes[i].position = GameObject.Find("eye joint "+i).transform.position;
+			eye.transform.parent = tEyes[i];
+			Scale (tEyes[i], eyeSizeInt);
 			eye.GetComponent<SpriteRenderer>().color = eyeColor;
 		}
+
+		Scale(tHead, headSizeInt);
 
 		GameObject.Find ("mouth").GetComponent<SpriteRenderer>().sprite = (vege == 1) ? Resources.Load<Sprite>("Sprites/dino vmouth") : Resources.Load<Sprite>("Sprites/dino mouth");
 
 		//build tail, scale/colour as needed
 		GameObject tail = (GameObject)Instantiate(Resources.Load ("Prefabs/dino tail"));
-		Scale(tail.transform, tailSizeInt);
 		tail.GetComponent<SpriteRenderer>().color = tailColor;
-		tail.transform.position = GameObject.Find ("tail joint").transform.position;
-		tail.transform.parent = animal.transform;
+		tail.transform.position = tTail.position = GameObject.Find ("tail joint").transform.position;
+		tail.transform.parent = tTail;
+		Scale(tTail, tailSizeInt);
 
 		//build arms, replace with legs if bipedal and scale/colour as needed
 		GameObject arm = (bipedalInt==0) ? (GameObject)Instantiate(Resources.Load ("Prefabs/dino front leg")) : (GameObject)Instantiate(Resources.Load ("Prefabs/dino front arm"));
-		if (bipedalInt == 0) {
-			Scale(arm.transform, legSizeInt);
-		} else {
-			Scale(arm.transform, armSizeInt);
-		}
 		arm.GetComponent<SpriteRenderer>().color = armColor;
-		arm.transform.position = GameObject.Find ("arm joint").transform.position;
-		arm.transform.parent = animal.transform;
+		arm.transform.position = tFrontArm.position = GameObject.Find ("arm joint").transform.position;
+		arm.transform.parent = tFrontArm;
+		if (bipedalInt == 0) {
+			Scale(tFrontArm, legSizeInt);
+		} else {
+			Scale(tFrontArm, armSizeInt);
+		}
 
-		arm = (bipedalInt==0) ? (GameObject)Instantiate(Resources.Load ("Prefabs/dino front leg")) : (GameObject)Instantiate(Resources.Load ("Prefabs/dino front arm"));
-		if (bipedalInt == 0) {
-			Scale(arm.transform, legSizeInt);
-		} else {
-			Scale(arm.transform, armSizeInt);
-		}
+		arm = (bipedalInt==0) ? (GameObject)Instantiate(Resources.Load ("Prefabs/dino back leg")) : (GameObject)Instantiate(Resources.Load ("Prefabs/dino back arm"));
 		arm.GetComponent<SpriteRenderer>().color = armColor;
-		arm.transform.position = GameObject.Find ("arm joint").transform.position;
-		arm.transform.parent = animal.transform;
+		arm.transform.position = tBackArm.position = GameObject.Find ("arm joint").transform.position;
+		arm.transform.parent = tBackArm;
+		if (bipedalInt == 0) {
+			Scale(tBackArm, legSizeInt);
+		} else {
+			Scale(tBackArm, armSizeInt);
+		}
 
 		//build legs, scale/colour as needed
 		GameObject leg = (GameObject)Instantiate(Resources.Load ("Prefabs/dino front leg"));
-		Scale(leg.transform, legSizeInt);
 		leg.GetComponent<SpriteRenderer>().color = legColor;
-		leg.transform.position = GameObject.Find ("leg joint").transform.position;
-		leg.transform.parent = animal.transform;
+		leg.transform.position = tFrontLeg.position = GameObject.Find ("leg joint").transform.position;
+		leg.transform.parent = tFrontLeg;
+		Scale(tFrontLeg, legSizeInt);
 
 		leg = (GameObject)Instantiate(Resources.Load ("Prefabs/dino back leg"));
-		Scale(leg.transform, legSizeInt);
 		leg.GetComponent<SpriteRenderer>().color = legColor;
-		leg.transform.position = GameObject.Find ("leg joint").transform.position;
-		leg.transform.parent = animal.transform;
+		leg.transform.position = tBackLeg.position = GameObject.Find ("leg joint").transform.position;
+		leg.transform.parent = tBackLeg;
+		Scale(tBackLeg, legSizeInt);
 	}
 
 	//Parse the scale ints and scale accordingly
 	void Scale (Transform t, int size) {
-		t.localScale = new Vector2(sizes[size],sizes[size]);
+		t.localScale = new Vector3(sizes[size],sizes[size], 1);
 	}
+
+
 }

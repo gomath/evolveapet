@@ -4,6 +4,17 @@
 TagManager:
   tags:
   - Animal
+  - Front Arm
+  - Back Arm
+  - Front Leg
+  - Back Leg
+  - Head
+  - Tail
+  - Eye 0
+  - Eye 1
+  - Eye 2
+  - Ear
+  - Body
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

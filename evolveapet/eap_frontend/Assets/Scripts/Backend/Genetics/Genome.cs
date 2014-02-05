@@ -67,6 +67,7 @@ namespace EvolveAPet
         
         }
 
+<<<<<<< HEAD
         /// <summary>
         /// Returns index to the EnumTrait for the particular gene on the given chromosome.
         /// </summary>
@@ -81,8 +82,25 @@ namespace EvolveAPet
 
 				for(int i=0; if<temp.nu)
 			}
+=======
+        /*public LinkedList<object> Mutate(Gene gene, BodyPartType index, ChromosomePair cp)
+        {
+
+            if (Enum.Equals(cp, ChromosomePair.FATHER))
+                _fatherChromosome.ElementAt((int)index).Mutate(gene);
+            else
+                _motherChromosome.ElementAt((int)index).Mutate(gene);
+            return Decode(index);
 
         }
+
+        public LinkedList<object> Decode(BodyPartType type)
+        {
+            // this returns a list of enum/int that we can feed in the constructor
+            throw new NotImplementedException("Decode Chromosome pair to bodypart");
+>>>>>>> a810a69262c5608e92e523304919b285f62b00ca
+
+        }*/
 
 		/// <summary>
 		/// Replace given gene on given chromosome of mother (sex = 0) or father (sex = 1) by given gene.

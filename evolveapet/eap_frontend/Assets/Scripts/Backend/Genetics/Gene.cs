@@ -18,8 +18,6 @@ namespace EvolveAPet
 			private int[] _dominantAdditional; // used for colour, set to true if some additional information is dominant and false otherwise
 			private int _maxPossibleNumOfIndices; // for generating random gene for mutation and gene therapy
 
-			
-
 		// GETTERS AND SETTERS
 		public EnumTrait Trait{
 			get{ return _trait; }
