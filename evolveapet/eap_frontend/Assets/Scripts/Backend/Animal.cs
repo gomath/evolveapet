@@ -39,7 +39,7 @@ namespace EvolveAPet
         }
 
 		public Animal(){// Generates a completely random animal
-			Random rnd = new Random();
+			System.Random rnd = new System.Random();
 			int randomNumber;
 			bool isDominant;
 			int genePos;
@@ -66,24 +66,25 @@ namespace EvolveAPet
 			*/
 
 		//Generate Pattern for all Body Parts except eyes, and generate shape and size for everything
-			int maxNumberInEnum;
+			int maxNumberInEnum = 0;
 			for (int n = 0; n<7;n++){// iterate through body parts
 				for (int t=1;t<5;t++){ // iterate through all traits excluding teethShape and colour. colour needs to be treated separately
 
 					//Need to work out the maximum number of enums for each trait, this is clunky but needed.
 					switch(t){
 						
-						case t==1:
+						case (1):
 							maxNumberInEnum=2; // 0 to 3
 							break;
-						case t==2:
-							maxNumberInEnum = EnumPattern.GetValues.Max(); //WARNING NOT SURE HOW THE ENUMS ARE GOING TO BE IMPLEMENTED
+						case (2):
+							//maxNumberInEnum = EnumPattern.GetValues.Max(); //WARNING NOT SURE HOW THE ENUMS ARE GOING TO BE IMPLEMENTED
 							break;
-					case t==3:
+					case (3):
 						maxNumberInEnum=2;
 						break;
-					case t==4:
-						maxNumberInEnum = EnumShape.GetValues.Max();//WARNING NOT SURE HOW THIS ENUM IS GOING TO BE IMPLEMENTED
+					case (4):
+						//maxNumberInEnum = EnumShape.GetValues.Max();//WARNING NOT SURE HOW THIS ENUM IS GOING TO BE IMPLEMENTED
+						break;
 					}	
 
 					if ((n!=1 && t!= 2) && t!=3){ //ignores eyes with pattern and ignores number
@@ -94,14 +95,18 @@ namespace EvolveAPet
 						randomNumber = rnd.Next(0, ((int)maxNumberInEnum+1)); // generates a value between 0 and the maximum size of the enum
 						isDominant = flipCoin(); // generates true or false
 						//WARNING: STRING FOR GENE CONSTRUCTOR IS NOT WELL DEFINED
-						newGene = new Gene(isDominant, t, randomNumber);
-						chromA[genePos] = newGene;
+						//NOTE: ADDING TEMP CHAR TO ALLOW COMPILE
+						newGene = new Gene('T', (EnumTrait)t, randomNumber);
+						//THIS IS A CHROMOSOME ARRAY, NOT FOR GENES
+						//chromA[genePos] = newGene;
 
 
 						randomNumber = rnd.Next(0, ((int)maxNumberInEnum+1)); // generates a value between 0 and the maximum size of the enum
 						isDominant = flipCoin();
-						newGene	= new Gene(isDominant,t,randomNumber);
-						chromB[genePos] = newGene;
+						//NOTE: ADDING TEMP CHAR TO ALLOW COMPILE
+						newGene	= new Gene('T',(EnumTrait)t,randomNumber);
+						//THIS IS A CHROMOSOME ARRAY, NOT FOR GENES
+						//chromB[genePos] = newGene;
 					}
 				}
 			}
@@ -121,18 +126,18 @@ namespace EvolveAPet
 		}
 
 		private bool flipCoin(){ // to reduce code needed in random animal
-			Random rnd = new Random();
+			System.Random rnd = new System.Random();
 			int result;
 			result = rnd.Next (0, 2);
 			if (result == 0) return false;
 			else return true;
 		}
 
-        public void Mutate(int chromosomeNumber, int geneNumber, int genePairNumber, Gene newGene)
+       /* public void Mutate(int chromosomeNumber, int geneNumber, int genePairNumber, Gene newGene)
         {
             _genome.Mutate(chromosomeNumber, geneNumber, genePairNumber, newGene);
 			BodyPartArray[chromosomeNumber] = createBodyPart(chromosomeNumber);
-        }
+        }*/
 
         public void hatch()
         {

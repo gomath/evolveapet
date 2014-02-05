@@ -6,7 +6,7 @@ using System.Text;
 
 namespace EvolveAPet
 {
-    public class EnumTrait {
+    public enum EnumTrait {
 
     }
 }
