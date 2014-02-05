@@ -2,49 +2,63 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Common;
 
 namespace EvolveAPet
 {
-    public class Gene : AGene
+   [Serializable]
+	public class Gene
     {
-        private readonly Trait _trait;
-        private readonly bool _type;
-        private readonly char _symbol; // consider Dominant if uppercase
-        private readonly int _data; // additional information needed for that 1 caracteristic
-        // the students do not know this exist, this should be used only for our internal porpuses
-        public bool Type { get { return _type; } }
-        public char Symbol { get { return _symbol; } }
-        public int Data { get { return _data; } }
-        public Trait Trait { get { return _trait; } }
-        public bool IsKnown { get; private set; }
+		private EnumTrait _trait;
+		private bool _dominance;// 1 = dominant
+		private char _symbol;
+		private int[] _additional; // any additional information connected to this gene, such as precise colour
+		
+		// GETTERS AND SETTERS
+		public EnumTrait Trait{
+			get{
+				return _trait;
+			}
+		}
 
-        public Gene(char symbol, Trait trait, int data = 0)
-        {
-            _trait = trait;
-            _symbol = symbol;
-            _data = data;
-            _type = char.IsUpper(symbol);
-            IsKnown = false;
-        }
+		public bool Dominance{
+			get{
+				return _dominance;
+			}
+		}
 
-        public void Discovered()
-        {
-            IsKnown = true;
-        }
+		public char Symbol{
+			get{
+				return _symbol;
+			}
+		}
+
+		public int Additional{
+			get {
+				return _additional;
+			}
+		}
+
+		public Gene(String s){
+			// TODO - does Player supply new gene in form of String? In otherwords, do I need to do checks here?
+		}
+
+		/// <summary>
+		/// Returns true if any additional information are associated with this gene.
+		/// </summary>
+		/// <returns><c>true</c>, if additional was hased, <c>false</c> otherwise.</returns>
+		public bool hasAdditional(){
+			if (_additional == null) {
+				return false;			
+			}
+			return true;
+		}
 
 
-        public string Serialize()
-        {
-            throw new NotImplementedException("serialize gene");
-        }
-
-        public Gene(string serialGene)
-        {
-
-            // deserializing a gene
-
-        }
-
+		public void Mutate(Gene gene){
+			this._trait = gene._trait;
+			this._dominance = gene._dominance;
+			this._symbol = gene._symbol;
+			this._additional = gene._additional;
+		}
     }
 }

@@ -6,7 +6,12 @@ using Common;
 
 namespace EvolveAPet
 {
-    public class EnumTrait {
-
+    public enum EnumTrait {
+        COLOUR,
+        SIZE,
+        PATTERN,
+        NUMBER,
+        SHAPE,
+        TEETH_SHAPE
     }
 }

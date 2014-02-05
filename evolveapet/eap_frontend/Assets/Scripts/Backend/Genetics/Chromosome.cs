@@ -2,60 +2,58 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Common;
 
 namespace EvolveAPet
 {
-    public class Chromosome
-    {
+   [Serializable]
+	public class Chromosome {
 
-        public LinkedList<Gene> Gene { set; get; } // one for every bodypart caracteristic
+        private EnumBodyPart _bodyPart;
+        private Gene[] _gene { set; get; } // one for every bodypart trait
+        private int _numOfGenes; // number of genes on this chromosome
+        
 
-
-        public Chromosome(LinkedList<Gene> genes)
+		/// <summary>
+		/// Creates new chromosome from array of genes and information about the coresponding body part.
+		/// </summary>
+		/// <param name="_genes">_genes.</param>
+		/// <param name="bodyPart">Body part.</param>
+        public Chromosome(Gene[] gene, EnumBodyPart bodyPart)
         {
-            Gene = genes;
+            _gene = gene;
+            _numOfGenes = _gene.Length;
+            _bodyPart = bodyPart;
         }
 
+		/// <summary>
+		/// Gets the index in the EnumTrait of trait located on ith place on this chromosome.
+		/// </summary>
+		/// <returns>The trait index.</returns>
+		/// <param name="gene">Gene.</param>
+		public int GetTraitIndex(int i){
+			if (i >= _numOfGenes) {
+				return -1;
+			} else {
+				EnumTrait eTrait = _gene[i].Trait;
+			}
+		}
 
-        public Chromosome(string serializedChromozome)
+
+        /// <summary>
+        /// Mutate gene at particular location specified by geneNum on this chromosome to Gene.
+        /// </summary>
+        /// <param name="geneNum"></param>
+        /// <param name="gene"></param>
+        public static void Mutate(int geneNum, Gene gene)
         {
-            // deserializing a chromosome
+			if (geneNum < _numOfGenes) {
+				gene[geneNum] = gene;
+			}       
         }
-
-        public Gene GetGene(Trait trait)
-        {
-
-            foreach (Gene gene in Gene)
-            {
-                if (Enum.Equals(gene.Trait, trait))
-                    return gene;
-            }
-            return null;
-
-
+        
+        public static void Main(String[] args) {
+            Console.WriteLine("Hello world!");
+            Console.ReadLine();
         }
-
-        public void Mutate(Gene gene)
-        {
-
-            Gene.Find(GetGene(gene.Trait)).Value = gene;
-
-        }
-
-        public string Serialize()
-        {
-
-            StringBuilder s = new StringBuilder();
-            foreach (Gene gene in Gene)
-            {
-                s.Append(gene.Serialize());
-            }
-
-            return s.ToString();
-        }
-
-
-
     }
 }
