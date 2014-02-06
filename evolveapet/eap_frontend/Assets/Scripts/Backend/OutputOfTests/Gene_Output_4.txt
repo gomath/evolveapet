@@ -1,6 +1,6 @@
 ----------------GENE----------------
-Encoded name:    n(0)
-Decoded name:    number(0)
+Encoded name:    n(1)
+Decoded name:    number(1)
 
 Chromosome num.: 4
 Gene num.:       3
@@ -12,7 +12,7 @@ Name index:      0
 Name:            n number
 
 Num. of extra:   1
-	0 0 False
+	1 1 False
 
 Max. names:      1
 	n number

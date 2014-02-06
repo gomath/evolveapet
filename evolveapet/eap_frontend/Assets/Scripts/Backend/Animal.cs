@@ -96,22 +96,16 @@ namespace EvolveAPet
 						randomNumber = rnd.Next(0, ((int)maxNumberInEnum+1)); // generates a value between 0 and the maximum size of the enum
 						isDominant = flipCoin(); // generates true or false
 						//WARNING: STRING FOR GENE CONSTRUCTOR IS NOT WELL DEFINED
-						//NOTE: ADDING TEMP CHAR TO ALLOW COMPILE
 
-						// TODO - have to comment next line in order to get rid of build error
-						//newGene = new Gene('T', (EnumTrait)t, randomNumber);
-
+						newGene = new Gene(t, randomNumber);
 						//THIS IS A CHROMOSOME ARRAY, NOT FOR GENES
 						//chromA[genePos] = newGene;
 
 
 						randomNumber = rnd.Next(0, ((int)maxNumberInEnum+1)); // generates a value between 0 and the maximum size of the enum
 						isDominant = flipCoin();
-						//NOTE: ADDING TEMP CHAR TO ALLOW COMPILE
 
-						// TODO - have to comment next line in order to get rid of build error
-						//newGene	= new Gene('T',(EnumTrait)t,randomNumber); 
-
+						newGene	= new Gene(t,randomNumber);
 						//THIS IS A CHROMOSOME ARRAY, NOT FOR GENES
 						//chromB[genePos] = newGene;
 					}

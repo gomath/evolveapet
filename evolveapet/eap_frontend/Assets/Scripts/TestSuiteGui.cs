@@ -12,7 +12,7 @@ public class TestSuiteGui : MonoBehaviour {
 	private Color legColor = Color.white;
 	private Color earColor = Color.white;
 
-	private string[] eyes = {"0","2","4"};
+	private string[] eyes = {"0","2","4","3"};
 	private int numEye = 1;
 	private int eyeSizeInt = 1;
 	private Color eyeColor = Color.white;

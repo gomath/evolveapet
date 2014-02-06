@@ -1,12 +1,12 @@
 ----------------GENE----------------
-Encoded name:    S
-Decoded name:    SIZE
+Encoded name:    s
+Decoded name:    size
 
 Chromosome num.: 4
 Gene num.:       1
 
 Trait: SIZE
-Dominance:       True
+Dominance:       False
 
 Name index:      0
 Name:            s size

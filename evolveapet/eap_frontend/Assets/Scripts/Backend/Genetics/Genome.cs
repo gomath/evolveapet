@@ -9,8 +9,8 @@ namespace EvolveAPet
 	public class Genome
     {
 		// elements at index i of both arrays together logically codes for one trait
-		private Chromosome[] _motherChromosome;
-		private Chromosome[] _fatherChromosome;
+		private Chromosome[] _motherChromosome { set; get; }
+		private Chromosome[] _fatherChromosome { set; get; }
 		private int _numOfChromosomes;
 		
         /// <summary>
@@ -53,7 +53,7 @@ namespace EvolveAPet
 		/// <param name="g1">G1.</param>
 		/// <param name="g2">G2.</param>
 		public int DecodeTrait(Gene g1, Gene g2){
-			return -1;
+			return 0;
 		}
 
         /// <summary>
@@ -64,25 +64,48 @@ namespace EvolveAPet
         /// <param name="trait"></param>
         /// <returns></returns>
         public int GetTrait(int chromosome, int trait) { 
-			return -1;
+			return 0;
         }
-
+		
         /// <summary>
         /// Returns index to the EnumTrait for the particular gene on the given chromosome.
         /// </summary>
         /// <param name="chromose"></param>
         /// <param name="trait"></param>
         /// <returns></returns>
-        public int GetTraitIndex(int chromosome, int gene) { 
-			// TODO - is not finished at all
+
+        /*public int GetTraitIndex(int chromosome, int gene) { 
+>>>>>>> 922712992245d00a890e6e7e4807b4d13e578647
 			if (chromosome >= _numOfChromosomes) {
 				return -1;			
 			} else{
 				Chromosome temp = _fatherChromosome[chromosome];
+<<<<<<< HEAD
 			}
 			return -1;
 		}
 
+=======
+
+				//for(int i=0; if<temp.nu)
+			}
+		}*/
+        /*public LinkedList<object> Mutate(Gene gene, BodyPartType index, ChromosomePair cp)
+        {
+
+            if (Enum.Equals(cp, ChromosomePair.FATHER))
+                _fatherChromosome.ElementAt((int)index).Mutate(gene);
+            else
+                _motherChromosome.ElementAt((int)index).Mutate(gene);
+            return Decode(index);
+
+        }
+
+        public LinkedList<object> Decode(BodyPartType type)
+        {
+            // this returns a list of enum/int that we can feed in the constructor
+            throw new NotImplementedException("Decode Chromosome pair to bodypart");
+>>>>>>> 922712992245d00a890e6e7e4807b4d13e578647
 
 
 		/// <summary>
@@ -98,4 +121,6 @@ namespace EvolveAPet
 
         
     }
+}*/
+	}
 }

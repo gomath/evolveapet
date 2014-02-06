@@ -1,6 +1,6 @@
 ----------------GENE----------------
-Encoded name:    c(b,r)
-Decoded name:    colour(blue,red)
+Encoded name:    c(b,b)
+Decoded name:    colour(blue,blue)
 
 Chromosome num.: 0
 Gene num.:       0
@@ -13,7 +13,7 @@ Name:            c colour
 
 Num. of extra:   2
 	b blue False
-	r red False
+	b blue False
 
 Max. names:      1
 	c colour

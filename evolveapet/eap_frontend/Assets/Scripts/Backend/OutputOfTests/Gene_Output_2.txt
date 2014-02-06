@@ -1,6 +1,6 @@
 ----------------GENE----------------
-Encoded name:    D
-Decoded name:    DOTS
+Encoded name:    B
+Decoded name:    BLANK
 
 Chromosome num.: 1
 Gene num.:       2
@@ -8,8 +8,8 @@ Gene num.:       2
 Trait: PATTERN
 Dominance:       True
 
-Name index:      1
-Name:            d dots
+Name index:      0
+Name:            b blank
 
 Num. of extra:   0
 

@@ -110,9 +110,9 @@ namespace EvolveAPet
 					for(int i=0; i<_numOfAdditionalInfo; i++){
 						_additionalIndices[i] = rand.Next(_maxPossibleNumOfIndices);
 						if(rand.Next(2) == 0){
-							_dominantAdditional[i] = false;
+							_additionalIndices[i] = 0;
 						} else {
-							_dominantAdditional[i] = true;
+							_additionalIndices[i] = 1;
 						}
 					}
 				}

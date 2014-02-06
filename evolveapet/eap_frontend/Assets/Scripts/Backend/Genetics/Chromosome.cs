@@ -50,23 +50,28 @@ namespace EvolveAPet
 				return 0; // TODO - 0 is placeholder here
 			}
 		}
-
-
-
+		
         /// <summary>
         /// Mutate gene at particular location specified by geneNum on this chromosome to Gene.
         /// </summary>
         /// <param name="geneNum"></param>
         /// <param name="gene"></param>
+ 
         public void Mutate(int geneNum, Gene gene){
-			if (geneNum < _numOfGenes) {
-				_genes[geneNum] = gene;
-			}       
-        }
+		}
+
         
         public static void Main(String[] args) {
             Console.WriteLine("Hello world!");
             Console.ReadLine();
         }
+
+
+		public static int getTraitPosition(int traitNo, int bodyPartNo){
+		//NEED A METHOD TO WORK OUT WHERE THE GENE FOR A TRAIT IS LOCATED SINCE WE ARE PLACING THEM ACROSS THE GENE IN DIFFERENT POSITIONS - essentially lookup table.
+
+			//RETURNS NULL IF TRAIT IS NOT FOUND!
+			return 0;
+		}
     }
 }
