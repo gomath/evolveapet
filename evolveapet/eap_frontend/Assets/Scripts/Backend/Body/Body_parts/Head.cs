@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Drawing;
 using UnityEngine;
 
 namespace EvolveAPet
@@ -13,7 +12,7 @@ namespace EvolveAPet
         private readonly Shape _teethShape;
         public string TeethShape { get { return _teethShape.ShapeName; } }
 
-        public Head(int shape, Color color, EnumSize size, EnumPattern pattern, bool carnivour = false)
+        public Head(int shape, Color color, EnumSize size, EnumPattern pattern, bool carnivour)
             : base(EnumBodyPart.HEAD, shape, color, size, pattern)
         {
              //since teeth is not considered a bodypart, -1 is somehting we are sure is not a valid item in our bodyparts

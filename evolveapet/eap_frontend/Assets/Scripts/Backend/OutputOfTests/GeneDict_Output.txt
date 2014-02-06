@@ -1,0 +1,206 @@
+OVERALL STRUCTURE OF GENOME
+------------------------
+Chromosome #0 (EARS)
+	
+Gene #0 (COLOUR)
+		Num. of names: 1
+			c colour
+		Num. of extra: 3
+			r red
+			b blue
+			y yellow
+	
+Gene #1 (SIZE)
+		Num. of names: 1
+			s size
+		Num. of extra: 0
+	
+Gene #2 (PATTERN)
+		Num. of names: 3
+			b blank
+			d dots
+			s stripes
+		Num. of extra: 0
+	
+Gene #3 (SHAPE)
+		Num. of names: 1
+			d dino
+		Num. of extra: 0
+------------------------
+Chromosome #1 (EYES)
+	
+Gene #0 (SIZE)
+		Num. of names: 1
+			s size
+		Num. of extra: 0
+	
+Gene #1 (COLOUR)
+		Num. of names: 1
+			c colour
+		Num. of extra: 3
+			r red
+			b blue
+			y yellow
+	
+Gene #2 (PATTERN)
+		Num. of names: 3
+			b blank
+			d dots
+			s stripes
+		Num. of extra: 0
+	
+Gene #3 (SHAPE)
+		Num. of names: 1
+			d dino
+		Num. of extra: 0
+------------------------
+Chromosome #2 (HEAD)
+	
+Gene #0 (COLOUR)
+		Num. of names: 1
+			c colour
+		Num. of extra: 3
+			r red
+			b blue
+			y yellow
+	
+Gene #1 (TEETH_SHAPE)
+		Num. of names: 2
+			h herbivore
+			c carnivore
+		Num. of extra: 0
+	
+Gene #2 (PATTERN)
+		Num. of names: 3
+			b blank
+			d dots
+			s stripes
+		Num. of extra: 0
+	
+Gene #3 (SIZE)
+		Num. of names: 1
+			s size
+		Num. of extra: 0
+	
+Gene #4 (SHAPE)
+		Num. of names: 1
+			d dino
+		Num. of extra: 0
+------------------------
+Chromosome #3 (TORSO)
+	
+Gene #0 (SIZE)
+		Num. of names: 1
+			s size
+		Num. of extra: 0
+	
+Gene #1 (PATTERN)
+		Num. of names: 3
+			b blank
+			d dots
+			s stripes
+		Num. of extra: 0
+	
+Gene #2 (SHAPE)
+		Num. of names: 1
+			d dino
+		Num. of extra: 0
+	
+Gene #3 (COLOUR)
+		Num. of names: 1
+			c colour
+		Num. of extra: 3
+			r red
+			b blue
+			y yellow
+------------------------
+Chromosome #4 (ARMS)
+	
+Gene #0 (COLOUR)
+		Num. of names: 1
+			c colour
+		Num. of extra: 3
+			r red
+			b blue
+			y yellow
+	
+Gene #1 (SIZE)
+		Num. of names: 1
+			s size
+		Num. of extra: 0
+	
+Gene #2 (SHAPE)
+		Num. of names: 1
+			d dino
+		Num. of extra: 0
+	
+Gene #3 (NUMBER)
+		Num. of names: 1
+			n numer
+		Num. of extra: 0
+	
+Gene #4 (PATTERN)
+		Num. of names: 3
+			b blank
+			d dots
+			s stripes
+		Num. of extra: 0
+------------------------
+Chromosome #5 (LEGS)
+	
+Gene #0 (SHAPE)
+		Num. of names: 1
+			d dino
+		Num. of extra: 0
+	
+Gene #1 (SIZE)
+		Num. of names: 1
+			s size
+		Num. of extra: 0
+	
+Gene #2 (COLOUR)
+		Num. of names: 1
+			c colour
+		Num. of extra: 3
+			r red
+			b blue
+			y yellow
+	
+Gene #3 (NUMBER)
+		Num. of names: 1
+			n numer
+		Num. of extra: 0
+	
+Gene #4 (PATTERN)
+		Num. of names: 3
+			b blank
+			d dots
+			s stripes
+		Num. of extra: 0
+------------------------
+Chromosome #6 (TAIL)
+	
+Gene #0 (PATTERN)
+		Num. of names: 3
+			b blank
+			d dots
+			s stripes
+		Num. of extra: 0
+	
+Gene #1 (SIZE)
+		Num. of names: 1
+			s size
+		Num. of extra: 0
+	
+Gene #2 (COLOUR)
+		Num. of names: 1
+			c colour
+		Num. of extra: 3
+			r red
+			b blue
+			y yellow
+	
+Gene #3 (SHAPE)
+		Num. of names: 1
+			d dino
+		Num. of extra: 0
