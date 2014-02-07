@@ -71,7 +71,7 @@ namespace EvolveAPet
 				Chromosome currentChromosomeA = new Chromosome (); // creates a new chromosome for each body part
 				Chromosome currentChromosomeB = new Chromosome (); // creates a new chromosome for each body part
 
-				for (int t=1;t<5;t++){ // iterate through all traits excluding teethShape and colour. colour needs to be treated separately
+				for (int t=0;t<6;t++){ // iterate through all traits excluding teethShape and colour. colour needs to be treated separately
 					 //ignores eyes with pattern and ignores number
 
 						genePos = Chromosome.getTraitPosition(t,n); // finds where the gene coding for trait t and body part n is located on the gene
