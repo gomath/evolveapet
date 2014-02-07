@@ -5,7 +5,7 @@ using EvolveAPet;
 public class Testing_Matej : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
+	/*void Start () {
 		MyDictionary.Init (); // initializing maps (Dictionaries) in MyDictionary
 
 		Gene g = new Gene (3, 2);
@@ -25,7 +25,7 @@ public class Testing_Matej : MonoBehaviour {
 		}*/
 
 		//MyDictionary.displayGeneDict ();
-	}	
+	//}	
 	
 	// Update is called once per frame
 	void Update () {

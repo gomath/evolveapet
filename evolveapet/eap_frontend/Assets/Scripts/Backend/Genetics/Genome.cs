@@ -75,19 +75,12 @@ namespace EvolveAPet
         /// <returns></returns>
 
         /*public int GetTraitIndex(int chromosome, int gene) { 
->>>>>>> 922712992245d00a890e6e7e4807b4d13e578647
 			if (chromosome >= _numOfChromosomes) {
 				return -1;			
 			} else{
 				Chromosome temp = _fatherChromosome[chromosome];
-<<<<<<< HEAD
-			}
-			return -1;
-		}
 
-=======
-
-				//for(int i=0; if<temp.nu)
+				for(int i=0; if<temp.nu)
 			}
 		}*/
         /*public LinkedList<object> Mutate(Gene gene, BodyPartType index, ChromosomePair cp)
@@ -105,7 +98,6 @@ namespace EvolveAPet
         {
             // this returns a list of enum/int that we can feed in the constructor
             throw new NotImplementedException("Decode Chromosome pair to bodypart");
->>>>>>> 922712992245d00a890e6e7e4807b4d13e578647
 
 
 		/// <summary>

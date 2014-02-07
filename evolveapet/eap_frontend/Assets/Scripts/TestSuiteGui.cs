@@ -181,7 +181,7 @@ public class TestSuiteGui : MonoBehaviour {
 
 		//Create a build button, bottom right
 		if (GUI.Button (new Rect(Screen.width-200,Screen.height-30,200, 30), "Build")) {
-			StartCoroutine("Build");
+			StartCoroutine("Hatch");
 		}
 	}
 
@@ -195,6 +195,7 @@ public class TestSuiteGui : MonoBehaviour {
 
 		//Create new animal
 		GameObject animal = (GameObject)Instantiate(Resources.Load ("Prefabs/animal"));
+		animal.GetComponent<Animator>().SetTrigger("Hatch");
 
 		//Find transforms
 		Transform tBody = GameObject.FindGameObjectWithTag("Body").transform;
@@ -274,6 +275,7 @@ public class TestSuiteGui : MonoBehaviour {
 		leg.transform.position = tBackLeg.position = GameObject.Find ("leg joint").transform.position;
 		leg.transform.parent = tBackLeg;
 		Scale(tBackLeg, legSizeInt);
+
 	}
 
 	//Parse the scale ints and scale accordingly
@@ -281,5 +283,10 @@ public class TestSuiteGui : MonoBehaviour {
 		t.localScale = new Vector3(sizes[size],sizes[size], 1);
 	}
 
-
+	IEnumerator Hatch() {
+		GameObject egg = (GameObject)Instantiate(Resources.Load ("Prefabs/egg"));
+		yield return new WaitForSeconds(Random.Range(2f, 7f));
+		egg.GetComponent<Animator>().SetTrigger("Hatch");
+		StartCoroutine("Build");
+	}
 }
