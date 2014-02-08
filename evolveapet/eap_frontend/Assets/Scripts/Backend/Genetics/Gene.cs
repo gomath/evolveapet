@@ -91,21 +91,21 @@ namespace EvolveAPet
 				_dominantAdditional = new bool[_numOfAdditionalInfo];
 
 				if(_trait == EnumTrait.NUMBER){
-					// TODO - generate random number in appropriate bounds
 					int lowerBound = 0; // inclusive
 					int upperBound = 3; // exclusive
 
 					switch(MyDictionary.chromosomeDict[_chromosomeNum]){
-					case EnumBodyPart.EYES: // TODO - set upper and lower bounds
+					case EnumBodyPart.EYES: // An animal can have between 1 and 3 eyes
+						
+						_additionalIndices[0] = (rand.Next(lowerBound,upperBound)+1);
 						break;
-					case EnumBodyPart.ARMS: // TODO - set upper and lower bounds
+					case EnumBodyPart.ARMS: // TODO
 						break;
-					case EnumBodyPart.LEGS: // TODO - set upper and lower bounds
+					case EnumBodyPart.LEGS: // TODO
 						break;
 					}
 
 					// Setting random number in given range
-					_additionalIndices[0] = rand.Next(lowerBound,upperBound);
 				} else {
 					for(int i=0; i<_numOfAdditionalInfo; i++){
 						_additionalIndices[i] = rand.Next(_maxPossibleNumOfIndices);

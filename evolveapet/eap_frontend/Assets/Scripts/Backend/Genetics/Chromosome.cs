@@ -71,10 +71,24 @@ namespace EvolveAPet
         }
 
 
-		public static int getTraitPosition(int traitNo, int bodyPartNo){
+		public int getTraitPosition(int traitNo, int chromosomeNum){
+			/*6 traits filled in this order :
+			0.Colour
+			1.Size
+			2.Pattern
+			3.Number
+			4.Shape
+			5.Teeth_Shape
+			*/
+			for (int n = 0; n< _numOfGenes; n++) { //Searches through the dictionary until it finds the specified trait. 
+				//This could simply be hardcoded, but a linear search won't take any time at all on 7 items.
 				
-			//Returns -1 if trait is not found on the gene. Should preferably be static. Simply a dictionary lookup
-			return 0;
+				int trait = (int)MyDictionary.traitDict[chromosomeNum][n];
+				if (trait == traitNo) return n;
+			}
+
+			//Returns -1 if trait is not found on the gene.
+			return -1;
 		}
     }
 }

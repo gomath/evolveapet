@@ -68,25 +68,25 @@ namespace EvolveAPet
 		//Generate Pattern for all Body Parts except eyes, and generate shape and size for everything
 			int maxNumberInEnum = 0;
 			for (int n = 0; n<7;n++){// iterate through body parts
-				Chromosome currentChromosomeA = new Chromosome (); // creates a new chromosome for each body part
-				Chromosome currentChromosomeB = new Chromosome (); // creates a new chromosome for each body part
+				Chromosome currentChromosomeA = new Chromosome (n); // creates a new chromosome for each body part
+				Chromosome currentChromosomeB = new Chromosome (n); // creates a new chromosome for each body part
 
-				for (int t=0;t<6;t++){ // iterate through all traits excluding teethShape and colour. colour needs to be treated separately
-					 //ignores eyes with pattern and ignores number
+				for (int t=0;t<6;t++){ // iterate through all traits
 
-						genePos = Chromosome.getTraitPosition(t,n); // finds where the gene coding for trait t and body part n is located on the gene
+						genePos = currentChromosomeA.getTraitPosition(t,n); // finds where the gene coding for trait t and body part n is located on the gene
 						//Use random constructor of Gene to generate two random genes.
-
-
-						newGene = new Gene(n,genePos);
-						currentChromosomeA.Genes[genePos] = newGene;
-						newGene = new Gene(n,genePos);
-						currentChromosomeB.Genes[genePos] = newGene;
+				
+						if (genePos !=-1){
+							newGene = new Gene(n,genePos);
+							currentChromosomeA.Genes[genePos] = newGene;
+							newGene = new Gene(n,genePos);
+							currentChromosomeB.Genes[genePos] = newGene;
+						}						
 
 					}
+				createBodyPart(n);
 				}
 
-				//Generates the list of body parts from the chromosomes
 			}
 
        /* public void Mutate(int chromosomeNumber, int geneNumber, int genePairNumber, Gene newGene)
@@ -99,7 +99,7 @@ namespace EvolveAPet
         {
             Egg = false;
         }
-        private BodyPart createBodyPart(EnumBodyPart e){
+        private void createBodyPart(int n){
 			/* e is an enum pointing to body parts in this order:
 			0.Ears
 			1.Eyes
@@ -109,33 +109,9 @@ namespace EvolveAPet
 			5.Legs
 			6.Tail
 			*/
-            //StdBodyPart bPart = new StdBodyPart();
-            //int[] traitPos = new int[6]; 
-			/*An array with all the 6 traits filled in this order :
-			0.Colour
-			1.Size
-			2.Pattern
-			3.Number
-			4.Shape
-			5.Teeth_Shape
-			Traits not used for that specific body part are simply represented as null.
-			*/
-			/*for (int n =0; n< traitNumber;n++){
-			traitPos[n] = _genome.getTraitIndex(n);
-			}
-            bPart.Colour = _genome.getTrait(e,traitPos[0]); 
-            bPart.Shape =_genome.getTrait(e,traitPos[4]);                         
-            bPart.Size =_genome.getTrait(e,traitPos[1]); 
-            if (e!=1) bPart.Pattern =_genome.getTrait(e,traitPos[2]); // eyes don't have a pattern
-            if (e==2){ //body part is head, need to deal with teeth
-				(Head)bPart.TeethShape = _genome.getTrait(e,traitPos[5]);
-			}
-			if (e ==1 || e ==4 || e==5){ //these are all FullBodyParts (eyes, arms, legs in that order)
-				(FullBodyPart)bPart.Number = _genome.getTrait(e,traitPos[3]);
-			}
-			*/
-			BodyPart bPart = new BodyPart (); // placeholder
-            return bPart;
+		
+//			BodyPart bPart = new BodyPart (); // placeholder before the body part class is created
+//			BodyPartArray[e] = bPart;
         }
 
 		/*
