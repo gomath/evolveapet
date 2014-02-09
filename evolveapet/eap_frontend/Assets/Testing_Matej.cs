@@ -21,12 +21,19 @@ public class Testing_Matej : MonoBehaviour {
 		g.display(4);
 		*/
 
+		/*
 		for (int chr=0; chr<7; chr++) {
 			for(int gene=0; gene < MyDictionary.numOfGenesOnChromosome[(EnumBodyPart)chr]; gene++){
 				Gene g = new Gene(chr,gene);
 				g.display(10*chr + gene);
 			}		
-		}
+		}*/
+
+		//Chromosome ch = new Chromosome (0);
+		//ch.Display ();
+
+		Genome genome = new Genome ();
+		genome.Display (0);
 		/*string[][][][][] a = MyDictionary.geneDict;
 		for (int i=0; i<a.GetLength(0); i++) {
 			for(j)

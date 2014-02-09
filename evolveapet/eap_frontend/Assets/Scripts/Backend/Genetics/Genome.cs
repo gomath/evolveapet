@@ -9,10 +9,52 @@ namespace EvolveAPet
 	public class Genome
     {
 		// elements at index i of both arrays together logically codes for one trait
-		private Chromosome[] _motherChromosome { set; get; }
-		private Chromosome[] _fatherChromosome { set; get; }
+		private Chromosome[] _motherChromosome;
+		private Chromosome[] _fatherChromosome;
 		private int _numOfChromosomes;
-		
+
+		/// <summary>
+		/// Creates random genome. 
+		/// </summary>
+		public Genome(){
+			_numOfChromosomes = Global.NUM_OF_CHROMOSOMES;
+			_motherChromosome = new Chromosome[_numOfChromosomes];
+			_fatherChromosome = new Chromosome[_numOfChromosomes];
+			for (int i=0; i<_numOfChromosomes; i++) {
+				_motherChromosome[i] = new Chromosome(i);
+				_fatherChromosome[i] = new Chromosome(i);
+			}
+		}
+
+		/// <summary>
+		/// Writes this genome in consise form into given file.
+		/// </summary>
+		public void Display(int testIndex){
+			String path = "E:\\Mato\\Cambridge\\2nd year\\Group_Project\\Software (under git)\\evolveapet\\evolveapet\\eap_frontend\\Assets\\Scripts\\Backend\\OutputOfTests\\Genome\\";
+			String dst = "Genome_" +  testIndex + ".txt";
+			
+			System.IO.StreamWriter file = new System.IO.StreamWriter(path+dst);
+			file.AutoFlush = true;
+
+			file.WriteLine("Legend: each line is in for #gene number, mother gene (encoded and decoded), father gene (encoded and decoded)");
+			for (int i=0; i<_numOfChromosomes; i++) {
+				file.WriteLine("----------CHROMOSOME #" + i + "----------");
+				for(int j=0; j<_fatherChromosome[i].NumOfGenes; j++){
+					Gene motherGene = _motherChromosome[i].Genes[j];
+					Gene fatherGene = _fatherChromosome[i].Genes[j];
+
+					String f = "{0,-20}";
+					String motherString = String.Format(f,motherGene.GetWholeNameEncoded()) + String.Format(f,"(" + motherGene.GetWholeNameDecoded() + ")");
+					String fatherString = String.Format(f,fatherGene.GetWholeNameEncoded()) + String.Format(f,"(" + fatherGene.GetWholeNameDecoded() + ")");
+					file.WriteLine("#" + j + ":\t" + motherString + "\t" + fatherString);
+				}
+				file.WriteLine();
+			}
+
+
+			file.Close ();
+		}
+
         /// <summary>
         /// Given two haploid sets of chromosomes, create a full genome.
         /// </summary>

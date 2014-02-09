@@ -1,0 +1,5 @@
+CHROMOSOME #0
+#0: 		c(b,r) (colour(blue,red))
+#1: 		S (SIZE)
+#2: 		d (dots)
+#3: 		d (dino)

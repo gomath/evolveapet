@@ -20,6 +20,8 @@ namespace EvolveAPet
 
 		public static int ARMS_LOWER_BOUND = 0; // inclusive
 		public static int ARMS_UPPER_BOUND = 2; // exclusive
+
+		public static int NUM_OF_CHROMOSOMES = 7;
 	}
 }
 

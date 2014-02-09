@@ -15,6 +15,5 @@ namespace EvolveAPet
         ARMS = 4,
         LEGS = 5,
         TAIL = 6
-
     }
 }

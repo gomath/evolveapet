@@ -435,26 +435,33 @@ namespace EvolveAPet
 		// Given body part that codes for the chromosome, returns number of genes on that chromosome
 		public readonly static Dictionary<EnumBodyPart,int> numOfGenesOnChromosome  = new Dictionary<EnumBodyPart, int> ();
 
+		// Flag, whether both dictionaries have been initialized
+		public static bool initialized = false;
+
 		/// <summary>
 		/// Has to be called at least once in order to initialize Dictionary
 		/// </summary>
 		public static void Init(){
-			// Initializing Dictionary numOfAdditionalInfo
-			numOfAdditionalInfo.Add (EnumTrait.COLOUR,2);
-			numOfAdditionalInfo.Add (EnumTrait.SIZE,0);	
-			numOfAdditionalInfo.Add (EnumTrait.PATTERN,0);	
-			numOfAdditionalInfo.Add (EnumTrait.NUMBER,1);	
-			numOfAdditionalInfo.Add (EnumTrait.SHAPE,0);	
-			numOfAdditionalInfo.Add (EnumTrait.TEETH_SHAPE,0);	
+			if (!initialized) {
+					initialized = true;
+					
+					// Initializing Dictionary numOfAdditionalInfo
+					numOfAdditionalInfo.Add (EnumTrait.COLOUR, 2);
+					numOfAdditionalInfo.Add (EnumTrait.SIZE, 0);	
+					numOfAdditionalInfo.Add (EnumTrait.PATTERN, 0);	
+					numOfAdditionalInfo.Add (EnumTrait.NUMBER, 1);	
+					numOfAdditionalInfo.Add (EnumTrait.SHAPE, 0);	
+					numOfAdditionalInfo.Add (EnumTrait.TEETH_SHAPE, 0);	
 
-			// Initializeng Dictionary numOfGenesOnChromosomeByBodyPart
-			numOfGenesOnChromosome.Add(EnumBodyPart.EARS,4); // colour, size, pattern, shape
-			numOfGenesOnChromosome.Add(EnumBodyPart.EYES,5); // size, colour, pattern, shape, number
-			numOfGenesOnChromosome.Add(EnumBodyPart.HEAD,5); // colour, teeth_shape, pattern, size, shape
-			numOfGenesOnChromosome.Add(EnumBodyPart.TORSO,4); //  size, pattern, shape, colour
-			numOfGenesOnChromosome.Add(EnumBodyPart.ARMS,5); // colour, size, shape, number, pattern
-			numOfGenesOnChromosome.Add(EnumBodyPart.LEGS,4); // shape, size, colour, pattern
-			numOfGenesOnChromosome.Add(EnumBodyPart.TAIL,4); //  pattern, size, colour, shape
+					// Initializeng Dictionary numOfGenesOnChromosome
+					numOfGenesOnChromosome.Add (EnumBodyPart.EARS, 4); // colour, size, pattern, shape
+					numOfGenesOnChromosome.Add (EnumBodyPart.EYES, 5); // size, colour, pattern, shape, number
+					numOfGenesOnChromosome.Add (EnumBodyPart.HEAD, 5); // colour, teeth_shape, pattern, size, shape
+					numOfGenesOnChromosome.Add (EnumBodyPart.TORSO, 4); //  size, pattern, shape, colour
+					numOfGenesOnChromosome.Add (EnumBodyPart.ARMS, 5); // colour, size, shape, number, pattern
+					numOfGenesOnChromosome.Add (EnumBodyPart.LEGS, 4); // shape, size, colour, pattern
+					numOfGenesOnChromosome.Add (EnumBodyPart.TAIL, 4); //  pattern, size, colour, shape
+			}
 		}
 	}
 	
