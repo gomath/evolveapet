@@ -1,0 +1,22 @@
+----------------GENE----------------
+Encoded name:    S
+Decoded name:    STRIPES
+
+Chromosome num.: 3
+Gene num.:       1
+
+Trait: PATTERN
+Dominance:       True
+
+Name index:      2
+Name:            s stripes
+
+Num. of extra:   0
+
+Max. names:      3
+	b blank
+	d dots
+	s stripes
+
+Max. indices:    0
+-------------------------------------

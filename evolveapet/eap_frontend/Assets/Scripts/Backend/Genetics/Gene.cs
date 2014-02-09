@@ -91,21 +91,14 @@ namespace EvolveAPet
 				_dominantAdditional = new bool[_numOfAdditionalInfo];
 
 				if(_trait == EnumTrait.NUMBER){
-					int lowerBound = 0; // inclusive
-					int upperBound = 3; // exclusive
-
 					switch(MyDictionary.chromosomeDict[_chromosomeNum]){
 					case EnumBodyPart.EYES: // An animal can have between 1 and 3 eyes
-						
-						_additionalIndices[0] = (rand.Next(lowerBound,upperBound)+1);
+						_additionalIndices[0] = (rand.Next(Global.EYES_LOWER_BOUND,Global.EYES_UPPER_BOUND));
 						break;
-					case EnumBodyPart.ARMS: // TODO
-						break;
-					case EnumBodyPart.LEGS: // TODO
+					case EnumBodyPart.ARMS:
+						_additionalIndices[0] = (rand.Next(Global.ARMS_LOWER_BOUND,Global.ARMS_UPPER_BOUND));
 						break;
 					}
-
-					// Setting random number in given range
 				} else {
 					for(int i=0; i<_numOfAdditionalInfo; i++){
 						_additionalIndices[i] = rand.Next(_maxPossibleNumOfIndices);
@@ -349,7 +342,7 @@ namespace EvolveAPet
 		/// </summary>
 		public void display(int index){
 
-			String path = "E:\\Mato\\Cambridge\\2nd year\\Group_Project\\Software (under git)\\evolveapet\\evolveapet\\eap_frontend\\Assets\\Scripts\\Backend\\OutputOfTests\\";
+			String path = "E:\\Mato\\Cambridge\\2nd year\\Group_Project\\Software (under git)\\evolveapet\\evolveapet\\eap_frontend\\Assets\\Scripts\\Backend\\OutputOfTests\\Genome\\";
 			String dst = "Gene_Output_" + index + ".txt";
 			
 			System.IO.StreamWriter file = new System.IO.StreamWriter(path+dst);

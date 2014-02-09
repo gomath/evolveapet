@@ -1,0 +1,22 @@
+----------------GENE----------------
+Encoded name:    d
+Decoded name:    dots
+
+Chromosome num.: 4
+Gene num.:       4
+
+Trait: PATTERN
+Dominance:       False
+
+Name index:      1
+Name:            d dots
+
+Num. of extra:   0
+
+Max. names:      3
+	b blank
+	d dots
+	s stripes
+
+Max. indices:    0
+-------------------------------------

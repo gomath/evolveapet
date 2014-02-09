@@ -1,0 +1,21 @@
+----------------GENE----------------
+Encoded name:    N(0)
+Decoded name:    NUMBER(0)
+
+Chromosome num.: 4
+Gene num.:       3
+
+Trait: NUMBER
+Dominance:       True
+
+Name index:      0
+Name:            n number
+
+Num. of extra:   1
+	0 0 False
+
+Max. names:      1
+	n number
+
+Max. indices:    0
+-------------------------------------

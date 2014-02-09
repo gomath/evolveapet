@@ -1,0 +1,22 @@
+----------------GENE----------------
+Encoded name:    b
+Decoded name:    blank
+
+Chromosome num.: 6
+Gene num.:       0
+
+Trait: PATTERN
+Dominance:       False
+
+Name index:      0
+Name:            b blank
+
+Num. of extra:   0
+
+Max. names:      3
+	b blank
+	d dots
+	s stripes
+
+Max. indices:    0
+-------------------------------------

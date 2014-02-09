@@ -1,0 +1,20 @@
+----------------GENE----------------
+Encoded name:    d
+Decoded name:    dino
+
+Chromosome num.: 4
+Gene num.:       2
+
+Trait: SHAPE
+Dominance:       False
+
+Name index:      0
+Name:            d dino
+
+Num. of extra:   0
+
+Max. names:      1
+	d dino
+
+Max. indices:    0
+-------------------------------------

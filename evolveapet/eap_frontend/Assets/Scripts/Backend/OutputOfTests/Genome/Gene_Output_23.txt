@@ -1,0 +1,20 @@
+----------------GENE----------------
+Encoded name:    s
+Decoded name:    size
+
+Chromosome num.: 2
+Gene num.:       3
+
+Trait: SIZE
+Dominance:       False
+
+Name index:      0
+Name:            s size
+
+Num. of extra:   0
+
+Max. names:      1
+	s size
+
+Max. indices:    0
+-------------------------------------

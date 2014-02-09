@@ -1,0 +1,21 @@
+----------------GENE----------------
+Encoded name:    C
+Decoded name:    CARNIVORE
+
+Chromosome num.: 2
+Gene num.:       1
+
+Trait: TEETH_SHAPE
+Dominance:       True
+
+Name index:      1
+Name:            c carnivore
+
+Num. of extra:   0
+
+Max. names:      2
+	h herbivore
+	c carnivore
+
+Max. indices:    0
+-------------------------------------

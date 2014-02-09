@@ -1,0 +1,25 @@
+----------------GENE----------------
+Encoded name:    c(r,b)
+Decoded name:    colour(red,blue)
+
+Chromosome num.: 5
+Gene num.:       2
+
+Trait: COLOUR
+Dominance:       False
+
+Name index:      0
+Name:            c colour
+
+Num. of extra:   2
+	r red False
+	b blue False
+
+Max. names:      1
+	c colour
+
+Max. indices:    3
+	r red
+	b blue
+	y yellow
+-------------------------------------

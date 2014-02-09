@@ -14,6 +14,12 @@ namespace EvolveAPet
 	{
 		// Use this random to generate all random numbers in the whole program. C# random sucks otherwise if created in multiple classes.
 		public static Random rand = new Random();
+
+		public static int EYES_LOWER_BOUND = 1; // inclusive
+		public static int EYES_UPPER_BOUND = 4; // exclusive
+
+		public static int ARMS_LOWER_BOUND = 0; // inclusive
+		public static int ARMS_UPPER_BOUND = 2; // exclusive
 	}
 }
 

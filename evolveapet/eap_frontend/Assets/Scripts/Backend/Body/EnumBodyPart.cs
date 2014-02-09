@@ -8,13 +8,13 @@ namespace EvolveAPet
     public enum EnumBodyPart
     {
 
-        EARS,
-        EYES,
-        HEAD,
-        TORSO,
-        ARMS,
-        LEGS,
-        TAIL
+        EARS = 0,
+        EYES = 1,
+        HEAD = 2,
+        TORSO = 3,
+        ARMS = 4,
+        LEGS = 5,
+        TAIL = 6
 
     }
 }
