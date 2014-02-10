@@ -45,6 +45,7 @@ namespace EvolveAPet
 		private static String STRIPES = "STRIPES";
 
 		private static String DINO = "DINO";
+		private static String STEGO = "STEGO";
 
 		private static String CARNIVORE = "CARNIVORE";
 		private static String HERBIVORE = "HERBIVORE";
@@ -56,7 +57,8 @@ namespace EvolveAPet
 		private static String[] enumShapes = new String[]{
 			CARNIVORE,
 			HERBIVORE,
-			DINO
+			DINO,
+			STEGO
 		};
 
 		/// <summary>
@@ -108,7 +110,8 @@ namespace EvolveAPet
 		};
 
 		private readonly static String[][] auxShapeName = new String[][]{
-			new String[] {"d","dino",DINO}
+			new String[] {"d","dino",DINO},
+			new String[] {"st","stego",STEGO}
 		};
 
 		private readonly static String[][] auxTeethShapeName = new String[][]{
@@ -126,8 +129,14 @@ namespace EvolveAPet
 			EnumBodyPart.TAIL
 		};
 
-		// TODO - REMOVE
-		public static String[][] tmpString = new String[][]{};
+		/// <summary>
+		/// Given EnumBodyPart, returns corresponding index in chromosomeDict
+		/// </summary>
+		/// <returns>The of body part.</returns>
+		public static int GetIndexOfBodyPart(EnumBodyPart bp){
+			return Array.FindIndex (chromosomeDict, x => x == bp);
+		}
+		
 
 		public static String[][][][][] geneDict = new String[7][][][][]{
 			// Chromosome order: ears, eyes, head, torso, arms, legs, tail

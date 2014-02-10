@@ -1,27 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Testing_Matej.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Backend\Genetics\Genome.cs">
     <Files>
-      <File FileName="Assets\Scripts\Backend\Genetics\Genome.cs" Line="436" Column="1" />
-      <File FileName="Assets\Scripts\Backend\Genetics\Genome.cs" Line="54" Column="118" />
-      <File FileName="Assets\Scripts\Backend\Genetics\Chromosome.cs" Line="127" Column="31" />
-      <File FileName="Assets\Scripts\Backend\Genetics\Gene.cs" Line="53" Column="25" />
-      <File FileName="Assets\Scripts\Backend\Animal.cs" Line="78" Column="54" />
-      <File FileName="Assets\Testing_Matej.cs" Line="26" Column="2" />
-      <File FileName="Assets\Scripts\TestSuiteGui.cs" Line="293" Column="1" />
-      <File FileName="Assets\Scripts\Backend\MyDictionary.cs" Line="108" Column="5" />
-      <File FileName="Assets\Scripts\Backend\Body\BodyPart.cs" Line="34" Column="1" />
-      <File FileName="Assets\Scripts\Backend\Body\EnumBodyPart.cs" Line="20" Column="1" />
-      <File FileName="Assets\Scripts\Backend\Body\FullBodyPart.cs" Line="26" Column="1" />
-      <File FileName="Assets\Scripts\Backend\Body\Shape.cs" Line="99" Column="1" />
-      <File FileName="Assets\Scripts\Backend\Body\StdBodyPart.cs" Line="31" Column="1" />
-      <File FileName="Assets\Scripts\Backend\Genetics\EnumTrait.cs" Line="9" Column="60" />
-      <File FileName="Assets\Scripts\Backend\Body\EnumPattern.cs" Line="10" Column="69" />
-      <File FileName="Assets\Scripts\Backend\Body\EnumSize.cs" Line="10" Column="77" />
-      <File FileName="Assets\Scripts\Backend\Player.cs" Line="34" Column="1" />
-      <File FileName="Assets\Scripts\Backend\Stable.cs" Line="55" Column="1" />
-      <File FileName="Assets\Scripts\MenuTest.cs" Line="30" Column="1" />
-      <File FileName="Assets\Global.cs" Line="28" Column="1" />
+      <File FileName="Assets\Testing_Matej.cs" Line="36" Column="1" />
+      <File FileName="Assets\Scripts\Backend\Genetics\Genome.cs" Line="39" Column="100" />
+      <File FileName="Assets\Scripts\Backend\MyDictionary.cs" Line="49" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

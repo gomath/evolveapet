@@ -32,7 +32,7 @@ public class Testing_Matej : MonoBehaviour {
 		//Chromosome ch = new Chromosome (0);
 		//ch.Display ();
 
-		for (int i=0; i<20; i++) {
+		for (int i=20; i<30; i++) {
 
 			Genome genome = new Genome ();
 			genome.Display (i);

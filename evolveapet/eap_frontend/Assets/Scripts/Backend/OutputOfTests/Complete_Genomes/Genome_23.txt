@@ -1,0 +1,47 @@
+OK
+Legend: each line is in for #gene number, mother gene, father gene and phenotype
+----------CHROMOSOME #0----------
+#0:	C(B,g)              	C(r,g)              	R: 127 G: 254 B: 254
+#1:	S                   	s                   	MEDIUM
+#2:	D                   	b                   	SPOTS
+#3:	ST                  	st                  	STEGO
+
+----------CHROMOSOME #1----------
+#0:	S                   	s                   	MEDIUM
+#1:	c(R,g)              	c(b,G)              	R: 170 G: 255 B: 85
+#2:	S                   	b                   	STRIPES
+#3:	D                   	d                   	DINO
+#4:	n(1)                	n(3)                	2
+
+----------CHROMOSOME #2----------
+#0:	C(b,G)              	C(g,b)              	R: 0 G: 255 B: 170
+#1:	C                   	h                   	CARNIVORE
+#2:	D                   	D                   	SPOTS
+#3:	s                   	S                   	MEDIUM
+#4:	st                  	d                   	STEGO
+
+----------CHROMOSOME #3----------
+#0:	s                   	S                   	MEDIUM
+#1:	S                   	D                   	SPOTSTRIPES
+#2:	ST                  	ST                  	STEGO
+#3:	C(r,g)              	C(g,r)              	R: 254 G: 254 B: 0
+
+----------CHROMOSOME #4----------
+#0:	C(R,B)              	c(B,G)              	R: 254 G: 0 B: 254
+#1:	S                   	s                   	MEDIUM
+#2:	st                  	D                   	DINO
+#3:	n(0)                	n(0)                	0	QUADRUPEDAL
+#4:	S                   	S                   	STRIPES
+
+----------CHROMOSOME #5----------
+#0:	D                   	d                   	DINO
+#1:	s                   	S                   	MEDIUM
+#2:	C(b,B)              	C(b,g)              	R: 0 G: 63 B: 252
+#3:	b                   	b                   	NOPATTERN
+
+----------CHROMOSOME #6----------
+#0:	b                   	S                   	STRIPES
+#1:	s                   	S                   	MEDIUM
+#2:	c(R,R)              	C(B,R)              	R: 254 G: 0 B: 254
+#3:	D                   	d                   	DINO
+

@@ -81,21 +81,6 @@ namespace EvolveAPet
 			file.Close ();
 
 		}
-
-	
-		/// <summary>
-		/// Gets the index in the EnumTrait of trait located on ith place on this chromosome.
-		/// </summary>
-		/// <returns>The trait index.</returns>
-		/// <param name="gene">Gene.</param>
-		public int GetTraitIndex(int i){
-			if (i >= _numOfGenes) {
-				return -1;
-			} else {
-				EnumTrait eTrait = _genes[i].Trait;
-				return 0; // TODO - 0 is placeholder here
-			}
-		}
 		
         /// <summary>
         /// Mutate gene at particular location specified by geneNum on this chromosome to Gene.

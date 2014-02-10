@@ -1,0 +1,47 @@
+OK
+Legend: each line is in for #gene number, mother gene, father gene and phenotype
+----------CHROMOSOME #0----------
+#0:	c(R,B)              	C(B,g)              	R: 0 G: 127 B: 254
+#1:	S                   	s                   	MEDIUM
+#2:	S                   	S                   	STRIPES
+#3:	ST                  	st                  	STEGO
+
+----------CHROMOSOME #1----------
+#0:	S                   	s                   	MEDIUM
+#1:	c(r,g)              	C(G,B)              	R: 0 G: 254 B: 254
+#2:	S                   	D                   	SPOTSTRIPES
+#3:	d                   	st                  	DINO
+#4:	N(3)                	n(2)                	3
+
+----------CHROMOSOME #2----------
+#0:	c(g,g)              	C(r,b)              	R: 255 G: 0 B: 255
+#1:	c                   	c                   	CARNIVORE
+#2:	S                   	D                   	SPOTSTRIPES
+#3:	s                   	S                   	MEDIUM
+#4:	st                  	D                   	DINO
+
+----------CHROMOSOME #3----------
+#0:	S                   	s                   	MEDIUM
+#1:	S                   	D                   	SPOTSTRIPES
+#2:	D                   	st                  	DINO
+#3:	C(G,B)              	c(R,g)              	R: 0 G: 254 B: 254
+
+----------CHROMOSOME #4----------
+#0:	c(B,B)              	C(G,b)              	R: 0 G: 254 B: 127
+#1:	S                   	S                   	LARGE
+#2:	ST                  	D                   	STEGO
+#3:	N(0)                	N(0)                	0	BIPEDAL
+#4:	S                   	S                   	STRIPES
+
+----------CHROMOSOME #5----------
+#0:	d                   	D                   	DINO
+#1:	S                   	s                   	MEDIUM
+#2:	c(B,b)              	c(b,B)              	R: 0 G: 0 B: 252
+#3:	b                   	S                   	STRIPES
+
+----------CHROMOSOME #6----------
+#0:	b                   	D                   	SPOTS
+#1:	s                   	s                   	SMALL
+#2:	C(B,b)              	C(B,r)              	R: 51 G: 0 B: 255
+#3:	ST                  	d                   	STEGO
+

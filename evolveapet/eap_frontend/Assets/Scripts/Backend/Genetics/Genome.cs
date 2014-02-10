@@ -36,7 +36,7 @@ namespace EvolveAPet
 			System.IO.StreamWriter file = new System.IO.StreamWriter(path+dst);
 			file.AutoFlush = true;
 
-			file.WriteLine("Legend: each line is in for #gene number, mother gene (encoded and decoded), father gene (encoded and decoded)");
+			file.WriteLine("Legend: each line is in for #gene number, mother gene, father gene and phenotype");
 			for (int i=0; i<_numOfChromosomes; i++) {
 				file.WriteLine("----------CHROMOSOME #" + i + "----------");
 				for(int j=0; j<_fatherChromosome[i].NumOfGenes; j++){
@@ -51,7 +51,15 @@ namespace EvolveAPet
 					int index = GetTrait(i,motherGene.Trait);
 					String manifestation = AuxDisplayAttribute(motherGene.Trait,index);
 
-					file.WriteLine("#" + j + ":\t" + simpleMotherString + "\t" + simpleFatherString + "\t" + String.Format("{0,-10}",index+"") + "\t\t" + manifestation);
+					file.Write("#" + j + ":\t" + simpleMotherString + "\t" + simpleFatherString + "\t" + manifestation);
+					if(i == MyDictionary.GetIndexOfBodyPart(EnumBodyPart.ARMS) && motherGene.Trait == EnumTrait.NUMBER){
+						if(IsQuadrupedal()){
+							file.Write ("\tQUADRUPEDAL");
+						} else {
+							file.Write ("\tBIPEDAL");
+						}
+					}
+					file.WriteLine();
 				}
 				file.WriteLine();
 			}
@@ -283,6 +291,32 @@ namespace EvolveAPet
 					// both recessive
 					return (n1 + n2) / 2;
 				}
+			}
+		}
+
+		/// <summary>
+		/// Returns true if the animal is quadrupedal and false otherwise.
+		/// 	N(1) + n(x) => bipedal with arm
+		/// 	N(0) + n(x) => bipedal with no arms
+		///		N(1) + N(1) => bipedal with arm
+		///		N(0) + N(0) => bipedal without arms
+		///		N(1) + N(0) => bipedal with or without arms (can be both)
+		///		n(x) + n(x) => quadrupedal
+		/// </summary>
+		/// <returns><c>true</c> if this instance is quadrupedal; otherwise, <c>false</c>.</returns>
+		public bool IsQuadrupedal(){
+			int chromosome = Array.FindIndex (MyDictionary.chromosomeDict, x => x == EnumBodyPart.ARMS);
+			int gene = _fatherChromosome [chromosome].getTraitPosition ((int)EnumTrait.NUMBER);
+
+			Gene g1 = _motherChromosome [chromosome].Genes [gene];
+			Gene g2 = _fatherChromosome [chromosome].Genes [gene];
+
+			if (g1.IsDominant () || g2.IsDominant ()) {
+				// bipedal animal
+				return false;
+			} else {
+				// quadrupedal animal
+				return true;
 			}
 		}
 
