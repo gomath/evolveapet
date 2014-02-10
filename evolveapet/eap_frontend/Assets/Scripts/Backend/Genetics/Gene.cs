@@ -14,6 +14,7 @@ namespace EvolveAPet
 	[Serializable]
 	public class Gene
     {
+		// DO NOT REMEMBER TO UPDATE COPY CONSTRUCTOR IF YOU CHANGE MEMBERS
 		private readonly EnumTrait _trait; // trait this gene codes for
 		private bool _dominant; // 1 = dominant
 		private int _chromosomeNum; // on which chromosome the gene is (1st index (i) into geneDict in MyDictionary, index to chromosomeDict in same file)
@@ -126,6 +127,29 @@ namespace EvolveAPet
 		}
 
 		/// <summary>
+		/// Make deep copy of given gene g.
+		/// </summary>
+		/// <param name="g">The green component.</param>
+		public Gene(Gene g){
+			_trait = g._trait;
+			_dominant = g._dominant;
+			_chromosomeNum = g._chromosomeNum;
+			_geneNum = g._geneNum;
+			_nameIndex = g._nameIndex;
+			_maxNumOfNames = g._maxNumOfNames;
+
+			_numOfAdditionalInfo = g._numOfAdditionalInfo;
+			_maxPossibleNumOfIndices = g._maxPossibleNumOfIndices;
+
+			_additionalIndices = new int[g._numOfAdditionalInfo];
+			_dominantAdditional = new bool[g._numOfAdditionalInfo];	
+			for (int i=0; i<g._numOfAdditionalInfo; i++) {
+				_additionalIndices[i] = g._additionalIndices[i];
+				_dominantAdditional[i] = g._dominantAdditional[i];
+			}
+		}
+
+		/// <summary>
 		/// Returns true if any additional information are associated with this gene.
 		/// </summary>
 		/// <returns><c>true</c>, if additional was hased, <c>false</c> otherwise.</returns>
@@ -136,7 +160,6 @@ namespace EvolveAPet
 			return true;
 		}
 
-		// TODO - THIS METHOD (RANDOM MUTATIONS) IS UNTESTED AT ALL, TEST IT
 		/// <summary>
 		/// Returns n possible distinct random mutation of this gene.
 		/// </summary>

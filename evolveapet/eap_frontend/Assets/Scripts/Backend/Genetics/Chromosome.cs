@@ -9,6 +9,7 @@ namespace EvolveAPet
    [Serializable]
 	public class Chromosome {
 
+		// DO NOT REMEMBER TO UPDATE COPY CONSTRUCTOR IF YOU CHANGE MEMBERS
         private EnumBodyPart _bodyPart;
 		private int _chromosomeNumber;
         private Gene[] _genes; // one for every bodypart trait
@@ -62,6 +63,21 @@ namespace EvolveAPet
 				_genes[i] = new Gene(_chromosomeNumber,i);
 			}
         }
+
+
+		/// <summary>
+		/// Create deep copy clone of given chromosome. 
+		/// </summary>
+		/// <param name="ch">Ch.</param>
+		public Chromosome(Chromosome ch){
+			_bodyPart = ch._bodyPart;
+			_chromosomeNumber = ch._chromosomeNumber;
+			_numOfGenes = ch._numOfGenes;
+			_genes = new Gene[_numOfGenes];
+			for(int i=0; i<_numOfGenes; i++){
+				_genes[i] = new Gene(ch._genes[i]);
+			}
+		}
 
 		/// <summary>
 		/// Writes this chromosome (in consice form) into the specified file.

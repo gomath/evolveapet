@@ -126,7 +126,22 @@ namespace EvolveAPet
 		/// <param name="c1">C1.</param>
 		/// <param name="c2">C2.</param>
         private Chromosome[] CrossOver(Chromosome c1, Chromosome c2){
-			return null;
+			int split = Global.rand.Next(Global.NUM_OF_CHROMOSOMES + 1); // returns [0,NUM_OF_CHROMOSOMES], both inclusive
+
+			// Creating deep fresh clones of both chromosomes
+			Chromosome[] res = new Chromosome[2];
+				res [0] = new Chromosome (c1);
+				res [1] = new Chromosome (c2);
+
+			// Crossover part
+			Gene temp;
+			for (int i=split; i<Global.NUM_OF_CHROMOSOMES; i++) {
+				temp = res[0].Genes[i];
+				res[0].Genes[i] = res[1].Genes[i];
+				res[1].Genes[i] = temp;
+			}
+
+			return res;
 		}
 
 		/// <summary>
@@ -134,11 +149,24 @@ namespace EvolveAPet
 		/// second index j (1 <= j <=4) specifies the actual chromosome withing the tetrad.
 		/// </summary>
 		/// <returns>The tetrads for breeding.</returns>
-		public Chromosome[] CreateTetradsForBreeding(){
-			return null;
+		public Chromosome[,] CreateTetradsForBreeding(){
+			Chromosome[,] res = new Chromosome[Global.NUM_OF_CHROMOSOMES,4];
+
+			Chromosome fatherChrom, motherChrom;
+			Chromosome[] crossOver;
+			for (int i=0; i<Global.NUM_OF_CHROMOSOMES; i++) {
+				fatherChrom = _fatherChromosome[i];
+				motherChrom = _motherChromosome[i];
+				crossOver = CrossOver(fatherChrom, motherChrom); 
+
+				res[i,0] = new Chromosome (motherChrom);
+				res[i,1] = new Chromosome (crossOver[0]);
+				res[i,2] = new Chromosome (crossOver[1]);
+				res[i,3] = new Chromosome (fatherChrom);
+			}
+			return res;
 		}
 
-		// TODO - TEST DECODE TRAIT METHOD AND ALL METHODS IT USES
 		/// <summary>
 		/// Given two genes, it returns the index into appropriate enumeration corresponding to the trait these two genes
 		/// are coding for. In case of colour, it returns the color RGY (Red, Green, Yellow) as a single integer.
