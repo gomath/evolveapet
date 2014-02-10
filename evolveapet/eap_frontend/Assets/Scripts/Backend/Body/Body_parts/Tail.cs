@@ -12,7 +12,8 @@ namespace EvolveAPet
     [Serializable]
     public class Tail : StdBodyPart
     {
-        public Tail( int shape, Color color, EnumSize size, EnumPattern pattern) : base(EnumBodyPart.TAIL, shape, color, size, pattern) { }
-
+		public Tail(int[] rgbArray, int sizeNum, string shapeStr, int patternNumber): base(rgbArray, sizeNum, shapeStr,patternNumber){
+		}
+		public Tail(){}
     }
 }

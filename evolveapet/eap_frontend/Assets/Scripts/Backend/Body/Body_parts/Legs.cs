@@ -10,9 +10,9 @@ using EvolveAPet;
 namespace EvolveAPet
 {
     [Serializable]
-    public class Legs : FullBodyPart
-    {
-        public Legs(int shape, Color color, EnumSize size, EnumPattern pattern, int number) : base(EnumBodyPart.LEGS, shape, color, size, pattern, number) { }
-
+    public class Legs : StdBodyPart
+    {		public Legs(int[] rgbArray, int sizeNum, string shapeStr, int patternNumber): base(rgbArray, sizeNum, shapeStr,patternNumber){
+		}
+		public Legs(){}
     }
 }
