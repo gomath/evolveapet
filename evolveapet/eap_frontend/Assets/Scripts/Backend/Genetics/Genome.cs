@@ -13,6 +13,19 @@ namespace EvolveAPet
 		private Chromosome[] _fatherChromosome;
 		private int _numOfChromosomes;
 
+		// GETTERS AND SETTERS
+		public Chromosome[] MotherChromosomes{
+			get { return _motherChromosome; }
+		}
+
+		public Chromosome[] FatherChromosomes{
+			get { return _fatherChromosome; }
+		}
+
+		public int NumOfChromosomes{
+			get { return _numOfChromosomes; }
+		}
+
 		/// <summary>
 		/// Creates random genome. 
 		/// </summary>

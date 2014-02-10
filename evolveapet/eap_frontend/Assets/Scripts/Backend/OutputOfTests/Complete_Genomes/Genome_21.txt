@@ -1,47 +1,46 @@
-OK
 Legend: each line is in for #gene number, mother gene, father gene and phenotype
 ----------CHROMOSOME #0----------
-#0:	C(b,B)              	C(g,b)              	R: 0 G: 63 B: 252
-#1:	s                   	S                   	MEDIUM
-#2:	D                   	S                   	SPOTSTRIPES
-#3:	d                   	d                   	DINO
+#0:	C(r,R)              	c(G,b)              	R: 255 G: 0 B: 0
+#1:	S                   	s                   	MEDIUM
+#2:	D                   	b                   	SPOTS
+#3:	st                  	ST                  	STEGO
 
 ----------CHROMOSOME #1----------
-#0:	s                   	S                   	MEDIUM
-#1:	C(b,G)              	C(b,B)              	R: 0 G: 126 B: 252
-#2:	b                   	S                   	STRIPES
-#3:	ST                  	d                   	STEGO
-#4:	N(3)                	n(3)                	3
+#0:	s                   	s                   	SMALL
+#1:	c(r,G)              	c(B,b)              	R: 85 G: 170 B: 255
+#2:	S                   	b                   	STRIPES
+#3:	d                   	d                   	DINO
+#4:	n(2)                	n(2)                	2
 
 ----------CHROMOSOME #2----------
-#0:	C(B,G)              	c(g,r)              	R: 0 G: 254 B: 254
-#1:	H                   	c                   	HERBIVORE
-#2:	D                   	D                   	SPOTS
-#3:	s                   	S                   	MEDIUM
-#4:	ST                  	ST                  	STEGO
+#0:	c(R,R)              	C(G,R)              	R: 254 G: 254 B: 0
+#1:	c                   	h                   	CARNIVORE
+#2:	b                   	D                   	SPOTS
+#3:	S                   	S                   	LARGE
+#4:	d                   	d                   	DINO
 
 ----------CHROMOSOME #3----------
-#0:	S                   	S                   	LARGE
-#1:	S                   	D                   	SPOTSTRIPES
-#2:	D                   	D                   	DINO
-#3:	c(R,b)              	c(g,b)              	R: 254 G: 127 B: 254
+#0:	s                   	S                   	MEDIUM
+#1:	b                   	D                   	SPOTS
+#2:	d                   	D                   	DINO
+#3:	c(r,B)              	C(b,R)              	R: 254 G: 0 B: 127
 
 ----------CHROMOSOME #4----------
-#0:	c(r,B)              	C(B,g)              	R: 0 G: 127 B: 254
+#0:	c(g,r)              	c(G,B)              	R: 85 G: 255 B: 170
 #1:	S                   	S                   	LARGE
-#2:	ST                  	D                   	STEGO
-#3:	n(1)                	N(1)                	1	BIPEDAL
-#4:	D                   	b                   	SPOTS
+#2:	ST                  	st                  	STEGO
+#3:	N(0)                	n(0)                	0	BIPEDAL
+#4:	S                   	D                   	SPOTSTRIPES
 
 ----------CHROMOSOME #5----------
-#0:	ST                  	d                   	STEGO
+#0:	ST                  	D                   	STEGO
 #1:	S                   	S                   	LARGE
-#2:	C(r,B)              	c(b,B)              	R: 127 G: 0 B: 254
-#3:	S                   	b                   	STRIPES
+#2:	C(r,B)              	C(G,G)              	R: 63 G: 252 B: 126
+#3:	D                   	S                   	SPOTSTRIPES
 
 ----------CHROMOSOME #6----------
-#0:	D                   	b                   	SPOTS
-#1:	s                   	S                   	MEDIUM
-#2:	C(b,R)              	C(R,B)              	R: 252 G: 0 B: 189
-#3:	ST                  	ST                  	STEGO
+#0:	S                   	D                   	SPOTSTRIPES
+#1:	S                   	s                   	MEDIUM
+#2:	C(b,B)              	c(R,R)              	R: 0 G: 0 B: 255
+#3:	D                   	D                   	DINO
 

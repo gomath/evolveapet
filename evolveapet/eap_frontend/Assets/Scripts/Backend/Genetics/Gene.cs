@@ -142,7 +142,7 @@ namespace EvolveAPet
 		/// </summary>
 		/// <returns>The mutations.</returns>
 		/// <param name="n">N.</param>
-		public Gene[] randomMutations(int n){
+		public Gene[] RandomMutations(int n){
 			Gene[] res = new Gene[n];
 			for (int i=0; i<n; i++) {
 
@@ -161,6 +161,26 @@ namespace EvolveAPet
 				} while(recreate);
 			}
 			return res;
+		}
+
+		/// <summary>
+		/// Returns some number of random mutattion, appropraite to the trait this genes code for.
+		/// </summary>
+		/// <returns>The mutations.</returns>
+		public Gene[] RandomMutations(){
+			switch (_trait) {
+			case EnumTrait.COLOUR: 		return RandomMutations(5); 
+			case EnumTrait.NUMBER:  	if((EnumBodyPart)_chromosomeNum == EnumBodyPart.EYES){
+											return RandomMutations(3); /* eyes */ 
+										} else {
+											return RandomMutations(2); /* arms */
+										}
+			case EnumTrait.PATTERN: 	return RandomMutations(2);
+			case EnumTrait.SHAPE:		return RandomMutations(3);
+			case EnumTrait.SIZE:		return RandomMutations(2);
+			case EnumTrait.TEETH_SHAPE:	return RandomMutations(3);
+			}
+			return null;
 		}
 
 		/// <summary>

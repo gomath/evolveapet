@@ -1,0 +1,39 @@
+Legend: original random genes and then its distinct random mutations)
+----------CHROMOSOME #0----------
+#0: COLOUR          	C(B,r)         c(g,R)         c(r,g)         C(R,R)         C(B,G)         c(g,G)         
+#1: SIZE            	s              s              S              
+#2: PATTERN         	D              S              D              
+#3: SHAPE           	d              d              st             D              
+----------CHROMOSOME #1----------
+#0: SIZE            	s              S              s              
+#1: COLOUR          	c(R,B)         c(G,G)         c(r,G)         C(g,G)         C(G,b)         C(G,B)         
+#2: PATTERN         	S              D              S              
+#3: SHAPE           	D              d              D              ST             
+#4: NUMBER          	N(2)           n(3)           N(1)           N(3)           
+----------CHROMOSOME #2----------
+#0: COLOUR          	c(R,g)         c(G,g)         C(g,r)         c(R,r)         C(G,b)         c(r,g)         
+#1: TEETH_SHAPE     	c              H              c              C              
+#2: PATTERN         	S              b              S              
+#3: SIZE            	s              s              S              
+#4: SHAPE           	st             D              ST             st             
+----------CHROMOSOME #3----------
+#0: SIZE            	S              S              s              
+#1: PATTERN         	D              D              S              
+#2: SHAPE           	ST             ST             d              st             
+#3: COLOUR          	c(B,b)         C(G,R)         c(B,g)         C(G,G)         C(r,r)         C(B,b)         
+----------CHROMOSOME #4----------
+#0: COLOUR          	C(g,R)         c(g,r)         C(G,G)         C(b,b)         c(b,g)         C(g,B)         
+#1: SIZE            	s              S              s              
+#2: SHAPE           	D              D              d              st             
+#3: NUMBER          	n(1)           N(0)           N(1)           
+#4: PATTERN         	b              D              S              
+----------CHROMOSOME #5----------
+#0: SHAPE           	d              D              st             d              
+#1: SIZE            	s              S              s              
+#2: COLOUR          	c(b,B)         C(G,r)         c(R,r)         C(B,g)         c(r,G)         C(r,R)         
+#3: PATTERN         	b              b              S              
+----------CHROMOSOME #6----------
+#0: PATTERN         	D              S              D              
+#1: SIZE            	s              s              S              
+#2: COLOUR          	C(b,r)         c(b,G)         c(G,g)         c(g,R)         c(G,r)         c(R,G)         
+#3: SHAPE           	ST             d              st             ST             
