@@ -14,6 +14,7 @@ namespace EvolveAPet
 		private int _chromosomeNumber;
         private Gene[] _genes; // one for every bodypart trait
         private int _numOfGenes; // number of genes on this chromosome
+		private int _whereHasBeenSplit;
         
 
 		public int splitLocation{ get;set;}//This is needed for the front end, so that you can graphically display where the split in the chromosome has happened. This is useful because it makes
@@ -44,6 +45,15 @@ namespace EvolveAPet
 			}
 		}
 
+		public int WhereHasBeenSplit{
+			get{
+				return _whereHasBeenSplit;
+			}
+			set{
+				_whereHasBeenSplit = value;
+			}
+		}
+
 
 		/// <summary>
 		/// Given chromosome number, returns corresponding randomized chromosome.
@@ -62,6 +72,8 @@ namespace EvolveAPet
 			for (int i=0; i<_numOfGenes; i++) {
 				_genes[i] = new Gene(_chromosomeNumber,i);
 			}
+
+			_whereHasBeenSplit = -1;
         }
 
 
@@ -77,6 +89,8 @@ namespace EvolveAPet
 			for(int i=0; i<_numOfGenes; i++){
 				_genes[i] = new Gene(ch._genes[i]);
 			}
+
+			_whereHasBeenSplit = ch._whereHasBeenSplit;
 		}
 
 		/// <summary>
@@ -98,16 +112,6 @@ namespace EvolveAPet
 
 		}
 		
-        /// <summary>
-        /// Mutate gene at particular location specified by geneNum on this chromosome to Gene.
-        /// </summary>
-        /// <param name="geneNum"></param>
-        /// <param name="gene"></param>
- 
-        public void Mutate(int geneNum, Gene gene){
-		}
-
-        
 		/// <summary>
 		/// Given traitNumber (index into EnumTrait, returns the index of this trait on this chromosome.
 		/// </summary>

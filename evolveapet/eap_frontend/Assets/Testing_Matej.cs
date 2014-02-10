@@ -39,9 +39,15 @@ public class Testing_Matej : MonoBehaviour {
 			genome.Display (i);
 		}
 		*/
+		/*
 		for (int i=1; i<=20; i++) {
 			testRandomMutations (i);
+		}*/
+
+		for (int i=1; i<=20; i++) {
+			testCreatingOfTetrads(i);
 		}
+
 		/*string[][][][][] a = MyDictionary.geneDict;
 		for (int i=0; i<a.GetLength(0); i++) {
 			for(j)
@@ -72,6 +78,54 @@ public class Testing_Matej : MonoBehaviour {
 				}
 				file.WriteLine();
 			}
+		}
+		file.Close();
+	}
+
+	public static void testCreatingOfTetrads(int testNumber){
+		string path = "E:\\Mato\\Cambridge\\2nd year\\Group_Project\\Software (under git)\\evolveapet\\evolveapet\\eap_frontend\\Assets\\Scripts\\Backend\\OutputOfTests\\Test_of_tetrads_creation\\";
+		string dst = "Creating_Tetrads_Test_" + testNumber + ".txt";
+		
+		System.IO.StreamWriter file = new System.IO.StreamWriter(path+dst);
+		file.AutoFlush = true;
+		
+		file.WriteLine ("Legend (column meanings): mother and father original chromosomes, crossover 1, crossover 2.");
+		file.WriteLine ("Note: -...- means the genes has been splitted during cross over");
+		
+		Genome genome = new Genome();
+		Chromosome[,] tetrad = genome.CreateTetradsForBreeding();
+		for (int i=0; i<Global.NUM_OF_CHROMOSOMES; i++) {
+			file.WriteLine("----------CHROMOSOME #" + i + "----------");
+			file.WriteLine("Split at gene #" + tetrad[i,2].WhereHasBeenSplit);
+
+			for(int j=0; j<MyDictionary.numOfGenesOnChromosome[(EnumBodyPart)i]; j++){
+				Gene motherOriginal = tetrad[i,0].Genes[j];
+				Gene fatherOriginal = tetrad[i,1].Genes[j];
+				Gene crossOver1 = tetrad[i,2].Genes[j];
+				Gene crossOver2 = tetrad[i,3].Genes[j];
+
+				String f = "{0,-15}";
+				// Plain strings
+				String s1 = motherOriginal.GetWholeNameEncoded();
+				String s2 = fatherOriginal.GetWholeNameEncoded();
+				String s3 = crossOver1.GetWholeNameEncoded(); // originally mother chromosome
+				String s4 = crossOver2.GetWholeNameEncoded(); // originally father chromosome
+
+				// Testing where has split occured and marking those lines
+				if(j >= tetrad[i,2].WhereHasBeenSplit){
+					s3 = "-" + s3 + "-";
+					s4 = "-" + s4 + "-";
+				}
+				// Formatted strings - for pretty output
+				String sf0 = String.Format ("{0,-20}", "#" + j + ": " + MyDictionary.traitDict[i][j]) + "|     ";
+				String sf1 = String.Format (f, s1) + "|     ";
+				String sf2 = String.Format (f, s2) + "|     ";
+				String sf3 = String.Format (f, s3) + "|     ";
+				String sf4 = String.Format (f, s4) + "|     ";
+				 
+				file.WriteLine(sf0 + sf1 + sf2 + sf3 + sf4);
+			}
+			file.WriteLine();
 		}
 		file.Close();
 	}

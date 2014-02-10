@@ -126,16 +126,20 @@ namespace EvolveAPet
 		/// <param name="c1">C1.</param>
 		/// <param name="c2">C2.</param>
         private Chromosome[] CrossOver(Chromosome c1, Chromosome c2){
-			int split = Global.rand.Next(Global.NUM_OF_CHROMOSOMES + 1); // returns [0,NUM_OF_CHROMOSOMES], both inclusive
+			int split = Global.rand.Next(c1.NumOfGenes + 1); // returns [0,NUM_OF_CHROMOSOMES], both inclusive
 
 			// Creating deep fresh clones of both chromosomes
 			Chromosome[] res = new Chromosome[2];
 				res [0] = new Chromosome (c1);
 				res [1] = new Chromosome (c2);
+				
+			// Marking where the chromosome has been split (mainly for testing purposes)
+			res [0].WhereHasBeenSplit = split;
+			res [1].WhereHasBeenSplit = split; 
 
 			// Crossover part
 			Gene temp;
-			for (int i=split; i<Global.NUM_OF_CHROMOSOMES; i++) {
+			for (int i=split; i<c1.NumOfGenes; i++) {
 				temp = res[0].Genes[i];
 				res[0].Genes[i] = res[1].Genes[i];
 				res[1].Genes[i] = temp;
@@ -157,12 +161,12 @@ namespace EvolveAPet
 			for (int i=0; i<Global.NUM_OF_CHROMOSOMES; i++) {
 				fatherChrom = _fatherChromosome[i];
 				motherChrom = _motherChromosome[i];
-				crossOver = CrossOver(fatherChrom, motherChrom); 
+				crossOver = CrossOver(motherChrom, fatherChrom); // crossOver[0] originally mothers chromosome 
 
 				res[i,0] = new Chromosome (motherChrom);
-				res[i,1] = new Chromosome (crossOver[0]);
-				res[i,2] = new Chromosome (crossOver[1]);
-				res[i,3] = new Chromosome (fatherChrom);
+				res[i,1] = new Chromosome (fatherChrom);
+				res[i,2] = new Chromosome (crossOver[0]);
+				res[i,3] = new Chromosome (crossOver[1]);
 			}
 			return res;
 		}
