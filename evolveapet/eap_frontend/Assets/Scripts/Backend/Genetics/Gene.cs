@@ -46,6 +46,10 @@ namespace EvolveAPet
 			get{ return _additionalIndices; }
 		}
 
+		public bool[] DominantAdditional{
+			get{ return _dominantAdditional; }
+		}
+
 		public bool IsDominant() {
 			return _dominant;
 		}
@@ -85,6 +89,15 @@ namespace EvolveAPet
 				_dominant = true;
 			}
 
+			// Special treatement of genes coding for pattern
+			if (_trait == EnumTrait.PATTERN) {
+				if(_nameIndex == 0){
+					_dominant = false; // blank pattern
+				} else { 
+					_dominant = true; // either dots or stripes pattern
+				}
+			}
+
 			// Checking, whether gene has some additional information associated
 			if (_numOfAdditionalInfo > 0) { 
 				_additionalIndices = new int[_numOfAdditionalInfo];
@@ -103,9 +116,9 @@ namespace EvolveAPet
 					for(int i=0; i<_numOfAdditionalInfo; i++){
 						_additionalIndices[i] = rand.Next(_maxPossibleNumOfIndices);
 						if(rand.Next(2) == 0){
-							_additionalIndices[i] = 0;
+							_dominantAdditional[i] = false;
 						} else {
-							_additionalIndices[i] = 1;
+							_dominantAdditional[i] = true;
 						}
 					}
 				}

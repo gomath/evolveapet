@@ -75,7 +75,7 @@ namespace EvolveAPet
 
 				for (int t=0;t<6;t++){ // iterate through all traits
 
-						genePos = currentChromosomeA.getTraitPosition(t,n); // finds where the gene coding for trait t and body part n is located on the gene
+						genePos = currentChromosomeA.getTraitPosition(t); // finds where the gene coding for trait t and body part n is located on the gene
 						//Use random constructor of Gene to generate two random genes.
 				
 						if (genePos !=-1){

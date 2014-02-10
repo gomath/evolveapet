@@ -6,11 +6,12 @@ using System.Text;
 namespace EvolveAPet
 {
     public enum EnumTrait {
-        COLOUR,
-        SIZE,
-        PATTERN,
-        NUMBER,
-        SHAPE,
-        TEETH_SHAPE
+		// Don't change order. Other parts of code depends on it.
+        COLOUR = 0,
+        SIZE = 1,
+        PATTERN = 2,
+        NUMBER = 3,
+        SHAPE = 4,
+        TEETH_SHAPE = 5
     }
 }

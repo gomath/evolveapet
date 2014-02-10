@@ -107,13 +107,13 @@ namespace EvolveAPet
 		}
 
         
-        public static void Main(String[] args) {
-            Console.WriteLine("Hello world!");
-            Console.ReadLine();
-        }
-
-
-		public int getTraitPosition(int traitNo, int chromosomeNum){
+		/// <summary>
+		/// Given traitNumber (index into EnumTrait, returns the index of this trait on this chromosome.
+		/// </summary>
+		/// <returns>The trait position.</returns>
+		/// <param name="traitNo">Trait no.</param>
+		/// <param name="chromosomeNum">Chromosome number.</param>
+		public int getTraitPosition(int traitNo){
 			/*6 traits filled in this order :
 			0.Colour
 			1.Size
@@ -122,11 +122,9 @@ namespace EvolveAPet
 			4.Shape
 			5.Teeth_Shape
 			*/
-			for (int n = 0; n< _numOfGenes; n++) { //Searches through the dictionary until it finds the specified trait. 
+			for (int n = 0; n < _numOfGenes; n++) { //Searches through the dictionary until it finds the specified trait. 
 				//This could simply be hardcoded, but a linear search won't take any time at all on 7 items.
-				
-				int trait = (int)MyDictionary.traitDict[chromosomeNum][n];
-				if (trait == traitNo) return n;
+				if ((int)(_genes[n].Trait) == traitNo) return n;
 			}
 
 			//Returns -1 if trait is not found on the gene.

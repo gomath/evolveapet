@@ -1,0 +1,46 @@
+Legend: each line is in for #gene number, mother gene (encoded and decoded), father gene (encoded and decoded)
+----------CHROMOSOME #0----------
+#0:	c(G,r)              	C(g,g)              	65024     		R: 0 G: 254 B: 0
+#1:	S                   	s                   	1         		MEDIUM
+#2:	S                   	D                   	3         		SPOTSTRIPES
+#3:	D                   	d                   	2         		DINO
+
+----------CHROMOSOME #1----------
+#0:	S                   	S                   	2         		LARGE
+#1:	c(b,g)              	C(b,R)              	16646271  		R: 254 G: 0 B: 127
+#2:	b                   	b                   	0         		NOPATTERN
+#3:	D                   	D                   	2         		DINO
+#4:	n(2)                	N(2)                	2         		2
+
+----------CHROMOSOME #2----------
+#0:	C(R,r)              	c(r,R)              	16711680  		R: 255 G: 0 B: 0
+#1:	C                   	H                   	1         		HERBIVORE
+#2:	S                   	D                   	3         		SPOTSTRIPES
+#3:	S                   	s                   	1         		MEDIUM
+#4:	d                   	D                   	2         		DINO
+
+----------CHROMOSOME #3----------
+#0:	s                   	s                   	0         		SMALL
+#1:	S                   	D                   	3         		SPOTSTRIPES
+#2:	D                   	d                   	2         		DINO
+#3:	C(b,b)              	c(B,b)              	254       		R: 0 G: 0 B: 254
+
+----------CHROMOSOME #4----------
+#0:	C(g,g)              	c(G,B)              	65024     		R: 0 G: 254 B: 0
+#1:	s                   	s                   	0         		SMALL
+#2:	d                   	d                   	2         		DINO
+#3:	N(1)                	n(1)                	1         		1
+#4:	D                   	D                   	1         		SPOTS
+
+----------CHROMOSOME #5----------
+#0:	D                   	D                   	2         		DINO
+#1:	S                   	S                   	2         		LARGE
+#2:	C(r,B)              	c(R,R)              	8323326   		R: 127 G: 0 B: 254
+#3:	b                   	b                   	0         		NOPATTERN
+
+----------CHROMOSOME #6----------
+#0:	S                   	S                   	2         		STRIPES
+#1:	S                   	s                   	1         		MEDIUM
+#2:	C(R,G)              	c(G,B)              	16711168  		R: 254 G: 254 B: 0
+#3:	D                   	D                   	2         		DINO
+

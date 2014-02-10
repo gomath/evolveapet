@@ -39,13 +39,57 @@ namespace EvolveAPet
 	[Serializable]
 	public class MyDictionary
 	{
+		// DO NOT CHANGE FOLLOWING - SERVE AS REFERENCE POINTS FOR CONTROLLING GENE DECODING
+		private static String BLANK = "BLANK";
+		private static String DOTS = "DOTS";
+		private static String STRIPES = "STRIPES";
+
+		private static String DINO = "DINO";
+
+		private static String CARNIVORE = "CARNIVORE";
+		private static String HERBIVORE = "HERBIVORE";
+
+		private static String RED = "RED";
+		private static String GREEN = "GREEN";
+		private static String BLUE = "BLUE";
+
+		private static String[] enumShapes = new String[]{
+			CARNIVORE,
+			HERBIVORE,
+			DINO
+		};
+
+		/// <summary>
+		/// Returns corresponding shape from EnumShapes array.
+		/// </summary>
+		/// <returns>The shape.</returns>
+		/// <param name="i">The index.</param>
+		public static String GetShape(int i){
+			return enumShapes [i];	
+		}
+
+		/// <summary>
+		/// Given string, returns index to enumShapes array where this string is stored.
+		/// </summary>
+		/// <returns>The index in enum shapes.</returns>
+		/// <param name="s">S.</param>
+		public static int GetIndexInEnumShapes(String s){
+			for(int i=0; i<enumShapes.Length; i++){
+				if(enumShapes[i] == s){
+					return i;
+				}
+			} 
+			return -1;
+		}
+
 		private readonly static String[][] auxColorName = new String[][] {
 			new String[] {"c","colour"}
 		};
 		private readonly static String[][] auxColourAdditional = new String[][]{
-			new String[] {"r","red"},
-			new String[] {"b","blue"},
-			new String[] {"y","yellow"},
+			new String[] {"r","red",RED},
+			new String[] {"g","green",GREEN},
+			new String[] {"b","blue",BLUE}
+
 		}; 
 
 		private readonly static String[][] auxNumberName = new String[][]{
@@ -57,18 +101,19 @@ namespace EvolveAPet
 		};
 
 		private readonly static String[][] auxPatternName = new String[][]{
-			new String[] {"b","blank"},
-			new String[] {"d","dots"},
-			new String[] {"s","stripes"}
+			// In any case, ALWAYS leave BLANK pattern as the 1st entry. Otherwise, random generator of pattern genes doesn't work.
+			new String[] {"b","blank",BLANK},
+			new String[] {"d","dots",DOTS},
+			new String[] {"s","stripes",STRIPES}
 		};
 
 		private readonly static String[][] auxShapeName = new String[][]{
-			new String[] {"d","dino"}
+			new String[] {"d","dino",DINO}
 		};
 
 		private readonly static String[][] auxTeethShapeName = new String[][]{
-			new String[] {"h","herbivore"},
-			new String[] {"c","carnivore"}
+			new String[] {"h","herbivore",HERBIVORE},
+			new String[] {"c","carnivore",CARNIVORE}
 		};
 
 		public static EnumBodyPart[] chromosomeDict = new EnumBodyPart[]{
@@ -294,6 +339,18 @@ namespace EvolveAPet
 			}	
 		};
 
+		/// <summary>
+		/// Accessor for geneDict array.
+		/// </summary>
+		/// <returns>The from gene dict.</returns>
+		/// <param name="chromosome">Chromosome.</param>
+		/// <param name="gene">Gene.</param>
+		/// <param name="name_or_extra">Name_or_extra.</param>
+		/// <param name="index">Index.</param>
+		/// <param name="coded_or_decoded_or_reference">Coded_or_decoded_or_reference.</param>
+		public static String GetFromGeneDict(int chromosome, int gene, int name_or_extra, int index, int coded_or_decoded_or_reference){
+			return geneDict[chromosome][gene][name_or_extra][index][coded_or_decoded_or_reference];
+		}
 		/// <summary>
 		/// Outputs formatted geneDict into the specified file.
 		/// NOTE: Format path variable before use.

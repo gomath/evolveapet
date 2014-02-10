@@ -32,8 +32,11 @@ public class Testing_Matej : MonoBehaviour {
 		//Chromosome ch = new Chromosome (0);
 		//ch.Display ();
 
-		Genome genome = new Genome ();
-		genome.Display (0);
+		for (int i=0; i<20; i++) {
+
+			Genome genome = new Genome ();
+			genome.Display (i);
+		}
 		/*string[][][][][] a = MyDictionary.geneDict;
 		for (int i=0; i<a.GetLength(0); i++) {
 			for(j)
