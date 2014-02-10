@@ -1,3 +1,4 @@
+OK
 Legend: each line is in for #gene number, mother gene (encoded and decoded), father gene (encoded and decoded)
 ----------CHROMOSOME #0----------
 #0:	c(B,B)              	c(b,R)              	6684927   		R: 102 G: 0 B: 255
