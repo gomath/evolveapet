@@ -25,9 +25,18 @@ namespace EvolveAPet
 				_fatherChromosome[i] = new Chromosome(i);
 			}
 		}
-
+		
 		/// <summary>
-		/// Writes this genome in consise form into given file.
+		/// Creates genome from two chromosome arrays. 
+		/// </summary>		
+		public Genome(Chromosome [] motherC, Chromosome[] fatherC){
+			_numOfChromosomes = Global.NUM_OF_CHROMOSOMES;
+			_motherChromosome = motherC;
+			_fatherChromosome = fatherC;
+		
+		}
+		/// <summary>
+		/// Writes this genome in concise form into given file.
 		/// </summary>
 		public void Display(int testIndex){
 			String path = "E:\\Mato\\Cambridge\\2nd year\\Group_Project\\Software (under git)\\evolveapet\\evolveapet\\eap_frontend\\Assets\\Scripts\\Backend\\OutputOfTests\\Complete_Genomes\\";
