@@ -104,17 +104,6 @@ namespace EvolveAPet
 			return null;
 		}
 
-        /// <summary>
-        /// Given two haploid sets of chromosomes, create a full genome.
-        /// </summary>
-        /// <param name="mother"></param>
-        /// <param name="father"></param>
-        public Genome(Chromosome[] mother, Chromosome[] father) {
-			_motherChromosome = mother;
-			_fatherChromosome = father;
-			_numOfChromosomes = mother.Length;
-        }
-
 		/// <summary>
 		/// Choose random part of each chromosome (same locations on each of them) and swap those parts. 
 		/// Return array of 4 chromosome, 2 being the original chromosome passed as arguments and the rest 
