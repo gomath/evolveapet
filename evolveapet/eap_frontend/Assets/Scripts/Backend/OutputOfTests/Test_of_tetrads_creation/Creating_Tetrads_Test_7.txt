@@ -1,55 +1,54 @@
-OK
 Legend (column meanings): mother and father original chromosomes, crossover 1, crossover 2.
 Note: -...- means the genes has been splitted during cross over
 ----------CHROMOSOME #0----------
 Split at gene #0
-#0: COLOUR          |     C(G,B)         |     C(G,G)         |     -C(G,G)-       |     -C(G,B)-       |     
-#1: SIZE            |     s              |     S              |     -S-            |     -s-            |     
-#2: PATTERN         |     b              |     b              |     -b-            |     -b-            |     
-#3: SHAPE           |     st             |     D              |     -D-            |     -st-           |     
+#0: COLOUR          |     c(r,R)         |     C(B,r)         |     -C(B,r)-       |     -c(r,R)-       |     
+#1: SIZE            |     S              |     S              |     -S-            |     -S-            |     
+#2: PATTERN         |     S              |     D              |     -D-            |     -S-            |     
+#3: SHAPE           |     ST             |     st             |     -st-           |     -ST-           |     
 
 ----------CHROMOSOME #1----------
-Split at gene #5
+Split at gene #3
 #0: SIZE            |     s              |     S              |     s              |     S              |     
-#1: COLOUR          |     C(g,G)         |     c(b,g)         |     C(g,G)         |     c(b,g)         |     
+#1: COLOUR          |     c(r,R)         |     C(G,B)         |     c(r,R)         |     C(G,B)         |     
 #2: PATTERN         |     D              |     D              |     D              |     D              |     
-#3: SHAPE           |     D              |     st             |     D              |     st             |     
-#4: NUMBER          |     N(3)           |     N(1)           |     N(3)           |     N(1)           |     
+#3: SHAPE           |     d              |     st             |     -st-           |     -d-            |     
+#4: NUMBER          |     n(3)           |     n(2)           |     -n(2)-         |     -n(3)-         |     
 
 ----------CHROMOSOME #2----------
-Split at gene #4
-#0: COLOUR          |     C(R,B)         |     C(G,B)         |     C(R,B)         |     C(G,B)         |     
-#1: TEETH_SHAPE     |     H              |     c              |     H              |     c              |     
-#2: PATTERN         |     D              |     D              |     D              |     D              |     
-#3: SIZE            |     S              |     S              |     S              |     S              |     
-#4: SHAPE           |     st             |     ST             |     -ST-           |     -st-           |     
+Split at gene #0
+#0: COLOUR          |     C(G,R)         |     C(r,r)         |     -C(r,r)-       |     -C(G,R)-       |     
+#1: TEETH_SHAPE     |     C              |     c              |     -c-            |     -C-            |     
+#2: PATTERN         |     S              |     b              |     -b-            |     -S-            |     
+#3: SIZE            |     s              |     s              |     -s-            |     -s-            |     
+#4: SHAPE           |     ST             |     st             |     -st-           |     -ST-           |     
 
 ----------CHROMOSOME #3----------
-Split at gene #2
+Split at gene #1
 #0: SIZE            |     S              |     S              |     S              |     S              |     
-#1: PATTERN         |     D              |     b              |     D              |     b              |     
-#2: SHAPE           |     d              |     D              |     -D-            |     -d-            |     
-#3: COLOUR          |     c(R,R)         |     c(b,g)         |     -c(b,g)-       |     -c(R,R)-       |     
+#1: PATTERN         |     D              |     D              |     -D-            |     -D-            |     
+#2: SHAPE           |     st             |     st             |     -st-           |     -st-           |     
+#3: COLOUR          |     c(b,R)         |     C(b,B)         |     -C(b,B)-       |     -c(b,R)-       |     
 
 ----------CHROMOSOME #4----------
-Split at gene #0
-#0: COLOUR          |     C(B,r)         |     C(B,r)         |     -C(B,r)-       |     -C(B,r)-       |     
-#1: SIZE            |     s              |     s              |     -s-            |     -s-            |     
-#2: SHAPE           |     st             |     D              |     -D-            |     -st-           |     
-#3: NUMBER          |     n(0)           |     n(1)           |     -n(1)-         |     -n(0)-         |     
+Split at gene #2
+#0: COLOUR          |     C(R,b)         |     c(g,g)         |     C(R,b)         |     c(g,g)         |     
+#1: SIZE            |     S              |     s              |     S              |     s              |     
+#2: SHAPE           |     D              |     st             |     -st-           |     -D-            |     
+#3: NUMBER          |     n(1)           |     N(1)           |     -N(1)-         |     -n(1)-         |     
 #4: PATTERN         |     b              |     b              |     -b-            |     -b-            |     
 
 ----------CHROMOSOME #5----------
 Split at gene #3
-#0: SHAPE           |     D              |     d              |     D              |     d              |     
+#0: SHAPE           |     st             |     d              |     st             |     d              |     
 #1: SIZE            |     S              |     S              |     S              |     S              |     
-#2: COLOUR          |     C(R,b)         |     c(b,r)         |     C(R,b)         |     c(b,r)         |     
-#3: PATTERN         |     D              |     b              |     -b-            |     -D-            |     
+#2: COLOUR          |     c(g,G)         |     C(r,b)         |     c(g,G)         |     C(r,b)         |     
+#3: PATTERN         |     b              |     b              |     -b-            |     -b-            |     
 
 ----------CHROMOSOME #6----------
 Split at gene #3
-#0: PATTERN         |     b              |     b              |     b              |     b              |     
-#1: SIZE            |     S              |     S              |     S              |     S              |     
-#2: COLOUR          |     c(R,g)         |     C(R,B)         |     c(R,g)         |     C(R,B)         |     
-#3: SHAPE           |     st             |     d              |     -d-            |     -st-           |     
+#0: PATTERN         |     S              |     S              |     S              |     S              |     
+#1: SIZE            |     s              |     S              |     s              |     S              |     
+#2: COLOUR          |     c(b,g)         |     c(g,g)         |     c(b,g)         |     c(g,g)         |     
+#3: SHAPE           |     st             |     ST             |     -ST-           |     -st-           |     
 
