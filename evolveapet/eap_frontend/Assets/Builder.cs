@@ -24,7 +24,14 @@ namespace EvolveAPet {
 			
 			//Create new animal
 			GameObject animal = (GameObject)Instantiate(Resources.Load ("Prefabs/animal"));
-			animal.GetComponent<Animal>().Build();
+			animal.GetComponent<PhysicalAnimal>().animal = new Animal();
+			animal.GetComponent<PhysicalAnimal>().Build();
+		}
+
+		void OnGUI() {
+			if (GUI.Button (new Rect(Screen.width-200,Screen.height-30,200, 30), "Build")) {
+				StartCoroutine("Build");
+			}
 		}
 	}
 }
