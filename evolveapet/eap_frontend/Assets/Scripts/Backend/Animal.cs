@@ -128,7 +128,7 @@ namespace EvolveAPet
 			int patternNumber = Int16.MinValue;
 			int number = Int16.MinValue;
 			string shapeStr= "";
-			bool isCarnivore = false;
+			string teethShape = "";
 			bool isQuadrupedal= false; //Note, this is not technically a trait
 			Chromosome motherChromosome = Genome.MotherChromosomes [n];
 			Chromosome fatherChromosome = Genome.MotherChromosomes [n];
@@ -146,23 +146,23 @@ namespace EvolveAPet
 			}
 			//Decodes Size
 			genePos = Genome.MotherChromosomes[n].getTraitPosition(1);
-			if (genePos != 1) {
+			if (genePos != -1) {
 				sizeNum = Genome.DecodeTrait(motherChromosome.Genes[genePos],fatherChromosome.Genes[genePos]);
 			}
 			//Decodes Pattern
 			genePos = Genome.MotherChromosomes[n].getTraitPosition(2);
-			if (genePos != 1) {
+			if (genePos != -1) {
 				patternNumber = Genome.DecodeTrait(motherChromosome.Genes[genePos],fatherChromosome.Genes[genePos]);
 			}
 			//Decodes Number
 			genePos = Genome.MotherChromosomes[n].getTraitPosition(3);
-			if (genePos != 1) {
+			if (genePos != -1) {
 				number = Genome.DecodeTrait(motherChromosome.Genes[genePos],fatherChromosome.Genes[genePos]);
 			}
 
 			//Decodes Shape
 			genePos = Genome.MotherChromosomes[n].getTraitPosition(4);
-			if (genePos != 1) {
+			if (genePos != -1) {
 				int shapeNo =Genome.DecodeTrait(motherChromosome.Genes[genePos],fatherChromosome.Genes[genePos]);
 				shapeStr = MyDictionary.GetShape(shapeNo);
 			}
@@ -170,9 +170,8 @@ namespace EvolveAPet
 			//If head, checks teeth shape
 			if (n == 2) {
 			genePos = motherChromosome.getTraitPosition(5);
-				if(Genome.DecodeTrait(motherChromosome.Genes[genePos], fatherChromosome.Genes[genePos]) == 1) {
-					isCarnivore =true;
-				}
+				int teethShapeInt = Genome.DecodeTrait(motherChromosome.Genes[genePos], fatherChromosome.Genes[genePos]);
+				teethShape = MyDictionary.GetShape(teethShapeInt);
 			}
 
 			if (n == 4) {
@@ -188,7 +187,7 @@ namespace EvolveAPet
 				BodyPartArray[1] = new Eyes(rgbArray,sizeNum,shapeStr,number);
 				break;
 			case 2: //head
-				BodyPartArray[2] = new Head(rgbArray,sizeNum,shapeStr,patternNumber,isCarnivore);
+				BodyPartArray[2] = new Head(rgbArray,sizeNum,shapeStr,patternNumber,teethShape);
 				break;
 			case 3://torso
 				BodyPartArray[3] = new Torso(rgbArray, sizeNum, shapeStr,patternNumber);

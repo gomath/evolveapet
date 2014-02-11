@@ -9,9 +9,9 @@ namespace EvolveAPet
     [Serializable]
     public class Head : StdBodyPart
     {
-		public readonly bool isCarnivorous;
-		public Head(int[] rgbArray, int sizeNum, string shapeStr, int patternNum, bool carnivore): base(rgbArray, sizeNum, shapeStr, patternNum) {
-			this.isCarnivorous = carnivore;
+		public readonly string teethShape;
+		public Head(int[] rgbArray, int sizeNum, string shapeStr, int patternNum, string teeth): base(rgbArray, sizeNum, shapeStr, patternNum) {
+			this.teethShape = teeth;
 			
 		}
 		public Head(){}
