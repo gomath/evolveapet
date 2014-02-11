@@ -10,8 +10,15 @@ using EvolveAPet;
 namespace EvolveAPet
 {
     [Serializable]
-    public class Eyes : FullBodyPart
+    public class Eyes : BodyPart
     {
-        public Eyes( int shape, Color color, EnumSize size, EnumPattern pattern, int number) : base(EnumBodyPart.EYES, shape, color, size, pattern, number) { }
-    }
+		public readonly int number;
+		public Eyes(int[] rgbArray, int sizeNum, string shapeStr, int numberInput) : base(rgbArray, sizeNum, shapeStr){
+		
+			this.number = numberInput;
+    
+		}
+		public Eyes(){}
+	}
 }
+

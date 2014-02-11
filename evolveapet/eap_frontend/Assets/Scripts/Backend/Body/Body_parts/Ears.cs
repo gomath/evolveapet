@@ -12,6 +12,8 @@ namespace EvolveAPet
     [Serializable]
     public class Ears : StdBodyPart
     {
-        public Ears(int shape, Color color, EnumSize size, EnumPattern pattern) : base(EnumBodyPart.EARS, shape, color, size, pattern) { }
-    }
+		public Ears(int[] rgbArray, int sizeNum, string shapeStr, int patternNumber): base(rgbArray, sizeNum, shapeStr,patternNumber){
+		}
+		public Ears(){}
+	}
 }

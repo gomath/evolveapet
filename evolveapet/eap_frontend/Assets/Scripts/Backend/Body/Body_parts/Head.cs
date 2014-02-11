@@ -9,18 +9,11 @@ namespace EvolveAPet
     [Serializable]
     public class Head : StdBodyPart
     {
-        private readonly Shape _teethShape;
-        public string TeethShape { get { return _teethShape.ShapeName; } }
-
-        public Head(int shape, Color color, EnumSize size, EnumPattern pattern, bool carnivour)
-            : base(EnumBodyPart.HEAD, shape, color, size, pattern)
-        {
-             //since teeth is not considered a bodypart, -1 is somehting we are sure is not a valid item in our bodyparts
-            _teethShape = new Shape((EnumBodyPart)(-1),Convert.ToInt32(carnivour));
-
-        }
-
-       
-
-    }
+		public readonly bool isCarnivorous;
+		public Head(int[] rgbArray, int sizeNum, string shapeStr, int patternNum, bool carnivore): base(rgbArray, sizeNum, shapeStr, patternNum) {
+			this.isCarnivorous = carnivore;
+			
+		}
+		public Head(){}
+	}
 }

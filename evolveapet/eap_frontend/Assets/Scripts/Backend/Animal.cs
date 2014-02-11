@@ -11,22 +11,20 @@ namespace EvolveAPet
     public class Animal : MonoBehaviour
     {
         private readonly Animal[] _parents;
-        private readonly Genome _genome;
         public int Generation { set; get; }
         public string Name { set; get; }
-        public Genome Genome { get { return _genome; } }
+		public Genome Genome { set; get; }
 		public Animal[] Parent { get { return _parents; } }
         public BodyPart[] BodyPartArray { get; private set; }
         // each animal will be given a genome and handed both its parents
         public bool Egg { get; set; }
-        private readonly int bodyPartNumber = 7; // to allow easy changing of number of body parts
-		private readonly int traitNumber = 6; // to allow easy changing of number of traits
+        private readonly int bodyPartNumber = Global.NUM_OF_CHROMOSOMES; // to allow easy changing of number of body parts
 
 		public Animal(Chromosome[] chromA, Chromosome[] chromB, Animal parent1, Animal parent2)
         {
             Egg = true; //Animals will alwyas be in egg form when created
             //Firstly, populate all the genes in the genome
-            _genome = new Genome(chromA, chromB);
+            Genome = new Genome(chromA, chromB);
             _parents = new Animal[] { parent1, parent2 };
             BodyPartArray = new BodyPart[bodyPartNumber]; 
             for (int n = 0; n < bodyPartNumber; n++)
@@ -39,12 +37,10 @@ namespace EvolveAPet
         }
 
 		public Animal(){// Generates a completely random animal
-			System.Random rnd = new System.Random();
-			int randomNumber;
-			bool isDominant;
+			
+			Chromosome[] chromosomeArrayA = new Chromosome[bodyPartNumber];
+			Chromosome[] chromosomeArrayB = new Chromosome[bodyPartNumber];
 			int genePos;
-			Chromosome[] chromA = new Chromosome[bodyPartNumber];
-			Chromosome[] chromB = new Chromosome[bodyPartNumber];
 			Gene newGene; // mother and father genes
 			/*6 traits filled in this order :
 			0.Colour
@@ -65,11 +61,10 @@ namespace EvolveAPet
 			6.Tail
 			*/
 
-		//Generate Pattern for all Body Parts except eyes, and generate shape and size for everything
-			int maxNumberInEnum = 0;
-			for (int n = 0; n<7;n++){// iterate through body parts
+			for (int n = 0; n<bodyPartNumber;n++){// iterate through body parts
 				Chromosome currentChromosomeA = new Chromosome (n); // creates a new chromosome for each body part
 				Chromosome currentChromosomeB = new Chromosome (n); // creates a new chromosome for each body part
+
 
 
 
@@ -86,8 +81,15 @@ namespace EvolveAPet
 						}						
 
 					}
-				createBodyPart(n);
+				chromosomeArrayA[n] = currentChromosomeA;
+				chromosomeArrayB[n] = currentChromosomeA;
+
+
 				}
+			Genome = new Genome (chromosomeArrayA, chromosomeArrayB);
+			for (int n=0; n<7; n++) {
+				createBodyPart(n);			
+			}
 
 			}
 
@@ -111,9 +113,97 @@ namespace EvolveAPet
 			5.Legs
 			6.Tail
 			*/
-		
-//			BodyPart bPart = new BodyPart (); // placeholder before the body part class is created
-//			BodyPartArray[e] = bPart;
+
+			//all the possible bits of information
+			/*6 traits filled in this order :
+			0.Colour
+			1.Size
+			2.Pattern
+			3.Number
+			4.Shape
+			5.Teeth_Shape
+			*/
+			int[] rgbArray = new int[3];
+			int sizeNum = Int16.MinValue;
+			int patternNumber = Int16.MinValue;
+			int number = Int16.MinValue;
+			string shapeStr= "";
+			bool isCarnivore = false;
+			bool isQuadrupedal= false; //Note, this is not technically a trait
+			Chromosome motherChromosome = Genome.MotherChromosomes [n];
+			Chromosome fatherChromosome = Genome.MotherChromosomes [n];
+
+			//initialise the relevant bits of information for that chromosome.
+			//Decodes Colour
+			int genePos; //The position of the gene for the current trait
+			genePos = Genome.MotherChromosomes[n].getTraitPosition(0);
+			if (genePos != 1) {
+				int colour =Genome.DecodeTrait(motherChromosome.Genes[genePos],fatherChromosome.Genes[genePos]);
+				// COLOUR = RED << 16 | GREEN << 8 | BLUE
+				rgbArray[0] = (colour & 0x00FF0000) >> 16;
+				rgbArray[1] = (colour & 0x0000FF00)>>8;
+				rgbArray[2] = (colour & 0x000000FF);
+			}
+			//Decodes Size
+			genePos = Genome.MotherChromosomes[n].getTraitPosition(1);
+			if (genePos != 1) {
+				sizeNum = Genome.DecodeTrait(motherChromosome.Genes[genePos],fatherChromosome.Genes[genePos]);
+			}
+			//Decodes Pattern
+			genePos = Genome.MotherChromosomes[n].getTraitPosition(2);
+			if (genePos != 1) {
+				patternNumber = Genome.DecodeTrait(motherChromosome.Genes[genePos],fatherChromosome.Genes[genePos]);
+			}
+			//Decodes Number
+			genePos = Genome.MotherChromosomes[n].getTraitPosition(3);
+			if (genePos != 1) {
+				number = Genome.DecodeTrait(motherChromosome.Genes[genePos],fatherChromosome.Genes[genePos]);
+			}
+
+			//Decodes Shape
+			genePos = Genome.MotherChromosomes[n].getTraitPosition(4);
+			if (genePos != 1) {
+				int shapeNo =Genome.DecodeTrait(motherChromosome.Genes[genePos],fatherChromosome.Genes[genePos]);
+				shapeStr = MyDictionary.GetShape(shapeNo);
+			}
+
+			//If head, checks teeth shape
+			if (n == 2) {
+			genePos = motherChromosome.getTraitPosition(5);
+				if(Genome.DecodeTrait(motherChromosome.Genes[genePos], fatherChromosome.Genes[genePos]) == 1) {
+					isCarnivore =true;
+				}
+			}
+
+			if (n == 4) {
+								isQuadrupedal = Genome.IsQuadrupedal (); // If body part is arms, checks if it is quadrupedal
+						}
+
+			switch (n) {
+
+			case 0: //ears
+				BodyPartArray[0] = new Ears(rgbArray, sizeNum, shapeStr, patternNumber);
+				break;
+			case 1: //eyes
+				BodyPartArray[1] = new Eyes(rgbArray,sizeNum,shapeStr,number);
+				break;
+			case 2: //head
+				BodyPartArray[2] = new Head(rgbArray,sizeNum,shapeStr,patternNumber,isCarnivore);
+				break;
+			case 3://torso
+				BodyPartArray[3] = new Torso(rgbArray, sizeNum, shapeStr,patternNumber);
+				break;
+			case 4://arms
+				BodyPartArray[4] = new Arms(rgbArray,sizeNum,shapeStr,patternNumber,number,isQuadrupedal);
+				break;
+			case 5://legs
+				BodyPartArray[5] = new Legs(rgbArray, sizeNum, shapeStr, patternNumber);
+				break;
+			case 6://tail
+				BodyPartArray[6] = new Tail(rgbArray, sizeNum, shapeStr, patternNumber);
+				break;
+			}
+
         }
 
 		/*

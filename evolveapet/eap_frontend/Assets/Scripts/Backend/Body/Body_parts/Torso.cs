@@ -12,6 +12,8 @@ namespace EvolveAPet
     [Serializable]
     public class Torso : StdBodyPart
     {
-        public Torso( int shape, Color color, EnumSize size, EnumPattern pattern) : base(EnumBodyPart.TORSO, shape, color, size, pattern) { }
+		public Torso(int[] rgbArray, int sizeNum, string shapeStr, int patternNumber): base(rgbArray, sizeNum, shapeStr,patternNumber){
+		}
+		public Torso(){}
     }
 }
