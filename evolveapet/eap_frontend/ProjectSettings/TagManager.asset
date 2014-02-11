@@ -13,8 +13,11 @@ TagManager:
   - Eye 0
   - Eye 1
   - Eye 2
-  - Ear
+  - Front Ear
   - Body
+  - Back Ear
+  - 
+  - Ear
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
