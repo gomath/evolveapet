@@ -5,7 +5,7 @@ labels:
 - Sky
 TrueTypeFontImporter:
   serializedVersion: 2
-  fontSize: 16
+  fontSize: 50
   forceTextureCase: -2
   characterSpacing: 1
   characterPadding: 0
