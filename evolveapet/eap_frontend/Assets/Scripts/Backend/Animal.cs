@@ -159,6 +159,13 @@ namespace EvolveAPet
 			genePos = Genome.MotherChromosomes[n].getTraitPosition(3);
 			if (genePos != -1) {
 				number = Genome.DecodeTrait(motherChromosome.Genes[genePos],fatherChromosome.Genes[genePos]);
+
+				// handling quadrupedality and 0 arms - quadrupedal animal has ALWAYS 1 arm
+				if(n == (int)EnumBodyPart.ARMS){
+					if(Genome.IsQuadrupedal()){
+						number = 1;
+					}
+				}
 			}
 
 			//Decodes Shape
