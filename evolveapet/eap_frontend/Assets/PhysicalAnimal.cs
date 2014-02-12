@@ -175,5 +175,6 @@ namespace EvolveAPet {
 		Color DecodeCol (int[] c) {
 			return new Color(c[0]/255f, c[1]/255f, c[2]/255f);
 		}
+
 	}
 }
