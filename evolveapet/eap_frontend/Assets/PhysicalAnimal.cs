@@ -55,19 +55,23 @@ namespace EvolveAPet {
 			}	
 		}
 		
-		public void Build() {
-			
+		public void Build(GameObject parent) {
+
 			//Find transforms
-			Transform tBody = GameObject.FindGameObjectWithTag("Body").transform;
-			Transform tHead = GameObject.FindGameObjectWithTag("Head").transform;
-			Transform tTail = GameObject.FindGameObjectWithTag("Tail").transform;
-			Transform tFrontLeg = GameObject.FindGameObjectWithTag("Front Leg").transform;
-			Transform tBackLeg = GameObject.FindGameObjectWithTag("Back Leg").transform;
-			Transform tFrontArm = GameObject.FindGameObjectWithTag("Front Arm").transform;
-			Transform tBackArm = GameObject.FindGameObjectWithTag("Back Arm").transform;
-			Transform[] tEyes = {GameObject.FindGameObjectWithTag("Eye 0").transform, GameObject.FindGameObjectWithTag("Eye 1").transform, GameObject.FindGameObjectWithTag("Eye 2").transform};
-			Transform tFrontEar = GameObject.FindGameObjectWithTag("Front Ear").transform;
-			Transform tBackEar = GameObject.FindGameObjectWithTag("Back Ear").transform;
+			Transform tParent = parent.transform;
+
+			Transform tBody = tParent.FindChild("body").transform;
+			Transform tHead = tParent.FindChild("head").transform;
+			Transform tTail = tParent.FindChild("tail").transform;
+			Transform tLegs = tParent.FindChild("legs").transform;
+			Transform tFrontLeg = tLegs.FindChild("front leg").transform;
+			Transform tBackLeg = tLegs.FindChild("back leg").transform;
+			Transform tArms = tParent.FindChild("arms").transform;
+			Transform tFrontArm = tArms.FindChild("front arm").transform;
+			Transform tBackArm = tArms.FindChild("back arm").transform;
+			Transform[] tEyes = {tHead.FindChild("eye 0").transform, tHead.FindChild("eye 1").transform, tHead.FindChild("eye 2").transform};
+			Transform tFrontEar = tHead.FindChild("front ear").transform;
+			Transform tBackEar = tHead.FindChild("back ear").transform;
 			
 			//Build body, rotate if bipedal and scale/colour as needed
 			Torso t = (Torso)animal.BodyPartArray[3];
@@ -83,14 +87,14 @@ namespace EvolveAPet {
 			Head h = (Head)animal.BodyPartArray[2];
 			GameObject head = (GameObject)Instantiate(Resources.Load ("Prefabs/"+h.shape+" head"));
 			head.GetComponent<SpriteRenderer>().color = DecodeCol (h.colour);
-			head.transform.position = tHead.position = GameObject.Find ("head joint").transform.position;
+			head.transform.position = tHead.position = body.transform.FindChild ("head joint").transform.position;
 			head.transform.parent = tHead;
 			
 			//build eyes
 			Eyes e = (Eyes)animal.BodyPartArray[1];
 			for (int i = 0; i<e.number; i++) {
 				GameObject eye = (GameObject)Instantiate (Resources.Load ("Prefabs/DINO eye"));
-				eye.transform.position = tEyes[i].position = GameObject.Find("eye joint "+i).transform.position;
+				eye.transform.position = tEyes[i].position = head.transform.FindChild("eye joint "+i).transform.position;
 				eye.transform.parent = tEyes[i];
 				Scale (tEyes[i], e.size);
 				eye.GetComponent<SpriteRenderer>().color = DecodeCol (e.colour);
@@ -100,13 +104,13 @@ namespace EvolveAPet {
 			/*Ears ea = (Ears)BodyPartArray[0];
 				GameObject ear = (GameObject)Instantiate(Resources.Load ("Prefabs/"+ea.shape+" front ear"));
 				ear.GetComponent<SpriteRenderer>().color = DecodeCol (ea.colour);
-				ear.transform.position = tFrontEar.position = GameObject.Find ("ear joint").transform.position;
+				ear.transform.position = tFrontEar.position = head.transform.FindChild ("ear joint").transform.position;
 				ear.transform.parent = tFrontEar;
 				Scale(tFrontEar, ea.size);
 
 				ear = (GameObject)Instantiate(Resources.Load ("Prefabs/"+ea.shape+" back ear"));
 				ear.GetComponent<SpriteRenderer>().color = DecodeCol (ea.colour);
-				ear.transform.position = tBackEar.position = GameObject.Find ("ear joint").transform.position;
+				ear.transform.position = tBackEar.position = head.transform.FindChild ("ear joint").transform.position;
 				ear.transform.parent = tBackEar;
 				Scale(tBackEar, ea.size);*/
 			
@@ -119,7 +123,7 @@ namespace EvolveAPet {
 			Tail ta = (Tail)animal.BodyPartArray[6];
 			GameObject tail = (GameObject)Instantiate(Resources.Load ("Prefabs/"+ta.shape+" tail"));
 			tail.GetComponent<SpriteRenderer>().color = DecodeCol (ta.colour);
-			tail.transform.position = tTail.position = GameObject.Find ("tail joint").transform.position;
+			tail.transform.position = tTail.position = body.transform.FindChild ("tail joint").transform.position;
 			tail.transform.parent = tTail;
 			Scale(tTail, ta.size);
 			
@@ -127,13 +131,13 @@ namespace EvolveAPet {
 			Legs l = (Legs)animal.BodyPartArray[5];
 			GameObject leg = (GameObject)Instantiate(Resources.Load ("Prefabs/"+l.shape+" front leg"));
 			leg.GetComponent<SpriteRenderer>().color = DecodeCol(l.colour);
-			leg.transform.position = tFrontLeg.position = GameObject.Find ("leg joint").transform.position;
+			leg.transform.position = tFrontLeg.position = body.transform.FindChild ("leg joint").transform.position;
 			leg.transform.parent = tFrontLeg;
 			Scale(tFrontLeg, l.size);
 			
 			leg = (GameObject)Instantiate(Resources.Load ("Prefabs/"+l.shape+" back leg"));
 			leg.GetComponent<SpriteRenderer>().color = DecodeCol(l.colour);
-			leg.transform.position = tBackLeg.position = GameObject.Find ("leg joint").transform.position;
+			leg.transform.position = tBackLeg.position = body.transform.FindChild ("leg joint").transform.position;
 			leg.transform.parent = tBackLeg;
 			Scale(tBackLeg, l.size);
 			
@@ -144,7 +148,7 @@ namespace EvolveAPet {
 			if (a.number != 0) {
 				GameObject arm = (GameObject)Instantiate(Resources.Load ("Prefabs/"+a.shape+" front "+limb));
 				arm.GetComponent<SpriteRenderer>().color = DecodeCol(a.colour);
-				arm.transform.position = tFrontArm.position = GameObject.Find ("arm joint").transform.position;
+				arm.transform.position = tFrontArm.position = body.transform.FindChild ("arm joint").transform.position;
 				arm.transform.parent = tFrontArm;
 				if (a.isQuadrupedal) {
 					Scale(tFrontArm, l.size);
@@ -154,7 +158,7 @@ namespace EvolveAPet {
 				
 				arm = (GameObject)Instantiate(Resources.Load ("Prefabs/"+a.shape+" front "+limb));
 				arm.GetComponent<SpriteRenderer>().color = DecodeCol (a.colour);
-				arm.transform.position = tBackArm.position = GameObject.Find ("arm joint").transform.position;
+				arm.transform.position = tBackArm.position = body.transform.FindChild ("arm joint").transform.position;
 				arm.transform.parent = tBackArm;
 				if (a.isQuadrupedal) {
 					Scale(tBackArm, l.size);
