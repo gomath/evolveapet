@@ -73,7 +73,7 @@ GameObject:
   - 114: {fileID: 11400000}
   - 60: {fileID: 6000000}
   m_Layer: 0
-  m_Name: dino head
+  m_Name: DINO head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
