@@ -44,8 +44,13 @@ public class Testing_Matej : MonoBehaviour {
 			testRandomMutations (i);
 		}*/
 
+		/*
 		for (int i=1; i<=20; i++) {
 			testCreatingOfTetrads(i);
+		}*/
+
+		for (int i=3; i<10; i++) {
+			testRandomBreeding (i);
 		}
 
 		/*string[][][][][] a = MyDictionary.geneDict;
@@ -124,6 +129,128 @@ public class Testing_Matej : MonoBehaviour {
 				String sf4 = String.Format (f, s4) + "|     ";
 				 
 				file.WriteLine(sf0 + sf1 + sf2 + sf3 + sf4);
+			}
+			file.WriteLine();
+		}
+		file.Close();
+	}
+
+	public static void testRandomBreeding(int testNumber){
+		string path = "E:\\Mato\\Cambridge\\2nd year\\Group_Project\\Software (under git)\\evolveapet\\evolveapet\\eap_frontend\\Assets\\Scripts\\Backend\\OutputOfTests\\Random_Breeding\\";
+		string dst = "Random_breeding_" + testNumber + ".txt";
+		
+		System.IO.StreamWriter file = new System.IO.StreamWriter(path+dst);
+		file.AutoFlush = true;
+		
+		file.WriteLine ("Legend (column meanings): mother and father original chromosomes, crossover 1, crossover 2.");
+		file.WriteLine ("Note: -...- means the genes has been splitted during cross over");
+		
+		Animal a1 = new Animal ();
+		Genome g1 = a1.Genome;
+
+		Animal a2 = new Animal ();
+		Genome g2 = a2.Genome;
+
+		/*Inlined from Animal.BreedMeRandomly*/
+		Chromosome[,] tetrads1 = g1.CreateTetradsForBreeding ();
+		Chromosome[,] tetrads2 = g2.CreateTetradsForBreeding ();
+		
+		Chromosome[] parent1 = new Chromosome[Global.NUM_OF_CHROMOSOMES];
+		Chromosome[] parent2 = new Chromosome[Global.NUM_OF_CHROMOSOMES];
+
+		int[,] chosen = new int[Global.NUM_OF_CHROMOSOMES, 2];
+
+		for (int i=0; i<Global.NUM_OF_CHROMOSOMES; i++) {
+			int j = Global.rand.Next(4);
+			chosen[i,0] = j;
+			parent1[i] = tetrads1[i,j];
+			
+			j = Global.rand.Next(4);
+			parent2[i] = tetrads2[i,j];
+			chosen[i,1] = j;
+		}
+		
+		Animal offspring = new Animal(parent1, parent2, a1, a2);
+
+
+		for (int i=0; i<Global.NUM_OF_CHROMOSOMES; i++) {
+			String f = "{0,-9}";
+			String d = "|  ";
+			String d2 = "|| ";
+			
+			file.WriteLine("----------CHROMOSOME #" + i + "----------");
+			file.WriteLine("Parent 1 split at gene #" + tetrads1[i,2].WhereHasBeenSplit);
+			file.WriteLine("Parent 1 split at gene #" + tetrads2[i,2].WhereHasBeenSplit);
+			file.Write(String.Format("{0,-20}"," ") + d);
+			for(int j=0; j<4; j++){
+				file.Write(String.Format (f,j) + ((j==3) ? d2 : d));
+			}
+			for(int j=0; j<4; j++){
+				file.Write(String.Format (f,j) + ((j==3) ? d2 : d));
+			}
+			for(int j=0; j<2; j++){
+				file.Write(String.Format(f,chosen[i,j]) + d);
+			}
+
+			file.WriteLine();
+
+			for(int j=0; j<MyDictionary.numOfGenesOnChromosome[(EnumBodyPart)i]; j++){
+				Gene g11 = tetrads1[i,0].Genes[j];
+				Gene g12 = tetrads1[i,1].Genes[j];
+				Gene g13 = tetrads1[i,2].Genes[j];
+				Gene g14 = tetrads1[i,3].Genes[j];
+
+				Gene g21 = tetrads2[i,0].Genes[j];
+				Gene g22 = tetrads2[i,1].Genes[j];
+				Gene g23 = tetrads2[i,2].Genes[j];
+				Gene g24 = tetrads2[i,3].Genes[j];
+
+				Gene r1 = offspring.Genome.MotherChromosomes[i].Genes[j];
+				Gene r2 = offspring.Genome.FatherChromosomes[i].Genes[j];
+				
+
+				// Plain strings
+				String s11 = g11.GetWholeNameEncoded();
+				String s12 = g12.GetWholeNameEncoded();
+				String s13 = g13.GetWholeNameEncoded(); 
+				String s14 = g14.GetWholeNameEncoded();
+
+				String s21 = g21.GetWholeNameEncoded();
+				String s22 = g22.GetWholeNameEncoded();
+				String s23 = g23.GetWholeNameEncoded(); 
+				String s24 = g24.GetWholeNameEncoded();
+
+				String s1 = r1.GetWholeNameEncoded();
+				String s2 = r2.GetWholeNameEncoded();
+				
+				// Testing where has split occured and marking those lines
+				if(j >= tetrads1[i,2].WhereHasBeenSplit){
+					s13 = "-" + s13 + "-";
+					s14 = "-" + s14 + "-";
+				}
+
+				if(j >= tetrads2[i,2].WhereHasBeenSplit){
+					s23 = "-" + s23 + "-";
+					s24 = "-" + s24 + "-";
+				}
+
+
+
+				// Formatted strings - for pretty output
+				String sf0 = String.Format ("{0,-20}", "#" + j + ": " + MyDictionary.traitDict[i][j]) + d;
+				String sf11 = String.Format (f, s11) + d;
+				String sf12 = String.Format (f, s12) + d;
+				String sf13 = String.Format (f, s13) + d;
+				String sf14 = String.Format (f, s14) + d2;
+
+				String sf21 = String.Format (f, s21) + d;
+				String sf22 = String.Format (f, s22) + d;
+				String sf23 = String.Format (f, s23) + d;
+				String sf24 = String.Format (f, s24) + d2;
+
+				String sf1 = String.Format (f, s1) + d;
+				String sf2 = String.Format (f, s2) + d;
+				file.WriteLine(sf0 + sf11 + sf12 + sf13 + sf14 + sf21 + sf22 + sf23 + sf24 + sf1 + sf2);
 			}
 			file.WriteLine();
 		}

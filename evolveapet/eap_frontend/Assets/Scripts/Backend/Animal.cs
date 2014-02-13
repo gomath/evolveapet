@@ -230,7 +230,7 @@ namespace EvolveAPet
 			Chromosome[] parent2 = new Chromosome[Global.NUM_OF_CHROMOSOMES];
 
 			for (int i=0; i<Global.NUM_OF_CHROMOSOMES; i++) {
-				int j = Global.rand .Next(4);
+				int j = Global.rand.Next(4);
 				parent1[i] = tetrads1[i,j];
 
 				j = Global.rand.Next(4);
@@ -240,6 +240,7 @@ namespace EvolveAPet
 			Animal offspring = new Animal(parent1, parent2, this, a);
 			return offspring;
 		}
+		
 	
 	}
 	
