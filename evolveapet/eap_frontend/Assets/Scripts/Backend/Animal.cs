@@ -31,11 +31,11 @@ namespace EvolveAPet
         {
             //Egg = true; //Animals will alwyas be in egg form when created
             //Firstly, populate all the genes in the genome
-            Genome = new Genome(chromA, chromB);
+			Genome = new Genome (chromA, chromB);
             _parents = new Animal[] { parent1, parent2 };
 
             // New animal has max. generations of your parents + 1
-			Generation = (parent1.Generation > parent2.Generation) ? parent1.Generation+1 : parent2.Generation+1;
+			//Generation = (parent1.Generation > parent2.Generation) ? parent1.Generation+1 : parent2.Generation+1;
 
 			BodyPartArray = new BodyPart[bodyPartNumber]; 
             for (int n = 0; n < bodyPartNumber; n++){
@@ -110,6 +110,7 @@ namespace EvolveAPet
             Egg = false;
         }
         private void createBodyPart(int n){
+			Genome.Display (666);
 			/* e is an enum pointing to body parts in this order:
 			0.Ears
 			1.Eyes
@@ -144,7 +145,7 @@ namespace EvolveAPet
 			int genePos; //The position of the gene for the current trait
 			genePos = Genome.MotherChromosomes[n].getTraitPosition(0);
 			if (genePos != 1) {
-				int colour =Genome.DecodeTrait(motherChromosome.Genes[genePos],fatherChromosome.Genes[genePos]);
+				int colour =Genome.GetTrait(n,0);
 				// COLOUR = RED << 16 | GREEN << 8 | BLUE
 				rgbArray[0] = (colour & 0x00FF0000) >> 16;
 				rgbArray[1] = (colour & 0x0000FF00)>>8;
@@ -153,17 +154,21 @@ namespace EvolveAPet
 			//Decodes Size
 			genePos = Genome.MotherChromosomes[n].getTraitPosition(1);
 			if (genePos != -1) {
-				sizeNum = Genome.DecodeTrait(motherChromosome.Genes[genePos],fatherChromosome.Genes[genePos]);
+				sizeNum = Genome.GetTrait(n,1);
+				// Genome.DecodeTrait(motherChromosome.Genes[genePos],fatherChromosome.Genes[genePos])
+				Debug.Log (sizeNum);
 			}
 			//Decodes Pattern
 			genePos = Genome.MotherChromosomes[n].getTraitPosition(2);
 			if (genePos != -1) {
-				patternNumber = Genome.DecodeTrait(motherChromosome.Genes[genePos],fatherChromosome.Genes[genePos]);
+				patternNumber=Genome.GetTrait(n,2);
+				//patternNumber = Genome.DecodeTrait(motherChromosome.Genes[genePos],fatherChromosome.Genes[genePos]);
 			}
 			//Decodes Number
 			genePos = Genome.MotherChromosomes[n].getTraitPosition(3);
 			if (genePos != -1) {
-				number = Genome.DecodeTrait(motherChromosome.Genes[genePos],fatherChromosome.Genes[genePos]);
+				number = Genome.GetTrait(n,3);
+				//number = Genome.DecodeTrait(motherChromosome.Genes[genePos],fatherChromosome.Genes[genePos]);
 
 				// handling quadrupedality and 0 arms - quadrupedal animal has ALWAYS 1 arm
 				if(n == (int)EnumBodyPart.ARMS){
@@ -176,14 +181,14 @@ namespace EvolveAPet
 			//Decodes Shape
 			genePos = Genome.MotherChromosomes[n].getTraitPosition(4);
 			if (genePos != -1) {
-				int shapeNo =Genome.DecodeTrait(motherChromosome.Genes[genePos],fatherChromosome.Genes[genePos]);
+				int shapeNo =Genome.GetTrait(n,4);
 				shapeStr = MyDictionary.GetShape(shapeNo);
 			}
 
 			//If head, checks teeth shape
 			if (n == 2) {
 			genePos = motherChromosome.getTraitPosition(5);
-				int teethShapeInt = Genome.DecodeTrait(motherChromosome.Genes[genePos], fatherChromosome.Genes[genePos]);
+				int teethShapeInt = Genome.GetTrait(n,5);
 				teethShape = MyDictionary.GetShape(teethShapeInt);
 			}
 
@@ -223,7 +228,7 @@ namespace EvolveAPet
 		/// <returns>The me randomly.</returns>
 		/// <param name="a">The alpha component.</param>
 		public Animal BreedMeRandomly(Animal a){
-			Chromosome[,] tetrads1 = Genome.CreateTetradsForBreeding ();
+			Chromosome[,] tetrads1 = this.Genome.CreateTetradsForBreeding ();
 			Chromosome[,] tetrads2 = a.Genome.CreateTetradsForBreeding ();
 
 			Chromosome[] parent1 = new Chromosome[Global.NUM_OF_CHROMOSOMES];

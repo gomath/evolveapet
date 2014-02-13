@@ -49,9 +49,10 @@ public class Testing_Matej : MonoBehaviour {
 			testCreatingOfTetrads(i);
 		}*/
 
-		for (int i=3; i<10; i++) {
+		/*
+		for (int i=12; i<15; i++) {
 			testRandomBreeding (i);
-		}
+		}*/
 
 		/*string[][][][][] a = MyDictionary.geneDict;
 		for (int i=0; i<a.GetLength(0); i++) {
@@ -254,6 +255,73 @@ public class Testing_Matej : MonoBehaviour {
 			}
 			file.WriteLine();
 		}
+
+		file.WriteLine ();
+
+		Animal[] a = new Animal[3];
+			a [0] = a1;
+			a [1] = a2;
+			a [2] = offspring;
+
+		for (int i=0; i<Global.NUM_OF_CHROMOSOMES; i++) {
+			String f = "{0,-15}";
+
+			
+			file.WriteLine("----------CHROMOSOME #" + i + "----------");
+			file.WriteLine("Body part: " + ((EnumBodyPart)i));
+
+			BodyPart[] bp = new BodyPart[3];
+			bp[0] = a1.BodyPartArray[i];
+			bp[1] = a2.BodyPartArray[i];
+			bp[2] = offspring.BodyPartArray[i];
+
+			/*
+			 0 = ears
+			 1 = eyes
+			 2 = head
+			 3 = arms
+			 4 = torso
+			 5 = legs
+			 6 = tail
+			 */
+			int[,] colour = new int[3,3];
+			int[] size = new int[3];
+			string[] shape = new string[3];
+			int[] pattern = new int[3];
+			int[] number = new int[3];
+			string[] teethshape = new string[3];
+
+
+			for(int j=0; j<3; j++){
+				for(int k=0; k<3; k++){
+					colour[j,k] = bp[j].colour[k];
+				}
+				size[j] = bp[j].size;
+				shape[j] = bp[j].shape;
+			}
+
+			String col = String.Format(f,"COLOUR:");
+			String sc0 = String.Format(f,colour[0,0] + " " + colour[0,1] + " " + colour[0,2]);
+			String sc1 = String.Format(f,colour[1,0] + " " + colour[1,1] + " " + colour[1,2]);
+			String sc2 = String.Format(f,colour[2,0] + " " + colour[2,1] + " " + colour[2,2]);
+
+			String siz = String.Format(f,"SIZE");
+			String ss0 = String.Format(f,(EnumSize)size[0]);
+			String ss1 = String.Format(f,(EnumSize)size[1]);
+			String ss2 = String.Format(f,(EnumSize)size[2]);
+
+			String sha = String.Format (f,"SHAPE");
+			String ssh0 = String.Format(f,shape[0]);
+			String ssh1 = String.Format(f,shape[1]);
+			String ssh2 = String.Format(f,shape[2]);
+
+		
+			file.WriteLine(col + sc0 + sc1 + sc2);
+			file.WriteLine(siz + ss0 + ss1 + ss2);
+			file.WriteLine(sha + ssh0 + ssh1 + ssh2);
+		}
+		
+		file.WriteLine ();
 		file.Close();
 	}
 	

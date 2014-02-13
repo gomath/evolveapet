@@ -77,7 +77,7 @@ namespace EvolveAPet{
 			yield return new WaitForSeconds(0f);
 			
 			aChild = (GameObject)Instantiate(Resources.Load ("Prefabs/animal"));
-			aChild.GetComponent<PhysicalAnimal>().animal = aFather.GetComponent<PhysicalAnimal>().animal.BreedMeRandomly(aMother.GetComponent<PhysicalAnimal>().animal);
+			aChild.GetComponent<PhysicalAnimal>().animal = aMother.GetComponent<PhysicalAnimal>().animal.BreedMeRandomly(aFather.GetComponent<PhysicalAnimal>().animal);
 
 			aChild.GetComponent<PhysicalAnimal>().Build(aChild);
 			aChild.transform.position = child.position;

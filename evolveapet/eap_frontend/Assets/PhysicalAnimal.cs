@@ -117,7 +117,7 @@ namespace EvolveAPet {
 			Scale(tHead, h.size);
 			
 			//build mouth
-			GameObject.Find ("mouth").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/"+h.shape+" "+h.teethShape+" mouth");
+			head.transform.FindChild ("mouth").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/"+h.shape+" "+h.teethShape+" mouth");
 			
 			//build tail, scale/colour as needed
 			Tail ta = (Tail)animal.BodyPartArray[6];
@@ -169,7 +169,7 @@ namespace EvolveAPet {
 			
 		}
 		
-		float[] sizes = {0.9f, 1.0f, 1.1f};
+		float[] sizes = {0.9f, 1f, 1.1f};
 		
 		//Parse the scale ints and scale accordingly
 		void Scale (Transform t, int size) {

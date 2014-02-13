@@ -498,6 +498,10 @@ namespace EvolveAPet
 			return DecodeTrait(g1,g2);
         }
 
+		// TODO remove comments (2 below)
+		// sizeNum = Genome.GetTrait(n,1);
+		// Genome.DecodeTrait(motherChromosome.Genes[genePos],fatherChromosome.Genes[genePos])
+		
 		/// <summary>
 		/// Same as GetTrait with traitNum parameter, but here, explicit EnumTrait can be specified. (for convenience for front-end). 
 		/// </summary>
