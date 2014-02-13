@@ -221,9 +221,6 @@ MonoBehaviour:
   father: {fileID: 30540983}
   mother: {fileID: 1408454531}
   child: {fileID: 857880246}
-  aFather: {fileID: 0}
-  aMother: {fileID: 0}
-  aChild: {fileID: 0}
 --- !u!1 &493266632
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,7 +348,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &796118685
 MonoBehaviour:
   m_ObjectHideFlags: 0

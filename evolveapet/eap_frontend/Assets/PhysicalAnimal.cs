@@ -156,7 +156,7 @@ namespace EvolveAPet {
 					Scale(tFrontArm, a.size);
 				}
 				
-				arm = (GameObject)Instantiate(Resources.Load ("Prefabs/"+a.shape+" front "+limb));
+				arm = (GameObject)Instantiate(Resources.Load ("Prefabs/"+a.shape+" back "+limb));
 				arm.GetComponent<SpriteRenderer>().color = DecodeCol (a.colour);
 				arm.transform.position = tBackArm.position = body.transform.FindChild ("arm joint").transform.position;
 				arm.transform.parent = tBackArm;

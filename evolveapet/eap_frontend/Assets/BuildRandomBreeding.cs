@@ -9,9 +9,13 @@ namespace EvolveAPet{
 		public Transform mother;
 		public Transform child;
 
-		public GameObject aFather;
-		public GameObject aMother;
-		public GameObject aChild;
+		GameObject aFather;
+		GameObject aMother;
+		GameObject aChild;
+
+		Animal anFather;
+		Animal anMother;
+		Animal anChild;
 		
 		// Use this for initialization
 		void Start () {
@@ -43,9 +47,11 @@ namespace EvolveAPet{
 			
 			//Wait one frame for destroys to commit
 			yield return new WaitForSeconds(0f);
+
+			anFather = new Animal();
 			
 			aFather = (GameObject)Instantiate(Resources.Load ("Prefabs/animal"));
-			aFather.GetComponent<PhysicalAnimal>().animal = new Animal();
+			aFather.GetComponent<PhysicalAnimal>().animal = anFather;
 
 			aFather.GetComponent<PhysicalAnimal>().Build(aFather);
 			aFather.transform.position = father.position;
@@ -59,9 +65,11 @@ namespace EvolveAPet{
 			
 			//Wait one frame for destroys to commit
 			yield return new WaitForSeconds(0f);
-			
+
+			anMother = new Animal();
+
 			aMother = (GameObject)Instantiate(Resources.Load ("Prefabs/animal"));
-			aMother.GetComponent<PhysicalAnimal>().animal = new Animal();
+			aMother.GetComponent<PhysicalAnimal>().animal = anMother;
 
 			aMother.GetComponent<PhysicalAnimal>().Build(aMother);
 			aMother.transform.position = mother.position;
@@ -75,9 +83,12 @@ namespace EvolveAPet{
 			
 			//Wait one frame for destroys to commit
 			yield return new WaitForSeconds(0f);
+
+			anChild = anFather.BreedMeRandomly(anMother);
 			
 			aChild = (GameObject)Instantiate(Resources.Load ("Prefabs/animal"));
-			aChild.GetComponent<PhysicalAnimal>().animal = aMother.GetComponent<PhysicalAnimal>().animal.BreedMeRandomly(aFather.GetComponent<PhysicalAnimal>().animal);
+
+			aChild.GetComponent<PhysicalAnimal>().animal = anChild;
 
 			aChild.GetComponent<PhysicalAnimal>().Build(aChild);
 			aChild.transform.position = child.position;
