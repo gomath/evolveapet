@@ -110,7 +110,6 @@ namespace EvolveAPet
             Egg = false;
         }
         private void createBodyPart(int n){
-			Genome.Display (666);
 			/* e is an enum pointing to body parts in this order:
 			0.Ears
 			1.Eyes
