@@ -137,14 +137,14 @@ namespace EvolveAPet
 			string teethShape = "";
 			bool isQuadrupedal= false; //Note, this is not technically a trait
 			Chromosome motherChromosome = Genome.MotherChromosomes [n];
-			Chromosome fatherChromosome = Genome.MotherChromosomes [n];
+			Chromosome fatherChromosome = Genome.FatherChromosomes [n];
 
 			//initialise the relevant bits of information for that chromosome.
 			//Decodes Colour
 			int genePos; //The position of the gene for the current trait
 			genePos = Genome.MotherChromosomes[n].getTraitPosition(0);
 			if (genePos != 1) {
-				int colour =Genome.GetTrait(n,0);
+				int colour = Genome.GetTrait(n,0);
 				// COLOUR = RED << 16 | GREEN << 8 | BLUE
 				rgbArray[0] = (colour & 0x00FF0000) >> 16;
 				rgbArray[1] = (colour & 0x0000FF00)>>8;
@@ -154,8 +154,6 @@ namespace EvolveAPet
 			genePos = Genome.MotherChromosomes[n].getTraitPosition(1);
 			if (genePos != -1) {
 				sizeNum = Genome.GetTrait(n,1);
-				// Genome.DecodeTrait(motherChromosome.Genes[genePos],fatherChromosome.Genes[genePos])
-				Debug.Log (sizeNum);
 			}
 			//Decodes Pattern
 			genePos = Genome.MotherChromosomes[n].getTraitPosition(2);

@@ -1,8 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Frontend\MainMenu.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Backend\Animal.cs">
     <Files>
-      <File FileName="Assets\Scripts\Frontend\MainMenu.cs" Line="13" Column="41" />
+      <File FileName="Assets\Scripts\Backend\Animal.cs" Line="157" Column="1" />
+      <File FileName="Assets\Scripts\Frontend\MainMenu.cs" Line="8" Column="2" />
+      <File FileName="Assets\Scripts\Backend\Genetics\Genome.cs" Line="498" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
