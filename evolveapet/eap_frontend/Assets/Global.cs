@@ -8,12 +8,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using UnityEngine;
+
 namespace EvolveAPet
 {
 	public class Global
 	{
 		// Use this random to generate all random numbers in the whole program. C# random sucks otherwise if created in multiple classes.
-		public static Random rand = new Random();
+		public static System.Random rand = new System.Random();
 
 		public static int EYES_LOWER_BOUND = 1; // inclusive
 		public static int EYES_UPPER_BOUND = 4; // exclusive
@@ -22,6 +27,36 @@ namespace EvolveAPet
 		public static int ARMS_UPPER_BOUND = 2; // exclusive
 
 		public static int NUM_OF_CHROMOSOMES = 7;
+
+		public readonly static String mapName = "one_to_one_mapping.map";
+		public static Dictionary<Locus,Locus> mapFtB; // map front-end to backend
+		public static Dictionary<Locus,Locus> mapBtF; // map back-end to frontend
+
+		public static void LoadMap(){
+			BinaryFormatter bf = new BinaryFormatter ();
+
+			FileStream inStream = new FileStream (mapName, FileMode.Open);
+			mapFtB = bf.Deserialize(inStream) as Dictionary<Locus,Locus>;
+
+			// Creating inverse map
+			mapBtF = new Dictionary<Locus,Locus> (new LocusEqualityComparer());
+			Dictionary<Locus,Locus>.KeyCollection keys = mapFtB.Keys;
+			foreach(Locus key in keys){
+				Locus value = mapFtB[key];
+				mapBtF.Add(value,key);
+			}
+
+				Debug.Log(mapFtB.ContainsKey (new Locus (0, 0)));
+			Debug.Log(mapFtB.ContainsKey (new Locus (0, 10)));
+
+			Debug.Log(mapBtF.ContainsKey (new Locus (0, 0)));
+
+			Debug.Log(mapBtF.ContainsKey (new Locus (0, 10)));
+
+			Locus l = mapFtB [new Locus (0, 0)];
+			Debug.Log (l.Chromosome);
+		}
+
 	}
 }
 

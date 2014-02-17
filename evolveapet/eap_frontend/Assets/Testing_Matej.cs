@@ -8,6 +8,12 @@ public class Testing_Matej : MonoBehaviour {
 	void Start () {
 		MyDictionary.Init (); // initializing maps (Dictionaries) in MyDictionary
 
+		Global.LoadMap();
+		Scrambler.TestScramblerUseMap (666,Global.mapFtB);
+		Scrambler.TestScramblerUseMap (667,Global.mapBtF);
+
+		//Scrambler.TestScramblerCreateMap (666);
+
 		/*
 		Gene g = new Gene (3, 2);
 		g.display(0);
