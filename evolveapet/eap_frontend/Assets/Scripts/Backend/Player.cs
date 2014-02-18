@@ -85,7 +85,10 @@ namespace EvolveAPet
 					if (currentDailyChallenge==4&& blue>200) points++;
 				}
 				if (currentDailyChallenge==5 || currentDailyChallenge==6){//most spots or stripes
-					
+					int patternNo = activeAnimal.Genome.GetTrait(n,2);
+					if (currentDailyChallenge==5 && patternNo ==1) points++;
+					if (currentDailyChallenge==6 && patternNo ==2) points++;
+					if (patternNo==3) points++;
 				}
 			}
 
