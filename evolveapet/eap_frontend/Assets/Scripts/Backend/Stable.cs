@@ -7,8 +7,8 @@ namespace EvolveAPet
 {
     public class Stable : LinkedList<Animal>
     {
-        public int Size { set; get; }
-
+		public int Size { set; get; }
+		public int activeAnimalNumber{ set; get; }
         public Stable()
         {
 
