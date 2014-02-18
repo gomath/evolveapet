@@ -1,12 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Testing_Matej.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\NetworkManager.cs">
     <Files>
-      <File FileName="Assets\Builder.cs" Line="33" Column="17" />
-      <File FileName="Assets\Scripts\Backend\Scrambler.cs" Line="37" Column="5" />
-      <File FileName="Assets\Testing_Matej.cs" Line="10" Column="3" />
-      <File FileName="Assets\Global.cs" Line="45" Column="31" />
-      <File FileName="Assets\Scripts\Backend\Locus.cs" Line="42" Column="3" />
+      <File FileName="Assets\NetworkManager.cs" Line="130" Column="6" />
+      <File FileName="Assets\BuildRandomBreeding.cs" Line="87" Column="22" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
