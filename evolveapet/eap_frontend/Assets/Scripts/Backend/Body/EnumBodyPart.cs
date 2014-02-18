@@ -14,6 +14,7 @@ namespace EvolveAPet
         TORSO = 3,
         ARMS = 4,
         LEGS = 5,
-        TAIL = 6
+        TAIL = 6,
+		NONE = 7 // don't remove, it is there for purposes of front-end chromosomes
     }
 }

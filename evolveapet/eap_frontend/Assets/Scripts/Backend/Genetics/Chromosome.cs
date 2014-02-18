@@ -16,8 +16,8 @@ namespace EvolveAPet
         private int _numOfGenes; // number of genes on this chromosome
 		private int _whereHasBeenSplit;
         
-
-		public int splitLocation{ get;set;}//This is needed for the front end, so that you can graphically display where the split in the chromosome has happened. This is useful because it makes
+		// NOTE - splitLocation variable is the same as _whereHasBeenSplit, which is used during cross over. Use _whereHasBeenSplit
+		//public int splitLocation{ get;set;}//This is needed for the front end, so that you can graphically display where the split in the chromosome has happened. This is useful because it makes
 		//it more obvious that the chromosome has been split into two.
 
         // GETTERS AND SETTERS
@@ -91,6 +91,18 @@ namespace EvolveAPet
 			}
 
 			_whereHasBeenSplit = ch._whereHasBeenSplit;
+		}
+
+		/// <summary>
+		/// Creates new chromosome from array of genes. Used e.g. by FRONT-END when creating front-end representation of chromosomes.
+		/// </summary>
+		/// <param name="g">The green component.</param>
+		public Chromosome(Gene[] g){
+			_bodyPart = EnumBodyPart.NONE;
+			_chromosomeNumber = -1;
+			_numOfGenes = g.Length;
+			_genes = g;
+			_whereHasBeenSplit = -1; // hasn't been split yet
 		}
 
 		/// <summary>

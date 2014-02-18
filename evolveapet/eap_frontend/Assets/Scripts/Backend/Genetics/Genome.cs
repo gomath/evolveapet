@@ -50,6 +50,16 @@ namespace EvolveAPet
 		
 		}
 
+		/// <summary>
+		/// Load Global.mapBtF and Global.mapFtB if they don't exist 
+		/// </summary>
+		private void LoadMapIfNotExist(){
+			// Checking whether maps exist
+			if (Global.mapBtF == null || Global.mapFtB == null) {
+				Global.LoadMap();
+			}	
+		}
+
 		// TODO - untested
 		/// <summary>
 		/// FRONTEND METHOD
@@ -62,6 +72,8 @@ namespace EvolveAPet
 		/// <param name="frontEndGeneNumber">Front end gene number.</param>
 		/// <param name="mother">Mother.</param>
 		public Gene FrontEndGetGene(int frontendChromosome, int frontEndGeneNumber, int parent){
+			LoadMapIfNotExist ();
+
 			Locus l = new Locus (frontendChromosome, frontEndGeneNumber);
 			Locus backendLocus = Global.mapFtB[l];
 				int backEndChrom = backendLocus.Chromosome;
@@ -79,6 +91,7 @@ namespace EvolveAPet
 		/// <returns>The end get loci by body part.</returns>
 		/// <param name="bodyPart">Body part.</param>
 		public Locus[] FrontEndGetLociByBodyPart(EnumBodyPart bodyPart){
+			LoadMapIfNotExist ();
 
 			int backendChromosomeNumber = (int)bodyPart;
 			int numOfGenes = MyDictionary.numOfGenesOnChromosome [bodyPart];
@@ -91,40 +104,37 @@ namespace EvolveAPet
 			return result;
 		}
 
-		// TODO
+		// TODO - untested
 		/// <summary>
-		/// FRONTEND METHOD 
-		/// Choose random part of each chromosome (same locations on each of them) and swap those parts. 
-		/// Return array of 4 chromosome, 2 being the original chromosome passed as arguments and the rest 
-		/// being created from both mother and father chromosome by cross-over.
+		/// Returns front-end represantation of chromosomes.
 		/// </summary>
-		/// <returns>Chromosome[4]</returns>
-		/// <param name="c1">C1.</param>
-		/// <param name="c2">C2.</param>
-		private Chromosome[] FrontEndCrossOver(Chromosome c1, Chromosome c2){
-			int split = Global.rand.Next(c1.NumOfGenes + 1); // returns [0,NUM_OF_CHROMOSOMES], both inclusive
-			
-			// Creating deep fresh clones of both chromosomes
-			Chromosome[] res = new Chromosome[2];
-			res [0] = new Chromosome (c1);
-			res [1] = new Chromosome (c2);
-			
-			// Marking where the chromosome has been split (mainly for testing purposes)
-			res [0].WhereHasBeenSplit = split;
-			res [1].WhereHasBeenSplit = split; 
-			
-			// Crossover part
-			Gene temp;
-			for (int i=split; i<c1.NumOfGenes; i++) {
-				temp = res[0].Genes[i];
-				res[0].Genes[i] = res[1].Genes[i];
-				res[1].Genes[i] = temp;
+		/// <returns>The ent chromosomes.</returns>
+		private Chromosome[,] FrontEndChromosomes(){
+			LoadMapIfNotExist ();
+
+			Chromosome[,] result = new Chromosome[2,Global.NUM_OF_CHROMOSOMES];
+			for (int i=0; i<Global.NUM_OF_CHROMOSOMES; i++) {
+				// Obtain number of genes on chromosome i
+				int numOfGenesOnTheChromosome = MyDictionary.numOfGenesOnChromosome[(EnumBodyPart)i];
+
+				Gene[] motherGenes = new Gene[numOfGenesOnTheChromosome];
+				Gene[] fatherGenes = new Gene[numOfGenesOnTheChromosome];
+				// Create correct Gene[] arrays that will contain appropriate Genes that are located on frontend chromosome i
+				for(int j=0; j<numOfGenesOnTheChromosome; j++){
+					Locus l = Global.mapFtB[new Locus(i,j)];
+					motherGenes[j] = new Gene(_motherChromosome[l.Chromosome].Genes[l.GeneNumber]);
+					fatherGenes[j] = new Gene(_fatherChromosome[l.Chromosome].Genes[l.GeneNumber]);
+				}
+
+				// Create the front end chromosomes
+				result[0,i] = new Chromosome(motherGenes);
+				result[1,i] = new Chromosome(fatherGenes);
 			}
-			
-			return res;
+
+			return result;
 		}
 
-		// TODO
+		// TODO - untested
 		/// <summary>
 		/// FRONTEND METHOD
 		/// Returns the 2D array of chromosome Chromosome[i][j]. Index i specifies the chromosome (i.e. the body part) and the
@@ -132,13 +142,15 @@ namespace EvolveAPet
 		/// </summary>
 		/// <returns>The tetrads for breeding.</returns>
 		public Chromosome[,] FrontEndCreateTetradsForBreeding(){
+			Chromosome[,] frontEndChromosomes = FrontEndChromosomes();
+
 			Chromosome[,] res = new Chromosome[Global.NUM_OF_CHROMOSOMES,4];
 			
 			Chromosome fatherChrom, motherChrom;
 			Chromosome[] crossOver;
 			for (int i=0; i<Global.NUM_OF_CHROMOSOMES; i++) {
-				fatherChrom = _fatherChromosome[i];
-				motherChrom = _motherChromosome[i];
+				fatherChrom = frontEndChromosomes[1,i];		
+				motherChrom = frontEndChromosomes[0,i];
 				crossOver = CrossOver(motherChrom, fatherChrom); // crossOver[0] originally mothers chromosome 
 				
 				res[i,0] = new Chromosome (motherChrom);
