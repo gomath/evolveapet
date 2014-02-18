@@ -50,6 +50,7 @@ namespace EvolveAPet
 			return map;
 		}
 
+		/*
 		public static void TestScramblerCreateMap(int testCase){
 			string path = "E:\\Mato\\Cambridge\\2nd year\\Group_Project\\Software (under git)\\evolveapet\\evolveapet\\eap_frontend\\Assets\\Scripts\\Backend\\OutputOfTests\\Scrambler\\";
 			string dst = "Scrambler_" + testCase + ".txt";
@@ -69,6 +70,7 @@ namespace EvolveAPet
 
 			file.Close();
 		}
+		*/
 
 		public static void TestScramblerUseMap(int testCase, Dictionary<Locus,Locus> map){
 			string path = "E:\\Mato\\Cambridge\\2nd year\\Group_Project\\Software (under git)\\evolveapet\\evolveapet\\eap_frontend\\Assets\\Scripts\\Backend\\OutputOfTests\\Scrambler\\";

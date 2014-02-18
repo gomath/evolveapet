@@ -49,6 +49,106 @@ namespace EvolveAPet
 			_fatherChromosome = fatherC;
 		
 		}
+
+		// TODO - untested
+		/// <summary>
+		/// FRONTEND METHOD
+		/// Given frontEnd chromosome number, frontEnd gene number and integer 0 (mother) or 1 (father), returns the
+		/// corresponding gene in the backend genome. 
+		/// 
+		/// </summary>
+		/// <returns>The end get gene.</returns>
+		/// <param name="frontendChromosome">Frontend chromosome.</param>
+		/// <param name="frontEndGeneNumber">Front end gene number.</param>
+		/// <param name="mother">Mother.</param>
+		public Gene FrontEndGetGene(int frontendChromosome, int frontEndGeneNumber, int parent){
+			Locus l = new Locus (frontendChromosome, frontEndGeneNumber);
+			Locus backendLocus = Global.mapFtB[l];
+				int backEndChrom = backendLocus.Chromosome;
+				int backEndGene = backendLocus.GeneNumber;
+
+			Chromosome[] ch = (parent == 0) ? _motherChromosome : _fatherChromosome;
+			return ch[backEndChrom].Genes[backEndGene];
+		}
+
+		//TODO - untested
+		/// <summary>
+		/// FRONTEND METHOD
+		/// Given body part, returns the array of frontend Loci (positions, i.e. chromosome number and gene number) which codes for this body part.
+		/// </summary>
+		/// <returns>The end get loci by body part.</returns>
+		/// <param name="bodyPart">Body part.</param>
+		public Locus[] FrontEndGetLociByBodyPart(EnumBodyPart bodyPart){
+
+			int backendChromosomeNumber = (int)bodyPart;
+			int numOfGenes = MyDictionary.numOfGenesOnChromosome [bodyPart];
+
+			Locus[] result = new Locus[numOfGenes];
+			for (int i=0; i<numOfGenes; i++) {
+				result[i] = Global.mapBtF[new Locus(backendChromosomeNumber,i)];
+			}
+
+			return result;
+		}
+
+		// TODO
+		/// <summary>
+		/// FRONTEND METHOD 
+		/// Choose random part of each chromosome (same locations on each of them) and swap those parts. 
+		/// Return array of 4 chromosome, 2 being the original chromosome passed as arguments and the rest 
+		/// being created from both mother and father chromosome by cross-over.
+		/// </summary>
+		/// <returns>Chromosome[4]</returns>
+		/// <param name="c1">C1.</param>
+		/// <param name="c2">C2.</param>
+		private Chromosome[] FrontEndCrossOver(Chromosome c1, Chromosome c2){
+			int split = Global.rand.Next(c1.NumOfGenes + 1); // returns [0,NUM_OF_CHROMOSOMES], both inclusive
+			
+			// Creating deep fresh clones of both chromosomes
+			Chromosome[] res = new Chromosome[2];
+			res [0] = new Chromosome (c1);
+			res [1] = new Chromosome (c2);
+			
+			// Marking where the chromosome has been split (mainly for testing purposes)
+			res [0].WhereHasBeenSplit = split;
+			res [1].WhereHasBeenSplit = split; 
+			
+			// Crossover part
+			Gene temp;
+			for (int i=split; i<c1.NumOfGenes; i++) {
+				temp = res[0].Genes[i];
+				res[0].Genes[i] = res[1].Genes[i];
+				res[1].Genes[i] = temp;
+			}
+			
+			return res;
+		}
+
+		// TODO
+		/// <summary>
+		/// FRONTEND METHOD
+		/// Returns the 2D array of chromosome Chromosome[i][j]. Index i specifies the chromosome (i.e. the body part) and the
+		/// second index j (1 <= j <=4) specifies the actual chromosome withing the tetrad.
+		/// </summary>
+		/// <returns>The tetrads for breeding.</returns>
+		public Chromosome[,] FrontEndCreateTetradsForBreeding(){
+			Chromosome[,] res = new Chromosome[Global.NUM_OF_CHROMOSOMES,4];
+			
+			Chromosome fatherChrom, motherChrom;
+			Chromosome[] crossOver;
+			for (int i=0; i<Global.NUM_OF_CHROMOSOMES; i++) {
+				fatherChrom = _fatherChromosome[i];
+				motherChrom = _motherChromosome[i];
+				crossOver = CrossOver(motherChrom, fatherChrom); // crossOver[0] originally mothers chromosome 
+				
+				res[i,0] = new Chromosome (motherChrom);
+				res[i,1] = new Chromosome (fatherChrom);
+				res[i,2] = new Chromosome (crossOver[0]);
+				res[i,3] = new Chromosome (crossOver[1]);
+			}
+			return res;
+		}
+
 		/// <summary>
 		/// Writes this genome in concise form into given file.
 		/// </summary>
@@ -498,10 +598,6 @@ namespace EvolveAPet
 
 			return DecodeTrait(g1,g2);
         }
-
-		// TODO remove comments (2 below)
-		// sizeNum = Genome.GetTrait(n,1);
-		// Genome.DecodeTrait(motherChromosome.Genes[genePos],fatherChromosome.Genes[genePos])
 		
 		/// <summary>
 		/// Same as GetTrait with traitNum parameter, but here, explicit EnumTrait can be specified. (for convenience for front-end). 
