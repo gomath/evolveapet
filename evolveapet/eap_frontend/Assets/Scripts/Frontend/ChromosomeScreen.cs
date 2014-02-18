@@ -10,6 +10,8 @@ public class ChromosomeScreen : MonoBehaviour {
 	void Start () {
 		int n;
 		for (int i = 0; i<7; i++) {
+			// Commenting this code and providing alternative in order to get deterministic layout of chromosome on screen for testing (Matej)
+			/*
 			n = rand.Next(0, 6);
 			for (int j = 0; j<7; j++) {
 				n = (n+i)%7;
@@ -20,7 +22,11 @@ public class ChromosomeScreen : MonoBehaviour {
 					places[n] = 99f;
 					break;
 				}
-			}
+			}*/
+			GameObject c = (GameObject)Instantiate(Resources.Load ("Prefabs/chromosome pair "+i));
+			c.transform.position = new Vector2(places[i],c.transform.position.y);
+			c.transform.parent = GameObject.Find ("chromosome analyser").transform;
+
 		}
 		ArrayRefresh();
 	}

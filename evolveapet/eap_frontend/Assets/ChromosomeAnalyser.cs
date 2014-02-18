@@ -31,10 +31,8 @@ namespace EvolveAPet{
 				int k = 4;
 				if (i == 1 || i == 2 || i == 4) k = 5;
 				for (int j = 0; j<k; j++) {
-					Gene g1 = genome.FrontEndGetGene(i, j, 1);
-					pChromo.transform.FindChild("chromosome m").FindChild("gene "+j).GetComponent<PhysicalGene>().gene = g1;
-					Gene g2 = genome.FrontEndGetGene(i, j, 0);
-					pChromo.transform.FindChild("chromosome f").FindChild("gene "+j).GetComponent<PhysicalGene>().gene = g2;
+					pChromo.transform.FindChild("chromosome m").FindChild("gene "+j).GetComponent<PhysicalGene>().gene = genome.FrontEndGetGene(i, j, 1);
+					pChromo.transform.FindChild("chromosome f").FindChild("gene "+j).GetComponent<PhysicalGene>().gene = genome.FrontEndGetGene(i, j, 0);
 				}
 			}
 		}
