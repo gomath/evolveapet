@@ -16,6 +16,7 @@ public class ChromosomeScreen : MonoBehaviour {
 				if (places[n] != 99f) {
 					GameObject c = (GameObject)Instantiate(Resources.Load ("Prefabs/chromosome pair "+i));
 					c.transform.position = new Vector2(places[n],c.transform.position.y);
+					c.transform.parent = GameObject.Find ("chromosome analyser").transform;
 					places[n] = 99f;
 					break;
 				}
