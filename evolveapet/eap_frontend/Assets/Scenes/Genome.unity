@@ -196,7 +196,7 @@ MonoBehaviour:
   activeChromosome: {fileID: 0}
   prevChromosome: {fileID: 0}
   activeGene: {fileID: 0}
-  translateBy: 10
+  translateBy: 4
 --- !u!4 &1198393778
 Transform:
   m_ObjectHideFlags: 0

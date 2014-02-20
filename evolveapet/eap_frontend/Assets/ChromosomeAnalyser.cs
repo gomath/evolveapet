@@ -44,6 +44,7 @@ namespace EvolveAPet{
 		public void SetActiveChromosome(GameObject g) {
 			if (!(trackUp&&trackDown)) return;
 			if (activeChromosome != null) {
+				if (g == activeChromosome) return;
 				prevChromosome = activeChromosome;
 				StartCoroutine("TrackUp");
 			}
@@ -56,6 +57,7 @@ namespace EvolveAPet{
 			float start = prevChromosome.transform.position.y;
 			while(prevChromosome.transform.position.y<start + translateBy) {
 				prevChromosome.transform.Translate(10*Vector2.up*Time.deltaTime);
+				if (prevChromosome.transform.position.y>start + translateBy) prevChromosome.transform.position = new Vector2(prevChromosome.transform.position.x, start + translateBy);
 				yield return new WaitForSeconds(0f);
 			}
 			trackUp = true;
@@ -66,9 +68,33 @@ namespace EvolveAPet{
 			float start = activeChromosome.transform.position.y;
 			while(activeChromosome.transform.position.y>start - translateBy) {
 				activeChromosome.transform.Translate(-10*Vector2.up*Time.deltaTime);
+				if (activeChromosome.transform.position.y<start - translateBy) activeChromosome.transform.position = new Vector2(activeChromosome.transform.position.x, start - translateBy);
 				yield return new WaitForSeconds(0f);
 			}
 			trackDown = true;
+		}
+
+		void OnGUI() {
+			float originalWidth = 876.0f;  // define here the original resolution
+			float originalHeight = 493.0f; // you used to create the GUI contents 
+			Vector3 scale;
+
+			scale.x = Screen.width/originalWidth; // calculate hor scale
+			scale.y = Screen.height/originalHeight; // calculate vert scale
+			scale.z = 1;
+			Matrix4x4 svMat = GUI.matrix; // save current matrix
+			// substitute matrix - only scale is altered from standard
+			GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, scale);
+
+			if (trackDown && activeChromosome != null) {
+				Vector2 pos = Camera.main.WorldToScreenPoint(activeChromosome.transform.position);
+				GUILayout.BeginArea (new Rect (Screen.width*(pos.x+20)/originalWidth,2*originalHeight/3f,200,200));
+				GUILayout.Box("Test");
+				GUILayout.EndArea();
+			}
+
+			// restore matrix before returning
+			GUI.matrix = svMat; // restore matrix
 		}
 	}
 }
