@@ -1,0 +1,130 @@
+fileFormatVersion: 2
+guid: 3b6d73740ac4b86498f7a30492f42582
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: chinchilla_0
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 1063
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: chinchilla_1
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 687
+        width: 279
+        height: 315
+      alignment: 9
+      pivot: {x: .198426053, y: .138111517}
+    - name: chinchilla_2
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 358
+        width: 572
+        height: 415
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: chinchilla_3
+      rect:
+        serializedVersion: 2
+        x: 1338
+        y: 432
+        width: 469
+        height: 555
+      alignment: 9
+      pivot: {x: .418980181, y: .0696460083}
+    - name: chinchilla_4
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 277
+        width: 304
+        height: 346
+      alignment: 9
+      pivot: {x: .866055012, y: .554910839}
+    - name: chinchilla_5
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 496
+        width: 67
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: chinchilla_6
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 224
+        width: 24
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: chinchilla_8
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 52
+        width: 188
+        height: 219
+      alignment: 9
+      pivot: {x: .615496397, y: .772655845}
+    - name: chinchilla_9
+      rect:
+        serializedVersion: 2
+        x: 1045
+        y: 89
+        width: 330
+        height: 238
+      alignment: 9
+      pivot: {x: .63159585, y: .773697436}
+  spritePackingTag: 
+  userData: 

@@ -21,8 +21,6 @@ public class MainMenu : MonoBehaviour {
 		// substitute matrix to scale if screen nonstandard
 		GUI.matrix = Matrix4x4.TRS (Vector3.zero, Quaternion.identity, scale);
 
-		GUI.color = Color.blue;
-
 		// Make the first button. If it is pressed, Application.Loadlevel (1) will be executed
 		if(GUI.Button(new Rect(700,82,150,40), "New Game")) {
 			//for now loads Animal Scene; should load stable scene

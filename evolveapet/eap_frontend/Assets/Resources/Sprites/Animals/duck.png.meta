@@ -1,0 +1,121 @@
+fileFormatVersion: 2
+guid: d6c5b47e1c4e5c34ba9faf87ad090cef
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: duck_0
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 505
+        width: 416
+        height: 385
+      alignment: 9
+      pivot: {x: .609822869, y: .118205599}
+    - name: duck_1
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 869
+        width: 212
+        height: 131
+      alignment: 9
+      pivot: {x: .265758872, y: .151249304}
+    - name: duck_2
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 779
+        width: 30
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: duck_3
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 601
+        width: 478
+        height: 199
+      alignment: 9
+      pivot: {x: .117687531, y: .490018159}
+    - name: duck_4
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 734
+        width: 94
+        height: 36
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: duck_7
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 108
+        width: 675
+        height: 349
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: duck_8
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 353
+        width: 174
+        height: 180
+      alignment: 9
+      pivot: {x: .164495364, y: .275470316}
+    - name: duck_9
+      rect:
+        serializedVersion: 2
+        x: 1087
+        y: 127
+        width: 105
+        height: 219
+      alignment: 9
+      pivot: {x: .756604612, y: .882760227}
+  spritePackingTag: 
+  userData: 

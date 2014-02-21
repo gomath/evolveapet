@@ -1,0 +1,121 @@
+fileFormatVersion: 2
+guid: ccf819aec2448934682dbf8287bfc079
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: cat_0
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 834
+        width: 116
+        height: 166
+      alignment: 9
+      pivot: {x: .489286214, y: .164128318}
+    - name: cat_1
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 547
+        width: 568
+        height: 321
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: cat_2
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 635
+        width: 265
+        height: 356
+      alignment: 9
+      pivot: {x: .151722342, y: .127325848}
+    - name: cat_3
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 511
+        width: 368
+        height: 310
+      alignment: 9
+      pivot: {x: .765516102, y: .316137314}
+    - name: cat_4
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 562
+        width: 62
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: cat_5
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 406
+        width: 35
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: cat_6
+      rect:
+        serializedVersion: 2
+        x: 663
+        y: 50
+        width: 125
+        height: 390
+      alignment: 9
+      pivot: {x: .483848155, y: .877903342}
+    - name: cat_7
+      rect:
+        serializedVersion: 2
+        x: 1178
+        y: 29
+        width: 257
+        height: 535
+      alignment: 9
+      pivot: {x: .342884094, y: .88491863}
+  spritePackingTag: 
+  userData: 
