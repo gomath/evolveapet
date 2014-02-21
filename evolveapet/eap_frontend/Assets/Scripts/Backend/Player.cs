@@ -35,7 +35,7 @@ namespace EvolveAPet
 			String str = "Today's challenge is : Breed an animal which ";
 
 			if (currentDailyChallenge == -1){
-				str = "You have already completed a daily challenge today, try again tomorrow";
+				str = "You have already completed a daily challenge today!";
 			}
 			else str += allDailyChallenges [currentDailyChallenge] + ".";
 			return str;
