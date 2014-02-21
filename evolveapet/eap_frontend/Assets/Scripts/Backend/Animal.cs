@@ -143,7 +143,7 @@ namespace EvolveAPet
 			//Decodes Colour
 			int genePos; //The position of the gene for the current trait
 			genePos = Genome.MotherChromosomes[n].getTraitPosition(0);
-			if (genePos != 1) {
+			if (genePos != -1) {
 				int colour = Genome.GetTrait(n,0);
 				// COLOUR = RED << 16 | GREEN << 8 | BLUE
 				rgbArray[0] = (colour & 0x00FF0000) >> 16;
