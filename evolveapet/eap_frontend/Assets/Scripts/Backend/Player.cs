@@ -12,7 +12,7 @@ namespace EvolveAPet
 
         public string UserName { set; get; }
         public int Points { get; set; }
-        private readonly Stable _stable;
+		public Stable _stable{get; set;}
 		public int currentDailyChallenge;
 		public DateTime dailyChallengeSetDate;
 		public String[] allDailyChallenges = {"is the biggest","is the smallest","is the reddest","is the greenest", "is the bluest",  
@@ -32,12 +32,12 @@ namespace EvolveAPet
         // probably we want to serialize him to to save the game ...
 
 		public String getDailyChallengeString(){
-			String str = "Today's challenge is to breed an animal which ";
+			String str = "Today's challenge is : Breed an animal which ";
 
 			if (currentDailyChallenge == -1){
 				str = "You have already completed a daily challenge today, try again tomorrow";
 			}
-			else str += allDailyChallenges [currentDailyChallenge];
+			else str += allDailyChallenges [currentDailyChallenge] + ".";
 			return str;
 
 		}
@@ -54,8 +54,9 @@ namespace EvolveAPet
 			}
 
 		}
-		public int completeDailyChallenge(){ // the int is the number of points in the 
-			if (currentDailyChallenge == -1) return 0; // give no points in the event that there is no daily challenge
+		public void completeDailyChallenge(){ // the int is the number of points in the 
+			if (currentDailyChallenge != -1) {
+						 // give no points in the event that there is no daily challenge
 			int points = 0 ;
 			int activeAnimalNo = Stable.activeAnimalNumber;
 			Animal activeAnimal = Stable.ElementAt(activeAnimalNo);
@@ -92,8 +93,10 @@ namespace EvolveAPet
 				}
 			}
 
+			Points = points;
+			}
+			
 			newDailyChallenge();
-			return points;
 		}
         //Will be adding function for the KnownTraits but not boolean to boolean.
     }

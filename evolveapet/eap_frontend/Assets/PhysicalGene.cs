@@ -8,7 +8,7 @@ namespace EvolveAPet{
 
 		// Use this for initialization
 		void Start () {
-		
+			
 		}
 		
 		// Update is called once per frame
@@ -17,8 +17,10 @@ namespace EvolveAPet{
 		}
 
 		void OnMouseDown() {
-			SendMessageUpwards("SetActiveGene", gameObject);
-			SendMessageUpwards("SetActiveChromosome",transform.parent.gameObject);
+			//SendMessageUpwards("SetActiveGene", gameObject);
+			//SendMessageUpwards("SetActiveChromosome",transform.parent.gameObject);
 		}
+
+
 	}
 }
