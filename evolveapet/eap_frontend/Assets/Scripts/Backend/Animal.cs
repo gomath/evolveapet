@@ -39,7 +39,7 @@ namespace EvolveAPet
             //Egg = true; //Animals will alwyas be in egg form when created
             //Firstly, populate all the genes in the genome
 			Genome = new Genome (chromA, chromB);
-            _parents = new Animal[] { parent1, parent2 };
+            Parent = new Animal[] { parent1, parent2 };
 
             // New animal has max. generations of your parents + 1
 			//Generation = (parent1.Generation > parent2.Generation) ? parent1.Generation+1 : parent2.Generation+1;
