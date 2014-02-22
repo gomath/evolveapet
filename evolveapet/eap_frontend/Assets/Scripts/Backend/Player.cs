@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization.Formatters.Binary; 
+using System.IO;
 
 namespace EvolveAPet
 {
+	[Serializable]
     public class Player
     {
 
         public string NickName { set; get; }
-
         public string UserName { set; get; }
         public int Points { get; set; }
 		public Stable _stable{get; set;}
@@ -18,19 +20,47 @@ namespace EvolveAPet
 		public String[] allDailyChallenges = {"is the biggest","is the smallest","is the reddest","is the greenest", "is the bluest",  
 			 "has spots on as many body parts as possible", "has stripes on as many body parts as possible"}; // add new challenges at end, do not change order
         public Stable Stable { get { return _stable; } }
+		public bool[,] guessedGenes; // All the genes in the animal. If the array member at [i][j] is true, that means the the jth gene on the ith chromosome has been guessed
+		public static Player playerInstance = null; // I should have thought of this earlier
 
-        public Player(Stable s, string username)
+
+
+		public Player(Stable s, string username)
         {
             Points = 0;
             UserName = username;
             NickName = username;
             _stable = s;
+			guessedGenes = new bool[7, 6];//This wastes some space, but easy. 
 			newDailyChallenge ();
-
+			playerInstance = this;
         }
+		
+		public static void loadGame(){
+			
+			BinaryFormatter bf = new BinaryFormatter ();
+			Player a;
+			FileStream inStream = new FileStream (Environment.CurrentDirectory + "/save.sav", FileMode.Open);
+			a = bf.Deserialize(inStream) as Player;
+			Player.playerInstance = a;
+			
+		}
+		
+		public void saveGame(){
+			string path = Environment.CurrentDirectory + "/save.sav";
+			BinaryFormatter bf = new BinaryFormatter();
+			FileStream outStream = new FileStream(path,FileMode.OpenOrCreate);
+			bf.Serialize (outStream,this);
+			outStream.Close();
+		}
 
         // probably we want to serialize him to to save the game ...
 
+		public void guessGene(int i, int j){
+
+			guessedGenes [i,j] = true;
+		
+		}
 		public String getDailyChallengeString(){
 			String str = "Today's challenge is : Breed an animal which ";
 
@@ -42,7 +72,7 @@ namespace EvolveAPet
 
 		}
 		public void newDailyChallenge(){
-			if(DateTime.Compare(DateTime.Today, dailyChallengeSetDate) ==0) //Daily challenge was set today
+			if(DateTime.Compare(DateTime.Today, dailyChallengeSetDate) == 0) //Daily challenge was set today
 			{
 				currentDailyChallenge = -1;
 			}
@@ -95,8 +125,6 @@ namespace EvolveAPet
 
 			Points = points;
 			}
-			
-			newDailyChallenge();
 		}
         //Will be adding function for the KnownTraits but not boolean to boolean.
     }

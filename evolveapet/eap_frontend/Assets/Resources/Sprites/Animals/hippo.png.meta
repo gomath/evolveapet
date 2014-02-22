@@ -1,0 +1,184 @@
+fileFormatVersion: 2
+guid: 79a22cc0320aba645b9791566ac72c12
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: hippo_0
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 915
+        width: 72
+        height: 80
+      alignment: 9
+      pivot: {x: .357606679, y: .243692011}
+    - name: hippo_1
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 932
+        width: 219
+        height: 158
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: hippo_6
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 727
+        width: 73
+        height: 107
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: hippo_7
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 766
+        width: 46
+        height: 44
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: hippo_8
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 756
+        width: 246
+        height: 132
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: hippo_10
+      rect:
+        serializedVersion: 2
+        x: 996
+        y: 790
+        width: 98
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: hippo_13
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 485
+        width: 343
+        height: 208
+      alignment: 9
+      pivot: {x: .927001774, y: .5}
+    - name: hippo_14
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 495
+        width: 293
+        height: 195
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: hippo_15
+      rect:
+        serializedVersion: 2
+        x: 963
+        y: 640
+        width: 169
+        height: 61
+      alignment: 9
+      pivot: {x: .162011862, y: .427969515}
+    - name: hippo_16
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 367
+        width: 299
+        height: 112
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: hippo_19
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 239
+        width: 142
+        height: 226
+      alignment: 9
+      pivot: {x: .43811509, y: .901797295}
+    - name: hippo_20
+      rect:
+        serializedVersion: 2
+        x: 1018
+        y: 265
+        width: 111
+        height: 189
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: hippo_22
+      rect:
+        serializedVersion: 2
+        x: 1196
+        y: 259
+        width: 116
+        height: 200
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: hippo_25
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 160
+        width: 250
+        height: 146
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: hippo_18
+      rect:
+        serializedVersion: 2
+        x: 1025
+        y: 736
+        width: 39
+        height: 27
+      alignment: 0
+      pivot: {x: .5, y: .5}
+  spritePackingTag: 
+  userData: 

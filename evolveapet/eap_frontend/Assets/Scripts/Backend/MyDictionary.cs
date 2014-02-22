@@ -44,10 +44,12 @@ namespace EvolveAPet
 		private static String DOTS = "DOTS";
 		private static String STRIPES = "STRIPES";
 
-		private static String CAT = "CAT";
-		private static String CHINCHILLA = "CHINCHILLA";
-		private static String HORSE = "HORSE";
-		private static String DUCK = "DUCK";
+		private static String DINO = "DINO";
+		private static String STEGO = "STEGO";
+		private static String RHINO = "RHINO";
+		private static String SHARK = "SHARK";
+		private static String HIPPO = "HIPPO";
+		private static String SHEEP = "SHEEP";
 
 		private static String CARNIVORE = "CARNIVORE";
 		private static String HERBIVORE = "HERBIVORE";
@@ -59,10 +61,12 @@ namespace EvolveAPet
 		private static String[] enumShapes = new String[]{
 			CARNIVORE,
 			HERBIVORE,
-			CAT,
-			CHINCHILLA,
-			HORSE,
-			DUCK
+			DINO,
+			STEGO,
+			RHINO,
+			SHARK,
+			HIPPO,
+			SHEEP
 		};
 
 		/// <summary>
@@ -114,10 +118,12 @@ namespace EvolveAPet
 		};
 
 		private readonly static String[][] auxShapeName = new String[][]{
-			new String[] {"c","cat",CAT},
-			new String[] {"ch","chinchilla",CHINCHILLA},
-			new String[] {"h","horse",HORSE},
-			new String[] {"d","duck",DUCK}
+			new String[] {"d","dino",DINO},
+			new String[] {"st","stego",STEGO},
+			new String[] {"rh","rhino",RHINO},
+			new String[] {"sk","shark",SHARK},
+			new String[] {"h","hippo",HIPPO},
+			new String[] {"sh","sheep",SHEEP}
 		};
 
 		private readonly static String[][] auxTeethShapeName = new String[][]{
