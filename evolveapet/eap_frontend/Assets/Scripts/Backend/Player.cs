@@ -40,14 +40,14 @@ namespace EvolveAPet
 			
 			BinaryFormatter bf = new BinaryFormatter ();
 			Player a;
-			FileStream inStream = new FileStream (Environment.CurrentDirectory + "save.sav", FileMode.Open);
+			FileStream inStream = new FileStream (Environment.CurrentDirectory + "/save.sav", FileMode.Open);
 			a = bf.Deserialize(inStream) as Player;
 			Player.playerInstance = a;
 			
 		}
 		
 		public void saveGame(){
-			string path = Environment.CurrentDirectory + "save.sav";
+			string path = Environment.CurrentDirectory + "/save.sav";
 			BinaryFormatter bf = new BinaryFormatter();
 			FileStream outStream = new FileStream(path,FileMode.OpenOrCreate);
 			bf.Serialize (outStream,this);
