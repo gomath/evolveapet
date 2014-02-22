@@ -32,6 +32,8 @@ public class PhysicalChromosome : MonoBehaviour {
 	public void InitializeUnderlyingChromosome(Chromosome ch){
 			chromosome = ch;
 			for (int i=0; i<chromosome.NumOfGenes; i++) {
+				if(ch.WhereHasBeenSplit >=0 && i>=ch.WhereHasBeenSplit){
+				/*
 				int r = Global.rand.Next(4);
 				Color c = Color.white;
 				switch(r){
@@ -39,10 +41,24 @@ public class PhysicalChromosome : MonoBehaviour {
 					case 1: c = Color.black; break;
 					case 2: c = Color.blue; break;
 					case 3: c = Color.red; break;
-				}
-				transform.FindChild("gene " + i).GetComponent<SpriteRenderer>().color = c;				
-			}
+				}*/
+					transform.FindChild("gene " + i).GetComponent<SpriteRenderer>().color = Color.red;	
+				} else{
+					transform.FindChild("gene " + i).GetComponent<SpriteRenderer>().color = Color.white;	
 
+				}
+			}
+	}
+
+	public void RecolorAllYourGenesAccordingToSplit(){
+			for (int i=0; i<chromosome.NumOfGenes; i++) {
+				if(chromosome.WhereHasBeenSplit >=0 && i>=chromosome.WhereHasBeenSplit){
+					transform.FindChild("gene " + i).GetComponent<SpriteRenderer>().color = Color.red;	
+				} else{
+					transform.FindChild("gene " + i).GetComponent<SpriteRenderer>().color = Color.white;	
+                    
+                }
+			}
 	}
 
 	public void PutMyTetradIntoCentre(){

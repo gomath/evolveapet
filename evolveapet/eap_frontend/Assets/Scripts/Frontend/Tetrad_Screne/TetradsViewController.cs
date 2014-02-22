@@ -6,10 +6,11 @@ namespace EvolveAPet {
 
 public class TetradsViewController : MonoBehaviour {
 	
-	PhysicalChromosome[,] chromosomes;
+	Genome g; // TODO remove at the end
+	public PhysicalChromosome[,] chromosomes;
 	GameObject[,] magnifiedChromosomes;
 	GameObject activeChromosome;
-		
+
 	bool chosen = false; // TODO - remove at the end
 
 	// Use this for initialization
@@ -31,13 +32,13 @@ public class TetradsViewController : MonoBehaviour {
 			
 			//Animal a = new Animal();
 			//Genome g = a.Genome;
-				Genome g = new Genome();
+			g = new Genome();
 			Chromosome[,] ch = g.CreateTetradsForBreeding();
 			
 			chromosomes[i,0].InitializeUnderlyingChromosome(ch[i,1]);
 			chromosomes[i,1].InitializeUnderlyingChromosome(ch[i,0]);
-			chromosomes[i,2].InitializeUnderlyingChromosome(ch[i,2]);
-			chromosomes[i,3].InitializeUnderlyingChromosome(ch[i,3]);
+			chromosomes[i,2].InitializeUnderlyingChromosome(ch[i,3]);
+			chromosomes[i,3].InitializeUnderlyingChromosome(ch[i,2]);
 
 			/*
 			// Initialize random chromosomes and their underlying genes
@@ -71,6 +72,8 @@ public class TetradsViewController : MonoBehaviour {
 
 			// Color active magnified chromosome according to its source physical chromosome
 			for (int i=0; i<ch.Chromosome.NumOfGenes; i++) {
+				activeChromosome.transform.FindChild("gene " + i).GetComponent<SpriteRenderer>().color = ch.transform.FindChild("gene " + i).GetComponent<SpriteRenderer>().color;
+				/*
 				Color col;
 				if(i>=ch.Chromosome.WhereHasBeenSplit){
 					col = Color.red;
@@ -78,7 +81,7 @@ public class TetradsViewController : MonoBehaviour {
 					col = Color.white;
 				}
 				activeChromosome.transform.FindChild("gene " + i).GetComponent<SpriteRenderer>().color = col;// ch.transform.FindChild("gene " + i).GetComponent<SpriteRenderer>().color;
-				 
+				*/
 			}
 
 			// Initializing underlying genes
@@ -91,7 +94,6 @@ public class TetradsViewController : MonoBehaviour {
 			}
 
 	}
-
 
 	/// <summary>
 	/// Called when choosing is finished and button clicked. 
@@ -108,11 +110,58 @@ public class TetradsViewController : MonoBehaviour {
 		chosen = true;
 	}
 
+	
+
+	void ToggleEyes(bool on){
+			// TODO
+	}
+		void ToggleEars(bool on){
+         //TODO   
+		}
+
+		void ToggleHead(bool on){
+			Locus[] loci = g.FrontEndGetLociByBodyPart (EnumBodyPart.HEAD);
+			SetColorToGenes (on, loci);
+            
+		}
+		void ToggleTorso(bool on){
+          //TODO  
+		}
+		void ToggleArms(bool on){
+            // TODO
+		}
+		void ToggleLegs(bool on){
+           	// TODO 
+		}
+		void ToggleTail(bool on){
+			// TODO
+        }
+        
+        
+        void SetColorToGenes(bool on, Locus[] loci){
+		foreach(Locus l in loci){
+				int ch = l.Chromosome;
+				int g = l.GeneNumber;
+				for(int i=0; i<4; i++){
+					PhysicalChromosome temp = chromosomes[ch,i];
+					if(!on){
+						temp.RecolorAllYourGenesAccordingToSplit();
+					} else {
+						Transform gene = temp.transform.FindChild("gene " + g);
+						gene.GetComponent<SpriteRenderer>().color = Color.green;
+					}
+
+				}
+    	}
+	}
+
 	void OnGUI(){
 		if (chosen) {
 			GUI.Box(new Rect(0,0,100,40),"Chosen");
 		}
 	}
+
+	
 }
 
 }

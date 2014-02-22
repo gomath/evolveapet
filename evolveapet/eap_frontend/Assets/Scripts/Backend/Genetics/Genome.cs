@@ -152,7 +152,10 @@ namespace EvolveAPet
 				fatherChrom = frontEndChromosomes[1,i];		
 				motherChrom = frontEndChromosomes[0,i];
 				crossOver = CrossOver(motherChrom, fatherChrom); // crossOver[0] originally mothers chromosome 
-				
+
+				//motherChrom.WhereHasBeenSplit = crossOver[0].WhereHasBeenSplit;
+				//fatherChrom.WhereHasBeenSplit = crossOver[0].WhereHasBeenSplit;
+
 				res[i,0] = new Chromosome (motherChrom);
 				res[i,1] = new Chromosome (fatherChrom);
 				res[i,2] = new Chromosome (crossOver[0]);
@@ -275,6 +278,9 @@ namespace EvolveAPet
 				fatherChrom = _fatherChromosome[i];
 				motherChrom = _motherChromosome[i];
 				crossOver = CrossOver(motherChrom, fatherChrom); // crossOver[0] originally mothers chromosome 
+
+				//motherChrom.WhereHasBeenSplit = crossOver[0].WhereHasBeenSplit;
+				//fatherChrom.WhereHasBeenSplit = crossOver[0].WhereHasBeenSplit;
 
 				res[i,0] = new Chromosome (motherChrom);
 				res[i,1] = new Chromosome (fatherChrom);

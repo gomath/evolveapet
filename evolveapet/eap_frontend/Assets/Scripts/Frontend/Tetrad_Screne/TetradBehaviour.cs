@@ -68,5 +68,57 @@ public class TetradBehaviour : MonoBehaviour {
 		float offset = transform.localPosition.y;
 		SendMessageUpwards ("TranslateAllTetradsByOffset", offset);
 	}
+	
+
+	String GetGeneNamesInTetrad(int chromosomeNum,PhysicalChromosome[,] ch){
+		String res = "";
+		String f = "{0,-10}";
+		for(int i=MyDictionary.numOfGenesOnChromosome[(EnumBodyPart)tetradNum]-1; i>=0; i--){
+				int split = ch[tetradNum,chromosomeNum].Chromosome.WhereHasBeenSplit;
+				String add = "";
+				if(i >= split && split != -1){
+					add = "-" + ch[tetradNum,chromosomeNum].Chromosome.Genes[i].GetWholeNameEncoded() + "-";
+				} else {
+					add = ch[tetradNum,chromosomeNum].Chromosome.Genes[i].GetWholeNameEncoded();
+				}
+				res += String.Format(f,add);
+				res += "\n";
+		}
+		
+		return res;
+	}
+
+	float originalWidth = 1098.0f;
+	float originalHeight = 618.0f;
+	
+	Vector3 scale = new Vector3 ();
+	public	GUISkin myskin;
+	void OnGUI(){
+
+			PhysicalChromosome[,] temp = transform.parent.parent.GetComponent<TetradsViewController> ().chromosomes;
+
+
+			scale.x = Screen.width / originalWidth;
+			scale.y = Screen.height / originalHeight;
+			scale.z = 1;
+			var svMat = GUI.matrix;
+			
+			// substitute matrix to scale if screen nonstandard
+			GUI.matrix = Matrix4x4.TRS (Vector3.zero, Quaternion.identity, scale);
+			Vector3 u = Camera.main.WorldToScreenPoint(transform.FindChild("description_anchor").position);
+			Vector3 v = new Vector3(originalWidth*u.x/Screen.width,originalHeight*u.y/Screen.height,1f);
+			int h = 100;
+			int w = 60;
+
+			string geneNames = GetGeneNamesInTetrad (0, temp);
+			GUI.TextArea(new Rect (v.x, originalHeight - v.y, w, h), geneNames);
+			geneNames = GetGeneNamesInTetrad (1, temp);
+			GUI.TextArea(new Rect (v.x + w, originalHeight - v.y, w, h), geneNames);
+			geneNames = GetGeneNamesInTetrad (2, temp);
+			GUI.TextArea(new Rect (v.x, originalHeight - v.y + h, w, h), geneNames);
+			geneNames = GetGeneNamesInTetrad (3, temp);
+			GUI.TextArea(new Rect (v.x + w, originalHeight - v.y + h, w, h), geneNames);
+			
+	}
 }
 }
