@@ -1,12 +1,15 @@
 ﻿//C#
 using UnityEngine;
 using System.Collections;
+using System.IO;
+using System;
+
 namespace EvolveAPet{
 public class MainMenu : MonoBehaviour {
 	float originalWidth = 1098.0f;
 	float originalHeight = 618.0f;
 	Vector3 scale = new Vector3();
-
+		bool showPopUp = false;
 	public GUISkin mySkin;
 
 	void OnGUI () {
@@ -17,23 +20,29 @@ public class MainMenu : MonoBehaviour {
 		scale.y = Screen.height / originalHeight;
 		scale.z = 1;
 		var svMat = GUI.matrix;
-
 		// substitute matrix to scale if screen nonstandard
 		GUI.matrix = Matrix4x4.TRS (Vector3.zero, Quaternion.identity, scale);
-
+		if (showPopUp){
+			GUI.Window(0, new Rect((Screen.width / 2) - 150, (Screen.height / 2) - 75, 300, 250), ShowGUI, "Test");
+		}
 		// Make the first button. If it is pressed, Application.Loadlevel (1) will be executed
 		if(GUI.Button(new Rect(660,82,150,40), "Play")) {
 			//for now loads Animal Scene; should load stable scene
 
-			//Loads the player in from memory
-			Player currentPlayer = Player.playerInstance;
+				Player currentPlayer = Player.playerInstance; //Checks if there is already an instantiated player
 				if (currentPlayer==null){
-					Player.loadGame(); //Loads player in from memory if the object does not exist
+					if (!File.Exists(Environment.CurrentDirectory + "save.sav")){ //Checks if a save game exists
+						showPopUp = true;
+
+					}
+					else Player.loadGame(); //Loads player in from memory if there is a save
+
 				}
 
+				if (!showPopUp)Application.LoadLevel("RandomBreeding"); //TODO Change to stable
 
-			Application.LoadLevel("RandomBreeding");
-		}
+				
+			}
 		
 		// Make the second button.
 		if(GUI.Button(new Rect(570,272,200,40), "Import a friend's animal!")) {
@@ -54,5 +63,8 @@ public class MainMenu : MonoBehaviour {
 		//restore matrix before return
 		GUI.matrix = svMat;
 	}
+		void ShowGUI( int windowID){ //This is what is in the pop up window
+			GUI.Label(new Rect(65, 40, 200, 30), "PUT YOUR MESSAGE HERE");
+		}
 }
 }
