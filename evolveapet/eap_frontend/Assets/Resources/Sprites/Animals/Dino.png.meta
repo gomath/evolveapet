@@ -1,0 +1,202 @@
+fileFormatVersion: 2
+guid: 1241db9c61c059546813a3f2d938c517
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: Dino_0
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 785
+        width: 122
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Dino_3
+      rect:
+        serializedVersion: 2
+        x: 989
+        y: 803
+        width: 253
+        height: 229
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Dino_4
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 537
+        width: 302
+        height: 214
+      alignment: 9
+      pivot: {x: .829260826, y: .296314567}
+    - name: Dino_5
+      rect:
+        serializedVersion: 2
+        x: 746
+        y: 671
+        width: 250
+        height: 199
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Dino_8
+      rect:
+        serializedVersion: 2
+        x: 1229
+        y: 509
+        width: 302
+        height: 289
+      alignment: 9
+      pivot: {x: .116614737, y: .297327578}
+    - name: Dino_10
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 695
+        width: 35
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Dino_14
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 403
+        width: 158
+        height: 135
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Dino_16
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 413
+        width: 311
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: Dino_17
+      rect:
+        serializedVersion: 2
+        x: 1609
+        y: 522
+        width: 218
+        height: 240
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Dino_18
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 378
+        width: 173
+        height: 71
+      alignment: 9
+      pivot: {x: .704715788, y: .5}
+    - name: Dino_21
+      rect:
+        serializedVersion: 2
+        x: 953
+        y: 93
+        width: 143
+        height: 227
+      alignment: 9
+      pivot: {x: .5, y: .896042883}
+    - name: Dino_23
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 286
+        width: 95
+        height: 37
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Dino_26
+      rect:
+        serializedVersion: 2
+        x: 610
+        y: 69
+        width: 115
+        height: 202
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Dino_29
+      rect:
+        serializedVersion: 2
+        x: 1314
+        y: 175
+        width: 251
+        height: 234
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Dino_31
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 124
+        width: 215
+        height: 165
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Dino_34
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 175
+        width: 101
+        height: 40
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Dino_39
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 96
+        width: 108
+        height: 189
+      alignment: 0
+      pivot: {x: .5, y: .5}
+  spritePackingTag: 
+  userData: 
