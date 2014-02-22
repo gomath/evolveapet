@@ -24,7 +24,7 @@ public class MainMenu : MonoBehaviour {
 		// substitute matrix to scale if screen nonstandard
 		GUI.matrix = Matrix4x4.TRS (Vector3.zero, Quaternion.identity, scale);
 		if (showPopUp){//If the pop up should be on screen, creates it
-			GUI.Window(0, new Rect((Screen.width / 2) - 170, (Screen.height / 2) - 85, 300, 250), ShowGUI, "Hello!");
+			GUI.Window(0, new Rect((originalWidth / 2) - 170, (originalHeight / 2) - 85, 300, 250), ShowGUI, "Hello!");
 		}
 
 		// Make the first button. If it is pressed, Application.Loadlevel (1) will be executed
@@ -60,7 +60,7 @@ public class MainMenu : MonoBehaviour {
 		}
 
 		// Make the third button.
-		if(GUI.Button(new Rect(580,470,50,40), "Quit")) {
+		if(GUI.Button(new Rect(580,470,60,40), "Quit")) {
 			//quit
 			Application.Quit();
 		}
@@ -69,9 +69,9 @@ public class MainMenu : MonoBehaviour {
 		GUI.matrix = svMat;
 	}
 		void ShowGUI( int windowID){ //This is what is in the pop up window
-			GUI.Label(new Rect(65, 40, 200, 50), "It appears that you do not have a save game. Welcome to Evolve a Pet!");
+			GUI.Label(new Rect(65, 40, 200, 80), "It appears that you do not have a save game.\nWelcome to Evolve a Pet!");
 
-			playerName = GUI.TextField(new Rect(60, 130, 200, 20), playerName, 25); //Allows player to enter their name
+			playerName = GUI.TextField(new Rect(60, 130, 200, 40), playerName, 25); //Allows player to enter their name
 
 			if (GUI.Button(new Rect(100, 170, 110, 50), "Get Started!"))
 				
