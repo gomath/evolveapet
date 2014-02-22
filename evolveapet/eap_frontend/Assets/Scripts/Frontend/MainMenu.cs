@@ -1,7 +1,7 @@
 ﻿//C#
 using UnityEngine;
 using System.Collections;
-
+namespace EvolveAPet{
 public class MainMenu : MonoBehaviour {
 	float originalWidth = 1098.0f;
 	float originalHeight = 618.0f;
@@ -26,7 +26,10 @@ public class MainMenu : MonoBehaviour {
 			//for now loads Animal Scene; should load stable scene
 
 			//Loads the player in from memory
-			Player currentPlayer;
+			Player currentPlayer = Player.playerInstance;
+				if (currentPlayer==null){
+					Player.loadGame(); //Loads player in from memory if the object does not exist
+				}
 
 
 			Application.LoadLevel("RandomBreeding");
@@ -51,4 +54,5 @@ public class MainMenu : MonoBehaviour {
 		//restore matrix before return
 		GUI.matrix = svMat;
 	}
+}
 }

@@ -3,24 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using System.Runtime.Serialization.Formatters.Binary; 
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary; 
+using System.IO;
 namespace EvolveAPet
 {
 	[Serializable]
     public class Player
     {
 
-        public static string NickName { set; get; }
-
-        public static string UserName { set; get; }
-        public static int Points { get; set; }
-		public static Stable _stable{get; set;}
-		public static int currentDailyChallenge;
-		public static DateTime dailyChallengeSetDate;
-		public static String[] allDailyChallenges = {"is the biggest","is the smallest","is the reddest","is the greenest", "is the bluest",  
+        public string NickName { set; get; }
+        public string UserName { set; get; }
+        public int Points { get; set; }
+		public Stable _stable{get; set;}
+		public int currentDailyChallenge;
+		public DateTime dailyChallengeSetDate;
+		public String[] allDailyChallenges = {"is the biggest","is the smallest","is the reddest","is the greenest", "is the bluest",  
 			 "has spots on as many body parts as possible", "has stripes on as many body parts as possible"}; // add new challenges at end, do not change order
-        public static Stable Stable { get { return _stable; } }
-		public static bool[,] guessedGenes; // All the genes in the animal. If the array member at [i][j] is true, that means the the jth gene on the ith chromosome has been guessed
-        
+        public Stable Stable { get { return _stable; } }
+		public bool[,] guessedGenes; // All the genes in the animal. If the array member at [i][j] is true, that means the the jth gene on the ith chromosome has been guessed
+		public static Player playerInstance = null; // I should have thought of this earlier
 
 
 
@@ -32,29 +35,35 @@ namespace EvolveAPet
             _stable = s;
 			guessedGenes = new bool[7, 6];//This wastes some space, but easy. 
 			newDailyChallenge ();
-
+			playerInstance = this;
         }
-
-		public Player(PlayerSaveGameState s){ // A disgusting hack to save the game. Don't do this at home kids
-			Points = s.Points;
-			UserName = s.UserName;
-			NickName = s.NickName;
-			_stable = s.Stable;
-			guessedGenes = s.guessedGenes;
-			currentDailyChallenge = s.currentDailyChallenge;
-			dailyChallengeSetDate = s.dailyChallengeSetDate;
-
+		
+		public static void loadGame(){
+			
+			BinaryFormatter bf = new BinaryFormatter ();
+			Player a;
+			FileStream inStream = new FileStream (Environment.CurrentDirectory + "save.sav", FileMode.Open);
+			a = bf.Deserialize(inStream) as Player;
+			Player.playerInstance = a;
+			
 		}
-
+		
+		public void saveGame(){
+			string path = Environment.CurrentDirectory + "save.sav";
+			BinaryFormatter bf = new BinaryFormatter();
+			FileStream outStream = new FileStream(path,FileMode.OpenOrCreate);
+			bf.Serialize (outStream,this);
+			outStream.Close();
+		}
 
         // probably we want to serialize him to to save the game ...
 
-		public static void guessGene(int i, int j){
+		public void guessGene(int i, int j){
 
 			guessedGenes [i,j] = true;
 		
 		}
-		public static String getDailyChallengeString(){
+		public String getDailyChallengeString(){
 			String str = "Today's challenge is : Breed an animal which ";
 
 			if (currentDailyChallenge == -1){
@@ -64,7 +73,7 @@ namespace EvolveAPet
 			return str;
 
 		}
-		public static void newDailyChallenge(){
+		public void newDailyChallenge(){
 			if(DateTime.Compare(DateTime.Today, dailyChallengeSetDate) == 0) //Daily challenge was set today
 			{
 				currentDailyChallenge = -1;
@@ -77,7 +86,7 @@ namespace EvolveAPet
 			}
 
 		}
-		public static void completeDailyChallenge(){ // the int is the number of points in the 
+		public void completeDailyChallenge(){ // the int is the number of points in the 
 			if (currentDailyChallenge != -1) {
 						 // give no points in the event that there is no daily challenge
 			int points = 0 ;
