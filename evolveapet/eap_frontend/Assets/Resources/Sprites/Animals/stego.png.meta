@@ -1,0 +1,184 @@
+fileFormatVersion: 2
+guid: bcfc717fb827bc8459bb7fd0e93cd2cc
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: stego_0
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 989
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: stego_2
+      rect:
+        serializedVersion: 2
+        x: 689
+        y: 901
+        width: 183
+        height: 237
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: stego_3
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 860
+        width: 26
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: stego_4
+      rect:
+        serializedVersion: 2
+        x: 1063
+        y: 866
+        width: 152
+        height: 92
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: stego_7
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 713
+        width: 80
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: stego_8
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 509
+        width: 351
+        height: 377
+      alignment: 9
+      pivot: {x: .47271049, y: .284037054}
+    - name: stego_9
+      rect:
+        serializedVersion: 2
+        x: 1048
+        y: 725
+        width: 236
+        height: 71
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: stego_14
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 545
+        width: 325
+        height: 139
+      alignment: 9
+      pivot: {x: .902792037, y: .442574263}
+    - name: stego_19
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 356
+        width: 237
+        height: 115
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: stego_21
+      rect:
+        serializedVersion: 2
+        x: 1149
+        y: 346
+        width: 111
+        height: 150
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: stego_23
+      rect:
+        serializedVersion: 2
+        x: 988
+        y: 306
+        width: 101
+        height: 186
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: stego_25
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 177
+        width: 213
+        height: 94
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: stego_27
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 59
+        width: 245
+        height: 173
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: stego_26
+      rect:
+        serializedVersion: 2
+        x: 787
+        y: 281
+        width: 151
+        height: 228
+      alignment: 9
+      pivot: {x: .512015462, y: .897263765}
+    - name: stego_14
+      rect:
+        serializedVersion: 2
+        x: 1001
+        y: 534
+        width: 353
+        height: 179
+      alignment: 9
+      pivot: {x: .0795666724, y: .31118995}
+  spritePackingTag: 
+  userData: 

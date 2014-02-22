@@ -1,0 +1,193 @@
+fileFormatVersion: 2
+guid: b18d9ff2756e2de49b9826053d1c10bc
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: sheep_0
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 957
+        width: 291
+        height: 216
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: sheep_5
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 750
+        width: 289
+        height: 174
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: sheep_6
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 812
+        width: 45
+        height: 42
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: sheep_8
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 799
+        width: 31
+        height: 41
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: sheep_9
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 683
+        width: 74
+        height: 101
+      alignment: 9
+      pivot: {x: .427368581, y: .194012031}
+    - name: sheep_13
+      rect:
+        serializedVersion: 2
+        x: 1017
+        y: 706
+        width: 38
+        height: 41
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: sheep_14
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 696
+        width: 52
+        height: 27
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: sheep_17
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 457
+        width: 278
+        height: 154
+      alignment: 9
+      pivot: {x: .896338582, y: .473824233}
+    - name: sheep_18
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 427
+        width: 319
+        height: 250
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: sheep_19
+      rect:
+        serializedVersion: 2
+        x: 971
+        y: 510
+        width: 88
+        height: 145
+      alignment: 9
+      pivot: {x: .286231995, y: .824337482}
+    - name: sheep_23
+      rect:
+        serializedVersion: 2
+        x: 748
+        y: 166
+        width: 142
+        height: 224
+      alignment: 9
+      pivot: {x: .452686995, y: .87791115}
+    - name: sheep_26
+      rect:
+        serializedVersion: 2
+        x: 1207
+        y: 193
+        width: 114
+        height: 159
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: sheep_27
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 280
+        width: 225
+        height: 100
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: sheep_29
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 96
+        width: 187
+        height: 109
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: sheep_31
+      rect:
+        serializedVersion: 2
+        x: 1017
+        y: 203
+        width: 102
+        height: 165
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: sheep_32
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 165
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: .5, y: .5}
+  spritePackingTag: 
+  userData: 
