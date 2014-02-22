@@ -149,8 +149,8 @@ namespace EvolveAPet {
 			Scale(tHead, h.size);
 			
 			//build mouth
-			if (h.teethShape == "CARNIVORE") {
-				head.transform.FindChild ("mouth").GetComponent<SpriteRenderer>().enabled = false;
+			if (h.teethShape == "HERBIVORE") {
+				head.transform.FindChild ("c mouth").GetComponent<SpriteRenderer>().enabled = false;
 			}
 
 			//build tail, scale/colour as needed
