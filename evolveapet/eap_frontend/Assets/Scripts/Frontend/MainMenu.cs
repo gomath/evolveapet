@@ -24,6 +24,11 @@ public class MainMenu : MonoBehaviour {
 		// Make the first button. If it is pressed, Application.Loadlevel (1) will be executed
 		if(GUI.Button(new Rect(660,82,150,40), "Play")) {
 			//for now loads Animal Scene; should load stable scene
+
+			//Loads the player in from memory
+			Player currentPlayer;
+
+
 			Application.LoadLevel("RandomBreeding");
 		}
 		

@@ -21,8 +21,8 @@ namespace EvolveAPet
         public static Stable Stable { get { return _stable; } }
 		public static bool[,] guessedGenes; // All the genes in the animal. If the array member at [i][j] is true, that means the the jth gene on the ith chromosome has been guessed
         
-		//For saving and loading game
-		public static bool exists;
+
+
 
 		public Player(Stable s, string username)
         {
@@ -32,9 +32,20 @@ namespace EvolveAPet
             _stable = s;
 			guessedGenes = new bool[7, 6];//This wastes some space, but easy. 
 			newDailyChallenge ();
-			exists = true;
 
         }
+
+		public Player(PlayerSaveGameState s){ // A disgusting hack to save the game. Don't do this at home kids
+			Points = s.Points;
+			UserName = s.UserName;
+			NickName = s.NickName;
+			_stable = s.Stable;
+			guessedGenes = s.guessedGenes;
+			currentDailyChallenge = s.currentDailyChallenge;
+			dailyChallengeSetDate = s.dailyChallengeSetDate;
+
+		}
+
 
         // probably we want to serialize him to to save the game ...
 
@@ -54,7 +65,7 @@ namespace EvolveAPet
 
 		}
 		public static void newDailyChallenge(){
-			if(DateTime.Compare(DateTime.Today, dailyChallengeSetDate) ==0) //Daily challenge was set today
+			if(DateTime.Compare(DateTime.Today, dailyChallengeSetDate) == 0) //Daily challenge was set today
 			{
 				currentDailyChallenge = -1;
 			}
@@ -107,8 +118,6 @@ namespace EvolveAPet
 
 			Points = points;
 			}
-			
-			newDailyChallenge();
 		}
         //Will be adding function for the KnownTraits but not boolean to boolean.
     }
