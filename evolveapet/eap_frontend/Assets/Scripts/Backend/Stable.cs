@@ -10,6 +10,9 @@ namespace EvolveAPet
     {
 		public int Size { set; get; }
 		public int activeAnimalNumber{ set; get; }
+		public Animal eggSlot { set; get; }
+
+
         public Stable()
         {
 
@@ -26,6 +29,7 @@ namespace EvolveAPet
 
 
         }
+
         public void AddPet(Animal a)
         {
 

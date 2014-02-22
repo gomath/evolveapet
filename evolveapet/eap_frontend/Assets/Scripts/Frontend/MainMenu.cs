@@ -22,15 +22,19 @@ public class MainMenu : MonoBehaviour {
 		GUI.matrix = Matrix4x4.TRS (Vector3.zero, Quaternion.identity, scale);
 
 		// Make the first button. If it is pressed, Application.Loadlevel (1) will be executed
-		if(GUI.Button(new Rect(700,82,150,40), "New Game")) {
+		if(GUI.Button(new Rect(660,82,150,40), "Play")) {
 			//for now loads Animal Scene; should load stable scene
 			Application.LoadLevel("RandomBreeding");
 		}
 		
 		// Make the second button.
-		if(GUI.Button(new Rect(640,272,120,40), "Load Saved Game")) {
-			//will presumably call some function to change the scene to a load menu
-			Application.LoadLevel("test suite");
+		if(GUI.Button(new Rect(570,272,200,40), "Import a friend's animal!")) {
+			//Brings up a file choosing interface, this 
+
+
+
+
+
 		}
 
 		// Make the third button.

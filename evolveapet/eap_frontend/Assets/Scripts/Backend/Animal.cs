@@ -3,21 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 //using Common;
+
+using System.Runtime.Serialization.Formatters.Binary; 
+using System.IO;
 using System.Collections;
 using UnityEngine;
 
 namespace EvolveAPet
 {
+	[Serializable]
     public class Animal
     {
-        private readonly Animal[] _parents;
         public int Generation { set; get; }
         public string Name { set; get; }
 		public Genome Genome { set; get; }
-		public Animal[] Parent { get { return _parents; } }
         public BodyPart[] BodyPartArray { get; private set; }
         // each animal will be given a genome and handed both its parents
         public bool Egg { get; set; }
+		public Animal[] Parent { set; get;} 
+		
+	
+
+
         private readonly int bodyPartNumber = Global.NUM_OF_CHROMOSOMES; // to allow easy changing of number of body parts
 
 		/// <summary>
@@ -42,6 +49,23 @@ namespace EvolveAPet
 				createBodyPart(n);
 			}
         }
+
+		public static Animal deserialiseAnimal(string path){
+			BinaryFormatter bf = new BinaryFormatter ();
+			Animal a;
+			FileStream inStream = new FileStream (path, FileMode.Open);
+			a = bf.Deserialize(inStream) as Animal;
+			return a;
+				}
+
+
+		public void serialiseAnimal(){
+			string path = Environment.CurrentDirectory + this.Name + " " + DateTime.Now;
+			BinaryFormatter bf = new BinaryFormatter();
+			FileStream outStream = new FileStream(path,FileMode.OpenOrCreate);
+			bf.Serialize (outStream,this);
+			outStream.Close();
+				}
 
 		public Animal(){// Generates a completely random animal
 
@@ -109,6 +133,7 @@ namespace EvolveAPet
         {
             Egg = false;
         }
+
         private void createBodyPart(int n){
 			/* e is an enum pointing to body parts in this order:
 			0.Ears

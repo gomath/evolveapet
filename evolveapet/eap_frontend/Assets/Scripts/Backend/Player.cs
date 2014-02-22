@@ -20,7 +20,11 @@ namespace EvolveAPet
 			 "has spots on as many body parts as possible", "has stripes on as many body parts as possible"}; // add new challenges at end, do not change order
         public static Stable Stable { get { return _stable; } }
 		public static bool[,] guessedGenes; // All the genes in the animal. If the array member at [i][j] is true, that means the the jth gene on the ith chromosome has been guessed
-        public Player(Stable s, string username)
+        
+		//For saving and loading game
+		public static bool exists;
+
+		public Player(Stable s, string username)
         {
             Points = 0;
             UserName = username;
@@ -28,6 +32,7 @@ namespace EvolveAPet
             _stable = s;
 			guessedGenes = new bool[7, 6];//This wastes some space, but easy. 
 			newDailyChallenge ();
+			exists = true;
 
         }
 
