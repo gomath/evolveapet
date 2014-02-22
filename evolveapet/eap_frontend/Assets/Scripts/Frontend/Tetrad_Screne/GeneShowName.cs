@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 namespace EvolveAPet{
 
@@ -7,8 +8,8 @@ public class GeneShowName : MonoBehaviour {
 
 	float originalWidth = 1098.0f;
 	float originalHeight = 618.0f;
-	Vector3 scale = new Vector3();
 
+	Vector3 scale = new Vector3 ();
 	public	GUISkin myskin;
 	
 	public Gene gene { get; set; }
@@ -39,10 +40,9 @@ public class GeneShowName : MonoBehaviour {
 
 		Vector3 v = new Vector3(originalWidth*u.x/Screen.width,originalHeight*u.y/Screen.height,1f);
 
-		//GUI.Box(new Rect(v.x + 20,v.y,50,20),"Tralala");
 		float y = Adjust(v.y);
 		
-			if (GUI.Button (new Rect (v.x + 20, originalHeight - y - 10, 50, 20), gene.GetWholeNameEncoded())) {
+			if (GUI.Button (new Rect (v.x + 30, originalHeight - y - 10, 60, 30), gene.GetWholeNameEncoded())) {
 				if (toggle){
 					GetComponent<SpriteRenderer> ().color = Color.yellow;
 				} else{
@@ -51,17 +51,16 @@ public class GeneShowName : MonoBehaviour {
 				toggle = !toggle;
 			}
 
-			GUI.Box(new Rect(0,0,50,20),"0,0");
-			GUI.Box(new Rect(50,100,50,20),"50,100");
-
 	}
 
 		float Adjust(float y){
 			float c1 = 5f;
 			float c2 = 10f;
-			switch (gene.ChromosomeNum) {
+			int physicalChromosomeNum = Convert.ToInt32(transform.parent.name.Substring (transform.parent.name.Length - 2, 1));
+			int physicalGeneNum = Convert.ToInt32(name.Substring (name.Length - 1, 1));
+			switch (physicalChromosomeNum) {
 			case 0: 
-				switch(gene.GeneNum){
+				switch(physicalGeneNum){
 				case 0: break;
 				case 1: break;
 				case 2: y -= c1; break;
@@ -69,7 +68,7 @@ public class GeneShowName : MonoBehaviour {
 				}
 				break;
 			case 1:
-				switch(gene.GeneNum){
+				switch(physicalGeneNum){
 				case 0: y -= c1; break;
 				case 1: y += c1; break;
 				case 2: y -= c2; break;
@@ -78,7 +77,7 @@ public class GeneShowName : MonoBehaviour {
 				}
 				break;
 			case 2:
-				switch(gene.GeneNum){
+				switch(physicalGeneNum){
 				case 0: y -= c1; break;
 				case 1: break;
 				case 2: y += c1; break;
@@ -87,7 +86,7 @@ public class GeneShowName : MonoBehaviour {
 				}
 				break;
 			case 3:
-				switch(gene.GeneNum){
+				switch(physicalGeneNum){
 				case 0: break;
 				case 1: break;
 				case 2: break;
@@ -95,7 +94,7 @@ public class GeneShowName : MonoBehaviour {
 				}
 				break;
 			case 4:
-				switch(gene.GeneNum){
+				switch(physicalGeneNum){
 				case 0: break;
 				case 1: break;
 				case 2: y -= c2; break;
@@ -104,7 +103,7 @@ public class GeneShowName : MonoBehaviour {
 				}
 				break;
 			case 5:
-				switch(gene.GeneNum){
+				switch(physicalGeneNum){
 				case 0: break;
 				case 1: break;
 				case 2: break;
@@ -112,7 +111,7 @@ public class GeneShowName : MonoBehaviour {
 				}
 				break;
 			case 6:
-				switch(gene.GeneNum){
+				switch(physicalGeneNum){
 				case 0: y -= c1; break;
 				case 1: y += c1; break;
 				case 2: break;

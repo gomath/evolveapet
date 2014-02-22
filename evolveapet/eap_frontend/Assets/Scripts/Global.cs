@@ -32,6 +32,10 @@ namespace EvolveAPet
 		public static Dictionary<Locus,Locus> mapFtB; // map front-end to backend
 		public static Dictionary<Locus,Locus> mapBtF; // map back-end to frontend
 
+		/// <summary>
+		/// Loads scrambling map from hard disk.
+		/// Creates corresponding mapFtB and mapBtF 
+		/// </summary>
 		public static void LoadMap(){
 			BinaryFormatter bf = new BinaryFormatter ();
 
@@ -46,15 +50,42 @@ namespace EvolveAPet
 				mapBtF.Add(value,key);
 			}
 
-				Debug.Log(mapFtB.ContainsKey (new Locus (0, 0)));
+			/*
+			Debug.Log(mapFtB.ContainsKey (new Locus (0, 0)));
 			Debug.Log(mapFtB.ContainsKey (new Locus (0, 10)));
 
 			Debug.Log(mapBtF.ContainsKey (new Locus (0, 0)));
 
 			Debug.Log(mapBtF.ContainsKey (new Locus (0, 10)));
-
+			*/
 			Locus l = mapFtB [new Locus (0, 0)];
-			Debug.Log (l.Chromosome);
+			//Debug.Log (l.Chromosome);
+		}
+
+		// TODO - untested
+		/// <summary>
+		/// Given front-end chromosomes, returns the corresponding backend chromosomes by shifting appropriate genes to appropriates Loci.
+		/// </summary>
+		/// <returns>The end to backend chromosomes.</returns>
+		/// <param name="frontEndChromosomes">Front end chromosomes.</param>
+		public static Chromosome[] FrontEndToBackendChromosomes(Chromosome[] frontEndChromosomes){
+			if (mapFtB == null) {
+				LoadMap ();
+			}
+
+			Chromosome[] backEndChromosomes = new Chromosome[NUM_OF_CHROMOSOMES];
+			for (int i=0; i<Global.NUM_OF_CHROMOSOMES; i++) {
+				Gene[] temp = new Gene[MyDictionary.numOfGenesOnChromosome[(EnumBodyPart)i]];
+				for(int j=0; j<MyDictionary.numOfGenesOnChromosome[(EnumBodyPart)i]; j++){
+					Locus frontEndLocus = mapBtF[new Locus(i,j)];
+					int ch = frontEndLocus.Chromosome;
+					int g = frontEndLocus.GeneNumber;
+					temp[j] = frontEndChromosomes[ch].Genes[g];
+				}
+				backEndChromosomes[i] = new Chromosome(temp,i);	                    
+			}
+			return backEndChromosomes;
+			
 		}
 
 	}

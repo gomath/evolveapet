@@ -152,7 +152,10 @@ namespace EvolveAPet
 				fatherChrom = frontEndChromosomes[1,i];		
 				motherChrom = frontEndChromosomes[0,i];
 				crossOver = CrossOver(motherChrom, fatherChrom); // crossOver[0] originally mothers chromosome 
-				
+
+				//motherChrom.WhereHasBeenSplit = crossOver[0].WhereHasBeenSplit;
+				//fatherChrom.WhereHasBeenSplit = crossOver[0].WhereHasBeenSplit;
+
 				res[i,0] = new Chromosome (motherChrom);
 				res[i,1] = new Chromosome (fatherChrom);
 				res[i,2] = new Chromosome (crossOver[0]);
@@ -164,7 +167,7 @@ namespace EvolveAPet
 		/// <summary>
 		/// Writes this genome in concise form into given file.
 		/// </summary>
-		public void Display(int testIndex){
+		/*public void Display(int testIndex){
 			String path = "E:\\Mato\\Cambridge\\2nd year\\Group_Project\\Software (under git)\\evolveapet\\evolveapet\\eap_frontend\\Assets\\Scripts\\Backend\\OutputOfTests\\Complete_Genomes\\";
 			String dst = "Genome_" +  testIndex + ".txt";
 			
@@ -201,7 +204,7 @@ namespace EvolveAPet
 
 
 			file.Close ();
-		}
+		}*/
 
 		/// <summary>
 		/// Auxiliary function for displaying. Given trait and index to that trait, returns textual representation of the attribute.
@@ -275,6 +278,9 @@ namespace EvolveAPet
 				fatherChrom = _fatherChromosome[i];
 				motherChrom = _motherChromosome[i];
 				crossOver = CrossOver(motherChrom, fatherChrom); // crossOver[0] originally mothers chromosome 
+
+				//motherChrom.WhereHasBeenSplit = crossOver[0].WhereHasBeenSplit;
+				//fatherChrom.WhereHasBeenSplit = crossOver[0].WhereHasBeenSplit;
 
 				res[i,0] = new Chromosome (motherChrom);
 				res[i,1] = new Chromosome (fatherChrom);
