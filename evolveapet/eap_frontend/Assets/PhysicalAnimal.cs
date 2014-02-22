@@ -75,8 +75,24 @@ namespace EvolveAPet {
 			
 			//Build body, rotate if bipedal and scale/colour as needed
 			Torso t = (Torso)animal.BodyPartArray[3];
-			GameObject body = (GameObject)Instantiate(Resources.Load ("Prefabs/Animals/"+t.shape+" body"));
+			GameObject body = (GameObject)Instantiate(Resources.Load ("Prefabs/Animals/"+t.shape+"/body"));
 			body.GetComponent<SpriteRenderer>().color = DecodeCol(t.colour);
+			SpriteRenderer spots = body.transform.FindChild("spots").GetComponent<SpriteRenderer>();
+			SpriteRenderer stripes = body.transform.FindChild("stripes").GetComponent<SpriteRenderer>();
+			spots.color = DecodeCol (t.colour);
+			stripes.color = DecodeCol (t.colour);
+			switch (t.pattern) {
+			case 0: 
+				spots.enabled = false;
+				stripes.enabled = false;
+				break;
+			case 1:
+				stripes.enabled = false;
+				break;
+			case 2:
+				spots.enabled = false;
+				break;
+			}
 			if (!((Arms)animal.BodyPartArray[4]).isQuadrupedal) {
 				body.transform.Rotate(new Vector3(0,0,-30));
 			}
@@ -85,15 +101,31 @@ namespace EvolveAPet {
 			
 			//build head, color eyes, choose mouth and scale/colour as needed
 			Head h = (Head)animal.BodyPartArray[2];
-			GameObject head = (GameObject)Instantiate(Resources.Load ("Prefabs/Animals/"+h.shape+" head"));
+			GameObject head = (GameObject)Instantiate(Resources.Load ("Prefabs/Animals/"+h.shape+"/head"));
 			head.GetComponent<SpriteRenderer>().color = DecodeCol (h.colour);
+			spots = head.transform.FindChild("spots").GetComponent<SpriteRenderer>();
+			stripes = head.transform.FindChild("stripes").GetComponent<SpriteRenderer>();
+			spots.color = DecodeCol (h.colour);
+			stripes.color = DecodeCol (h.colour);
+			switch (h.pattern) {
+			case 0: 
+				spots.enabled = false;
+				stripes.enabled = false;
+				break;
+			case 1:
+				stripes.enabled = false;
+				break;
+			case 2:
+				spots.enabled = false;
+				break;
+			}
 			head.transform.position = tHead.position = body.transform.FindChild ("head joint").transform.position;
 			head.transform.parent = tHead;
 			
 			//build eyes
 			Eyes e = (Eyes)animal.BodyPartArray[1];
 			for (int i = 0; i<e.number; i++) {
-				GameObject eye = (GameObject)Instantiate (Resources.Load ("Prefabs/Animals/"+e.shape+" eye"));
+				GameObject eye = (GameObject)Instantiate (Resources.Load ("Prefabs/Animals/"+e.shape+"/eye"));
 				eye.transform.position = tEyes[i].position = head.transform.FindChild("eye joint "+i).transform.position;
 				eye.transform.parent = tEyes[i];
 				Scale (tEyes[i], e.size);
@@ -102,13 +134,13 @@ namespace EvolveAPet {
 			
 			//build ears
 			Ears ea = (Ears)animal.BodyPartArray[0];
-			GameObject ear = (GameObject)Instantiate(Resources.Load ("Prefabs/Animals/"+ea.shape+" front ear"));
+			GameObject ear = (GameObject)Instantiate(Resources.Load ("Prefabs/Animals/"+ea.shape+"/front ear"));
 				ear.GetComponent<SpriteRenderer>().color = DecodeCol (ea.colour);
 				ear.transform.position = tFrontEar.position = head.transform.FindChild ("ear joint").transform.position;
 				ear.transform.parent = tFrontEar;
 				Scale(tFrontEar, ea.size);
 
-			ear = (GameObject)Instantiate(Resources.Load ("Prefabs/Animals/"+ea.shape+" back ear"));
+			ear = (GameObject)Instantiate(Resources.Load ("Prefabs/Animals/"+ea.shape+"/back ear"));
 				ear.GetComponent<SpriteRenderer>().color = DecodeCol (ea.colour);
 				ear.transform.position = tBackEar.position = head.transform.FindChild ("ear joint").transform.position;
 				ear.transform.parent = tBackEar;
@@ -117,39 +149,103 @@ namespace EvolveAPet {
 			Scale(tHead, h.size);
 			
 			//build mouth
-			if (h.teethShape == "HERBIVORE") {
+			if (h.teethShape == "CARNIVORE") {
 				head.transform.FindChild ("mouth").GetComponent<SpriteRenderer>().enabled = false;
 			}
 
 			//build tail, scale/colour as needed
 			Tail ta = (Tail)animal.BodyPartArray[6];
-			GameObject tail = (GameObject)Instantiate(Resources.Load ("Prefabs/Animals/"+ta.shape+" tail"));
+			GameObject tail = (GameObject)Instantiate(Resources.Load ("Prefabs/Animals/"+ta.shape+"/tail"));
 			tail.GetComponent<SpriteRenderer>().color = DecodeCol (ta.colour);
+			spots = tail.transform.FindChild("spots").GetComponent<SpriteRenderer>();
+			stripes = tail.transform.FindChild("stripes").GetComponent<SpriteRenderer>();
+			spots.color = DecodeCol (ta.colour);
+			stripes.color = DecodeCol (ta.colour);
+			switch (ta.pattern) {
+			case 0: 
+				spots.enabled = false;
+				stripes.enabled = false;
+				break;
+			case 1:
+				stripes.enabled = false;
+				break;
+			case 2:
+				spots.enabled = false;
+				break;
+			}
 			tail.transform.position = tTail.position = body.transform.FindChild ("tail joint").transform.position;
 			tail.transform.parent = tTail;
 			Scale(tTail, ta.size);
 			
 			//build legs, scale/colour as needed
 			Legs l = (Legs)animal.BodyPartArray[5];
-			GameObject leg = (GameObject)Instantiate(Resources.Load ("Prefabs/Animals/"+l.shape+" front leg"));
+			GameObject leg = (GameObject)Instantiate(Resources.Load ("Prefabs/Animals/"+l.shape+"/front leg"));
 			leg.GetComponent<SpriteRenderer>().color = DecodeCol(l.colour);
+			spots = leg.transform.FindChild("spots").GetComponent<SpriteRenderer>();
+			stripes = leg.transform.FindChild("stripes").GetComponent<SpriteRenderer>();
+			spots.color = DecodeCol (l.colour);
+			stripes.color = DecodeCol (l.colour);
+			switch (l.pattern) {
+			case 0: 
+				spots.enabled = false;
+				stripes.enabled = false;
+				break;
+			case 1:
+				stripes.enabled = false;
+				break;
+			case 2:
+				spots.enabled = false;
+				break;
+			}
 			leg.transform.position = tFrontLeg.position = body.transform.FindChild ("leg joint").transform.position;
 			leg.transform.parent = tFrontLeg;
 			Scale(tFrontLeg, l.size);
 			
-			leg = (GameObject)Instantiate(Resources.Load ("Prefabs/Animals/"+l.shape+" back leg"));
+			leg = (GameObject)Instantiate(Resources.Load ("Prefabs/Animals/"+l.shape+"/back leg"));
 			leg.GetComponent<SpriteRenderer>().color = DecodeCol(l.colour);
+			spots = leg.transform.FindChild("spots").GetComponent<SpriteRenderer>();
+			stripes = leg.transform.FindChild("stripes").GetComponent<SpriteRenderer>();
+			spots.color = DecodeCol (l.colour);
+			stripes.color = DecodeCol (l.colour);
+			switch (l.pattern) {
+			case 0: 
+				spots.enabled = false;
+				stripes.enabled = false;
+				break;
+			case 1:
+				stripes.enabled = false;
+				break;
+			case 2:
+				spots.enabled = false;
+				break;
+			}
 			leg.transform.position = tBackLeg.position = body.transform.FindChild ("leg joint").transform.position;
 			leg.transform.parent = tBackLeg;
 			Scale(tBackLeg, l.size);
 			
 			//build arms, replace with legs if bipedal and scale/colour as needed
 			Arms a = (Arms)animal.BodyPartArray[4];
-			//string limb = a.isQuadrupedal ? "leg" : "arm";
+			string limb = a.isQuadrupedal ? "leg" : "arm";
 			
 			if (a.number != 0) {
-				GameObject arm = (GameObject)Instantiate(Resources.Load ("Prefabs/Animals/"+a.shape+" front arm"));
+				GameObject arm = (GameObject)Instantiate(Resources.Load ("Prefabs/Animals/"+a.shape+"/front "+limb));
 				arm.GetComponent<SpriteRenderer>().color = DecodeCol(a.colour);
+				spots = arm.transform.FindChild("spots").GetComponent<SpriteRenderer>();
+				stripes = arm.transform.FindChild("stripes").GetComponent<SpriteRenderer>();
+				spots.color = DecodeCol (a.colour);
+				stripes.color = DecodeCol (a.colour);
+				switch (a.pattern) {
+				case 0: 
+					spots.enabled = false;
+					stripes.enabled = false;
+					break;
+				case 1:
+					stripes.enabled = false;
+					break;
+				case 2:
+					spots.enabled = false;
+					break;
+				}
 				arm.transform.position = tFrontArm.position = body.transform.FindChild ("arm joint").transform.position;
 				arm.transform.parent = tFrontArm;
 				if (a.isQuadrupedal) {
@@ -158,8 +254,24 @@ namespace EvolveAPet {
 					Scale(tFrontArm, a.size);
 				}
 				
-				arm = (GameObject)Instantiate(Resources.Load ("Prefabs/Animals/"+a.shape+" back arm"));
+				arm = (GameObject)Instantiate(Resources.Load ("Prefabs/Animals/"+a.shape+"/back "+limb));
 				arm.GetComponent<SpriteRenderer>().color = DecodeCol (a.colour);
+				spots = arm.transform.FindChild("spots").GetComponent<SpriteRenderer>();
+				stripes = arm.transform.FindChild("stripes").GetComponent<SpriteRenderer>();
+				spots.color = DecodeCol (a.colour);
+				stripes.color = DecodeCol (a.colour);
+				switch (a.pattern) {
+				case 0: 
+					spots.enabled = false;
+					stripes.enabled = false;
+					break;
+				case 1:
+					stripes.enabled = false;
+					break;
+				case 2:
+					spots.enabled = false;
+					break;
+				}
 				arm.transform.position = tBackArm.position = body.transform.FindChild ("arm joint").transform.position;
 				arm.transform.parent = tBackArm;
 				if (a.isQuadrupedal) {
