@@ -9,9 +9,10 @@ public class Testing_Matej : MonoBehaviour {
 		MyDictionary.Init (); // initializing maps (Dictionaries) in MyDictionary
 
 		Global.LoadMap();
+		/*
 		Scrambler.TestScramblerUseMap (666,Global.mapFtB);
 		Scrambler.TestScramblerUseMap (667,Global.mapBtF);
-
+*/
 		//Scrambler.TestScramblerCreateMap (666);
 
 		/*

@@ -5,33 +5,40 @@ using System.Text;
 
 namespace EvolveAPet
 {
+	[Serializable]
     public class Player
     {
 
-        public string NickName { set; get; }
+        public static string NickName { set; get; }
 
-        public string UserName { set; get; }
-        public int Points { get; set; }
-		public Stable _stable{get; set;}
-		public int currentDailyChallenge;
-		public DateTime dailyChallengeSetDate;
-		public String[] allDailyChallenges = {"is the biggest","is the smallest","is the reddest","is the greenest", "is the bluest",  
+        public static string UserName { set; get; }
+        public static int Points { get; set; }
+		public static Stable _stable{get; set;}
+		public static int currentDailyChallenge;
+		public static DateTime dailyChallengeSetDate;
+		public static String[] allDailyChallenges = {"is the biggest","is the smallest","is the reddest","is the greenest", "is the bluest",  
 			 "has spots on as many body parts as possible", "has stripes on as many body parts as possible"}; // add new challenges at end, do not change order
-        public Stable Stable { get { return _stable; } }
-
+        public static Stable Stable { get { return _stable; } }
+		public static bool[,] guessedGenes; // All the genes in the animal. If the array member at [i][j] is true, that means the the jth gene on the ith chromosome has been guessed
         public Player(Stable s, string username)
         {
             Points = 0;
             UserName = username;
             NickName = username;
             _stable = s;
+			guessedGenes = new bool[7, 6];//This wastes some space, but easy. 
 			newDailyChallenge ();
 
         }
 
         // probably we want to serialize him to to save the game ...
 
-		public String getDailyChallengeString(){
+		public static void guessGene(int i, int j){
+
+			guessedGenes [i,j] = true;
+		
+		}
+		public static String getDailyChallengeString(){
 			String str = "Today's challenge is : Breed an animal which ";
 
 			if (currentDailyChallenge == -1){
@@ -41,7 +48,7 @@ namespace EvolveAPet
 			return str;
 
 		}
-		public void newDailyChallenge(){
+		public static void newDailyChallenge(){
 			if(DateTime.Compare(DateTime.Today, dailyChallengeSetDate) ==0) //Daily challenge was set today
 			{
 				currentDailyChallenge = -1;
@@ -54,7 +61,7 @@ namespace EvolveAPet
 			}
 
 		}
-		public void completeDailyChallenge(){ // the int is the number of points in the 
+		public static void completeDailyChallenge(){ // the int is the number of points in the 
 			if (currentDailyChallenge != -1) {
 						 // give no points in the event that there is no daily challenge
 			int points = 0 ;

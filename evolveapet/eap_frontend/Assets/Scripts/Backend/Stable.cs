@@ -5,6 +5,7 @@ using System.Text;
 
 namespace EvolveAPet
 {
+	[Serializable]
     public class Stable : LinkedList<Animal>
     {
 		public int Size { set; get; }
