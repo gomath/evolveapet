@@ -113,29 +113,42 @@ public class TetradsViewController : MonoBehaviour {
 	
 
 	void ToggleEyes(bool on){
-			// TODO
-	}
-		void ToggleEars(bool on){
-         //TODO   
-		}
-
-		void ToggleHead(bool on){
-			Locus[] loci = g.FrontEndGetLociByBodyPart (EnumBodyPart.HEAD);
+			Locus[] loci = g.FrontEndGetLociByBodyPart (EnumBodyPart.EYES);
 			SetColorToGenes (on, loci);
-            
-		}
-		void ToggleTorso(bool on){
-          //TODO  
-		}
-		void ToggleArms(bool on){
-            // TODO
-		}
-		void ToggleLegs(bool on){
-           	// TODO 
-		}
-		void ToggleTail(bool on){
-			// TODO
-        }
+			Debug.Log ("EYES");
+	}
+	void ToggleEars(bool on){
+			Locus[] loci = g.FrontEndGetLociByBodyPart (EnumBodyPart.EARS);
+			SetColorToGenes (on, loci);   
+			Debug.Log ("EARS");
+	}
+
+	void ToggleHead(bool on){
+		Locus[] loci = g.FrontEndGetLociByBodyPart (EnumBodyPart.HEAD);
+		SetColorToGenes (on, loci);
+			Debug.Log ("HEAD");
+    
+	}
+	void ToggleTorso(bool on){
+			Locus[] loci = g.FrontEndGetLociByBodyPart (EnumBodyPart.TORSO);
+			SetColorToGenes (on, loci); 
+			Debug.Log ("TORSO");
+	}
+	void ToggleArms(bool on){
+			Locus[] loci = g.FrontEndGetLociByBodyPart (EnumBodyPart.ARMS);
+			SetColorToGenes (on, loci);
+			Debug.Log ("ARMS");
+	}
+	void ToggleLegs(bool on){
+			Locus[] loci = g.FrontEndGetLociByBodyPart (EnumBodyPart.LEGS);
+			SetColorToGenes (on, loci);
+			Debug.Log ("LEGS");
+	}
+	void ToggleTail(bool on){
+			Locus[] loci = g.FrontEndGetLociByBodyPart (EnumBodyPart.TAIL);
+			SetColorToGenes (on, loci);
+			Debug.Log ("TAIL");
+	}
         
         
         void SetColorToGenes(bool on, Locus[] loci){
