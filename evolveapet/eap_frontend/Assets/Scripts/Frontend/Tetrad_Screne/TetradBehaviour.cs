@@ -2,6 +2,10 @@
 using System.Collections;
 using System;
 
+/// <summary>
+/// Note - has to execute TetradsViewController first before executing this script!  
+/// </summary>
+
 namespace EvolveAPet{
 
 public class TetradBehaviour : MonoBehaviour {
@@ -10,6 +14,12 @@ public class TetradBehaviour : MonoBehaviour {
 		private int tetradNum;
 		private int chromosomeNum;
 	private GameObject myBox;
+
+	public Chromosome UnderlyingChromosome{
+		get{
+			return activeChromosome.Chromosome;
+		}
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -31,7 +41,6 @@ public class TetradBehaviour : MonoBehaviour {
 			case 2: AB = "B"; mf = "m"; chromosomeNum = 2; break;
 			case 3: AB = "B"; mf = "f"; chromosomeNum = 3; break;
 			}
-
 		activeChromosome = transform.FindChild ("chromosome pair " + tetradNum + AB).FindChild("chromosome " + mf).gameObject.GetComponent<PhysicalChromosome>();
 		ChromosomeClicked (activeChromosome);
 		

@@ -106,6 +106,21 @@ namespace EvolveAPet
 		}
 
 		/// <summary>
+		/// Create new (backend) chromosome from array of genes corresponding to chromosomeNumer
+		/// </summary>
+		/// <param name="g">The green component.</param>
+		/// <param name="bodyPart">Body part.</param>
+		public Chromosome(Gene[] g,int chromosomeNum){
+			_bodyPart = (EnumBodyPart)chromosomeNum;
+
+			_chromosomeNumber = chromosomeNum;
+			_genes = g;
+			_numOfGenes = MyDictionary.numOfGenesOnChromosome [(EnumBodyPart)_chromosomeNumber];
+			_whereHasBeenSplit = -1;
+		}
+
+
+		/// <summary>
 		/// Writes this chromosome (in consice form) into the specified file.
 		/// </summary>
 		public void Display(){
