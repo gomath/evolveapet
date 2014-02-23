@@ -3,6 +3,7 @@ using System.Collections;
 
 namespace EvolveAPet{
 public class ControlAnchorsScript : MonoBehaviour {
+
 	float originalWidth = 1098.0f;
 	float originalHeight = 618.0f;
 	
@@ -10,7 +11,7 @@ public class ControlAnchorsScript : MonoBehaviour {
 	public	GUISkin myskin;
 
 	bool[] toggle = {false,false,false,false,false,false,false};
-		bool[] newToggle = {false,false,false,false,false,false,false};
+	bool[] newToggle = {false,false,false,false,false,false,false};
 
 	// Use this for initialization
 	void Start () {
@@ -39,6 +40,7 @@ public class ControlAnchorsScript : MonoBehaviour {
 				SendMessageUpwards("TetradsChosen");
 			}
 
+
 			for (int i=0; i<Global.NUM_OF_CHROMOSOMES; i++) {
 				string anchor = "";
 				string function = "";
@@ -56,11 +58,12 @@ public class ControlAnchorsScript : MonoBehaviour {
 
 				u = Camera.main.WorldToScreenPoint(transform.FindChild(anchor).position);
 				v = new Vector3(originalWidth*u.x/Screen.width,originalHeight*u.y/Screen.height,1f);
-				newToggle[i] = GUI.Toggle (new Rect (v.x,originalHeight-v.y,100,30), toggle[i], label);
-				if (newToggle[i] != toggle[i])
+				newToggle[i] = GUI.Toggle (new Rect (v.x,originalHeight-v.y,50,30), toggle[i], label);
+				if (newToggle[i] != toggle[i]){
 					toggle[i]= newToggle[i];
-                    SendMessageUpwards(function,toggle[i]);			
-			
+				    SendMessageUpwards(function,toggle[i]);	
+					SendMessageUpwards("ResetMagnifiedChromosome");
+				}
 			}	
 	}
 }

@@ -25344,6 +25344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1df6d4116422614187960c0c4f72903, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeChromosome: {fileID: 0}
 --- !u!1 &1590168180
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 12001, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: Skin
   m_EditorClassIdentifier: 
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Font: {fileID: 12800000, guid: 0e777bcb643b9434fac3af276529bba0, type: 3}
   m_box:
     m_Name: box
     m_Normal:
@@ -193,7 +193,7 @@ MonoBehaviour:
     m_Name: label
     m_Normal:
       m_Background: {fileID: 0}
-      m_TextColor: {r: .899999976, g: .899999976, b: .899999976, a: 1}
+      m_TextColor: {r: .264705896, g: .264705896, b: .264705896, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
@@ -251,34 +251,34 @@ MonoBehaviour:
   m_textField:
     m_Name: textfield
     m_Normal:
-      m_Background: {fileID: 11024, guid: 0000000000000000e000000000000000, type: 0}
-      m_TextColor: {r: .799999952, g: .799999952, b: .799999952, a: 1}
+      m_Background: {fileID: 2800000, guid: 0f317c468b7bf0142b4c58b3c1cc3de0, type: 3}
+      m_TextColor: {r: .360294104, g: .360294104, b: .360294104, a: 1}
     m_Hover:
-      m_Background: {fileID: 11026, guid: 0000000000000000e000000000000000, type: 0}
-      m_TextColor: {r: .899999976, g: .899999976, b: .899999976, a: 1}
+      m_Background: {fileID: 2800000, guid: 0f317c468b7bf0142b4c58b3c1cc3de0, type: 3}
+      m_TextColor: {r: .492647052, g: .492647052, b: .492647052, a: 1}
     m_Active:
       m_Background: {fileID: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Focused:
-      m_Background: {fileID: 11026, guid: 0000000000000000e000000000000000, type: 0}
-      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
+      m_Background: {fileID: 2800000, guid: 0f317c468b7bf0142b4c58b3c1cc3de0, type: 3}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_OnNormal:
-      m_Background: {fileID: 11025, guid: 0000000000000000e000000000000000, type: 0}
-      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
+      m_Background: {fileID: 2800000, guid: 0f317c468b7bf0142b4c58b3c1cc3de0, type: 3}
+      m_TextColor: {r: .279411793, g: .279411793, b: .279411793, a: 1}
     m_OnHover:
-      m_Background: {fileID: 0}
+      m_Background: {fileID: 2800000, guid: 0f317c468b7bf0142b4c58b3c1cc3de0, type: 3}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_OnActive:
       m_Background: {fileID: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_OnFocused:
-      m_Background: {fileID: 0}
+      m_Background: {fileID: 2800000, guid: 0f317c468b7bf0142b4c58b3c1cc3de0, type: 3}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Border:
-      m_Left: 4
-      m_Right: 4
-      m_Top: 4
-      m_Bottom: 4
+      m_Left: 10
+      m_Right: 10
+      m_Top: 10
+      m_Bottom: 10
     m_Margin:
       m_Left: 4
       m_Right: 4
@@ -294,10 +294,10 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 0}
+    m_Font: {fileID: 12800000, guid: 0e777bcb643b9434fac3af276529bba0, type: 3}
     m_FontSize: 0
     m_FontStyle: 0
-    m_Alignment: 0
+    m_Alignment: 4
     m_WordWrap: 0
     m_RichText: 0
     m_TextClipping: 1
@@ -305,7 +305,7 @@ MonoBehaviour:
     m_ContentOffset: {x: 0, y: 0}
     m_FixedWidth: 0
     m_FixedHeight: 0
-    m_StretchWidth: 1
+    m_StretchWidth: 0
     m_StretchHeight: 0
   m_textArea:
     m_Name: textarea
@@ -369,8 +369,8 @@ MonoBehaviour:
   m_window:
     m_Name: window
     m_Normal:
-      m_Background: {fileID: 11023, guid: 0000000000000000e000000000000000, type: 0}
-      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
+      m_Background: {fileID: 2800000, guid: c0b3c3614570e2945a5721faab46846f, type: 3}
+      m_TextColor: {r: .25, g: .25, b: .25, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
@@ -381,8 +381,8 @@ MonoBehaviour:
       m_Background: {fileID: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_OnNormal:
-      m_Background: {fileID: 11022, guid: 0000000000000000e000000000000000, type: 0}
-      m_TextColor: {r: 1, g: 1, b: 1, a: 1}
+      m_Background: {fileID: 2800000, guid: c0b3c3614570e2945a5721faab46846f, type: 3}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_OnHover:
       m_Background: {fileID: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
@@ -1254,6 +1254,6 @@ MonoBehaviour:
   m_Settings:
     m_DoubleClickSelectsWord: 1
     m_TripleClickSelectsLine: 1
-    m_CursorColor: {r: 1, g: 1, b: 1, a: 1}
+    m_CursorColor: {r: 0, g: 0, b: 0, a: 1}
     m_CursorFlashSpeed: -1
-    m_SelectionColor: {r: 1, g: .384039074, b: 0, a: .699999988}
+    m_SelectionColor: {r: .286548436, g: .456762314, b: .735294104, a: .698039234}
