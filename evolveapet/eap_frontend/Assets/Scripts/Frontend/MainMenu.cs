@@ -12,8 +12,19 @@ public class MainMenu : MonoBehaviour {
 		bool showPopUp = false;
 		string playerName = "Enter your name here";
 	public GUISkin mySkin;
+	
+		void Start(){
+			if (!File.Exists(Environment.CurrentDirectory + "/save.sav")){ //Checks if a save game exists
 
-	void OnGUI () {
+			}
+			else{
+				Player.loadGame(); 
+				showPopUp = false;
+			}//Loads player in from memory if there is a save
+
+			
+		}
+		void OnGUI () {
 
 		GUI.skin = mySkin;
 
@@ -38,7 +49,6 @@ public class MainMenu : MonoBehaviour {
 						showPopUp = true;
 					}
 					else{
-						Player.loadGame(); 
 						showPopUp = false;
 					}//Loads player in from memory if there is a save
 
