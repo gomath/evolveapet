@@ -72,7 +72,7 @@ public class MainMenu : MonoBehaviour {
 			//Brings up a file choosing interface, then loads the animal into memory.
 			//If the stable's egg slot is full then throws an error message
 
-				if (currentPlayer ==null){
+				if (currentPlayer ==null || currentPlayer.Stable.eggSlot != null){
 					showErrorMessage = true;
 					showPopUp =false;
 				}
@@ -81,8 +81,11 @@ public class MainMenu : MonoBehaviour {
 					"Load A Friend's Animal",
 					"",
 					"animal");
-
+					Animal newAnimal = Animal.deserialiseAnimal(path);
+					currentPlayer.Stable.eggSlot = newAnimal;
+					
 				}
+
 
 		}
 
