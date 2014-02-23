@@ -33,10 +33,10 @@ public class BoxBehaviour : MonoBehaviour {
 
 	void OnMouseDown(){
 			ShowMyChromosome ();
-
+			SendMessageUpwards ("ColourCurrentBox", this.name);
 			if (chromosome != null) {
 				chromosome.PutMyTetradIntoCentre();
-		}
+			}
 	}
 		/// <summary>
 		/// Show magnified chromosome corresponding to this box. 
