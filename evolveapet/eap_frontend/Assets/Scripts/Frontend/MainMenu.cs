@@ -81,9 +81,10 @@ public class MainMenu : MonoBehaviour {
 					"Load A Friend's Animal",
 					"",
 					"animal");
+					if (!path.Equals("")){
 					Animal newAnimal = Animal.deserialiseAnimal(path);
 					currentPlayer.Stable.eggSlot = newAnimal;
-					
+					}
 				}
 
 
