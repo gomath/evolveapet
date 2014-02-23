@@ -22,7 +22,7 @@ namespace EvolveAPet
         public Stable Stable { get { return _stable; } }
 		public bool[,] guessedGenes; // All the genes in the animal. If the array member at [i][j] is true, that means the the jth gene on the ith chromosome has been guessed
 		public static Player playerInstance = null; // I should have thought of this earlier
-
+		public DateTime lastSaved;
 
 
 		public Player(Stable s, string username)
@@ -45,13 +45,19 @@ namespace EvolveAPet
 			Player.playerInstance = a;
 			
 		}
+		public static void autoSave(){//Auto saves the game every 5 minutes
+				if (!(playerInstance.lastSaved.AddMinutes (5) > DateTime.Now)) {
+				playerInstance.saveGame();			
+				}
 		
+		}
 		public void saveGame(){
 			string path = Environment.CurrentDirectory + "/save.sav";
 			BinaryFormatter bf = new BinaryFormatter();
 			FileStream outStream = new FileStream(path,FileMode.OpenOrCreate);
 			bf.Serialize (outStream,this);
 			outStream.Close();
+			lastSaved = DateTime.Now;
 		}
 
         // probably we want to serialize him to to save the game ...
