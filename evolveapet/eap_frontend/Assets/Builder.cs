@@ -34,7 +34,6 @@ namespace EvolveAPet {
 			list.AddFirst (animal.GetComponent<PhysicalAnimal> ().animal);
 			player._stable = new Stable (list);
 			player._stable.activeAnimalNumber = 0;
-			list.ElementAt (0).serialiseAnimal ();
 		}
 
 		void OnGUI() {
