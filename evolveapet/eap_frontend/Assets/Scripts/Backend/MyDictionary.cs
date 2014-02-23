@@ -51,6 +51,7 @@ namespace EvolveAPet
 		private static String HIPPO = "HIPPO";
 		private static String SHEEP = "SHEEP";
 		private static String TORTOISE = "TORTOISE";
+		private static String CHICKEN = "CHICKEN";
 
 		private static String CARNIVORE = "CARNIVORE";
 		private static String HERBIVORE = "HERBIVORE";
@@ -68,7 +69,8 @@ namespace EvolveAPet
 			SHARK,
 			HIPPO,
 			SHEEP,
-			TORTOISE
+			TORTOISE,
+			CHICKEN
 		};
 
 		/// <summary>
@@ -126,7 +128,8 @@ namespace EvolveAPet
 			new String[] {"sk","shark",SHARK},
 			new String[] {"h","hippo",HIPPO},
 			new String[] {"sh","sheep",SHEEP},
-			new String[] {"to","tortoise",TORTOISE}
+			new String[] {"to","tortoise",TORTOISE},
+			new String[] {"ch","chicken",CHICKEN}
 		};
 
 		private readonly static String[][] auxTeethShapeName = new String[][]{

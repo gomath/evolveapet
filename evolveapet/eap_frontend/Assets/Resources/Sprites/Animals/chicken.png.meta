@@ -1,0 +1,229 @@
+fileFormatVersion: 2
+guid: 8f6f619077567a54cac615a4b5ab2ca0
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: chicken_0
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 1068
+        width: 72
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: chicken_1
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 923
+        width: 211
+        height: 211
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: chicken_2
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 916
+        width: 93
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: chicken_3
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 931
+        width: 117
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: chicken_5
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 973
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: chicken_7
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 635
+        width: 241
+        height: 261
+      alignment: 9
+      pivot: {x: .759933531, y: .259984732}
+    - name: chicken_8
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 720
+        width: 220
+        height: 199
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: chicken_9
+      rect:
+        serializedVersion: 2
+        x: 1179
+        y: 604
+        width: 150
+        height: 212
+      alignment: 9
+      pivot: {x: .314388007, y: .26196605}
+    - name: chicken_10
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 603
+        width: 141
+        height: 137
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: chicken_11
+      rect:
+        serializedVersion: 2
+        x: 718
+        y: 441
+        width: 309
+        height: 263
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: chicken_12
+      rect:
+        serializedVersion: 2
+        x: 1392
+        y: 653
+        width: 60
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: chicken_14
+      rect:
+        serializedVersion: 2
+        x: 1388
+        y: 485
+        width: 102
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: chicken_15
+      rect:
+        serializedVersion: 2
+        x: 1174
+        y: 439
+        width: 94
+        height: 83
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: chicken_16
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 326
+        width: 72
+        height: 131
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: chicken_17
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 316
+        width: 133
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: chicken_18
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 251
+        width: 172
+        height: 223
+      alignment: 9
+      pivot: {x: .580935478, y: .773111403}
+    - name: chicken_20
+      rect:
+        serializedVersion: 2
+        x: 1157
+        y: 254
+        width: 113
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: chicken_21
+      rect:
+        serializedVersion: 2
+        x: 871
+        y: 161
+        width: 144
+        height: 226
+      alignment: 9
+      pivot: {x: .487915874, y: .854181767}
+    - name: chicken_20
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 161
+        width: 108
+        height: 82
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: chicken_21
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 791
+        width: 152
+        height: 105
+      alignment: 0
+      pivot: {x: .5, y: .5}
+  spritePackingTag: 
+  userData: 
