@@ -1,0 +1,175 @@
+fileFormatVersion: 2
+guid: 22e0d0c33fcfcde4ebbc0e436910e3a2
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: turtle_0
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 1010
+        width: 261
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: turtle_1
+      rect:
+        serializedVersion: 2
+        x: 666
+        y: 787
+        width: 266
+        height: 195
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: turtle_4
+      rect:
+        serializedVersion: 2
+        x: 1081
+        y: 850
+        width: 77
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: turtle_5
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 763
+        width: 64
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: turtle_6
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 760
+        width: 55
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: turtle_11
+      rect:
+        serializedVersion: 2
+        x: 638
+        y: 495
+        width: 330
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: turtle_12
+      rect:
+        serializedVersion: 2
+        x: 1051
+        y: 728
+        width: 123
+        height: 66
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: turtle_13
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 477
+        width: 297
+        height: 185
+      alignment: 9
+      pivot: {x: .880791962, y: .528042495}
+    - name: turtle_14
+      rect:
+        serializedVersion: 2
+        x: 1035
+        y: 527
+        width: 174
+        height: 199
+      alignment: 9
+      pivot: {x: .189921767, y: .218448192}
+    - name: turtle_15
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 280
+        width: 209
+        height: 114
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: turtle_17
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 223
+        width: 142
+        height: 215
+      alignment: 9
+      pivot: {x: .507307053, y: .861943305}
+    - name: turtle_18
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 250
+        width: 104
+        height: 166
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: turtle_19
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 232
+        width: 114
+        height: 176
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: turtle_23
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 74
+        width: 200
+        height: 150
+      alignment: 0
+      pivot: {x: .5, y: .5}
+  spritePackingTag: 
+  userData: 
