@@ -2,15 +2,15 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 namespace EvolveAPet {
 	public class Builder : MonoBehaviour {
 		// Use this for initialization
-		Player player;
+		Player player = Player.playerInstance;
 
 		void Start () {
 			StartCoroutine("Build");
-			player = Player.playerInstance;
 		}
 		
 		// Update is called once per frame
