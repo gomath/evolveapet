@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization; 
 
 namespace EvolveAPet
 {
@@ -20,6 +21,9 @@ namespace EvolveAPet
 
 
         }
+		public Stable(SerializationInfo info, StreamingContext context) : base(info, context) {
+			
+		}
 
         public Stable(LinkedList<Animal> pets)
             : base(pets)
