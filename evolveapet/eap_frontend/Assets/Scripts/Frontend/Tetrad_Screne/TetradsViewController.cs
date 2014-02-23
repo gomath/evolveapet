@@ -9,7 +9,9 @@ public class TetradsViewController : MonoBehaviour {
 	Genome g; // TODO remove at the end
 	public PhysicalChromosome[,] chromosomes;
 	GameObject[,] magnifiedChromosomes;
-	GameObject activeChromosome;
+	public GameObject activeChromosome;
+	public static Color CHOSEN_COLOR = Color.green;
+	public static Color NUMBER_COLOR = new Color32(111,150,210,255);
 
 	bool chosen = false; // TODO - remove at the end
 
@@ -73,15 +75,6 @@ public class TetradsViewController : MonoBehaviour {
 			// Color active magnified chromosome according to its source physical chromosome
 			for (int i=0; i<ch.Chromosome.NumOfGenes; i++) {
 				activeChromosome.transform.FindChild("gene " + i).GetComponent<SpriteRenderer>().color = ch.transform.FindChild("gene " + i).GetComponent<SpriteRenderer>().color;
-				/*
-				Color col;
-				if(i>=ch.Chromosome.WhereHasBeenSplit){
-					col = Color.red;
-				} else {
-					col = Color.white;
-				}
-				activeChromosome.transform.FindChild("gene " + i).GetComponent<SpriteRenderer>().color = col;// ch.transform.FindChild("gene " + i).GetComponent<SpriteRenderer>().color;
-				*/
 			}
 
 			// Initializing underlying genes
@@ -93,6 +86,31 @@ public class TetradsViewController : MonoBehaviour {
 				}
 			}
 
+	}
+	
+	/// <summary>
+	/// Reset all gene colours of magnified chromosome to corresponding chromosome in source tetrads. 
+	/// </summary>
+	void ResetMagnifiedChromosome(){
+			String s = activeChromosome.name;
+			int chromosomeNum = Convert.ToInt32 (s.Substring (s.Length - 2, 1));
+			PhysicalChromosome ch = transform.FindChild ("QuickView").FindChild ("Box" + chromosomeNum).GetComponent<BoxBehaviour> ().PhysicalChromosome;
+			ShowMagnifiedChromosome(ch);
+	}
+	
+	/// <summary>
+	/// Set color of currently chosen box to white and keep rest light blue. 
+	/// </summary>
+	/// <param name="boxName">Box name.</param>
+	void ColourCurrentBox(String boxName){
+		for (int i=0; i<Global.NUM_OF_CHROMOSOMES; i++) {
+			Transform box = transform.FindChild("QuickView").FindChild ("Box"+i);
+			if(box.name != boxName){
+					box.FindChild("num"+(i+1)).GetComponent<SpriteRenderer>().color =  NUMBER_COLOR;
+			} else {
+					box.FindChild("num"+(i+1)).GetComponent<SpriteRenderer>().color = Color.white;
+			}
+		}
 	}
 
 	/// <summary>
@@ -111,61 +129,62 @@ public class TetradsViewController : MonoBehaviour {
 	}
 
 	
+	// Set of methods for colouring the genes corresponding to various body parts
 
 	void ToggleEyes(bool on){
 			Locus[] loci = g.FrontEndGetLociByBodyPart (EnumBodyPart.EYES);
 			SetColorToGenes (on, loci);
-			Debug.Log ("EYES");
+			//Debug.Log ("EYES");
 	}
 	void ToggleEars(bool on){
 			Locus[] loci = g.FrontEndGetLociByBodyPart (EnumBodyPart.EARS);
 			SetColorToGenes (on, loci);   
-			Debug.Log ("EARS");
+			//Debug.Log ("EARS");
 	}
 
 	void ToggleHead(bool on){
 		Locus[] loci = g.FrontEndGetLociByBodyPart (EnumBodyPart.HEAD);
 		SetColorToGenes (on, loci);
-			Debug.Log ("HEAD");
+		//Debug.Log ("HEAD");
     
 	}
 	void ToggleTorso(bool on){
 			Locus[] loci = g.FrontEndGetLociByBodyPart (EnumBodyPart.TORSO);
 			SetColorToGenes (on, loci); 
-			Debug.Log ("TORSO");
+			//Debug.Log ("TORSO");
 	}
 	void ToggleArms(bool on){
 			Locus[] loci = g.FrontEndGetLociByBodyPart (EnumBodyPart.ARMS);
 			SetColorToGenes (on, loci);
-			Debug.Log ("ARMS");
+			//Debug.Log ("ARMS");
 	}
 	void ToggleLegs(bool on){
 			Locus[] loci = g.FrontEndGetLociByBodyPart (EnumBodyPart.LEGS);
 			SetColorToGenes (on, loci);
-			Debug.Log ("LEGS");
+			//Debug.Log ("LEGS");
 	}
 	void ToggleTail(bool on){
 			Locus[] loci = g.FrontEndGetLociByBodyPart (EnumBodyPart.TAIL);
 			SetColorToGenes (on, loci);
-			Debug.Log ("TAIL");
+			//Debug.Log ("TAIL");
 	}
         
-        
-        void SetColorToGenes(bool on, Locus[] loci){
+    // Sets colour to all genes on given loci
+	void SetColorToGenes(bool on, Locus[] loci){
 		foreach(Locus l in loci){
-				int ch = l.Chromosome;
-				int g = l.GeneNumber;
-				for(int i=0; i<4; i++){
-					PhysicalChromosome temp = chromosomes[ch,i];
-					if(!on){
-						temp.RecolorAllYourGenesAccordingToSplit();
-					} else {
-						Transform gene = temp.transform.FindChild("gene " + g);
-						gene.GetComponent<SpriteRenderer>().color = Color.green;
-					}
-
+			int ch = l.Chromosome;
+			int g = l.GeneNumber;
+			for(int i=0; i<4; i++){
+				PhysicalChromosome temp = chromosomes[ch,i];
+				if(!on){
+					temp.ResetColorAtGene(g);
+				} else {
+					Transform gene = temp.transform.FindChild("gene " + g);
+					gene.GetComponent<SpriteRenderer>().color = CHOSEN_COLOR;
 				}
-    	}
+
+			}
+		}
 	}
 
 	void OnGUI(){

@@ -61,15 +61,24 @@ public class TetradBehaviour : MonoBehaviour {
 		activeChromosome = chromosome;
 		activeChromosome.transform.FindChild ("centromere").FindChild ("centromere colour").gameObject.GetComponent<SpriteRenderer> ().color = Color.green;
 		myBox.GetComponent<BoxBehaviour>().CreateChromosomeMirror(chromosome);
-		myBox.GetComponent<BoxBehaviour> ().SetGenderSign (activeChromosome.chromosomeNumber);
+		myBox.GetComponent<BoxBehaviour>().SetGenderSign (activeChromosome.chromosomeNumber);
+		SendMessageUpwards("ColourCurrentBox",myBox.name);
 	}
-
+	
+	/// <summary>
+	/// Move all tetrads so the current tetrad is in the centre. 
+	/// </summary>
 	void TranslateAllTetrads(){
 		float offset = transform.localPosition.y;
 		SendMessageUpwards ("TranslateAllTetradsByOffset", offset);
 	}
 	
-
+	/// <summary>
+	/// Returns all encoded names of genes present in this tetrad. 
+	/// </summary>
+	/// <returns>The gene names in tetrad.</returns>
+	/// <param name="chromosomeNum">Chromosome number.</param>
+	/// <param name="ch">Ch.</param>
 	String GetGeneNamesInTetrad(int chromosomeNum,PhysicalChromosome[,] ch){
 		String res = "";
 		String f = "{0,-10}";
@@ -92,6 +101,10 @@ public class TetradBehaviour : MonoBehaviour {
 	float originalHeight = 618.0f;
 	
 	Vector3 scale = new Vector3 ();
+	
+	/// <summary>
+	/// Display information in text areas right to the tetrads. 
+	/// </summary>
 	public	GUISkin myskin;
 	void OnGUI(){
 

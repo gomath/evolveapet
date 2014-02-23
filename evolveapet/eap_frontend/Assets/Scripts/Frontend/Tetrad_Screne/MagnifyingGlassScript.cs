@@ -13,10 +13,14 @@ public class MagnifyingGlassScript : MonoBehaviour {
 	
 	}
 
+	/// <summary>
+	/// Disable all chromosome under magnifyin glass and set colour of all numbers in all boxes to defualt light blue. 
+	/// </summary>
 	public void ClearGlass(){
 		// Just inactivate all magnifying chromosomes
 		foreach (Transform t in transform) {
 			t.gameObject.SetActive(false);
 		}
+		SendMessageUpwards("ColourCurrentBox","random");
 	}
 }
