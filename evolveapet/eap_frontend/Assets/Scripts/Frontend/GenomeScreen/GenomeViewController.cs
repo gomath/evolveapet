@@ -11,6 +11,7 @@ public class GenomeViewController : MonoBehaviour {
 	GameObject activePair;
 
 	Player player;
+	Animal animal;
 	Genome g;
 	Chromosome[,] frontEndChromosomes;
 	Gene[,] genes;
@@ -43,6 +44,7 @@ public class GenomeViewController : MonoBehaviour {
 	bool displayGuessPopup;
 	bool displayTherapyPopup;
 	String popupText = "";
+	String popupHeading = "";
 
 
 	// Use this for initialization
@@ -50,7 +52,9 @@ public class GenomeViewController : MonoBehaviour {
 			quickView = transform.FindChild ("QuickView").GetComponent<QuickViewScript> ();
 			transform.FindChild ("ControlAnchors").GetComponent<ControlAnchorsScript> ().showBreedButton = false;
 
-			g = new Genome ();
+			animal = new Animal ();
+			//g = new Genome ();
+			g = animal.Genome;
 			player = new Player(new Stable(), "DefaultPlayer");
 				// TODO remove afterwards
 				// Randomizing which genes has been guessed correctly
@@ -66,6 +70,11 @@ public class GenomeViewController : MonoBehaviour {
 			}
 
 			geneNamesToDisplay = new String[5,2];
+			// Adding initialization code in hope to get rid of crazy null pointers
+			for (int i=0; i<5; i++) {
+				geneNamesToDisplay[i,0] = "";
+				geneNamesToDisplay[i,1] = "";
+			}
 			genes = new Gene[5,2];
 			guessingStrings = new String[5,3];
 			correctGuesses = new String[5];
@@ -186,6 +195,14 @@ public class GenomeViewController : MonoBehaviour {
 
 			quickView.SetGeneColor (ch, g, c);
     }
+
+	void ChangeColorWhenGuessed(int ch, int g){
+			physicalChromosomes[ch,0].transform.FindChild("gene " + g).GetComponent<GeneScript>().actualColor = GeneScript.guessedColor;
+			physicalChromosomes[ch,0].transform.FindChild("gene " + g).GetComponent<SpriteRenderer>().color = GeneScript.guessedColor;
+			physicalChromosomes[ch,1].transform.FindChild("gene " + g).GetComponent<GeneScript>().actualColor = GeneScript.guessedColor;
+			physicalChromosomes[ch,1].transform.FindChild("gene " + g).GetComponent<SpriteRenderer>().color = GeneScript.guessedColor;
+			quickView.SetGeneColor (ch, g,GeneScript.guessedColor);
+	}
         
 
 
@@ -238,6 +255,16 @@ public class GenomeViewController : MonoBehaviour {
 			
         }
     }
+
+	// Action to take when the player correctly guesses.
+	void CorrectGuessAction(int ch, int g){
+		player.guessedGenes [ch, g] = true;
+		ChangeColorWhenGuessed (ch,g);
+	}
+
+	void IncorrectGuessAction(){
+
+	}
 	
 
 	void OnGUI(){
@@ -264,6 +291,7 @@ public class GenomeViewController : MonoBehaviour {
 				u = Camera.main.WorldToScreenPoint(activePair.transform.FindChild("chromosome m").FindChild("gene " + i).position);
 				v = new Vector3 (originalWidth * u.x / Screen.width, originalHeight * u.y / Screen.height, 1f);
 
+				// TODO This line gives sometimes random Null Pointer Exceptions (tried to fix that by initializing geneNamesToDisplay to all "")
 				GUI.Box(new Rect(v.x - boxWidth - horizontalOffsetFromGene,originalHeight - (v.y + verticalOffsetFromGene), boxWidth, boxHeight),geneNamesToDisplay[i,0]);
 
 				// Right chromosome (female)
@@ -292,11 +320,15 @@ public class GenomeViewController : MonoBehaviour {
 							GUI.Box(new Rect(v.x + horizontalOffsetFromGene + boxWidth + horizontalGap + j*(boxWidth2+horizontalGap),originalHeight - (v.y + verticalOffsetFromGene), boxWidth2, boxHeight),guessingStrings[i,j] + "?");
 						} else
 						if(GUI.Button(new Rect(v.x + horizontalOffsetFromGene + boxWidth + horizontalGap + j*(boxWidth2+horizontalGap),originalHeight - (v.y + verticalOffsetFromGene), boxWidth2, boxHeight),guessingStrings[i,j] + "?")){
+
 							bool correctGuess = guessingStrings[i,j] == correctGuesses[i];
 							if(correctGuess){
-								popupText = "Correct!";
+								popupHeading = "Correct";
+								popupText = "Congratulations, you have correctly guessed this trait.";
+								CorrectGuessAction(activeChromosome,i);
 							} else {
-								popupText = "Incorrect, remaining number of attempts is X.";
+								popupHeading = "Incorrect";
+								popupText = "I am sorry, but that was rather wrong. Remaining number of attempts is X.";
 							}
 							displayGuessPopup = true;
 						}
@@ -304,13 +336,11 @@ public class GenomeViewController : MonoBehaviour {
 					if(displayGuessPopup){
 						u = Camera.main.WorldToScreenPoint(transform.FindChild("ControlAnchors").FindChild("PopupAnchor").position);
 						v = new Vector3 (originalWidth * u.x / Screen.width, originalHeight * u.y / Screen.height, 1f);
-						GUI.Window (0,new Rect(v.x,originalHeight-v.y,240,200),PopupOnGuess,"Popup");
-						GUI.FocusWindow(0);
-						//displayGuessPopup = false;
+						GUI.Window (0,new Rect(v.x,originalHeight-v.y,240,100),PopupOnGuess,popupHeading);
 					}
 
 				}
-
+				// TODO remove
 				GUI.Box(new Rect(0,0,300,30),correct);
 			} else if(toolbarInt == 0){ // Gene therapy
 
@@ -322,7 +352,8 @@ public class GenomeViewController : MonoBehaviour {
 		void PopupOnGuess(int id){
 			GUI.TextArea (new Rect(20,20,200,50),popupText);
 			if (GUI.Button (new Rect (20, 70, 80, 20), "Close")) {
-				displayGuessPopup = false;			
+				CreateStringsForGuessing();
+				displayGuessPopup = false;
 			}
 
 

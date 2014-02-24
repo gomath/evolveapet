@@ -49,7 +49,7 @@ public class QuickViewScript : MonoBehaviour {
 				miniPhysicalChromosomes[ch,0].transform.FindChild("gene " + g).GetComponent<SpriteRenderer>().color = c;
 				miniPhysicalChromosomes[ch,1].transform.FindChild("gene " + g).GetComponent<GeneScript>().actualColor = c;
 				miniPhysicalChromosomes[ch,1].transform.FindChild("gene " + g).GetComponent<SpriteRenderer>().color = c;
-        }
+    }
         
         
     }

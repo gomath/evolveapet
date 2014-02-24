@@ -21,6 +21,7 @@ namespace EvolveAPet
         // each animal will be given a genome and handed both its parents
         public bool Egg { get; set; }
 		public Animal[] Parent { set; get;} 
+		public int RemainingGuesses = 10;
 		
 	
 
@@ -48,6 +49,7 @@ namespace EvolveAPet
             for (int n = 0; n < bodyPartNumber; n++){
 				createBodyPart(n);
 			}
+
         }
 
 		public static Animal deserialiseAnimal(string path){
@@ -71,60 +73,13 @@ namespace EvolveAPet
 				}
 
 		public Animal(){// Generates a completely random animal
-
 			BodyPartArray = new BodyPart[bodyPartNumber]; 
-			Chromosome[] chromosomeArrayA = new Chromosome[bodyPartNumber];
-			Chromosome[] chromosomeArrayB = new Chromosome[bodyPartNumber];
 			Generation = 1;
-			int genePos;
-			Gene newGene; // mother and father genes
-			/*6 traits filled in this order :
-			0.Colour
-			1.Size
-			2.Pattern
-			3.Number
-			4.Shape
-			5.Teeth_Shape
-			Traits not used for that specific body part are generated but not used
-			
-			7 body parts in this order:
-			0.Ears
-			1.Eyes
-			2.Head
-			3.Torso
-			4.Arms
-			5.Legs
-			6.Tail
-			*/
-
-			for (int n = 0; n<bodyPartNumber;n++){// iterate through body parts
-				Chromosome currentChromosomeA = new Chromosome (n); // creates a new chromosome for each body part
-				Chromosome currentChromosomeB = new Chromosome (n); // creates a new chromosome for each body part
-
-				for (int t=0;t<6;t++){ // iterate through all traits
-
-						genePos = currentChromosomeA.getTraitPosition(t); // finds where the gene coding for trait t and body part n is located on the gene
-						//Use random constructor of Gene to generate two random genes.
-				
-						if (genePos !=-1){
-							newGene = new Gene(n,genePos);
-							currentChromosomeA.Genes[genePos] = newGene;
-							newGene = new Gene(n,genePos);
-							currentChromosomeB.Genes[genePos] = newGene;
-						}						
-
-					}
-				chromosomeArrayA[n] = currentChromosomeA;
-				chromosomeArrayB[n] = currentChromosomeA;
-
-
-				}
-			Genome = new Genome (chromosomeArrayA, chromosomeArrayB);
+			Genome = new Genome ();
 			for (int n=0; n<7; n++) {
 				createBodyPart(n);			
 			}
-
-			}
+		}
 
        /* public void Mutate(int chromosomeNumber, int geneNumber, int genePairNumber, Gene newGene)
         {
