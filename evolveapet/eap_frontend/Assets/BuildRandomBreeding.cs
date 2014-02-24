@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace EvolveAPet{
 
@@ -16,6 +17,8 @@ namespace EvolveAPet{
 		Animal anFather;
 		Animal anMother;
 		Animal anChild;
+
+		LinkedList<GameObject> animals = new LinkedList<GameObject>();
 		
 		// Use this for initialization
 		void Start () {
