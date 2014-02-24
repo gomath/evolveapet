@@ -9,8 +9,11 @@ namespace EvolveAPet {
 		private Vector2 lastPos;
 		private float delta;
 		private bool touched;
+
+		private GameObject animalSkeleton;
 		
 		void Start() {
+			animalSkeleton = transform.FindChild("animal skeleton").gameObject;
 			StartCoroutine("twitch");
 			StartCoroutine("blink");
 		}
@@ -35,7 +38,7 @@ namespace EvolveAPet {
 			}
 			
 			if ((delta > 20f) && touched) {
-				GetComponent<Animator>().SetTrigger("Tickle");
+				animalSkeleton.GetComponent<Animator>().SetTrigger("Tickle");
 				delta = 0f;
 				touched = false;
 			}
@@ -43,14 +46,14 @@ namespace EvolveAPet {
 		
 		IEnumerator twitch() {
 			for(;;) {
-				GetComponent<Animator>().SetTrigger("Twitch");
+				animalSkeleton.GetComponent<Animator>().SetTrigger("Twitch");
 				yield return new WaitForSeconds(UnityEngine.Random.Range (10f, 20f));
 			}	
 		}
 		
 		IEnumerator blink() {
 			for(;;) {
-				GetComponent<Animator>().SetTrigger("Blink");
+				animalSkeleton.GetComponent<Animator>().SetTrigger("Blink");
 				yield return new WaitForSeconds(UnityEngine.Random.Range (2f, 5f));
 			}	
 		}
@@ -58,7 +61,7 @@ namespace EvolveAPet {
 		public void Build(GameObject parent) {
 
 			//Find transforms
-			Transform tParent = parent.transform;
+			Transform tParent = parent.transform.FindChild("animal skeleton").transform;
 
 			Transform tBody = tParent.FindChild("body").transform;
 			Transform tHead = tParent.FindChild("head").transform;

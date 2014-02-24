@@ -61,11 +61,23 @@ TagManager:
     userID: 0
     uniqueID: 0
     locked: 0
+  - name: Chromosome
+    userID: 2
+    uniqueID: 2229174299
+    locked: 0
+  - name: Stable
+    userID: 4
+    uniqueID: 179819607
+    locked: 0
+  - name: Animal
+    userID: 5
+    uniqueID: 1577822559
+    locked: 0
   - name: Pet
     userID: 1
     uniqueID: 3108476755
     locked: 0
-  - name: Chromosome
-    userID: 2
-    uniqueID: 2229174299
+  - name: Gate
+    userID: 3
+    uniqueID: 2397760411
     locked: 0
