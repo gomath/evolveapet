@@ -130,7 +130,6 @@ public class TetradsViewController : MonoBehaviour {
 
 	
 	// Set of methods for colouring the genes corresponding to various body parts
-
 	void ToggleEyes(bool on){
 			Locus[] loci = g.FrontEndGetLociByBodyPart (EnumBodyPart.EYES);
 			SetColorToGenes (on, loci);

@@ -63,7 +63,7 @@ namespace EvolveAPet
 		// TODO - untested
 		/// <summary>
 		/// FRONTEND METHOD
-		/// Given frontEnd chromosome number, frontEnd gene number and integer 0 (mother) or 1 (father), returns the
+		/// Given frontEnd chromosome number, frontEnd gene number and integer 0 (father) or 1 (mother), returns the
 		/// corresponding gene in the backend genome. 
 		/// 
 		/// </summary>
@@ -79,7 +79,7 @@ namespace EvolveAPet
 				int backEndChrom = backendLocus.Chromosome;
 				int backEndGene = backendLocus.GeneNumber;
 
-			Chromosome[] ch = (parent == 0) ? _motherChromosome : _fatherChromosome;
+			Chromosome[] ch = (parent == 1) ? _motherChromosome : _fatherChromosome;
 			return ch[backEndChrom].Genes[backEndGene];
 		}
 
@@ -109,7 +109,7 @@ namespace EvolveAPet
 		/// Returns front-end represantation of chromosomes.
 		/// </summary>
 		/// <returns>The ent chromosomes.</returns>
-		private Chromosome[,] FrontEndChromosomes(){
+		public Chromosome[,] FrontEndChromosomes(){
 			LoadMapIfNotExist ();
 
 			Chromosome[,] result = new Chromosome[2,Global.NUM_OF_CHROMOSOMES];
@@ -127,8 +127,8 @@ namespace EvolveAPet
 				}
 
 				// Create the front end chromosomes
-				result[0,i] = new Chromosome(motherGenes);
-				result[1,i] = new Chromosome(fatherGenes);
+				result[0,i] = new Chromosome(fatherGenes);
+				result[1,i] = new Chromosome(motherGenes);
 			}
 
 			return result;
@@ -625,6 +625,46 @@ namespace EvolveAPet
 		/// <param name="trait">Trait.</param>
 		public int GetTrait(int chromosomeNum, EnumTrait trait){
 			return GetTrait (chromosomeNum, (int)trait);
+		}
+
+		// TODO untested
+		/// <summary>
+		/// Returns given number of distinct random names of trait including the specified string.
+		/// </summary>
+		/// <returns>The distinct random trait names.</returns>
+		/// <param name="hasToInclude">Has to include.</param>
+		/// <param name="totalSize">Total size.</param>
+		public String[] GetDistinctRandomTraitNames(String hasToInclude, int totalSize){
+			String[] res = new String[totalSize];
+			res [0] = hasToInclude;
+
+			int rand;
+			bool alreadyIncluded;
+			
+			for (int i=1; i<totalSize; i++) {
+				do{
+					rand = Global.rand.Next(MyDictionary.traitNames.Length);
+					res[i] = MyDictionary.traitNames[rand];
+					alreadyIncluded = false;
+					for(int j=0; j<i; j++){
+						if(res[j] == res[i]){
+							alreadyIncluded = true;
+						}
+					}
+				} while(alreadyIncluded);
+			}
+
+			//Random swapping
+			for (int i=0; i<5; i++) {
+				int x = Global.rand.Next(totalSize);
+				int y = Global.rand.Next(totalSize);
+
+				String temp = res[x];
+				res[x] = res[y];
+				res[y] = temp;
+			}
+
+			return res;
 		}
 
 	}

@@ -39,6 +39,7 @@ namespace EvolveAPet
 	[Serializable]
 	public class MyDictionary
 	{
+
 		// DO NOT CHANGE FOLLOWING - SERVE AS REFERENCE POINTS FOR CONTROLLING GENE DECODING
 		private static String BLANK = "BLANK";
 		private static String DOTS = "DOTS";
@@ -154,6 +155,15 @@ namespace EvolveAPet
 		public static int GetIndexOfBodyPart(EnumBodyPart bp){
 			return Array.FindIndex (chromosomeDict, x => x == bp);
 		}
+
+		public static String[] traitNames = new String[] {
+			"colour",
+			"size",
+			"pattern",
+			"number",
+			"shape",
+			"teeths"
+		};
 		
 
 		public static String[][][][][] geneDict = new String[7][][][][]{

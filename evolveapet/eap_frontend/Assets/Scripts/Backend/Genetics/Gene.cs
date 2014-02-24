@@ -55,6 +55,18 @@ namespace EvolveAPet
 			return _dominant;
 		}
 
+		public String TraitName(){
+			switch (_trait) {
+			case EnumTrait.COLOUR: 		return MyDictionary.traitNames[0];
+			case EnumTrait.SIZE:	 	return MyDictionary.traitNames[1];
+			case EnumTrait.PATTERN:	 	return MyDictionary.traitNames[2];
+			case EnumTrait.NUMBER: 		return MyDictionary.traitNames[3];
+			case EnumTrait.SHAPE:		return MyDictionary.traitNames[4];
+			case EnumTrait.TEETH_SHAPE:	return MyDictionary.traitNames[5];
+			}
+			return "";
+		}
+
 		/// <summary>
 		/// Construct random gene that should be logically placed on this chromosome at given location.
 		/// </summary>

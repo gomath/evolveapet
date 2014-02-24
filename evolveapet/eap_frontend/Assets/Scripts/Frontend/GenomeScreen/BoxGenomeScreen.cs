@@ -17,7 +17,7 @@ public class BoxGenomeScreen : MonoBehaviour {
 	}
 
 	void OnMouseDown(){
-		SendMessageUpwards ("BoxClicked", boxNumber);
+			SendMessageUpwards ("BoxClicked", boxNumber);
 	}
 }
 }
