@@ -135,7 +135,7 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_SortingLayerID: 179819607
   m_Sprite: {fileID: 21300000, guid: 78399fe9fbf1e4a0ebeae8f4b2e8171c, type: 3}
@@ -793,9 +793,9 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 0
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 179819607
   m_Sprite: {fileID: 21300000, guid: 78399fe9fbf1e4a0ebeae8f4b2e8171c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1101296741
@@ -897,9 +897,9 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 0
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 179819607
   m_Sprite: {fileID: 21300000, guid: 78399fe9fbf1e4a0ebeae8f4b2e8171c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1448215415
@@ -947,9 +947,9 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 0
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 179819607
   m_Sprite: {fileID: 21300000, guid: 78399fe9fbf1e4a0ebeae8f4b2e8171c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1454505075
@@ -1102,6 +1102,7 @@ GameObject:
   - 92: {fileID: 1634135133}
   - 124: {fileID: 1634135132}
   - 81: {fileID: 1634135131}
+  - 114: {fileID: 1634135136}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1170,6 +1171,28 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &1634135136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1634135130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a72a0c90a3f3549ed9277140a5479b04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numActiveStalls: 0
+  stallStatii: 000000000000
+  stable0: {fileID: 265893005}
+  stable1: {fileID: 1448215415}
+  stable2: {fileID: 1924668758}
+  stable3: {fileID: 1841054261}
+  stable4: {fileID: 1454505075}
+  stable5: {fileID: 1101296741}
+  potentialAnimals: []
+  potentialGameObjects: []
+  stableLocs: []
 --- !u!1 &1646848540
 GameObject:
   m_ObjectHideFlags: 0
@@ -1285,9 +1308,9 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 0
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 179819607
   m_Sprite: {fileID: 21300000, guid: 78399fe9fbf1e4a0ebeae8f4b2e8171c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1841054261
@@ -1362,9 +1385,9 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 0
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 179819607
   m_Sprite: {fileID: 21300000, guid: 78399fe9fbf1e4a0ebeae8f4b2e8171c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1924668758
