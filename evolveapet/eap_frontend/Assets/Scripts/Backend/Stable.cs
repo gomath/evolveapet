@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Runtime.Serialization; 
 
 namespace EvolveAPet
 {
 	[Serializable]
-    public class Stable : LinkedList<Animal>
+    public class Stable : List<Animal>
     {
 		public int Size { set; get; }
 		public int activeAnimalNumber{ set; get; }
@@ -21,10 +20,7 @@ namespace EvolveAPet
 
 
         }
-		public Stable(SerializationInfo info, StreamingContext context) : base(info, context) {
-			
-		}
-
+		
         public Stable(LinkedList<Animal> pets)
             : base(pets)
         {
@@ -38,7 +34,7 @@ namespace EvolveAPet
         {
 
             if (Count < Size)
-                AddFirst(a);
+                this.Add(a);
             else
                 throw new ApplicationException("stable is full");
 
