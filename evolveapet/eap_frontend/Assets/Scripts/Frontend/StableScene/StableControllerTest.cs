@@ -8,7 +8,7 @@ using System.Linq;
  * 
  */
 namespace EvolveAPet {
-public class StableController : MonoBehaviour {
+public class StableControllerTest : MonoBehaviour {
 		public int numActiveStalls;
 		public bool[] stallStatii = new bool[6];
 	
@@ -52,7 +52,7 @@ public class StableController : MonoBehaviour {
 			stableLocs = new Transform[]{stable0,stable1,stable2,stable3,stable4,stable5};
 
 		//setup player's stable by instantiating user's animals
-		numActiveStalls = Player.playerInstance._stable.Size;
+		numActiveStalls = 3;
 
 		//populate player's stable
 		for (int i = 0; i< numActiveStalls; i++) {
@@ -76,17 +76,16 @@ public class StableController : MonoBehaviour {
 			//Wait one frame for destroys to commit
 			yield return new WaitForSeconds(0f);
 
-			potentialAnimals [anIndex] = Player.playerInstance._stable.ElementAt(anIndex);
+			potentialAnimals [anIndex] = new Animal ();
 			potentialGameObjects [anIndex] = (GameObject)Instantiate (Resources.Load ("Prefabs/animal"));
 
 			potentialGameObjects [anIndex].GetComponent<PhysicalAnimal> ().animal = potentialAnimals [anIndex];
 
 			//build animal
 			potentialGameObjects[anIndex].GetComponent<PhysicalAnimal>().Build(potentialGameObjects[anIndex]);
-			potentialGameObjects [anIndex].transform.position = stableLocs [anIndex].position;
+			potentialGameObjects [anIndex].transform.position = stableLocs[anIndex].position;
 			potentialGameObjects [anIndex].transform.localScale = new Vector3 (0.5f, 0.5f, 0.5f);
 
-			potentialGameObjects [anIndex].GetComponent<SpriteRenderer> ().sortingLayerName = "Animal"; //hardcoded sorting layer for animal
 			//set position in bool array tracking stable occupations to true
 			stallStatii [anIndex] = true;
 	}
