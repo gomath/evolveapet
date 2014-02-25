@@ -82,6 +82,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 244018304}
+  - 95: {fileID: 244018305}
   m_Layer: 0
   m_Name: gate2_right
   m_TagString: Untagged
@@ -101,6 +102,20 @@ Transform:
   m_Children:
   - {fileID: 1610292653}
   m_Father: {fileID: 0}
+--- !u!95 &244018305
+Animator:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 244018303}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0ea676cc2f0754a5f91300502045d978, type: 2}
+  m_CullingMode: 0
+  m_ApplyRootMotion: 1
+  m_AnimatePhysics: 0
+  m_HasTransformHierarchy: 1
 --- !u!1 &265893003
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,6 +374,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 391246922}
+  - 95: {fileID: 391246923}
   m_Layer: 0
   m_Name: gate3_left
   m_TagString: Untagged
@@ -378,6 +394,20 @@ Transform:
   m_Children:
   - {fileID: 1494765623}
   m_Father: {fileID: 0}
+--- !u!95 &391246923
+Animator:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 391246921}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c5a450e48c5884c7a966ed09b9a103fb, type: 2}
+  m_CullingMode: 0
+  m_ApplyRootMotion: 1
+  m_AnimatePhysics: 0
+  m_HasTransformHierarchy: 1
 --- !u!1 &410049662
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,6 +416,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 410049663}
+  - 95: {fileID: 410049664}
   m_Layer: 0
   m_Name: gate2_left
   m_TagString: Untagged
@@ -405,6 +436,20 @@ Transform:
   m_Children:
   - {fileID: 734938227}
   m_Father: {fileID: 0}
+--- !u!95 &410049664
+Animator:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 410049662}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c5a450e48c5884c7a966ed09b9a103fb, type: 2}
+  m_CullingMode: 0
+  m_ApplyRootMotion: 1
+  m_AnimatePhysics: 0
+  m_HasTransformHierarchy: 1
 --- !u!1 &493210386
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,6 +558,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 599897421}
+  - 95: {fileID: 599897422}
   m_Layer: 0
   m_Name: gate0_right
   m_TagString: Untagged
@@ -532,6 +578,20 @@ Transform:
   m_Children:
   - {fileID: 882451320}
   m_Father: {fileID: 0}
+--- !u!95 &599897422
+Animator:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 599897420}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0ea676cc2f0754a5f91300502045d978, type: 2}
+  m_CullingMode: 0
+  m_ApplyRootMotion: 1
+  m_AnimatePhysics: 0
+  m_HasTransformHierarchy: 1
 --- !u!1 &729721145
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,6 +750,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1018390540}
+  - 95: {fileID: 1018390541}
   m_Layer: 0
   m_Name: gate4_left
   m_TagString: Untagged
@@ -709,6 +770,20 @@ Transform:
   m_Children:
   - {fileID: 493210387}
   m_Father: {fileID: 0}
+--- !u!95 &1018390541
+Animator:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1018390539}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c5a450e48c5884c7a966ed09b9a103fb, type: 2}
+  m_CullingMode: 0
+  m_ApplyRootMotion: 1
+  m_AnimatePhysics: 0
+  m_HasTransformHierarchy: 1
 --- !u!1 &1087394203
 GameObject:
   m_ObjectHideFlags: 0
@@ -817,6 +892,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1249495751}
+  - 95: {fileID: 1249495752}
   m_Layer: 0
   m_Name: gate3_right
   m_TagString: Untagged
@@ -836,6 +912,20 @@ Transform:
   m_Children:
   - {fileID: 729721146}
   m_Father: {fileID: 0}
+--- !u!95 &1249495752
+Animator:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1249495750}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0ea676cc2f0754a5f91300502045d978, type: 2}
+  m_CullingMode: 0
+  m_ApplyRootMotion: 1
+  m_AnimatePhysics: 0
+  m_HasTransformHierarchy: 1
 --- !u!1 &1278165226
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,6 +934,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1278165227}
+  - 95: {fileID: 1278165228}
   m_Layer: 0
   m_Name: gate5_right
   m_TagString: Untagged
@@ -863,6 +954,20 @@ Transform:
   m_Children:
   - {fileID: 1087394204}
   m_Father: {fileID: 0}
+--- !u!95 &1278165228
+Animator:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1278165226}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0ea676cc2f0754a5f91300502045d978, type: 2}
+  m_CullingMode: 0
+  m_ApplyRootMotion: 1
+  m_AnimatePhysics: 0
+  m_HasTransformHierarchy: 1
 --- !u!1 &1448215413
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,6 +1076,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1462575290}
+  - 95: {fileID: 1462575291}
   m_Layer: 0
   m_Name: gate4_right
   m_TagString: Untagged
@@ -990,6 +1096,20 @@ Transform:
   m_Children:
   - {fileID: 594743086}
   m_Father: {fileID: 0}
+--- !u!95 &1462575291
+Animator:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1462575289}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0ea676cc2f0754a5f91300502045d978, type: 2}
+  m_CullingMode: 0
+  m_ApplyRootMotion: 1
+  m_AnimatePhysics: 0
+  m_HasTransformHierarchy: 1
 --- !u!1 &1494765622
 GameObject:
   m_ObjectHideFlags: 0
@@ -1184,6 +1304,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numActiveStalls: 0
   stallStatii: 000000000000
+  activeAnimal:
+    RemainingGuesses: 5
+    cacheInitialized: 0
+    shouldGenerateNewGuessingOptions: 01010101010101
+    shouldGenerateNewMutations: 01010101010101
   stable0: {fileID: 265893005}
   stable1: {fileID: 1448215415}
   stable2: {fileID: 1924668758}
@@ -1201,6 +1326,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1646848541}
+  - 95: {fileID: 1646848542}
   m_Layer: 0
   m_Name: gate0_left
   m_TagString: Untagged
@@ -1220,6 +1346,20 @@ Transform:
   m_Children:
   - {fileID: 367863147}
   m_Father: {fileID: 0}
+--- !u!95 &1646848542
+Animator:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1646848540}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c5a450e48c5884c7a966ed09b9a103fb, type: 2}
+  m_CullingMode: 0
+  m_ApplyRootMotion: 1
+  m_AnimatePhysics: 0
+  m_HasTransformHierarchy: 1
 --- !u!1 &1748490781
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,6 +1368,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1748490782}
+  - 95: {fileID: 1748490783}
   m_Layer: 0
   m_Name: gate5_left
   m_TagString: Untagged
@@ -1247,6 +1388,20 @@ Transform:
   m_Children:
   - {fileID: 383787351}
   m_Father: {fileID: 0}
+--- !u!95 &1748490783
+Animator:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1748490781}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c5a450e48c5884c7a966ed09b9a103fb, type: 2}
+  m_CullingMode: 0
+  m_ApplyRootMotion: 1
+  m_AnimatePhysics: 0
+  m_HasTransformHierarchy: 1
 --- !u!1 &1831670872
 GameObject:
   m_ObjectHideFlags: 0
@@ -1255,6 +1410,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1831670873}
+  - 95: {fileID: 1831670874}
   m_Layer: 0
   m_Name: gate1_left
   m_TagString: Untagged
@@ -1274,6 +1430,20 @@ Transform:
   m_Children:
   - {fileID: 308002191}
   m_Father: {fileID: 0}
+--- !u!95 &1831670874
+Animator:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1831670872}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c5a450e48c5884c7a966ed09b9a103fb, type: 2}
+  m_CullingMode: 0
+  m_ApplyRootMotion: 1
+  m_AnimatePhysics: 0
+  m_HasTransformHierarchy: 1
 --- !u!1 &1841054259
 GameObject:
   m_ObjectHideFlags: 0
@@ -1332,6 +1502,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1873064352}
+  - 95: {fileID: 1873064353}
   m_Layer: 0
   m_Name: gate1_right
   m_TagString: Untagged
@@ -1351,6 +1522,20 @@ Transform:
   m_Children:
   - {fileID: 335160224}
   m_Father: {fileID: 0}
+--- !u!95 &1873064353
+Animator:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1873064351}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0ea676cc2f0754a5f91300502045d978, type: 2}
+  m_CullingMode: 0
+  m_ApplyRootMotion: 1
+  m_AnimatePhysics: 0
+  m_HasTransformHierarchy: 1
 --- !u!1 &1924668756
 GameObject:
   m_ObjectHideFlags: 0

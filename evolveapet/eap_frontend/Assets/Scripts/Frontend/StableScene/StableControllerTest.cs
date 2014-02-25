@@ -11,6 +11,7 @@ namespace EvolveAPet {
 public class StableControllerTest : MonoBehaviour {
 		public int numActiveStalls;
 		public bool[] stallStatii = new bool[6];
+		public Animal activeAnimal;
 	
 		public Transform stable0;
 		public Transform stable1;
