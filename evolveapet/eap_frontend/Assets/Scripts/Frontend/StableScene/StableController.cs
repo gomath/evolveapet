@@ -10,7 +10,8 @@ using System.Linq;
 namespace EvolveAPet {
 public class StableController : MonoBehaviour {
 		public int numActiveStalls;
-		public bool[] stallStatii = new bool[6];
+		public bool[] areOccupied = new bool[6];
+		public bool[] areUnlocked = new bool[6];
 	
 		public Transform stable0;
 		public Transform stable1;
@@ -42,6 +43,37 @@ public class StableController : MonoBehaviour {
 
 
 	void OnGUI() {
+			for (int i=0; i<6; i++) {
+						//get screen coordinates of stable[i] sprite to set button locs appropriately
+						Vector3 loc = camera.WorldToScreenPoint (stableLocs [i].position); 
+						Vector3 newXY = loc + new Vector3 (-30, 30, 0);
+
+						//misusing vectors: I am so sorry
+						Vector4 topButton = new Vector4 (newXY.x, newXY.y, 60, 10); //last two coords are height and length
+						Vector4 bottomButton = topButton + new Vector4 (0, 30, 0, 0);
+
+						if (areUnlocked [i]) {
+								if (areOccupied [i]) {
+										if (GUI.Button (new Rect (topButton.x, topButton.y, topButton.z, topButton.w), "Make Active")) {
+												//do stuffs
+												Debug.LogWarning ("Make Active pressed; CAUTION ACTIVE AN NUMBER IS WRONG");
+												Player.playerInstance._stable.activeAnimalNumber = i;
+										}
+					
+										if (GUI.Button (new Rect (bottomButton.x, bottomButton.y, bottomButton.z, bottomButton.w), "Release Animal")) {
+												Debug.LogWarning ("Release Button pressed.");
+										}
+								} else {
+										if (GUI.Button (new Rect (topButton.x, topButton.y, topButton.z, topButton.w), "New Random Animal")) {
+												Debug.LogWarning ("rand animal button pressed.");
+										}
+								}
+						} else {
+								if (GUI.Button (new Rect (topButton.x, topButton.y, topButton.z, topButton.w), "Unlock")) {
+										Debug.LogWarning ("unlock pressed");
+								}
+						}
+				}
 
 	}
 
@@ -50,6 +82,7 @@ public class StableController : MonoBehaviour {
 			potentialAnimals = new Animal[]{an0,an1,an3, an4, an5};
 			potentialGameObjects = new GameObject[]{a0,a1,a3,a4,a5};
 			stableLocs = new Transform[]{stable0,stable1,stable2,stable3,stable4,stable5};
+			areUnlocked = new bool[] {true, true, true, false, false, false};
 
 		//setup player's stable by instantiating user's animals
 		numActiveStalls = Player.playerInstance._stable.Size;
@@ -88,7 +121,7 @@ public class StableController : MonoBehaviour {
 
 			potentialGameObjects [anIndex].GetComponent<SpriteRenderer> ().sortingLayerName = "Animal"; //hardcoded sorting layer for animal
 			//set position in bool array tracking stable occupations to true
-			stallStatii [anIndex] = true;
+			areOccupied [anIndex] = true;
 	}
 
 
