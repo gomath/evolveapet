@@ -95,7 +95,7 @@ public class MainMenu : MonoBehaviour {
 		// Make the third button.
 		if(GUI.Button(new Rect(580,470,60,40), "Quit")) {
 			//quit
-				Player.playerInstance.saveGame();
+			Player.playerInstance.saveGame();
 			Application.Quit();
 		}
 
