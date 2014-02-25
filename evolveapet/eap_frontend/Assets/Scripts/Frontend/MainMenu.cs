@@ -62,7 +62,7 @@ public class MainMenu : MonoBehaviour {
 
 				}
 
-				if (!showPopUp)Application.LoadLevel("RandomBreeding"); //TODO Change to stable
+				if (!showPopUp)Application.LoadLevel("Stable"); 
 
 				
 			}
@@ -137,7 +137,7 @@ public class MainMenu : MonoBehaviour {
 				Player player = new Player(s, playerName);
 				Player.playerInstance = player;
 				player.saveGame();
-				Application.LoadLevel("RandomBreeding");//TODO Change to stable
+				Application.LoadLevel("Stable");
 
 			}
 		}
