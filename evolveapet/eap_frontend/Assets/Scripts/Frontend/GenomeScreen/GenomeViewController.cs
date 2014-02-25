@@ -32,9 +32,10 @@ public class GenomeViewController : MonoBehaviour {
 	// GUI members
 	public float originalWidth = 1098.0f;
 	public float originalHeight = 618.0f;
-	private float boxWidth = 160;
+	private float boxWidth = 165;
 	private float boxWidth2 = 70;
-	public float boxHeight = 30f;
+	public float boxHeight = 50f;
+	public float boxHeight2 = 50f;
 	public float horizontalOffsetFromGene = 30f;
 	public float verticalOffsetFromGene = 15f;
 	public float horizontalGap = 15f;
@@ -364,7 +365,7 @@ public class GenomeViewController : MonoBehaviour {
 	
 
 	void OnGUI(){
-			//GUI.skin = mySkin;
+			GUI.skin = myskin;
 			
 			scale.x = Screen.width / originalWidth;
 			scale.y = Screen.height / originalHeight;
@@ -374,11 +375,6 @@ public class GenomeViewController : MonoBehaviour {
 			// substitute matrix to scale if screen nonstandard
 			GUI.matrix = Matrix4x4.TRS (Vector3.zero, Quaternion.identity, scale);
 			Vector3 u, v;
-
-			u = Camera.main.WorldToScreenPoint (transform.FindChild("PointsAnchor").position);
-			v = new Vector3 (originalWidth * u.x / Screen.width, originalHeight * u.y / Screen.height, 1f);
-			// Displaying current points on the screen
-			GUI.Box (new Rect(v.x,originalHeight - v.y,50,20),player.Points + " £");
 
 			u = Camera.main.WorldToScreenPoint (transform.FindChild("ControlAnchors").FindChild("Toolbar").position);
 			v = new Vector3 (originalWidth * u.x / Screen.width, originalHeight * u.y / Screen.height, 1f);
@@ -402,7 +398,7 @@ public class GenomeViewController : MonoBehaviour {
 						}
 					}
 					
-					toolbarInt = GUI.Toolbar (new Rect (v.x, originalHeight - v.y, 280, 50), toolbarInt, toolbarStrings);
+					toolbarInt = GUI.SelectionGrid(new Rect (v.x, originalHeight - v.y, 300, 120), toolbarInt, toolbarStrings,2);
 				
 			}
 
@@ -441,7 +437,7 @@ public class GenomeViewController : MonoBehaviour {
 						if(displayGuessPopup){
 							GUI.Box(new Rect(v.x + horizontalOffsetFromGene + boxWidth + horizontalGap + j*(boxWidth2+horizontalGap),originalHeight - (v.y + verticalOffsetFromGene), boxWidth2, boxHeight),guessingStrings[i,j] + "?");
 						} else
-						if(GUI.Button(new Rect(v.x + horizontalOffsetFromGene + boxWidth + horizontalGap + j*(boxWidth2+horizontalGap),originalHeight - (v.y + verticalOffsetFromGene), boxWidth2, boxHeight),guessingStrings[i,j] + "?")){
+						if(GUI.Button(new Rect(v.x + horizontalOffsetFromGene + boxWidth + horizontalGap + j*(boxWidth2+horizontalGap),originalHeight - (v.y + verticalOffsetFromGene), boxWidth2, boxHeight2),guessingStrings[i,j] + "?")){
 							bool correctGuess = guessingStrings[i,j] == correctGuesses[i];
 							if(correctGuess){
 								popupHeading = "Correct";
@@ -451,7 +447,7 @@ public class GenomeViewController : MonoBehaviour {
 							} else {
 								IncorrectGuessAction();
 								popupHeading = "Incorrect";
-								popupText = "I am sorry, but that was rather wrong. Remaining number of attempts is " + animal.RemainingGuesses + ". ";
+								popupText = "I am sorry, but that was rather wrong.\nRemaining number of attempts is " + animal.RemainingGuesses + ". ";
 								if (animal.RemainingGuesses == 0){
 									popupText += "Try breeding your animal or load another animal to guess!";
 								}
@@ -463,7 +459,7 @@ public class GenomeViewController : MonoBehaviour {
 					if(displayGuessPopup){
 						u = Camera.main.WorldToScreenPoint(transform.FindChild("PopupAnchor").position);
 						v = new Vector3 (originalWidth * u.x / Screen.width, originalHeight * u.y / Screen.height, 1f);
-						GUI.Window (0,new Rect(v.x,originalHeight-v.y,240,160),PopupOnGuess,popupHeading);
+						GUI.Window (0,new Rect(v.x,originalHeight-v.y,240,180),PopupOnGuess,popupHeading);
 					}
 
 				}
@@ -479,11 +475,11 @@ public class GenomeViewController : MonoBehaviour {
 							if(k == 0){
 								u = Camera.main.WorldToScreenPoint(activePair.transform.FindChild("chromosome m").FindChild("gene " + i).position);
 								v = new Vector3 (originalWidth * u.x / Screen.width, originalHeight * u.y / Screen.height, 1f);
-								buttonLocation = new Rect(v.x - horizontalOffsetFromGene - boxWidth - horizontalGap2 - boxWidth - j*(boxWidth+horizontalGap2),originalHeight - (v.y + verticalOffsetFromGene), boxWidth, boxHeight);
+								buttonLocation = new Rect(v.x - horizontalOffsetFromGene - boxWidth - horizontalGap2 - boxWidth - j*(boxWidth+horizontalGap2),originalHeight - (v.y + verticalOffsetFromGene), boxWidth, boxHeight2);
 							} else /*k == 1*/ {
 								u = Camera.main.WorldToScreenPoint(activePair.transform.FindChild("chromosome f").FindChild("gene " + i).position);
 								v = new Vector3 (originalWidth * u.x / Screen.width, originalHeight * u.y / Screen.height, 1f);
-								buttonLocation = new Rect(v.x + horizontalOffsetFromGene + boxWidth + horizontalGap2 + j*(boxWidth+horizontalGap2),originalHeight - (v.y + verticalOffsetFromGene), boxWidth, boxHeight);
+								buttonLocation = new Rect(v.x + horizontalOffsetFromGene + boxWidth + horizontalGap2 + j*(boxWidth+horizontalGap2),originalHeight - (v.y + verticalOffsetFromGene), boxWidth, boxHeight2);
 							}
 
 							if(GUI.Button (buttonLocation,randomMutationsNames[k,i,j])){
@@ -504,7 +500,7 @@ public class GenomeViewController : MonoBehaviour {
 					if(displayTherapyPopup){
 						u = Camera.main.WorldToScreenPoint(transform.FindChild("PopupAnchor").position);
 						v = new Vector3 (originalWidth * u.x / Screen.width, originalHeight * u.y / Screen.height, 1f);
-						GUI.Window (1,new Rect(v.x,originalHeight-v.y,240,200),PopupOnTherapy,popupHeading);
+						GUI.Window (1,new Rect(v.x,originalHeight-v.y,240,300),PopupOnTherapy,popupHeading);
 					}
 				}
 
@@ -512,16 +508,16 @@ public class GenomeViewController : MonoBehaviour {
 	}
 
 		void PopupOnGuess(int id){
-			GUI.TextArea (new Rect(20,20,200,100),popupText);
-			if (GUI.Button (new Rect (20, 130, 80, 20), "Close")) {
+			GUI.Box (new Rect(20,20,200,100),popupText);
+			if (GUI.Button (new Rect (20, 130, 80, 40), "Close")) {
 				CreateStringsForGuessing();
 				displayGuessPopup = false;
 			}
 		}
 
 		void PopupOnTherapy(int id){
-			GUI.TextArea (new Rect(20,20,200,140),popupText);
-			if (GUI.Button (new Rect (20, 170, 80, 20), "Close")) {
+			GUI.Box (new Rect(20,20,200,140),popupText);
+			if (GUI.Button (new Rect (20, 250, 80, 40), "Close")) {
 				displayTherapyPopup = false;
 			}
 		}
