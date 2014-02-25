@@ -1,0 +1,184 @@
+fileFormatVersion: 2
+guid: 5d98c1fdf178f7e48bf99e089a5944cb
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: tetradmisc_0
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 633
+        width: 665
+        height: 416
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: tetradmisc_1
+      rect:
+        serializedVersion: 2
+        x: 1231
+        y: 871
+        width: 75
+        height: 176
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: tetradmisc_2
+      rect:
+        serializedVersion: 2
+        x: 1396
+        y: 867
+        width: 129
+        height: 178
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: tetradmisc_3
+      rect:
+        serializedVersion: 2
+        x: 1621
+        y: 865
+        width: 126
+        height: 192
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: tetradmisc_4
+      rect:
+        serializedVersion: 2
+        x: 1233
+        y: 661
+        width: 122
+        height: 178
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: tetradmisc_5
+      rect:
+        serializedVersion: 2
+        x: 1443
+        y: 661
+        width: 116
+        height: 176
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: tetradmisc_6
+      rect:
+        serializedVersion: 2
+        x: 1653
+        y: 661
+        width: 124
+        height: 176
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: tetradmisc_7
+      rect:
+        serializedVersion: 2
+        x: 1233
+        y: 453
+        width: 148
+        height: 172
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: tetradmisc_8
+      rect:
+        serializedVersion: 2
+        x: 1467
+        y: 445
+        width: 137
+        height: 182
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: tetradmisc_9
+      rect:
+        serializedVersion: 2
+        x: 1700
+        y: 445
+        width: 107
+        height: 182
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: tetradmisc_11
+      rect:
+        serializedVersion: 2
+        x: 1235
+        y: 243
+        width: 140
+        height: 172
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: tetradmisc_12
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 78
+        width: 94
+        height: 157
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: tetradmisc_13
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 70
+        width: 111
+        height: 133
+      alignment: 9
+      pivot: {x: .373485118, y: .523118079}
+    - name: tetradmisc_14
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 23
+        width: 154
+        height: 231
+      alignment: 9
+      pivot: {x: .330000013, y: .550000012}
+    - name: tetradmisc_15
+      rect:
+        serializedVersion: 2
+        x: 663
+        y: 37
+        width: 154
+        height: 231
+      alignment: 9
+      pivot: {x: .330000013, y: .550000012}
+  spritePackingTag: 
+  userData: 

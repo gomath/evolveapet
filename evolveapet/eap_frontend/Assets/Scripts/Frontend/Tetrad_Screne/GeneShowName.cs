@@ -10,10 +10,9 @@ public class GeneShowName : MonoBehaviour {
 	float originalHeight = 618.0f;
 
 	Vector3 scale = new Vector3 ();
-	public	GUISkin myskin;
+	public	GUISkin myskin = (GUISkin)Resources.Load("GUI/Skin");
 	
 	public Gene gene { get; set; }
-		bool toggle = true;
 	// Use this for initialization
 	void Start () {
 		
@@ -26,7 +25,7 @@ public class GeneShowName : MonoBehaviour {
 
 	void OnGUI(){
 
-		//GUI.skin = mySkin;
+		GUI.skin = myskin;
 		
 		scale.x = Screen.width / originalWidth;
 		scale.y = Screen.height / originalHeight;
@@ -42,14 +41,7 @@ public class GeneShowName : MonoBehaviour {
 
 		float y = Adjust(v.y);
 		
-			if (GUI.Button (new Rect (v.x + 30, originalHeight - y - 10, 60, 30), gene.GetWholeNameEncoded())) {
-				if (toggle){
-					GetComponent<SpriteRenderer> ().color = Color.yellow;
-				} else{
-					GetComponent<SpriteRenderer> ().color = Color.magenta;
-				}
-				toggle = !toggle;
-			}
+			GUI.Box (new Rect (v.x + 30, originalHeight - y - 10, 60, 30), gene.GetWholeNameEncoded());
 
 	}
 

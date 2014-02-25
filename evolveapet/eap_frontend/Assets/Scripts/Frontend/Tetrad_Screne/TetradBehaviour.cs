@@ -115,22 +115,24 @@ public class TetradBehaviour : MonoBehaviour {
 			scale.y = Screen.height / originalHeight;
 			scale.z = 1;
 			var svMat = GUI.matrix;
+
+			GUI.skin = myskin;
 			
 			// substitute matrix to scale if screen nonstandard
 			GUI.matrix = Matrix4x4.TRS (Vector3.zero, Quaternion.identity, scale);
 			Vector3 u = Camera.main.WorldToScreenPoint(transform.FindChild("description_anchor").position);
 			Vector3 v = new Vector3(originalWidth*u.x/Screen.width,originalHeight*u.y/Screen.height,1f);
-			int h = 100;
+			int h = 120;
 			int w = 60;
 
 			string geneNames = GetGeneNamesInTetrad (0, temp);
-			GUI.TextArea(new Rect (v.x, originalHeight - v.y, w, h), geneNames);
+			GUI.Box(new Rect (v.x, originalHeight - v.y, w, h), geneNames);
 			geneNames = GetGeneNamesInTetrad (1, temp);
-			GUI.TextArea(new Rect (v.x + w, originalHeight - v.y, w, h), geneNames);
+			GUI.Box(new Rect (v.x + w, originalHeight - v.y, w, h), geneNames);
 			geneNames = GetGeneNamesInTetrad (2, temp);
-			GUI.TextArea(new Rect (v.x, originalHeight - v.y + h, w, h), geneNames);
+			GUI.Box(new Rect (v.x, originalHeight - v.y + h, w, h), geneNames);
 			geneNames = GetGeneNamesInTetrad (3, temp);
-			GUI.TextArea(new Rect (v.x + w, originalHeight - v.y + h, w, h), geneNames);
+			GUI.Box(new Rect (v.x + w, originalHeight - v.y + h, w, h), geneNames);
 			
 	}
 }

@@ -42,12 +42,12 @@ public class PhysicalChromosome : MonoBehaviour {
 
 			for (int i=0; i<chromosome.NumOfGenes; i++) {
 				if(ch.WhereHasBeenSplit >=0 && i>=ch.WhereHasBeenSplit){
-					geneColors[i] = COLOR_STRONG;
-					transform.FindChild("gene " + i).GetComponent<SpriteRenderer>().color = COLOR_STRONG;	
+					Color prev = transform.FindChild("gene " + i).GetComponent<SpriteRenderer>().color;
+					Color c = new Color(prev.b, 0, prev.r, prev.a);
+					geneColors[i] = c;
+					transform.FindChild("gene " + i).GetComponent<SpriteRenderer>().color = c;	
 				} else{
-					geneColors[i] = COLOR_WEAK;
-					transform.FindChild("gene " + i).GetComponent<SpriteRenderer>().color = COLOR_WEAK;	
-
+					geneColors[i] = transform.FindChild("gene " + i).GetComponent<SpriteRenderer>().color;
 				}
 			}
 	}
@@ -58,11 +58,10 @@ public class PhysicalChromosome : MonoBehaviour {
 	public void RecolorAllYourGenesAccordingToSplit(){
 			for (int i=0; i<chromosome.NumOfGenes; i++) {
 				if(chromosome.WhereHasBeenSplit >=0 && i>=chromosome.WhereHasBeenSplit){
-					transform.FindChild("gene " + i).GetComponent<SpriteRenderer>().color = COLOR_STRONG;	
-				} else{
-					transform.FindChild("gene " + i).GetComponent<SpriteRenderer>().color = COLOR_WEAK;	
-                    
-                }
+					Color prev = transform.FindChild("gene " + i).GetComponent<SpriteRenderer>().color;
+					Color c = new Color(prev.b, 0, prev.r, prev.a);
+					transform.FindChild("gene " + i).GetComponent<SpriteRenderer>().color = c;	
+				}
 			}
 
 	}
