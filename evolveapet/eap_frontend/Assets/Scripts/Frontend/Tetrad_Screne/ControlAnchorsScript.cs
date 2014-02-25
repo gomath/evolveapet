@@ -25,14 +25,13 @@ public class ControlAnchorsScript : MonoBehaviour {
 	}
 
 	void OnGUI(){
-		//GUI.skin = mySkin;
 		
 		scale.x = Screen.width / originalWidth;
 		scale.y = Screen.height / originalHeight;
 		scale.z = 1;
 		var svMat = GUI.matrix;
 
-			GUI.skin = myskin;
+		GUI.skin = myskin;
 		
 		// substitute matrix to scale if screen nonstandard
 		GUI.matrix = Matrix4x4.TRS (Vector3.zero, Quaternion.identity, scale);
