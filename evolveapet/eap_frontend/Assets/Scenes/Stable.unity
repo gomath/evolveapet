@@ -1343,12 +1343,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numActiveStalls: 0
-  stallStatii: 000000000000
-  activeAnimal:
-    RemainingGuesses: 5
-    cacheInitialized: 0
-    shouldGenerateNewGuessingOptions: 01010101010101
-    shouldGenerateNewMutations: 01010101010101
+  areOccupied: 
+  areLocked: 
   stable0: {fileID: 265893005}
   stable1: {fileID: 1448215415}
   stable2: {fileID: 1924668758}
