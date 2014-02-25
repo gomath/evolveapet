@@ -21,8 +21,18 @@ namespace EvolveAPet
         // each animal will be given a genome and handed both its parents
         public bool Egg { get; set; }
 		public Animal[] Parent { set; get;} 
+
+		// Used in Genome screen - do not modify
 		public int RemainingGuesses = 5;
-		
+		public bool cacheInitialized = false;
+		public bool[] shouldGenerateNewGuessingOptions = new bool[]{true,true,true,true,true,true,true};
+		public bool[] shouldGenerateNewMutations = new bool[]{true,true,true,true,true,true,true};
+		// Guessing genes caches
+		public String[,,] cacheGuessingStrings;
+		public String[,] cacheCorrectGuesses;
+		// Gene therapy caches
+		public String[,,,] cacheRandomMutationNames;
+		public Gene[,,] cacheRandomMutations;
 	
 
 
@@ -92,7 +102,7 @@ namespace EvolveAPet
             Egg = false;
         }
 
-        private void createBodyPart(int n){
+        public void createBodyPart(int n){
 			/* e is an enum pointing to body parts in this order:
 			0.Ears
 			1.Eyes

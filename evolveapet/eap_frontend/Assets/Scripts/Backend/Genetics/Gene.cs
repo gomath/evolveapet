@@ -26,6 +26,7 @@ namespace EvolveAPet
 			private bool[] _dominantAdditional; // used for colour, set to true if some additional information is dominant and false otherwise
 			private int _maxPossibleNumOfIndices; // for generating random gene for mutation and gene therapy
 
+
 		// GETTERS AND SETTERS
 		public EnumTrait Trait{
 			get{ return _trait; }
@@ -159,6 +160,22 @@ namespace EvolveAPet
 				_additionalIndices[i] = g._additionalIndices[i];
 				_dominantAdditional[i] = g._dominantAdditional[i];
 			}
+		}
+
+		/// <summary>
+		/// Mutate this gene to exact copy of given gene. 
+		/// </summary>
+		/// <param name="gene">Gene.</param>
+		public void Mutate(Gene gene){
+			this._dominant = gene._dominant;
+			this._chromosomeNum = gene._chromosomeNum;
+			this._geneNum = gene._geneNum;
+			this._nameIndex = gene._nameIndex;
+			this._maxNumOfNames = gene._maxNumOfNames;
+			this._additionalIndices = gene._additionalIndices;
+			this._numOfAdditionalInfo = gene._numOfAdditionalInfo;
+			this._dominantAdditional = gene._dominantAdditional;
+			this._maxPossibleNumOfIndices = gene._maxPossibleNumOfIndices;
 		}
 
 		/// <summary>
@@ -462,13 +479,7 @@ namespace EvolveAPet
 		}
 
 
-		/*
-		public void Mutate(Gene gene){
-			this._trait = gene._trait;
-			this._dominance = gene._dominance;
-			this._symbol = gene._symbol;
-			this._additional = gene._additional;
-		}*/
+
 
     }
 }
