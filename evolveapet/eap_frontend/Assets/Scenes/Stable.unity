@@ -1596,7 +1596,7 @@ GameObject:
   - 4: {fileID: 2075691546}
   - 114: {fileID: 2075691545}
   m_Layer: 0
-  m_Name: PlaceHolderForBG
+  m_Name: toolbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1613,12 +1613,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c476701686684407a32c74edb76ddee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toolbarInt: 0
-  barHeight: .100000001
-  toolbarStrings:
-  - Toolbar1
-  - Toolbar2
-  - Toolbar3
+  mySkin: {fileID: 11400000, guid: e3b883a08ff8eb04cae26114ecf69cac, type: 2}
+  selected: 0
+  coins: {fileID: 2800000, guid: b42c4fbce4f0d3944906437ee6d29eef, type: 3}
 --- !u!4 &2075691546
 Transform:
   m_ObjectHideFlags: 0
