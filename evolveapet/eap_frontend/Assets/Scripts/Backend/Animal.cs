@@ -21,7 +21,7 @@ namespace EvolveAPet
         // each animal will be given a genome and handed both its parents
         public bool Egg { get; set; }
 		public Animal[] Parent { set; get;} 
-		public int RemainingGuesses = 10;
+		public int RemainingGuesses = 5;
 		
 	
 

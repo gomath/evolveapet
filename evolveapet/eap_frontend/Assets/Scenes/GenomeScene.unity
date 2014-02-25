@@ -4417,7 +4417,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 338237947}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.8900001, y: -.370000005, z: 0}
+  m_LocalPosition: {x: 4.12750816, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1560783111}
@@ -4971,7 +4971,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 387819501}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.55999994, y: -.688965797, z: 0}
+  m_LocalPosition: {x: 1.4575119, y: -.318965465, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1560783111}
@@ -7331,7 +7331,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 593777660}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.017519, y: -.370000005, z: 0}
+  m_LocalPosition: {x: -0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1560783111}
@@ -8595,7 +8595,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 698596800}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.13999987, y: -.370000005, z: 0}
+  m_LocalPosition: {x: 2.87751198, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1560783111}
@@ -10907,7 +10907,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 873279140}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.13999987, y: -.688965321, z: 0}
+  m_LocalPosition: {x: 2.87751198, y: -.318964988, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1560783111}
@@ -13992,7 +13992,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1225553520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.55999994, y: -.370000005, z: 0}
+  m_LocalPosition: {x: 1.4575119, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1560783111}
@@ -15059,7 +15059,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1302888504}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.017519, y: -1.11000001, z: 1.04163933}
+  m_LocalPosition: {x: -0, y: -.739999771, z: 1.04163933}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1560783111}
@@ -16339,10 +16339,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1440681526}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.00326586, y: 2.80662155, z: 1.04163933}
+  m_LocalPosition: {x: -7.57895851, y: -3.06325793, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1560783111}
+  m_Father: {fileID: 1811857488}
 --- !u!1 &1446481181
 GameObject:
   m_ObjectHideFlags: 0
@@ -17694,18 +17694,17 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1560783109}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.63999987, y: -5.80557346, z: 8.95836067}
+  m_LocalPosition: {x: -15.1025867, y: -.100000001, z: 8.95836067}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1440681527}
-  - {fileID: 1302888505}
-  - {fileID: 387819502}
-  - {fileID: 698596801}
-  - {fileID: 1793827361}
-  - {fileID: 873279141}
   - {fileID: 1225553521}
+  - {fileID: 873279141}
+  - {fileID: 387819502}
+  - {fileID: 1793827361}
+  - {fileID: 698596801}
   - {fileID: 338237948}
   - {fileID: 593777661}
+  - {fileID: 1302888505}
   m_Father: {fileID: 1811857488}
 --- !u!1 &1564166957
 GameObject:
@@ -20547,7 +20546,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1793827360}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.017519, y: -.688965321, z: 0}
+  m_LocalPosition: {x: -0, y: -.318964988, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1560783111}
@@ -20722,6 +20721,7 @@ Transform:
   m_Children:
   - {fileID: 1168318896}
   - {fileID: 1560783111}
+  - {fileID: 1440681527}
   - {fileID: 1558363336}
   m_Father: {fileID: 0}
 --- !u!114 &1811857489
@@ -20735,17 +20735,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0685786137ad090489895f285d94302f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointsForCorrectGuess: 10
+  pointsForIncorrectGuess: 5
+  costOfGeneTherapy: 3
   originalWidth: 1098
   originalHeight: 618
   boxHeight: 30
   horizontalOffsetFromGene: 30
   verticalOffsetFromGene: 15
   horizontalGap: 15
+  horizontalGap2: 5
   myskin: {fileID: 0}
   toolbarInt: 0
   toolbarStrings:
   - Gene therapy
   - Guess genes
+  toolbarMode: 
 --- !u!1 &1813409363
 GameObject:
   m_ObjectHideFlags: 0

@@ -162,7 +162,7 @@ namespace EvolveAPet
 			"pattern",
 			"number",
 			"shape",
-			"teeths"
+			"teeth"
 		};
 		
 
