@@ -42,15 +42,18 @@ public class StableControllerTest : MonoBehaviour {
 
 		//public List<GameObject> anObjects = new ArrayList<GameObject>();
 
+		public GUISkin myskin;
+
 
 	void OnGUI() {
+			GUI.skin = myskin;
 			//get screen coordinates of stable[i] sprite to set button locs appropriately
 			for (int i=0; i<6; i++) {
-						Vector3 loc = camera.WorldToScreenPoint (-stableLocs [i].position); 
+						Vector3 loc = camera.WorldToScreenPoint (new Vector3(stableLocs [i].position.x,-stableLocs [i].position.y,1)); 
 						Vector3 newXY = loc + new Vector3 (-30, 30, 0);
 				
 						//misusing vectors: I am so sorry
-						Vector4 topButton = new Vector4 (newXY.x, newXY.y, 60, 10); //last two coords are height and length
+						Vector4 topButton = new Vector4 (newXY.x, newXY.y, 60, 30); //last two coords are height and length
 						Vector4 bottomButton = topButton + new Vector4 (0, 30, 0, 0);
 				
 						if (areUnlocked [i]) {

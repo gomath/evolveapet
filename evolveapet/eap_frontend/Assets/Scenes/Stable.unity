@@ -1405,6 +1405,7 @@ MonoBehaviour:
   potentialAnimals: []
   potentialGameObjects: []
   stableLocs: []
+  myskin: {fileID: 11400000, guid: e3b883a08ff8eb04cae26114ecf69cac, type: 2}
 --- !u!1 &1646848540
 GameObject:
   m_ObjectHideFlags: 0
