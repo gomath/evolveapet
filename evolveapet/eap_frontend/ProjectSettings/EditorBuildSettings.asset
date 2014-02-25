@@ -6,12 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/NetworkingScene.unity
+    path: Assets/Scenes/MainMenu.unity
+  - enabled: 1
+    path: Assets/Scenes/Stable.unity
   - enabled: 1
     path: Assets/Scenes/Animal.unity
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Scenes/GenomeScene.unity
   - enabled: 1
+    path: Assets/Scenes/CreateTetradsScrene.unity
+  - enabled: 1
+    path: Assets/Scenes/NetworkingScene.unity
+  - enabled: 0
     path: Assets/Scenes/test suite.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/RandomBreeding.unity

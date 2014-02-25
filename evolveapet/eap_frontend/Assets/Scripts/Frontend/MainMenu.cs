@@ -47,7 +47,8 @@ public class MainMenu : MonoBehaviour {
 			GUI.Window(1, new Rect((originalWidth / 2) - 170, (originalHeight / 2) - 85, 300, 250), ErrorGUI, "Hello!");
 		}
 		// Make the first button. If it is pressed, Application.Loadlevel (1) will be executed
-		if(GUI.Button(new Rect(660,82,150,40), "Play")) {
+		//if(GUI.Button(new Rect(660,82,150,40), "Play")) {
+		if(GUI.Button(new Rect(80,270,150,40), "Play")) {
 			//for now loads Animal Scene; should load stable scene
 
 				if (currentPlayer==null){
@@ -68,7 +69,8 @@ public class MainMenu : MonoBehaviour {
 			}
 		
 		// Make the second button.
-		if(GUI.Button(new Rect(570,272,200,40), "Import a friend's animal")) {
+		//if(GUI.Button(new Rect(570,272,200,40), "Import a friend's animal")) {
+		if(GUI.Button(new Rect(250,270,200,40), "Import a friend's animal")) {
 			//Brings up a file choosing interface, then loads the animal into memory.
 			//If the stable's egg slot is full then throws an error message
 
@@ -93,7 +95,8 @@ public class MainMenu : MonoBehaviour {
 		}
 
 		// Make the third button.
-		if(GUI.Button(new Rect(580,470,60,40), "Quit")) {
+		//if(GUI.Button(new Rect(580,470,60,40), "Quit")) {
+		if(GUI.Button(new Rect(470,270,60,40), "Quit")) {
 			//quit
 			Player.playerInstance.saveGame();
 			Application.Quit();

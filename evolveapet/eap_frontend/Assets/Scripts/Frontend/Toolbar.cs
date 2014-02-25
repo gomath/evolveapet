@@ -12,11 +12,11 @@ namespace EvolveAPet{
 
 		Player currentPlayer;
 
-		public int selected;
-
-		string[] buttons = {"Stable","Animal","Genome","Breed"};
+		public int level;
 
 		public Texture coins;
+
+		bool help;
 
 		// Use this for initialization
 		void Start () {
@@ -48,21 +48,44 @@ namespace EvolveAPet{
 			GUI.color = Color.black;
 			if (currentPlayer != null) {
 				GUILayout.Label(currentPlayer.NickName,  GUILayout.Width (200));
-				//GUILayout.Label (currentPlayer.Points.ToString);
+				GUI.skin.label.fontSize = (30);
+				GUILayout.Label (currentPlayer.Points.ToString(), GUILayout.Width (200));
+				GUI.skin.label.fontSize = (0);
 			} else {
 				GUILayout.Label("Wow, such NickName", GUILayout.Width (200));
 				GUI.skin.label.fontSize = (30);
 				GUILayout.Label ("9000", GUILayout.Width (200));
 				GUI.skin.label.fontSize = (0);
-				//GUILayout.Space(10);
 			}
 
 			GUI.color = Color.white;
 
 			GUILayout.EndVertical();
 
+			if (level == 0) {
+				if (GUILayout.Button("Animal")) Application.LoadLevel("Animal");
+				if (GUILayout.Button("Genome")) Application.LoadLevel("GenomeScene");
+				if (GUILayout.Button("Breed")) {}
+				if (GUILayout.Button("Exit")) Application.LoadLevel("MainMenu");
+			}
 
-			GUILayout.Toolbar(selected, buttons);
+			if (level == 1) {
+				if (GUILayout.Button("Stable")) Application.LoadLevel("Stable");
+				if (GUILayout.Button("Genome")) Application.LoadLevel("GenomeScene");
+				if (GUILayout.Button("Breed")) {}
+				if (GUILayout.Button("Exit")) Application.LoadLevel("MainMenu");
+			}
+
+			if (level == 2) {
+				if (GUILayout.Button("Stable")) Application.LoadLevel("Stable");
+				if (GUILayout.Button("Animal")) Application.LoadLevel("Animal");
+				GUILayout.Button("Breed");
+				if (GUILayout.Button("Exit")) Application.LoadLevel("MainMenu");
+			}
+
+			GUI.skin.button.fontSize = (50);
+			GUILayout.Toggle(help,"?","button",GUILayout.Width(75));
+			GUI.skin.button.fontSize = (0);
 
 			GUILayout.EndHorizontal();
 			GUILayout.EndArea();
