@@ -5,7 +5,7 @@ AnimatorController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: gate0_left
+  m_Name: gateL
   serializedVersion: 2
   m_AnimatorParameters: []
   m_AnimatorLayers: []

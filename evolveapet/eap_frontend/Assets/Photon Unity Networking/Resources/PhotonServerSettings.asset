@@ -14,7 +14,7 @@ MonoBehaviour:
   HostType: 1
   ServerAddress: app-eu.exitgamescloud.com
   ServerPort: 5055
-  AppID: 
+  AppID: 501a77d7-8970-48f6-90dc-4224d468152f
   RpcList:
   - Chat
   - InstantiateRpc
@@ -25,4 +25,6 @@ MonoBehaviour:
   - SelectedAnimal
   - DisplayTradeRequest
   - Breed
+  - CleanObject
+  - Busy
   DisableAutoOpenWizard: 0
