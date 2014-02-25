@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections;
 using System.IO;
 using System;
-using UnityEditor;
+//using UnityEditor;
 namespace EvolveAPet{
 public class MainMenu : MonoBehaviour {
 	float originalWidth = 1098.0f;
@@ -77,10 +77,12 @@ public class MainMenu : MonoBehaviour {
 					showPopUp =false;
 				}
 				else{
-				string path = EditorUtility.OpenFilePanel(
+				/*string path = EditorUtility.OpenFilePanel(
 					"Load A Friend's Animal",
 					"",
 					"animal");
+					*/
+					string path = "";//TODO
 					if (!path.Equals("")){
 					Animal newAnimal = Animal.deserialiseAnimal(path);
 					currentPlayer.Stable.eggSlot = newAnimal;
@@ -93,6 +95,7 @@ public class MainMenu : MonoBehaviour {
 		// Make the third button.
 		if(GUI.Button(new Rect(580,470,60,40), "Quit")) {
 			//quit
+				Player.playerInstance.saveGame();
 			Application.Quit();
 		}
 
