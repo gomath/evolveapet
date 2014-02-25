@@ -11,7 +11,7 @@ public class TetradsViewController : MonoBehaviour {
 	GameObject[,] magnifiedChromosomes;
 	public GameObject activeChromosome;
 	public static Color CHOSEN_COLOR = Color.green;
-	public static Color NUMBER_COLOR = new Color32(111,150,210,255);
+	public static Color NUMBER_COLOR = new Color32(70,70,70,255);
 
 	bool chosen = false; // TODO - remove at the end
 
@@ -108,7 +108,7 @@ public class TetradsViewController : MonoBehaviour {
 			if(box.name != boxName){
 					box.FindChild("num"+(i+1)).GetComponent<SpriteRenderer>().color =  NUMBER_COLOR;
 			} else {
-					box.FindChild("num"+(i+1)).GetComponent<SpriteRenderer>().color = Color.white;
+					box.FindChild("num"+(i+1)).GetComponent<SpriteRenderer>().color = Color.black;
 			}
 		}
 	}

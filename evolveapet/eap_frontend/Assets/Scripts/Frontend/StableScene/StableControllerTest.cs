@@ -46,7 +46,7 @@ public class StableControllerTest : MonoBehaviour {
 	void OnGUI() {
 			//get screen coordinates of stable[i] sprite to set button locs appropriately
 			for (int i=0; i<6; i++) {
-						Vector3 loc = camera.WorldToScreenPoint (stableLocs [i].position); 
+						Vector3 loc = camera.WorldToScreenPoint (-stableLocs [i].position); 
 						Vector3 newXY = loc + new Vector3 (-30, 30, 0);
 				
 						//misusing vectors: I am so sorry
