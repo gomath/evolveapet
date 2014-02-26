@@ -18,6 +18,16 @@ namespace EvolveAPet{
 
 		bool help;
 
+		private bool showBreedingPopup = false;
+		private bool showLocalBreedingPopupPart = false;
+		private Animal[] animals = new Animal[6]{new Animal(),new Animal(),new Animal(),new Animal(),new Animal(),new Animal()};
+		private bool[] animalAlive = new bool[6]{true,true,true,true,true,true};
+		private int stableSize = 6;
+		private bool[] localBreedingToggleSelected = new bool[]{false,false,false,false,false,false};
+		private string popupHeading = "Breed your perfect pet";
+		private float popupButtonHeight = 40f;
+		private float popuWindowHeight = 110f;
+
 		// Use this for initialization
 		void Start () {
 			currentPlayer = Player.playerInstance; //Checks if there is already an instantiated player
@@ -65,21 +75,27 @@ namespace EvolveAPet{
 			if (level == 0) {
 				if (GUILayout.Button("Animal")) Application.LoadLevel("Animal");
 				if (GUILayout.Button("Genome")) Application.LoadLevel("GenomeScene");
-				if (GUILayout.Button("Breed")) {}
+				if (GUILayout.Button("Breed")) {
+					showBreedingPopup = true;
+				}
 				if (GUILayout.Button("Exit")) Application.LoadLevel("MainMenu");
 			}
 
 			if (level == 1) {
 				if (GUILayout.Button("Stable")) Application.LoadLevel("Stable");
 				if (GUILayout.Button("Genome")) Application.LoadLevel("GenomeScene");
-				if (GUILayout.Button("Breed")) {}
+				/*if (GUILayout.Button("Breed")) {
+					showBreedingPopup = true;
+				}*/
 				if (GUILayout.Button("Exit")) Application.LoadLevel("MainMenu");
 			}
 
 			if (level == 2) {
 				if (GUILayout.Button("Stable")) Application.LoadLevel("Stable");
 				if (GUILayout.Button("Animal")) Application.LoadLevel("Animal");
-				GUILayout.Button("Breed");
+				/*if (GUILayout.Button("Breed")){
+					showBreedingPopup = true;
+				};*/
 				if (GUILayout.Button("Exit")) Application.LoadLevel("MainMenu");
 			}
 
@@ -89,6 +105,55 @@ namespace EvolveAPet{
 
 			GUILayout.EndHorizontal();
 			GUILayout.EndArea();
+
+			if(showBreedingPopup){
+				Vector3 u = Camera.main.WorldToScreenPoint(transform.FindChild("PopupAnchor").position);
+				Vector3 v = new Vector3 (originalWidth * u.x / Screen.width, originalHeight * u.y / Screen.height, 1f);
+				GUI.Window (2,new Rect(v.x,originalHeight-v.y,300,popuWindowHeight),PopupOnBreeding,popupHeading);
+			}
+		}
+
+		void PopupOnBreeding(int id){
+			GUILayout.BeginVertical ();
+				GUILayout.BeginHorizontal();
+					if (GUILayout.Button ("Breed locally",GUILayout.Height(popupButtonHeight))) {
+						showLocalBreedingPopupPart = true;
+					}
+					if (GUILayout.Button ("Breed with a friend",GUILayout.Height(popupButtonHeight))) {
+								
+					}
+				GUILayout.EndHorizontal ();
+				
+				if (showLocalBreedingPopupPart) {
+					popuWindowHeight = 300f;
+					int numOfAnimalsSelected = 0;
+					for(int i=0; i<stableSize; i++){
+						if(animalAlive[i]){
+							localBreedingToggleSelected[i] = GUILayout.Toggle(localBreedingToggleSelected[i],i+"");
+							if(localBreedingToggleSelected[i]){
+								numOfAnimalsSelected ++;
+							}
+						}
+					}
+					
+					if(numOfAnimalsSelected == 2){
+						popuWindowHeight = 340f;
+						if(GUILayout.Button("Breed",GUILayout.Height(popupButtonHeight))){
+							GUILayout.Box ("Breeding scene");	
+						}
+					}
+					
+				}
+				
+
+				if (GUILayout.Button ("Close",GUILayout.Height(popupButtonHeight))) {
+					showBreedingPopup = false;
+					showLocalBreedingPopupPart = false;
+					popuWindowHeight = 110f;
+				}
+
+			GUILayout.EndVertical ();
+
 		}
 	}
 }
