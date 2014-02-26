@@ -81,3 +81,7 @@ TagManager:
     userID: 3
     uniqueID: 2397760411
     locked: 0
+  - name: Padlock
+    userID: 6
+    uniqueID: 1569313323
+    locked: 0

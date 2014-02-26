@@ -42,10 +42,6 @@ public class StableController : MonoBehaviour {
 		public Transform[] stableLocs;
 
 
-
-		//public List<GameObject> anObjects = new ArrayList<GameObject>();
-
-
 	void OnGUI() {
 			for (int i=0; i<6; i++) {
 						//get screen coordinates of stable[i] sprite to set button locs appropriately
