@@ -7,7 +7,7 @@ public class GeneScript : MonoBehaviour {
 
 	public static Color guessedColor = Color.green;
 	public static Color unknownColor = Color.white;
-	public static Color toggleColor = Color.red;
+	public static Color toggleColor = Color.black;
 	public Color actualColor = Color.white;
 	
 	// Use this for initialization
