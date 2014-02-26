@@ -12,8 +12,8 @@ namespace EvolveAPet
 		public int NumberOfUnlockedSlots = 3;
 		public int activeAnimalNumber{ set; get; }
 		public Animal eggSlot { set; get; }
-		public bool[] activeStableSlots = {true,true,true,false,false,false};
-		public bool[] livingAnimals = {false,false,false,false,false,false};
+		public bool[] activeStableSlots = {true,true,true,false,false,false};//The stable slots that are unlocked 
+		public bool[] livingAnimals = {false,false,false,false,false,false};//The stable slots which contain a living animal
 		public Animal[] animalsInStable = new Animal[6];
 
         public Stable()
