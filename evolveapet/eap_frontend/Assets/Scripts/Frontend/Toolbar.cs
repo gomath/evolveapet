@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 namespace EvolveAPet{
@@ -79,31 +79,69 @@ namespace EvolveAPet{
 
 			GUILayout.EndVertical();
 
-			if (level == 0) {
-				if (GUILayout.Button("Animal")) Application.LoadLevel("Animal");
-				if (GUILayout.Button("Genome")) Application.LoadLevel("GenomeScene");
+			if (level == 0) {	
+				if (GUILayout.Button("Animal")){
+					Application.LoadLevel("Animal");
+					Player.autoSave();
+
+				}
+				if (GUILayout.Button("Genome")){
+					Application.LoadLevel("GenomeScene");
+					Player.autoSave();
+
+				}
 				if (GUILayout.Button("Breed")) {
 					showBreedingPopup = true;
+					Player.autoSave();
+
 				}
-				if (GUILayout.Button("Exit")) Application.LoadLevel("MainMenu");
+				if (GUILayout.Button("Exit")){
+					Application.LoadLevel("MainMenu");
+					Player.autoSave();
+				}
+
+
 			}
 
 			if (level == 1) {
-				if (GUILayout.Button("Stable")) Application.LoadLevel("Stable");
-				if (GUILayout.Button("Genome")) Application.LoadLevel("GenomeScene");
+				if (GUILayout.Button("Stable")){ 
+					Application.LoadLevel("Stable");
+					Player.autoSave();
+
+				}
+				if (GUILayout.Button("Genome")){ 
+					Application.LoadLevel("GenomeScene");
+					Player.autoSave();
+
+				}
 				/*if (GUILayout.Button("Breed")) {
 					showBreedingPopup = true;
 				}*/
-				if (GUILayout.Button("Exit")) Application.LoadLevel("MainMenu");
+				if (GUILayout.Button("Exit")){
+					Application.LoadLevel("MainMenu");
+					Player.autoSave();
+				}
 			}
 
 			if (level == 2) {
-				if (GUILayout.Button("Stable")) Application.LoadLevel("Stable");
-				if (GUILayout.Button("Animal")) Application.LoadLevel("Animal");
+				if (GUILayout.Button("Stable")){ 
+					Application.LoadLevel("Stable");
+						Player.autoSave();
+
+					}
+				if (GUILayout.Button("Animal")){
+					Application.LoadLevel("Animal");
+					Player.autoSave();
+
+				}
 				/*if (GUILayout.Button("Breed")){
 					showBreedingPopup = true;
 				};*/
-				if (GUILayout.Button("Exit")) Application.LoadLevel("MainMenu");
+				if (GUILayout.Button("Exit")){
+					Application.LoadLevel("MainMenu");
+					Player.autoSave();
+
+				}
 			}
 
 			GUI.skin.button.fontSize = (50);
