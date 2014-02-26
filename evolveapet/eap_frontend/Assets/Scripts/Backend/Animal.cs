@@ -88,7 +88,6 @@ namespace EvolveAPet
 				createBodyPart(n);			
 			}
 			nameMeRandomly ();
-			Debug.Log (Name);
 		}
 
        /* public void Mutate(int chromosomeNumber, int geneNumber, int genePairNumber, Gene newGene)
