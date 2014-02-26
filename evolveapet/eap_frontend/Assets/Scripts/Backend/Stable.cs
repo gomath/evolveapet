@@ -20,8 +20,8 @@ namespace EvolveAPet
 
         }
 		private void getsize(){
-			int temp;
-			for (int n = 0; n<animalsInStable;n++){
+			int temp=0;
+			for (int n = 0; n<animalsInStable.Length;n++){
 				if (animalsInStable[n] ==null) temp++;
 			}
 			Size = temp;
