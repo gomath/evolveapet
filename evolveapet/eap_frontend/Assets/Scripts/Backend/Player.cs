@@ -22,12 +22,13 @@ namespace EvolveAPet
 		public bool[,] guessedGenes; // All the genes in the animal. If the array member at [i][j] is true, that means the the jth gene on the ith chromosome has been guessed
 		public static Player playerInstance = null; // I should have thought of this earlier
 		public DateTime lastSaved;
+
 		public Animal animalForBreeding1;
 		public Animal animalForBreeding2;
 		public Chromosome[] chromosomes1;
 		public Chromosome[] chromosomes2;
 		public int animalToChooseForBreeding;
-		public bool breedingCompleted;
+		public int remainingAnimalsToBreed;
 
 
 		public Player(Stable s, string username)
