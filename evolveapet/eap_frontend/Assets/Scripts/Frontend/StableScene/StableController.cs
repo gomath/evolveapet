@@ -111,7 +111,10 @@ public class StableController : MonoBehaviour {
 			potentialGameObjects = new GameObject[]{a0,a1,a2,a3,a4,a5};
 			stableLocs = new Transform[]{stable0,stable1,stable2,stable3,stable4,stable5};
 			//CHANGE THIS
-			areUnlocked = new bool[] {true, true, true, false, false, false};
+			areUnlocked = Player.playerInstance._stable.activeStableSlots;
+
+			areOccupied = Player.playerInstance._stable.livingAnimals;
+			padlocks = new GameObject[]{padlock0,padlock1,padlock2, padlock3, padlock4,padlock5};
 
 		//setup player's stable by instantiating user's animals
 		numActiveStalls = Player.playerInstance._stable.Size;
