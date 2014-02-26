@@ -27,4 +27,5 @@ MonoBehaviour:
   - Breed
   - CleanObject
   - Busy
+  - Accepted
   DisableAutoOpenWizard: 0
