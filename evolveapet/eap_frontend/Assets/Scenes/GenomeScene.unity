@@ -1334,7 +1334,7 @@ Transform:
   m_GameObject: {fileID: 93727152}
   m_LocalRotation: {x: 0, y: 0, z: .707106829, w: .707106829}
   m_LocalPosition: {x: 1.02999997, y: .0040705204, z: 10}
-  m_LocalScale: {x: .289999992, y: .280000001, z: 1}
+  m_LocalScale: {x: .280000001, y: .280000001, z: 1}
   m_Children:
   - {fileID: 1760670590}
   - {fileID: 430049960}
@@ -1374,7 +1374,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: 2.97000074, y: 1.86000049}
+  m_Size: {x: 6.51999998, y: 3.81999993}
   m_Center: {x: 0, y: -1.1920929e-07}
 --- !u!114 &93727156
 MonoBehaviour:
@@ -3700,7 +3700,7 @@ Transform:
   m_GameObject: {fileID: 272256418}
   m_LocalRotation: {x: 0, y: 0, z: .707106829, w: .707106829}
   m_LocalPosition: {x: -.159999996, y: .0040705204, z: 10}
-  m_LocalScale: {x: .289999992, y: .280000001, z: 1}
+  m_LocalScale: {x: .280000001, y: .280000001, z: 1}
   m_Children:
   - {fileID: 8333087}
   - {fileID: 882575897}
@@ -3740,7 +3740,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: 2.97000074, y: 1.86000049}
+  m_Size: {x: 6.51999998, y: 3.81999993}
   m_Center: {x: 0, y: 0}
 --- !u!114 &272256422
 MonoBehaviour:
@@ -6158,7 +6158,7 @@ Transform:
   m_GameObject: {fileID: 433428833}
   m_LocalRotation: {x: 0, y: 0, z: .707106829, w: .707106829}
   m_LocalPosition: {x: -3.75042486, y: .00407075882, z: 10}
-  m_LocalScale: {x: .289999992, y: .280000001, z: 1}
+  m_LocalScale: {x: .280000001, y: .280000001, z: 1}
   m_Children:
   - {fileID: 54771710}
   - {fileID: 1814429539}
@@ -6174,7 +6174,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: 2.97000074, y: 1.86000049}
+  m_Size: {x: 6.51999998, y: 3.81999993}
   m_Center: {x: 4.76837158e-07, y: 4.76837158e-07}
 --- !u!114 &433428837
 MonoBehaviour:
@@ -10342,7 +10342,7 @@ Transform:
   m_GameObject: {fileID: 828266695}
   m_LocalRotation: {x: 0, y: 0, z: .707106829, w: .707106829}
   m_LocalPosition: {x: 2.22000003, y: .0040705204, z: 10}
-  m_LocalScale: {x: .289999992, y: .280000001, z: 1}
+  m_LocalScale: {x: .280000001, y: .280000001, z: 1}
   m_Children:
   - {fileID: 195351820}
   - {fileID: 783593779}
@@ -10382,7 +10382,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: 2.97000074, y: 1.86000049}
+  m_Size: {x: 6.51999998, y: 3.81999993}
   m_Center: {x: 0, y: 0}
 --- !u!114 &828266699
 MonoBehaviour:
@@ -15332,7 +15332,7 @@ Transform:
   m_GameObject: {fileID: 1266775051}
   m_LocalRotation: {x: 0, y: 0, z: .707106829, w: .707106829}
   m_LocalPosition: {x: -1.36000001, y: .0040705204, z: 10}
-  m_LocalScale: {x: .289999992, y: .280000001, z: 1}
+  m_LocalScale: {x: .280000001, y: .280000001, z: 1}
   m_Children:
   - {fileID: 483677992}
   - {fileID: 831524340}
@@ -15372,7 +15372,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: 2.97000074, y: 1.86000049}
+  m_Size: {x: 6.51999998, y: 3.81999993}
   m_Center: {x: 0, y: 2.38418579e-07}
 --- !u!114 &1266775055
 MonoBehaviour:
@@ -16836,7 +16836,7 @@ Transform:
   m_GameObject: {fileID: 1423011786}
   m_LocalRotation: {x: 0, y: 0, z: .707106829, w: .707106829}
   m_LocalPosition: {x: -2.54999995, y: .0040705204, z: 10}
-  m_LocalScale: {x: .289999992, y: .280000001, z: 1}
+  m_LocalScale: {x: .280000001, y: .280000001, z: 1}
   m_Children:
   - {fileID: 1171275750}
   - {fileID: 237044934}
@@ -16876,7 +16876,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: 2.97000074, y: 1.86000049}
+  m_Size: {x: 6.51999998, y: 3.81999993}
   m_Center: {x: 0, y: 4.76837158e-07}
 --- !u!114 &1423011790
 MonoBehaviour:
@@ -18817,7 +18817,7 @@ Transform:
   m_GameObject: {fileID: 1603251226}
   m_LocalRotation: {x: 0, y: 0, z: .707106829, w: .707106829}
   m_LocalPosition: {x: 3.41000009, y: .0040705204, z: 10}
-  m_LocalScale: {x: .289999992, y: .280000001, z: 1}
+  m_LocalScale: {x: .280000001, y: .280000001, z: 1}
   m_Children:
   - {fileID: 87112313}
   - {fileID: 542966860}
@@ -18857,7 +18857,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: 2.97000074, y: 1.86000049}
+  m_Size: {x: 6.51999998, y: 3.81999993}
   m_Center: {x: 0, y: 4.76837158e-07}
 --- !u!114 &1603251230
 MonoBehaviour:
