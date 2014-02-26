@@ -19,17 +19,21 @@ public class MainMenu : MonoBehaviour {
 	bool exception;
 
 		void Start(){
-			if (!File.Exists(Environment.CurrentDirectory + "/save.sav")){ //Checks if a save game exists
-
-			}
-			else{
-				Player.loadGame(); 
-				showPopUp = false;
-			}//Loads player in from memory if there is a save
 
 			
 		}
 		void OnGUI () {
+
+			if (Player.playerInstance==null){
+				
+				if (!File.Exists(Environment.CurrentDirectory + "/save.sav")){ //Checks if a save game exists
+					
+				}
+				else{
+					Player.loadGame(); 
+					showPopUp = false;
+				}//Loads player in from memory if there is a save
+			}
 			if (m_fileBrowser != null) {
 				m_fileBrowser.OnGUI();
 			}
@@ -162,8 +166,7 @@ public class MainMenu : MonoBehaviour {
 				//Creates a new player with an empty stable and the given name
 				showPopUp = false;
 				Stable s = new Stable();
-				Player player = new Player(s, playerName);
-				Player.playerInstance = player;
+				Player player = new Player(playerName);
 				player.saveGame();
 				Application.LoadLevel("Stable");
 

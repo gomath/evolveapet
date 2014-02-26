@@ -40,8 +40,21 @@ namespace EvolveAPet
 			guessedGenes = new bool[7, 6];//This wastes some space, but easy. 
 			newDailyChallenge ();
 			playerInstance = this;
+
         }
-		
+
+		public Player(string username)
+		{
+			Points = 0;
+			UserName = username;
+			NickName = username;
+			guessedGenes = new bool[7, 6];//This wastes some space, but easy. 
+			newDailyChallenge ();
+			playerInstance = this;
+			Stable.AddPet(new Animal(), 0);
+			Stable.AddPet (new Animal (), 1);
+			
+		}
 		public static void loadGame(){
 			
 			BinaryFormatter bf = new BinaryFormatter ();
