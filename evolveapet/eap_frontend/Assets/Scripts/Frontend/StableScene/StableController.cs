@@ -135,7 +135,7 @@ public class StableController : MonoBehaviour {
 			//Wait one frame for destroys to commit
 			yield return new WaitForSeconds(0f);
 
-			potentialAnimals [anIndex] = Player.playerInstance._stable.ElementAt(anIndex);
+//			potentialAnimals [anIndex] = Player.playerInstance._stable.ElementAt(anIndex);
 			potentialGameObjects [anIndex] = (GameObject)Instantiate (Resources.Load ("Prefabs/animal"));
 
 			potentialGameObjects [anIndex].GetComponent<PhysicalAnimal> ().animal = potentialAnimals [anIndex];

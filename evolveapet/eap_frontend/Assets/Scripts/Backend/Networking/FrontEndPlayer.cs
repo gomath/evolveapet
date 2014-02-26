@@ -10,18 +10,19 @@ public class FrontEndPlayer : MonoBehaviour
 		void Start ()
 		{
 				Player = new Player (new Stable (), (Random.value * 1000).ToString () );
-				
-				Player.Stable.Size = 5;
-				Player.Stable.AddPet (new Animal ());
-				Player.Stable.AddPet (new Animal ());
+		Player.Stable.unlockStableSlot (3);
+		Player.Stable.unlockStableSlot (4);
+				Player.Stable.AddPet (new Animal (),0);
+				Player.Stable.AddPet (new Animal (),1);
+
 		GameObject animal = (GameObject)Instantiate(Resources.Load ("Prefabs/animal"));
-		animal.GetComponent<PhysicalAnimal> ().animal = FrontEndPlayer.Player.Stable[0];
+		animal.GetComponent<PhysicalAnimal> ().animal = FrontEndPlayer.Player.Stable.animalsInStable[0];
 		animal.GetComponent<PhysicalAnimal>().Build(animal);
 		animal.transform.Translate (new Vector2 (6, 3));
 
 
 		 animal = (GameObject)Instantiate(Resources.Load ("Prefabs/animal"));
-		animal.GetComponent<PhysicalAnimal> ().animal = FrontEndPlayer.Player.Stable[1];
+		animal.GetComponent<PhysicalAnimal> ().animal = FrontEndPlayer.Player.Stable.animalsInStable[1];
 		animal.GetComponent<PhysicalAnimal>().Build(animal);
 		animal.transform.Translate (new Vector2 (-6, 3));
 
