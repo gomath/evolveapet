@@ -24,7 +24,10 @@ namespace EvolveAPet
 		public DateTime lastSaved;
 		public Animal animalForBreeding1;
 		public Animal animalForBreeding2;
+		public Chromosome[] chromosomes1;
+		public Chromosome[] chromosomes2;
 		public int animalToChooseForBreeding;
+		public bool breedingCompleted;
 
 
 		public Player(Stable s, string username)
