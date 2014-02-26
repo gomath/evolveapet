@@ -6,53 +6,50 @@ using System.Runtime.Serialization;
 namespace EvolveAPet
 {
 	[Serializable]
-    public class Stable : List<Animal>
+    public class Stable
     {
 		public int Size { set; get; }
 		public int activeAnimalNumber{ set; get; }
 		public Animal eggSlot { set; get; }
-
+		public bool[] activeStableSlots = {true,true,true,false,false,false};
+		public Animal[] animalsInStable = new Animal[6];
 
         public Stable()
         {
 
-            Size = 0;
-
 
         }
+		private void getsize(){
+			int temp=0;
+			for (int n = 0; n<animalsInStable.Length;n++){
+				if (animalsInStable[n] ==null) temp++;
+			}
+			Size = temp;
+
+		}
 		
-        public Stable(LinkedList<Animal> pets)
-            : base(pets)
+        public Stable(Animal[] pets)
         {
-
-            Size = pets.Count;
-
-
+			animalsInStable = pets;
+			getsize ();
         }
 
-        public void AddPet(Animal a)
+  		public void unlockStableSlot(int stableSlot){
+			activeStableSlots [stableSlot] = true;		
+		}
+
+		public void AddPet(Animal a, int stableSlot)
         {
-
-            if (Count < Size)
-                this.Add(a);
-            else
-                throw new ApplicationException("stable is full");
-
+			animalsInStable [stableSlot] = a;
+			getsize ();
         }
 
-        public void RemovePet(Animal a)
+
+        public void RemovePet(int stableslot)
         {
-
-            Remove(a);
-
-        }
-
-        public bool IsFull()
-        {
-
-            return Size >= Count;
-
-        }
+			animalsInStable [stableslot] = null;
+			getsize ();
+		}
 
     }
 }
