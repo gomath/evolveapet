@@ -1,5 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Frontend/StableScene/StableControllerTest.cs">
     <Files>
       <File FileName="Assets/Scripts/Backend/Stable.cs" Line="69" Column="1" />
@@ -9,6 +10,24 @@
       <File FileName="Assets/Scripts/Frontend/StableScene/StableControllerTestDeprecated.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Backend/Networking/FrontEndPlayer.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Frontend/StableScene/StableControllerTest.cs" Line="82" Column="1" />
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Frontend\StableScene\StableControllerTest.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Frontend\Toolbar.cs" Line="52" Column="53" />
+      <File FileName="Assets\Scripts\Frontend\GenomeScreen\ChromosomeScroller.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Frontend\GenomeScreen\ChromosomeScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Frontend\GenomeScreen\GeneScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Frontend\GenomeScreen\QuickViewScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Frontend\GenomeScreen\BoxGenomeScreen.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Frontend\GenomeScreen\GenomeViewController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Frontend\Tetrad_Screne\ControlAnchorsScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Frontend\Tetrad_Screne\BoxBehaviour.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Frontend\Tetrad_Screne\TetradsViewController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Frontend\StableScene\StableControllerTest.cs" Line="52" Column="87" />
+      <File FileName="Assets\Builder.cs" Line="31" Column="4" />
+      <File FileName="Assets\MainMenuAnimalBuilder.cs" Line="15" Column="55" />
+      <File FileName="Assets\Scripts\Frontend\MainMenu.cs" Line="51" Column="31" />
+>>>>>>> Egg slot now populates stable and animals can be released
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
