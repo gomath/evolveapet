@@ -10,7 +10,7 @@ namespace EvolveAPet{
 
 		public GUISkin mySkin;
 
-		Player currentPlayer;
+        Player currentPlayer;
 
 		public int level;
 
@@ -30,12 +30,16 @@ namespace EvolveAPet{
 
 		// Use this for initialization
 		void Start () {
+			if (currentPlayer == null) {
+				Player.playerInstance = new Player(new Stable(),"TestPlayer");			
+			}
 			currentPlayer = Player.playerInstance; //Checks if there is already an instantiated player
+
 		}
 		
 		// Update is called once per frame
 		void Update () {
-		
+			
 		}
 
 		void OnGUI() {
