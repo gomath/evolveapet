@@ -8,17 +8,22 @@ namespace EvolveAPet
 	[Serializable]
     public class Stable
     {
-		public int Size =3 { set; get; }
+		public int Size { set; get; }
 		public int activeAnimalNumber{ set; get; }
 		public Animal eggSlot { set; get; }
 		public bool[] activeStableSlots = {true,true,true,false,false,false};
-		public Animal[] animalsInStable;
+		public Animal[] animalsInStable = new Animal[6];
 
         public Stable()
         {
 
 
         }
+		public int getsize(){
+			for (int n=0;
+
+
+		}
 		
         public Stable(Animal[] pets)
         {
