@@ -72,9 +72,11 @@ public class GenomeViewController : MonoBehaviour {
 			transform.FindChild ("ControlAnchors").GetComponent<ControlAnchorsScript> ().showBreedButton = false;
 
 			// GETTING REAL ANIMAL AND PLAYER
-			//player = Player.playerInstance;
-			//animal = player.Stable[player.Stable.activeAnimalNumber];
-			// g = animal.Genome;
+			/*
+			player = Player.playerInstance;
+			animal = player.Stable[player.Stable.activeAnimalNumber];
+			g = animal.Genome;
+			*/
 
 			// GETTING RANDOM ANIMAL AND PLAYER
 			animal = new Animal ();
@@ -653,7 +655,7 @@ public class GenomeViewController : MonoBehaviour {
 		}
 
 		void PopupOnTherapy(int id){
-			GUI.Box (new Rect(20,20,200,140),popupText);
+			GUI.Box (new Rect(20,20,200,200),popupText);
 			if (GUI.Button (new Rect (20, 250, 80, 40), "Close")) {
 				displayTherapyPopup = false;
 			}
