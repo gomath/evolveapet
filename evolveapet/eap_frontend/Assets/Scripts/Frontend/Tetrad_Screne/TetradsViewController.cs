@@ -6,11 +6,13 @@ namespace EvolveAPet {
 
 public class TetradsViewController : MonoBehaviour {
 
+	
 	float originalWidth = 1098.0f;
 	float originalHeight = 618.0f;
 	
 	Vector3 scale = new Vector3 ();
 	
+	Player player;
 	Animal a;
 	Genome g; // TODO remove at the end
 	public PhysicalChromosome[,] chromosomes;
@@ -19,8 +21,6 @@ public class TetradsViewController : MonoBehaviour {
 	public static Color CHOSEN_COLOR = Color.green;
 	public static Color NUMBER_COLOR = new Color32(70,70,70,255);
 	public GUISkin myskin;
-
-	bool chosen = false; // TODO - remove at the end
 
 	// Use this for initialization
 	void Start () {
@@ -31,6 +31,22 @@ public class TetradsViewController : MonoBehaviour {
 			magnifiedChromosomes[i,1] = transform.FindChild("MagnifiedChromosomes").FindChild("ch_"+i+"f").gameObject;
 		}
 
+			
+		// Accessing PLAYER, ANIM
+		player = Player.playerInstance;
+		if(player.animalToChooseForBreeding == 1){
+			a = player.animalForBreeding1;
+		} else {
+			a = player.animalForBreeding2;
+		}
+		player.remainingAnimalsToBreed--;
+		
+		a.Name = "My Pet " + player.remainingAnimalsToBreed;
+		g = a.Genome;
+		
+		//Chromosome[,] ch = g.CreateTetradsForBreeding();
+		Chromosome[,] ch = g.FrontEndCreateTetradsForBreeding ();
+
 		// Initializing individual chromosomes
 		chromosomes = new PhysicalChromosome[Global.NUM_OF_CHROMOSOMES,4];
 		for (int i=0; i<Global.NUM_OF_CHROMOSOMES; i++) {
@@ -38,12 +54,7 @@ public class TetradsViewController : MonoBehaviour {
 			chromosomes[i,1] = transform.FindChild("Tetrads").FindChild("Tetrad_" + i).FindChild("chromosome pair " + i + "A").FindChild("chromosome f").gameObject.GetComponent<PhysicalChromosome>();
 			chromosomes[i,2] = transform.FindChild("Tetrads").FindChild("Tetrad_" + i).FindChild("chromosome pair " + i + "B").FindChild("chromosome m").gameObject.GetComponent<PhysicalChromosome>();
 			chromosomes[i,3] = transform.FindChild("Tetrads").FindChild("Tetrad_" + i).FindChild("chromosome pair " + i + "B").FindChild("chromosome f").gameObject.GetComponent<PhysicalChromosome>();
-			
-			a = new Animal();
-				a.Name = "My Pet with long name";
-			g = a.Genome;
 
-			Chromosome[,] ch = g.CreateTetradsForBreeding();
 			
 			chromosomes[i,0].InitializeUnderlyingChromosome(ch[i,1]);
 			chromosomes[i,1].InitializeUnderlyingChromosome(ch[i,0]);
@@ -133,7 +144,20 @@ public class TetradsViewController : MonoBehaviour {
 		
 		Chromosome[] backendChromosomes = Global.FrontEndToBackendChromosomes (temp);
 		
-		chosen = true;
+		if (player.animalToChooseForBreeding == 1) {
+			player.chromosomes1 = backendChromosomes;		
+		} else {
+			player.chromosomes2 = backendChromosomes;				
+		}
+		
+			if (player.remainingAnimalsToBreed > 0) {
+				player.animalToChooseForBreeding = 2;
+				Application.LoadLevel("CreateTetradsScrene");			
+			} else {
+				// End of local breeding
+				player._stable.eggSlot = new Animal(player.chromosomes1,player.chromosomes2,player.animalForBreeding1,player.animalForBreeding2);
+				Application.LoadLevel("Stable");
+			}
 	}
 
 	
@@ -210,10 +234,6 @@ public class TetradsViewController : MonoBehaviour {
 		GUI.skin.label.fontSize = 20;
 		GUI.Label(new Rect(20,0,200,100),a.Name);
 		GUI.skin.label.fontSize = 0;
-
-		if (chosen) {
-			GUI.Box(new Rect(0,0,100,40),"Chosen");
-		}
 	}
 
 	

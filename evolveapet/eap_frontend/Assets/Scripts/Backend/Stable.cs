@@ -8,10 +8,12 @@ namespace EvolveAPet
 	[Serializable]
     public class Stable
     {
-		public int Size { set; get; }
+		public int Size { set; get; }//number of living animals
+		public int NumberOfUnlockedSlots = 3;
 		public int activeAnimalNumber{ set; get; }
 		public Animal eggSlot { set; get; }
 		public bool[] activeStableSlots = {true,true,true,false,false,false};
+		public bool[] livingAnimals = {false,false,false,false,false,false};
 		public Animal[] animalsInStable = new Animal[6];
 
         public Stable()
@@ -21,10 +23,17 @@ namespace EvolveAPet
         }
 		private void getsize(){
 			int temp=0;
+			int temp2 = 0;
 			for (int n = 0; n<animalsInStable.Length;n++){
-				if (animalsInStable[n] !=null) temp++;
+				if (animalsInStable[n] !=null){
+					temp++;
+				}
+				if (activeStableSlots[n]==true){
+					temp2++;
+				}
 			}
 			Size = temp;
+			NumberOfUnlockedSlots = temp2;
 
 		}
 		
@@ -35,19 +44,23 @@ namespace EvolveAPet
         }
 
   		public void unlockStableSlot(int stableSlot){
-			activeStableSlots [stableSlot] = true;		
+			activeStableSlots [stableSlot] = true;	
+			getsize ();
 		}
 
 		public void AddPet(Animal a, int stableSlot)
         {
 			animalsInStable [stableSlot] = a;
+			livingAnimals [stableSlot] = true;
 			getsize ();
+			
         }
 
 
         public void RemovePet(int stableslot)
         {
 			animalsInStable [stableslot] = null;
+			livingAnimals [stableslot] = false;
 			getsize ();
 		}
 

@@ -150,6 +150,10 @@ public class StableControllerTest : MonoBehaviour {
 			potentialGameObjects [anIndex].transform.position = stableLocs [anIndex].position;
 			potentialGameObjects [anIndex].transform.localScale = new Vector3 (0.5f, 0.5f, 0.5f);
 			
+<<<<<<< HEAD
+=======
+			//potentialGameObjects [anIndex].GetComponent<SpriteRenderer> ().sortingLayerName = "Animal"; //hardcoded sorting layer for animal
+>>>>>>> 1c9702b6f9cc7edb5cc6784228d44f7521c59207
 			//set position in bool array tracking stable occupations to true
 			areOccupied [anIndex] = true;
 		}

@@ -2,9 +2,9 @@
 using System.Collections;
 using EvolveAPet;
 
+
 public class FrontEndPlayer : MonoBehaviour
 {
-	
 		public static Player Player{ get; private set; }
 		// Use this for initialization
 		void Start ()
@@ -28,5 +28,5 @@ public class FrontEndPlayer : MonoBehaviour
 
 				NetworkManager.SetPlayerData ();
 		}
-
 }
+

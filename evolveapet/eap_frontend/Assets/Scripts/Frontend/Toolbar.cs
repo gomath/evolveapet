@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 namespace EvolveAPet{
@@ -10,7 +10,7 @@ namespace EvolveAPet{
 
 		public GUISkin mySkin;
 
-		Player currentPlayer;
+        Player currentPlayer;
 
 		public int level;
 
@@ -30,12 +30,19 @@ namespace EvolveAPet{
 
 		// Use this for initialization
 		void Start () {
+/*			if (currentPlayer == null) {
+				Player.playerInstance = new Player(new Stable(),"TestPlayer");			
+			}
+*/
 			currentPlayer = Player.playerInstance; //Checks if there is already an instantiated player
+			animals = currentPlayer.Stable.animalsInStable;
+			animalAlive = currentPlayer.Stable.livingAnimals;
+
 		}
 		
 		// Update is called once per frame
 		void Update () {
-		
+			
 		}
 
 		void OnGUI() {
@@ -72,31 +79,69 @@ namespace EvolveAPet{
 
 			GUILayout.EndVertical();
 
-			if (level == 0) {
-				if (GUILayout.Button("Animal")) Application.LoadLevel("Animal");
-				if (GUILayout.Button("Genome")) Application.LoadLevel("GenomeScene");
+			if (level == 0) {	
+				if (GUILayout.Button("Animal")){
+					Application.LoadLevel("Animal");
+					Player.autoSave();
+
+				}
+				if (GUILayout.Button("Genome")){
+					Application.LoadLevel("GenomeScene");
+					Player.autoSave();
+
+				}
 				if (GUILayout.Button("Breed")) {
 					showBreedingPopup = true;
+					Player.autoSave();
+
 				}
-				if (GUILayout.Button("Exit")) Application.LoadLevel("MainMenu");
+				if (GUILayout.Button("Exit")){
+					Application.LoadLevel("MainMenu");
+					Player.autoSave();
+				}
+
+
 			}
 
 			if (level == 1) {
-				if (GUILayout.Button("Stable")) Application.LoadLevel("Stable");
-				if (GUILayout.Button("Genome")) Application.LoadLevel("GenomeScene");
+				if (GUILayout.Button("Stable")){ 
+					Application.LoadLevel("Stable");
+					Player.autoSave();
+
+				}
+				if (GUILayout.Button("Genome")){ 
+					Application.LoadLevel("GenomeScene");
+					Player.autoSave();
+
+				}
 				/*if (GUILayout.Button("Breed")) {
 					showBreedingPopup = true;
 				}*/
-				if (GUILayout.Button("Exit")) Application.LoadLevel("MainMenu");
+				if (GUILayout.Button("Exit")){
+					Application.LoadLevel("MainMenu");
+					Player.autoSave();
+				}
 			}
 
 			if (level == 2) {
-				if (GUILayout.Button("Stable")) Application.LoadLevel("Stable");
-				if (GUILayout.Button("Animal")) Application.LoadLevel("Animal");
+				if (GUILayout.Button("Stable")){ 
+					Application.LoadLevel("Stable");
+						Player.autoSave();
+
+					}
+				if (GUILayout.Button("Animal")){
+					Application.LoadLevel("Animal");
+					Player.autoSave();
+
+				}
 				/*if (GUILayout.Button("Breed")){
 					showBreedingPopup = true;
 				};*/
-				if (GUILayout.Button("Exit")) Application.LoadLevel("MainMenu");
+				if (GUILayout.Button("Exit")){
+					Application.LoadLevel("MainMenu");
+					Player.autoSave();
+
+				}
 			}
 
 			GUI.skin.button.fontSize = (50);
@@ -127,11 +172,17 @@ namespace EvolveAPet{
 				if (showLocalBreedingPopupPart) {
 					popuWindowHeight = 300f;
 					int numOfAnimalsSelected = 0;
+					int currentAnimalToAdd = 0;
+					int[] animalIndex = new int[2];
+
 					for(int i=0; i<stableSize; i++){
 						if(animalAlive[i]){
 							localBreedingToggleSelected[i] = GUILayout.Toggle(localBreedingToggleSelected[i],i+"");
 							if(localBreedingToggleSelected[i]){
 								numOfAnimalsSelected ++;
+								
+								animalIndex[currentAnimalToAdd] = i;
+								currentAnimalToAdd = (currentAnimalToAdd + 1) % 2;
 							}
 						}
 					}
@@ -139,7 +190,13 @@ namespace EvolveAPet{
 					if(numOfAnimalsSelected == 2){
 						popuWindowHeight = 340f;
 						if(GUILayout.Button("Breed",GUILayout.Height(popupButtonHeight))){
-							GUILayout.Box ("Breeding scene");	
+							currentPlayer.animalForBreeding1 = animals[animalIndex[0]];
+							currentPlayer.animalForBreeding2 = animals[animalIndex[1]];
+							currentPlayer.remainingAnimalsToBreed = 2;
+							currentPlayer.animalToChooseForBreeding = 1;
+							
+							Application.LoadLevel("CreateTetradsScrene");
+							//GUILayout.Box ("Breeding scene");	
 						}
 					}
 					
@@ -153,7 +210,6 @@ namespace EvolveAPet{
 				}
 
 			GUILayout.EndVertical ();
-
 		}
 	}
 }
