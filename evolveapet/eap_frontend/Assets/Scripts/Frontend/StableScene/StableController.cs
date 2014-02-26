@@ -70,6 +70,10 @@ public class StableController : MonoBehaviour {
 												if(numActiveStalls > 1) {
 													//release into wild
 													areOccupied[i] = false;
+													//for now remove sprite
+													GameObject.Destroy(potentialGameObjects[i]);
+													Resources.UnloadUnusedAssets();
+													Player.playerInstance._stable.RemovePet(i);
 													//potentialAniamls[i].releaseIntoWild();
 												} else {
 													//nope.
@@ -97,6 +101,7 @@ public class StableController : MonoBehaviour {
 											Player.playerInstance.Points -= pointsForUnlock;
 											areUnlocked[i] = true; 
 											padlocks[i].GetComponent<SpriteRenderer>().enabled = false; //fancy animations later
+											Player.playerInstance._stable.activeStableSlots[i] = true;
 										}
 								}
 						}
@@ -119,10 +124,18 @@ public class StableController : MonoBehaviour {
 		numActiveStalls = Player.playerInstance._stable.Size;
 
 		//populate player's stable
-		for (int i = 0; i< numActiveStalls; i++) {
+		for (int i = 0; i< 6; i++) {
+			if (areUnlocked[i]) {
+					if(areOccupied[i]) {
+
 					StartCoroutine ("BuildAnimalAtIndex", i);
+								
+					}
+					padlocks[i].GetComponent<SpriteRenderer>().enabled = false;
+			}
 
 		} 
+		
 
 		if (Player.playerInstance._stable.eggSlot != null) {
 				//Player.playerInstance.eggslot.hatch();
