@@ -36,7 +36,7 @@ namespace EvolveAPet{
 */
 			currentPlayer = Player.playerInstance; //Checks if there is already an instantiated player
 			animals = currentPlayer.Stable.animalsInStable;
-			animalAlive = currentPlayer.Stable.activeStableSlots;
+			animalAlive = currentPlayer.Stable.livingAnimals;
 
 		}
 		
