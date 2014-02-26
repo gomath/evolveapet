@@ -8,9 +8,10 @@ using System.Linq;
  * 
  */
 namespace EvolveAPet {
-public class StableController : MonoBehaviour {
+public class StableControllerTestDeprecated : MonoBehaviour {
 		public int numActiveStalls;
 		public bool[] areOccupied = new bool[6];
+		public bool[] areLocked = new bool[6];
 		public bool[] areUnlocked = new bool[6];
 	
 		public Transform stable0;
@@ -19,14 +20,6 @@ public class StableController : MonoBehaviour {
 		public Transform stable3;
 		public Transform stable4;
 		public Transform stable5;
-
-		public GameObject padlock0;
-		public GameObject padlock1;
-		public GameObject padlock2;
-		public GameObject padlock3;
-		public GameObject padlock4;
-		public GameObject padlock5;
-
  
 		GameObject a0=null;
 		GameObject a1=null;
@@ -35,89 +28,76 @@ public class StableController : MonoBehaviour {
 		GameObject a4=null;
 		GameObject a5=null;
 
-		int pointsForUnlock  = 10;
+		Animal an0=null;
+		Animal an1=null;
+		Animal an2=null;
+		Animal an3=null;
+		Animal an4=null;
+		Animal an5=null;
+
 
 		public Animal[] potentialAnimals;
 		public GameObject[] potentialGameObjects;
 		public Transform[] stableLocs;
 
-
-
 		//public List<GameObject> anObjects = new ArrayList<GameObject>();
+
+		public GUISkin myskin;
 
 
 	void OnGUI() {
+			GUI.skin = myskin;
+			//get screen coordinates of stable[i] sprite to set button locs appropriately
 			for (int i=0; i<6; i++) {
-						//get screen coordinates of stable[i] sprite to set button locs appropriately
-						//Screen coordinates have the origin in the bottom left, GUI coordinates have orogin at the top left
-						Vector3 rawPos = stableLocs [i].position;
-
-						Vector3 loc = camera.WorldToScreenPoint (new Vector3(rawPos.x, -rawPos.y,1)); 
+						Vector3 loc = camera.WorldToScreenPoint (new Vector3(stableLocs [i].position.x,-stableLocs [i].position.y,1)); 
 						Vector3 newXY = loc + new Vector3 (-30, 30, 0);
-
-						//compute relative positions for the buttons
-						Vector4 topButton = new Vector4 (newXY.x, newXY.y, 60, 10); //last two coords are height and length
+				
+						//misusing vectors: I am so sorry
+						Vector4 topButton = new Vector4 (newXY.x, newXY.y, 60, 30); //last two coords are height and length
 						Vector4 bottomButton = topButton + new Vector4 (0, 30, 0, 0);
-
+				
 						if (areUnlocked [i]) {
 								if (areOccupied [i]) {
 										if (GUI.Button (new Rect (topButton.x, topButton.y, topButton.z, topButton.w), "Make Active")) {
-												
-												Debug.LogWarning ("Make Active pressed");
-												Player.playerInstance._stable.activeAnimalNumber = i;
+												//do stuffs
+												Debug.LogWarning ("Make Active "+i+" pressed.");
+							
 										}
-					
+						
 										if (GUI.Button (new Rect (bottomButton.x, bottomButton.y, bottomButton.z, bottomButton.w), "Release Animal")) {
-												Debug.LogWarning ("Release Button pressed.");
-												if(numActiveStalls > 1) {
-													//release into wild
-													areOccupied[i] = false;
-													//potentialAniamls[i].releaseIntoWild();
-												} else {
-													//nope.
-												}
-												
+												Debug.LogWarning ("Release Button "+i+" pressed.");
 										}
 								} else {
 										if (GUI.Button (new Rect (topButton.x, topButton.y, topButton.z, topButton.w), "New Random Animal")) {
-												Debug.LogWarning ("rand animal button pressed.");
-												
-						
+												Debug.LogWarning ("rand animal button "+i+ " pressed.");
 										}
 								}
 						} else {
 								if (GUI.Button (new Rect (topButton.x, topButton.y, topButton.z, topButton.w), "Unlock")) {
-										Debug.LogWarning ("unlock pressed");
-										if(Player.playerInstance.Points > pointsForUnlock) {
-											Player.playerInstance.Points -= pointsForUnlock;
-											areUnlocked[i] = true; 
-											stable0.GetComponent<SpriteRenderer>().enabled = false; //fancy animations later
-										}
+										Debug.LogWarning ("unlock "+i+" pressed");
 								}
 						}
+
 				}
 
 	}
 
 	// Use this for initialization
 	void Start () {
-			potentialAnimals = Player.playerInstance._stable.animalsInStable;
+			areUnlocked = new bool[]{true,true,true,true, false, false};
+			areOccupied = new bool[]{false,false,false,false,false,false};
+			potentialAnimals = new Animal[]{an0,an1,an3, an4, an5};
 			potentialGameObjects = new GameObject[]{a0,a1,a3,a4,a5};
 			stableLocs = new Transform[]{stable0,stable1,stable2,stable3,stable4,stable5};
-			areUnlocked = new bool[] {true, true, true, false, false, false};
 
 		//setup player's stable by instantiating user's animals
-		numActiveStalls = Player.playerInstance._stable.Size;
+		numActiveStalls = 3;
 
 		//populate player's stable
 		for (int i = 0; i< numActiveStalls; i++) {
 					StartCoroutine ("BuildAnimalAtIndex", i);
 
-		} 
-
-		if (Player.playerInstance._stable.eggSlot != null) {
-				//Player.playerInstance.eggslot.hatch();
-		}
+			} 
 	}
 
 
@@ -135,17 +115,16 @@ public class StableController : MonoBehaviour {
 			//Wait one frame for destroys to commit
 			yield return new WaitForSeconds(0f);
 
-			potentialAnimals [anIndex] = Player.playerInstance._stable.ElementAt(anIndex);
+			potentialAnimals [anIndex] = new Animal ();
 			potentialGameObjects [anIndex] = (GameObject)Instantiate (Resources.Load ("Prefabs/animal"));
 
 			potentialGameObjects [anIndex].GetComponent<PhysicalAnimal> ().animal = potentialAnimals [anIndex];
 
 			//build animal
 			potentialGameObjects[anIndex].GetComponent<PhysicalAnimal>().Build(potentialGameObjects[anIndex]);
-			potentialGameObjects [anIndex].transform.position = stableLocs [anIndex].position;
+			potentialGameObjects [anIndex].transform.position = stableLocs[anIndex].position;
 			potentialGameObjects [anIndex].transform.localScale = new Vector3 (0.5f, 0.5f, 0.5f);
 
-			potentialGameObjects [anIndex].GetComponent<SpriteRenderer> ().sortingLayerName = "Animal"; //hardcoded sorting layer for animal
 			//set position in bool array tracking stable occupations to true
 			areOccupied [anIndex] = true;
 	}
