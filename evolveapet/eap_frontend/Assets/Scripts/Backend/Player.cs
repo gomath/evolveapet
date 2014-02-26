@@ -48,6 +48,7 @@ namespace EvolveAPet
 			Points = 0;
 			UserName = username;
 			NickName = username;
+			Stable.activeAnimalNumber = 0;
 			guessedGenes = new bool[7, 6];//This wastes some space, but easy. 
 			newDailyChallenge ();
 			playerInstance = this;
