@@ -610,7 +610,7 @@ namespace EvolveAPet
         /// <param name="trait"></param>
         /// <returns></returns>
 		public int GetTrait(int chromosomeNum, int traitNum) { 
-			int geneNum = _fatherChromosome [chromosomeNum].getTraitPosition (traitNum);
+			int geneNum = _fatherChromosome [chromosomeNum].getTraitPosition(traitNum);
 			Gene g1 = _motherChromosome [chromosomeNum].Genes [geneNum];
 			Gene g2 = _fatherChromosome [chromosomeNum].Genes [geneNum];
 
