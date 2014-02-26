@@ -150,7 +150,7 @@ namespace EvolveAPet
 					}
 				}
 				
-				Points = points;
+				Points += points;
 				currentDailyChallenge = -1;
 			}
 		}
