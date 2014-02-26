@@ -19,15 +19,19 @@ namespace EvolveAPet
 
 
         }
-		public int getsize(){
-			for (int n=0;
-
+		private void getsize(){
+			int temp;
+			for (int n = 0; n<animalsInStable;n++){
+				if (animalsInStable[n] ==null) temp++;
+			}
+			Size = temp;
 
 		}
 		
         public Stable(Animal[] pets)
         {
 			animalsInStable = pets;
+			getsize ();
         }
 
   		public void unlockStableSlot(int stableSlot){
@@ -37,13 +41,14 @@ namespace EvolveAPet
 		public void AddPet(Animal a, int stableSlot)
         {
 			animalsInStable [stableSlot] = a;
+			getsize ();
         }
 
 
         public void RemovePet(int stableslot)
         {
 			animalsInStable [stableslot] = null;
-
+			getsize ();
 		}
 
     }
