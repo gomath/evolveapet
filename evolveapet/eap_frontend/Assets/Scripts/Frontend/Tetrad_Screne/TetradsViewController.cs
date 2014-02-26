@@ -5,13 +5,20 @@ using System;
 namespace EvolveAPet {
 
 public class TetradsViewController : MonoBehaviour {
+
+	float originalWidth = 1098.0f;
+	float originalHeight = 618.0f;
 	
+	Vector3 scale = new Vector3 ();
+	
+	Animal a;
 	Genome g; // TODO remove at the end
 	public PhysicalChromosome[,] chromosomes;
 	GameObject[,] magnifiedChromosomes;
 	public GameObject activeChromosome;
 	public static Color CHOSEN_COLOR = Color.green;
 	public static Color NUMBER_COLOR = new Color32(70,70,70,255);
+	public GUISkin myskin;
 
 	bool chosen = false; // TODO - remove at the end
 
@@ -32,9 +39,10 @@ public class TetradsViewController : MonoBehaviour {
 			chromosomes[i,2] = transform.FindChild("Tetrads").FindChild("Tetrad_" + i).FindChild("chromosome pair " + i + "B").FindChild("chromosome m").gameObject.GetComponent<PhysicalChromosome>();
 			chromosomes[i,3] = transform.FindChild("Tetrads").FindChild("Tetrad_" + i).FindChild("chromosome pair " + i + "B").FindChild("chromosome f").gameObject.GetComponent<PhysicalChromosome>();
 			
-			//Animal a = new Animal();
-			//Genome g = a.Genome;
-			g = new Genome();
+			a = new Animal();
+				a.Name = "My Pet with long name";
+			g = a.Genome;
+
 			Chromosome[,] ch = g.CreateTetradsForBreeding();
 			
 			chromosomes[i,0].InitializeUnderlyingChromosome(ch[i,1]);
@@ -117,7 +125,7 @@ public class TetradsViewController : MonoBehaviour {
 	/// Called when choosing is finished and button clicked. 
 	/// </summary>
 	void TetradsChosen(){
-			Debug.Log ("Tetrads chosen");
+		Debug.Log ("Tetrads chosen");
 		Chromosome[] temp = new Chromosome[Global.NUM_OF_CHROMOSOMES];
 		for (int i=0; i<Global.NUM_OF_CHROMOSOMES; i++) {
 			temp[i] = transform.FindChild("Tetrads").FindChild("Tetrad_" + i).GetComponent<TetradBehaviour>().UnderlyingChromosome;
@@ -188,6 +196,21 @@ public class TetradsViewController : MonoBehaviour {
 	}
 
 	void OnGUI(){
+		scale.x = Screen.width / originalWidth;
+		scale.y = Screen.height / originalHeight;
+		scale.z = 1;
+		var svMat = GUI.matrix;
+		
+		GUI.skin = myskin;
+		
+		// substitute matrix to scale if screen nonstandard
+		GUI.matrix = Matrix4x4.TRS (Vector3.zero, Quaternion.identity, scale);
+		
+		GUI.skin = myskin;
+		GUI.skin.label.fontSize = 20;
+		GUI.Label(new Rect(20,0,200,100),a.Name);
+		GUI.skin.label.fontSize = 0;
+
 		if (chosen) {
 			GUI.Box(new Rect(0,0,100,40),"Chosen");
 		}

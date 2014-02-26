@@ -25567,6 +25567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeChromosome: {fileID: 0}
+  myskin: {fileID: 11400000, guid: e3b883a08ff8eb04cae26114ecf69cac, type: 2}
 --- !u!1 &1590168180
 GameObject:
   m_ObjectHideFlags: 0
