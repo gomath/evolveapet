@@ -8,7 +8,7 @@ namespace EvolveAPet {
 
 		// Use this for initialization
 		void Start () {
-			GameObject animal = GameObject.Find("animal");
+			GameObject animal = (GameObject)Instantiate(Resources.Load ("Prefabs/animal"));
 			animal.GetComponent<PhysicalAnimal>().animal = new Animal();
 			animal.GetComponent<PhysicalAnimal>().Build(animal);
 			animal.transform.position = move.position;
