@@ -36,10 +36,12 @@ public class StableController : MonoBehaviour {
 		GameObject a5=null;
 
 		int pointsForUnlock  = 10;
+		int pointsForNewAnimal = 5;
 
 		public Animal[] potentialAnimals;
 		public GameObject[] potentialGameObjects;
 		public Transform[] stableLocs;
+		public GameObject[] padlocks;
 
 
 	void OnGUI() {
@@ -49,10 +51,10 @@ public class StableController : MonoBehaviour {
 						Vector3 rawPos = stableLocs [i].position;
 
 						Vector3 loc = camera.WorldToScreenPoint (new Vector3(rawPos.x, -rawPos.y,1)); 
-						Vector3 newXY = loc + new Vector3 (-30, 30, 0);
+						Vector3 newXY = loc + new Vector3 (-60, 60, 0);
 
 						//compute relative positions for the buttons
-						Vector4 topButton = new Vector4 (newXY.x, newXY.y, 60, 10); //last two coords are height and length
+						Vector4 topButton = new Vector4 (newXY.x, newXY.y, 120, 20); //last two coords are height and length
 						Vector4 bottomButton = topButton + new Vector4 (0, 30, 0, 0);
 
 						if (areUnlocked [i]) {
@@ -77,6 +79,14 @@ public class StableController : MonoBehaviour {
 								} else {
 										if (GUI.Button (new Rect (topButton.x, topButton.y, topButton.z, topButton.w), "New Random Animal")) {
 												Debug.LogWarning ("rand animal button pressed.");
+												if(Player.playerInstance.Points > pointsForUnlock) {
+													Player.playerInstance.Points -= pointsForNewAnimal;
+													Animal an = new Animal();
+													Player.playerInstance._stable.animalsInStable[i] = an;
+													potentialAnimals[i] = an;
+													StartCoroutine("BuildAnimalAtIndex",i);
+
+												}
 												
 						
 										}
@@ -87,7 +97,7 @@ public class StableController : MonoBehaviour {
 										if(Player.playerInstance.Points > pointsForUnlock) {
 											Player.playerInstance.Points -= pointsForUnlock;
 											areUnlocked[i] = true; 
-											stable0.GetComponent<SpriteRenderer>().enabled = false; //fancy animations later
+											padlocks[i].GetComponent<SpriteRenderer>().enabled = false; //fancy animations later
 										}
 								}
 						}
@@ -98,8 +108,9 @@ public class StableController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 			potentialAnimals = Player.playerInstance._stable.animalsInStable;
-			potentialGameObjects = new GameObject[]{a0,a1,a3,a4,a5};
+			potentialGameObjects = new GameObject[]{a0,a1,a2,a3,a4,a5};
 			stableLocs = new Transform[]{stable0,stable1,stable2,stable3,stable4,stable5};
+			//CHANGE THIS
 			areUnlocked = new bool[] {true, true, true, false, false, false};
 
 		//setup player's stable by instantiating user's animals
@@ -141,7 +152,6 @@ public class StableController : MonoBehaviour {
 			potentialGameObjects [anIndex].transform.position = stableLocs [anIndex].position;
 			potentialGameObjects [anIndex].transform.localScale = new Vector3 (0.5f, 0.5f, 0.5f);
 
-			potentialGameObjects [anIndex].GetComponent<SpriteRenderer> ().sortingLayerName = "Animal"; //hardcoded sorting layer for animal
 			//set position in bool array tracking stable occupations to true
 			areOccupied [anIndex] = true;
 	}

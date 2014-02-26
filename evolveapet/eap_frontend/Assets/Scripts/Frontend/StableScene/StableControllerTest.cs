@@ -36,6 +36,7 @@ public class StableControllerTest : MonoBehaviour {
 		GameObject a5=null;
 		
 		int pointsForUnlock  = 10;
+		int pointsForNewAnimal= 10;
 		
 		public Animal[] potentialAnimals;
 		public GameObject[] potentialGameObjects;
@@ -50,10 +51,10 @@ public class StableControllerTest : MonoBehaviour {
 				Vector3 rawPos = stableLocs [i].position;
 				
 				Vector3 loc = camera.WorldToScreenPoint (new Vector3(rawPos.x, -rawPos.y,1)); 
-				Vector3 newXY = loc + new Vector3 (-30, 30, 0);
+				Vector3 newXY = loc + new Vector3 (-60, 60, 0);
 				
 				//compute relative positions for the buttons
-				Vector4 topButton = new Vector4 (newXY.x, newXY.y, 60, 10); //last two coords are height and length
+				Vector4 topButton = new Vector4 (newXY.x, newXY.y, 120, 20); //last two coords are width and height
 				Vector4 bottomButton = topButton + new Vector4 (0, 30, 0, 0);
 				
 				if (areUnlocked [i]) {
@@ -76,9 +77,15 @@ public class StableControllerTest : MonoBehaviour {
 							
 						}
 					} else {
-						if (GUI.Button (new Rect (topButton.x, topButton.y, topButton.z, topButton.w), "New Random Animal")) {
+						if (GUI.Button (new Rect (topButton.x, topButton.y, topButton.z, topButton.w), "Random Animal")) {
 							Debug.LogWarning ("rand animal button pressed.");
-							
+							if(50 > pointsForUnlock) {
+								Animal an = new Animal();
+								//Player.playerInstance._stable.animalsInStable[i] = an;
+								potentialAnimals[i] = new Animal();
+								StartCoroutine("BuildAnimalAtIndex",i);
+								
+							}
 							
 						}
 					}
@@ -99,7 +106,7 @@ public class StableControllerTest : MonoBehaviour {
 		// Use this for initialization
 		void Start () {
 			potentialAnimals = new Animal[]{new Animal(), new Animal(),null,null,null,null};
-			potentialGameObjects = new GameObject[]{a0,a1,a3,a4,a5};
+			potentialGameObjects = new GameObject[]{a0,a1,a2,a3,a4,a5};
 			stableLocs = new Transform[]{stable0,stable1,stable2,stable3,stable4,stable5};
 			areUnlocked = new bool[] {true, true, true, false, false, false};
 			areOccupied = new bool[] {true, true, false, false, false, false};
@@ -134,7 +141,6 @@ public class StableControllerTest : MonoBehaviour {
 			//Wait one frame for destroys to commit
 			yield return new WaitForSeconds(0f);
 			
-			//			potentialAnimals [anIndex] = Player.playerInstance._stable.ElementAt(anIndex);
 			potentialGameObjects [anIndex] = (GameObject)Instantiate (Resources.Load ("Prefabs/animal"));
 			
 			potentialGameObjects [anIndex].GetComponent<PhysicalAnimal> ().animal = potentialAnimals [anIndex];
@@ -144,7 +150,6 @@ public class StableControllerTest : MonoBehaviour {
 			potentialGameObjects [anIndex].transform.position = stableLocs [anIndex].position;
 			potentialGameObjects [anIndex].transform.localScale = new Vector3 (0.5f, 0.5f, 0.5f);
 			
-			potentialGameObjects [anIndex].GetComponent<SpriteRenderer> ().sortingLayerName = "Animal"; //hardcoded sorting layer for animal
 			//set position in bool array tracking stable occupations to true
 			areOccupied [anIndex] = true;
 		}
