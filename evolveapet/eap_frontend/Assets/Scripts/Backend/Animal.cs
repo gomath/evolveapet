@@ -87,6 +87,8 @@ namespace EvolveAPet
 			for (int n=0; n<7; n++) {
 				createBodyPart(n);			
 			}
+			nameMeRandomly ();
+			Debug.Log (Name);
 		}
 
        /* public void Mutate(int chromosomeNumber, int geneNumber, int genePairNumber, Gene newGene)
@@ -231,8 +233,16 @@ namespace EvolveAPet
 			Animal offspring = new Animal(parent1, parent2, this, a);
 			return offspring;
 		}
-		
-	
+
+		public void nameMeRandomly() {
+			int pr = Global.rand.Next (12);
+			int mi = Global.rand.Next (13);
+			int po = Global.rand.Next (12);
+			string pre = Global.prefixes [pr];
+			string mid = Global.names [mi];
+			string post = Global.suffixes [po];
+			Name = (pre + mid + post);
+		}
 	}
 	
 }

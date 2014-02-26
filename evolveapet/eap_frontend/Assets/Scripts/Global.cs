@@ -27,7 +27,12 @@ namespace EvolveAPet
 		public static int ARMS_UPPER_BOUND = 2; // exclusive
 
 		public static int NUM_OF_CHROMOSOMES = 7;
-
+		public static string[] prefixes = new string[] 
+		{"Sir ", "Captain ", "Quacker ", "The Honorable ", "Blue ", "Bob", "Centi", "Flying ", "Electric ", "Leafy ", "Frilled ", "Guppy "};//12
+		public static string[] names = new string[]
+		{"Boof", "Tom", "Emilian", "Matej", "Marianne", "Rudolph", "Nick", "Mary", "Pika", "Stuart", "Mox", "Maximillian", "Steve"};
+		public static string[] suffixes = new string[] 
+		{"asaurus", "ician", " Senior", " Junior", " II", " III", " IV", " V", "-nyan", "eleon", "fish", "chu"};//12
 		public readonly static String mapName = "one_to_one_mapping.map";
 		public static Dictionary<Locus,Locus> mapFtB; // map front-end to backend
 		public static Dictionary<Locus,Locus> mapBtF; // map back-end to frontend

@@ -19,6 +19,14 @@ public class StableController : MonoBehaviour {
 		public Transform stable3;
 		public Transform stable4;
 		public Transform stable5;
+
+		public GameObject padlock0;
+		public GameObject padlock1;
+		public GameObject padlock2;
+		public GameObject padlock3;
+		public GameObject padlock4;
+		public GameObject padlock5;
+
  
 		GameObject a0=null;
 		GameObject a1=null;
@@ -27,50 +35,60 @@ public class StableController : MonoBehaviour {
 		GameObject a4=null;
 		GameObject a5=null;
 
-		Animal an0=null;
-		Animal an1=null;
-		Animal an2=null;
-		Animal an3=null;
-		Animal an4=null;
-		Animal an5=null;
-
+		int pointsForUnlock  = 10;
 
 		public Animal[] potentialAnimals;
 		public GameObject[] potentialGameObjects;
 		public Transform[] stableLocs;
 
-		//public List<GameObject> anObjects = new ArrayList<GameObject>();
-
 
 	void OnGUI() {
 			for (int i=0; i<6; i++) {
 						//get screen coordinates of stable[i] sprite to set button locs appropriately
-						Vector3 loc = camera.WorldToScreenPoint (stableLocs [i].position); 
+						//Screen coordinates have the origin in the bottom left, GUI coordinates have orogin at the top left
+						Vector3 rawPos = stableLocs [i].position;
+
+						Vector3 loc = camera.WorldToScreenPoint (new Vector3(rawPos.x, -rawPos.y,1)); 
 						Vector3 newXY = loc + new Vector3 (-30, 30, 0);
 
-						//misusing vectors: I am so sorry
+						//compute relative positions for the buttons
 						Vector4 topButton = new Vector4 (newXY.x, newXY.y, 60, 10); //last two coords are height and length
 						Vector4 bottomButton = topButton + new Vector4 (0, 30, 0, 0);
 
 						if (areUnlocked [i]) {
 								if (areOccupied [i]) {
 										if (GUI.Button (new Rect (topButton.x, topButton.y, topButton.z, topButton.w), "Make Active")) {
-												//do stuffs
-												Debug.LogWarning ("Make Active pressed; CAUTION ACTIVE AN NUMBER IS WRONG");
+												
+												Debug.LogWarning ("Make Active pressed");
 												Player.playerInstance._stable.activeAnimalNumber = i;
 										}
 					
 										if (GUI.Button (new Rect (bottomButton.x, bottomButton.y, bottomButton.z, bottomButton.w), "Release Animal")) {
 												Debug.LogWarning ("Release Button pressed.");
+												if(numActiveStalls > 1) {
+													//release into wild
+													areOccupied[i] = false;
+													//potentialAniamls[i].releaseIntoWild();
+												} else {
+													//nope.
+												}
+												
 										}
 								} else {
 										if (GUI.Button (new Rect (topButton.x, topButton.y, topButton.z, topButton.w), "New Random Animal")) {
 												Debug.LogWarning ("rand animal button pressed.");
+												
+						
 										}
 								}
 						} else {
 								if (GUI.Button (new Rect (topButton.x, topButton.y, topButton.z, topButton.w), "Unlock")) {
 										Debug.LogWarning ("unlock pressed");
+										if(Player.playerInstance.Points > pointsForUnlock) {
+											Player.playerInstance.Points -= pointsForUnlock;
+											areUnlocked[i] = true; 
+											stable0.GetComponent<SpriteRenderer>().enabled = false; //fancy animations later
+										}
 								}
 						}
 				}
@@ -79,7 +97,7 @@ public class StableController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-			potentialAnimals = new Animal[]{an0,an1,an3, an4, an5};
+			potentialAnimals = Player.playerInstance._stable.animalsInStable;
 			potentialGameObjects = new GameObject[]{a0,a1,a3,a4,a5};
 			stableLocs = new Transform[]{stable0,stable1,stable2,stable3,stable4,stable5};
 			areUnlocked = new bool[] {true, true, true, false, false, false};
@@ -91,7 +109,11 @@ public class StableController : MonoBehaviour {
 		for (int i = 0; i< numActiveStalls; i++) {
 					StartCoroutine ("BuildAnimalAtIndex", i);
 
-			} 
+		} 
+
+		if (Player.playerInstance._stable.eggSlot != null) {
+				//Player.playerInstance.eggslot.hatch();
+		}
 	}
 
 
