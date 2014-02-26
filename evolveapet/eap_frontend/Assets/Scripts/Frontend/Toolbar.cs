@@ -127,11 +127,17 @@ namespace EvolveAPet{
 				if (showLocalBreedingPopupPart) {
 					popuWindowHeight = 300f;
 					int numOfAnimalsSelected = 0;
+					int currentAnimalToAdd = 0;
+					int[] animalIndex = new int[2];
+
 					for(int i=0; i<stableSize; i++){
 						if(animalAlive[i]){
 							localBreedingToggleSelected[i] = GUILayout.Toggle(localBreedingToggleSelected[i],i+"");
 							if(localBreedingToggleSelected[i]){
 								numOfAnimalsSelected ++;
+								
+								animalIndex[currentAnimalToAdd] = i;
+								currentAnimalToAdd = (currentAnimalToAdd + 1) % 2;
 							}
 						}
 					}
@@ -139,7 +145,13 @@ namespace EvolveAPet{
 					if(numOfAnimalsSelected == 2){
 						popuWindowHeight = 340f;
 						if(GUILayout.Button("Breed",GUILayout.Height(popupButtonHeight))){
-							GUILayout.Box ("Breeding scene");	
+							currentPlayer.animalForBreeding1 = animals[animalIndex[0]];
+							currentPlayer.animalForBreeding2 = animals[animalIndex[1]];
+							currentPlayer.remainingAnimalsToBreed = 2;
+							currentPlayer.animalToChooseForBreeding = 1;
+							
+							Application.LoadLevel("CreateTetradsScrene");
+							//GUILayout.Box ("Breeding scene");	
 						}
 					}
 					
@@ -153,7 +165,6 @@ namespace EvolveAPet{
 				}
 
 			GUILayout.EndVertical ();
-
 		}
 	}
 }
