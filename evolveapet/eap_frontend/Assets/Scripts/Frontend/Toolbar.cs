@@ -30,10 +30,13 @@ namespace EvolveAPet{
 
 		// Use this for initialization
 		void Start () {
-			if (currentPlayer == null) {
+/*			if (currentPlayer == null) {
 				Player.playerInstance = new Player(new Stable(),"TestPlayer");			
 			}
+*/
 			currentPlayer = Player.playerInstance; //Checks if there is already an instantiated player
+			animals = currentPlayer.Stable.animalsInStable;
+			animalAlive = currentPlayer.Stable.activeStableSlots;
 
 		}
 		
