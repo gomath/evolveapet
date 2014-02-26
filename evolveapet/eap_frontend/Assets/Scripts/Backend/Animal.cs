@@ -25,14 +25,12 @@ namespace EvolveAPet
 		// Used in Genome screen - do not modify
 		public int RemainingGuesses = 5;
 		public bool cacheInitialized = false;
-		public bool[] shouldGenerateNewGuessingOptions = new bool[]{true,true,true,true,true,true,true};
-		public bool[] shouldGenerateNewMutations = new bool[]{true,true,true,true,true,true,true};
 		// Guessing genes caches
-		public String[,,] cacheGuessingStrings;
-		public String[,] cacheCorrectGuesses;
+		public string[][,] cacheGuessingStrings;
+		public string[][] cacheCorrectGuesses;
 		// Gene therapy caches
-		public String[,,,] cacheRandomMutationNames;
-		public Gene[,,] cacheRandomMutations;
+		public string[][,,] cacheRandomMutationNames;
+		public Gene[][,,] cacheRandomMutations;
 	
 
 

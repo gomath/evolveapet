@@ -1,19 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Builder.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Backend\Player.cs">
     <Files>
-      <File FileName="Assets\Scripts\Frontend\Toolbar.cs" Line="52" Column="53" />
-      <File FileName="Assets\Scripts\Frontend\GenomeScreen\ChromosomeScroller.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Frontend\GenomeScreen\ChromosomeScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Frontend\GenomeScreen\GeneScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Frontend\GenomeScreen\QuickViewScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Frontend\GenomeScreen\BoxGenomeScreen.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Frontend\GenomeScreen\GenomeViewController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Frontend\Tetrad_Screne\ControlAnchorsScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Frontend\Tetrad_Screne\BoxBehaviour.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Frontend\Tetrad_Screne\TetradsViewController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Frontend\StableScene\StableControllerTest.cs" Line="1" Column="1" />
-      <File FileName="Assets\Builder.cs" Line="31" Column="4" />
+      <File FileName="Assets\Scripts\Frontend\GenomeScreen\GenomeViewController.cs" Line="77" Column="25" />
+      <File FileName="Assets\Scripts\Backend\Animal.cs" Line="27" Column="40" />
+      <File FileName="Assets\Scripts\Backend\Stable.cs" Line="13" Column="38" />
+      <File FileName="Assets\Scripts\Backend\Player.cs" Line="58" Column="34" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -71,9 +71,15 @@ public class GenomeViewController : MonoBehaviour {
 			quickView = transform.FindChild ("QuickView").GetComponent<QuickViewScript> ();
 			transform.FindChild ("ControlAnchors").GetComponent<ControlAnchorsScript> ().showBreedButton = false;
 
+			// GETTING REAL ANIMAL AND PLAYER
+			//player = Player.playerInstance;
+			//animal = player.Stable[player.Stable.activeAnimalNumber];
+			// g = animal.Genome;
+
+			// GETTING RANDOM ANIMAL AND PLAYER
 			animal = new Animal ();
-			//g = new Genome ();
 			g = animal.Genome;
+
 			player = new Player(new Stable(), "DefaultPlayer");
 				// TODO remove afterwards
 				// Randomizing which genes has been guessed correctly
@@ -86,7 +92,12 @@ public class GenomeViewController : MonoBehaviour {
 						}
 					}
 				}
-			player.Points = 10;
+			player.Points = 10; // TODO hardcoded
+
+
+			if (!animal.cacheInitialized) {
+				InitializeCaches();
+			}
 
 			geneNamesToDisplay = new String[5,2];
 			// Adding initialization code in hope to get rid of crazy null pointers
@@ -97,6 +108,8 @@ public class GenomeViewController : MonoBehaviour {
 
 			// Guessing genes
 			genes = new Gene[5,2];
+
+			/*
 			guessingStrings = new String[5,3];
 			correctGuesses = new String[5];
 
@@ -110,7 +123,7 @@ public class GenomeViewController : MonoBehaviour {
 						randomMutationsNames[i,j,k] = "";
 					}
 				}			
-			}
+			}*/
 
 
 			frontEndChromosomes = g.FrontEndChromosomes();
@@ -144,6 +157,132 @@ public class GenomeViewController : MonoBehaviour {
 	void Update () {
 		
 	}
+	
+	/// <summary>
+	/// Sets active caches both for guessing and breeding purposes. 
+	/// </summary>
+	void SetActiveCaches(){
+			SetActiveCachesForGuessing ();
+			SetActiveCachesForGeneTherapy ();
+	}
+	
+	/// <summary>
+	/// Sets internal caches for holding guessing information to appropriate entry in caches in animal object. 
+	/// </summary>
+	void SetActiveCachesForGuessing(){
+			guessingStrings = animal.cacheGuessingStrings [activeChromosome];
+			correctGuesses = animal.cacheCorrectGuesses [activeChromosome];
+	}
+	
+	/// <summary>
+	/// Sets internal caches for holding gene therapy information to appropriate entry in caches in animal object 
+	/// </summary>
+	void SetActiveCachesForGeneTherapy(){
+			randomMutations = animal.cacheRandomMutations [activeChromosome];
+			randomMutationsNames = animal.cacheRandomMutationNames [activeChromosome];
+	}
+
+	/// <summary>
+	/// Initialize the caches for this animal concerning genes to guess and gene therapy to apply 
+	/// </summary>
+	void InitializeCaches(){
+
+			animal.cacheGuessingStrings = new String[Global.NUM_OF_CHROMOSOMES][,];
+			animal.cacheCorrectGuesses = new String[Global.NUM_OF_CHROMOSOMES][];
+
+			animal.cacheRandomMutationNames = new String[Global.NUM_OF_CHROMOSOMES][,,];
+			animal.cacheRandomMutations = new Gene[Global.NUM_OF_CHROMOSOMES][,,];
+
+			for (int i=0; i<Global.NUM_OF_CHROMOSOMES; i++) {
+				animal.cacheGuessingStrings[i] = new String[5,3];
+				animal.cacheCorrectGuesses[i] = new String[5];
+
+				animal.cacheRandomMutationNames[i] = new String[2, 5, numOfMutationChoices];
+				animal.cacheRandomMutations[i] = new Gene[2, 5, numOfMutationChoices];
+			}
+
+			RandomizeAllCaches ();
+
+			animal.cacheInitialized = true;
+	}
+	
+	void RandomizeGuessingCachesAndUpdateActive(){
+			RandomizeGuessingCache ();
+			SetActiveCachesForGuessing();
+	}
+
+	void RandomizeGeneTherapyCachesAndUpdateActive(){
+			RandomizeGeneTherapyCache ();
+			SetActiveCachesForGeneTherapy ();
+	}
+	
+	/// <summary>
+	/// Randomize all caches for all chromosomes stored within animal object. 
+	/// </summary>
+	void RandomizeAllCaches(){
+			RandomizeGuessingCache ();
+			RandomizeGeneTherapyCache ();
+	}
+	/// <summary>
+	/// Randomizes caches for all genes stored in animal object used for gene guessing 
+	/// </summary>
+	void RandomizeGuessingCache(){
+			for (int ch=0; ch<Global.NUM_OF_CHROMOSOMES; ch++) {
+					Gene temp;
+					String s;
+					String[] traitNamesForOneGene;
+					for (int i=0; i<MyDictionary.numOfGenesOnChromosome[(EnumBodyPart)ch]; i++) {
+							temp = g.FrontEndGetGene (ch, i, 0); 
+							s = temp.TraitName ();
+							traitNamesForOneGene = g.GetDistinctRandomTraitNames (s, 3);
+							for (int j=0; j<3; j++) {
+								animal.cacheGuessingStrings[ch][i,j] = traitNamesForOneGene [j];
+							}
+		
+							animal.cacheCorrectGuesses[ch][i] = s;			
+					}
+			}
+	}
+	/// <summary>
+	/// Randomizes caches of all genes stored in animal object used for gene therapy 
+	/// </summary>
+	void RandomizeGeneTherapyCache(){
+			for (int ch = 0; ch<Global.NUM_OF_CHROMOSOMES; ch++) {
+				int numOfGenes = MyDictionary.numOfGenesOnChromosome[(EnumBodyPart)ch]; 
+					Gene temp;
+					Gene[] tempArray;
+					for (int i=0; i<numOfGenes; i++) {
+							// Mutating father gene
+							temp = g.FrontEndGetGene (ch, i, 0);
+							tempArray = temp.RandomMutations (numOfMutationChoices);
+							for (int j=0; j<numOfMutationChoices; j++) {
+									animal.cacheRandomMutations[ch][0, i, j] = tempArray [j];
+							}
+	
+							// Mutating mother gene
+							temp = g.FrontEndGetGene (ch, i, 1);
+							tempArray = temp.RandomMutations (numOfMutationChoices);
+							for (int j=0; j<numOfMutationChoices; j++) {
+									animal.cacheRandomMutations[ch][1, i, j] = tempArray [j];
+							}
+					}
+
+					// Creating string[][][] array of names
+					for (int i=0; i<numOfGenes; i++) {
+							for (int j=0; j<numOfMutationChoices; j++) {
+									if (player.guessedGenes [ch, i]) {
+											animal.cacheRandomMutationNames[ch] [0, i, j] = animal.cacheRandomMutations[ch] [0, i, j].GetWholeNameDecoded ();
+											animal.cacheRandomMutationNames[ch] [1, i, j] = animal.cacheRandomMutations[ch] [1, i, j].GetWholeNameDecoded ();
+									} else {
+											animal.cacheRandomMutationNames[ch] [0, i, j] = animal.cacheRandomMutations[ch] [0, i, j].GetWholeNameEncoded ();
+											animal.cacheRandomMutationNames[ch] [1, i, j] = animal.cacheRandomMutations[ch] [1, i, j].GetWholeNameEncoded ();
+									}
+							}			
+					}
+			}
+	}
+	
+	
 
 	/// <summary>
 	/// Returns male or female physical chromosome at given location 
@@ -160,25 +299,20 @@ public class GenomeViewController : MonoBehaviour {
 			Debug.Log ("Box " + boxNumber + " clicked.");
 			ActivateChromosome (boxNumber);
     }
-
+	
+	/// <summary>
+	/// Called when different chromosome selected via clicking the box or using arrows. 
+	/// </summary>
+	/// <param name="chromosomeNum">Chromosome number.</param>
 	void ActivateChromosome(int chromosomeNum){
 			activeChromosome = chromosomeNum;
 			numOfGenesOnActiveChromosome = MyDictionary.numOfGenesOnChromosome [(EnumBodyPart)activeChromosome]; //frontEndChromosomes [0, activeChromosome].NumOfGenes;
-			CreateStringsForGuessing ();
-			CreateRandomMutations();
 
-			/*
-			for (int i=0; i<numOfGenesOnActiveChromosome; i++) {
-				genes[i,0] = g.FrontEndGetGene(activeChromosome,i,0);
-				genes[i,1] = g.FrontEndGetGene(activeChromosome,i,1);
-				if(player.guessedGenes[activeChromosome,i]){
-					geneNamesToDisplay[i,0] = genes[i,0].GetWholeNameDecoded();
-					geneNamesToDisplay[i,1] = genes[i,1].GetWholeNameDecoded();
-				} else {
-					geneNamesToDisplay[i,0] = genes[i,0].GetWholeNameEncoded();
-					geneNamesToDisplay[i,1] = genes[i,1].GetWholeNameEncoded();
-				}
-			}*/
+			SetActiveCachesForGuessing ();
+			SetActiveCachesForGeneTherapy ();
+			//CreateStringsForGuessing ();
+			//CreateRandomMutations();
+
 			UpdateNamesAndGenes ();
 
 			if (activePair != null) {
@@ -189,7 +323,9 @@ public class GenomeViewController : MonoBehaviour {
 			quickView.SetActiveBox(chromosomeNum);   
 
 	}
-
+	/// <summary>
+	/// Update gene names displayed next to chromosome 
+	/// </summary>
 	void UpdateNamesAndGenes(){
 		for (int i=0; i<numOfGenesOnActiveChromosome; i++) {
 			genes[i,0] = g.FrontEndGetGene(activeChromosome,i,0);
@@ -219,8 +355,7 @@ public class GenomeViewController : MonoBehaviour {
 				guessingStrings[i,j] = traitNamesForOneGene[j];
 			}
 
-			correctGuesses[i] = s;
-			
+			correctGuesses[i] = s;			
 		}
 	}
 	
@@ -348,19 +483,21 @@ public class GenomeViewController : MonoBehaviour {
 		player.Points += pointsForCorrectGuess;
 		ChangeColorWhenGuessed (ch,g);
 		UpdateNamesAndGenes ();
+		RandomizeGuessingCachesAndUpdateActive ();
 	}
 	// Action to take when the player guesses incorrectly
 	void IncorrectGuessAction(){
 		animal.RemainingGuesses--;
 		player.Points += pointsForIncorrectGuess;
+		RandomizeGuessingCachesAndUpdateActive ();
 	}
 	
 	// Action to take after successful mutation
 	void RandomMutationAction(EnumBodyPart changedBodyPart){
 		player.Points -= costOfGeneTherapy;
 		UpdateNamesAndGenes();
-			animal.createBodyPart((int)changedBodyPart);
-		
+		animal.createBodyPart((int)changedBodyPart);
+		RandomizeGeneTherapyCachesAndUpdateActive ();
 	}
 	
 
