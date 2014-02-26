@@ -97,10 +97,7 @@ public class StableController : MonoBehaviour {
 													//release into wild
 													areOccupied[i] = false;
 													//for now remove sprite
-													GameObject.Destroy(potentialGameObjects[i]);
-													Resources.UnloadUnusedAssets();
-													Player.playerInstance._stable.RemovePet(i);
-													//potentialAniamls[i].releaseIntoWild();
+													
 													GameObject released = potentialGameObjects[i];
 
 													timeDown = 5;
@@ -113,6 +110,10 @@ public class StableController : MonoBehaviour {
 													}
 													released.transform.FindChild("animal skeleton").GetComponent<Animator>().SetTrigger("Walk");
 													//TODO Actually delete animal from player
+
+													//GameObject.Destroy(potentialGameObjects[i]);
+													//Resources.UnloadUnusedAssets();
+													Player.playerInstance._stable.RemovePet(i);
 												} else {
 													//nope.
 												}
