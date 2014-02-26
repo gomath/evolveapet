@@ -9,12 +9,15 @@ public class MainMenu : MonoBehaviour {
 	float originalWidth = 1098.0f;
 	float originalHeight = 618.0f;
 	Vector3 scale = new Vector3();
-		bool showPopUp = false;
-		bool showErrorMessage = false;
-		string playerName = "Enter your name here";
-		Player currentPlayer;
+	bool showPopUp = false;
+	bool showErrorMessage = false;		
+	string playerName = "Enter your name here";
+	Player currentPlayer;
+	protected string importPath = "";
+	protected FileBrowser m_fileBrowser;
 	public GUISkin mySkin;
-	
+	bool exception;
+
 		void Start(){
 			if (!File.Exists(Environment.CurrentDirectory + "/save.sav")){ //Checks if a save game exists
 
@@ -27,7 +30,9 @@ public class MainMenu : MonoBehaviour {
 			
 		}
 		void OnGUI () {
-
+			if (m_fileBrowser != null) {
+				m_fileBrowser.OnGUI();
+			}
 		currentPlayer = Player.playerInstance; //Checks if there is already an instantiated player
 
 		GUI.skin = mySkin;
@@ -44,7 +49,7 @@ public class MainMenu : MonoBehaviour {
 			GUI.Window(0, new Rect((originalWidth / 2) - 170, (originalHeight / 2) - 85, 300, 250), ShowGUI, "Hello!");
 		}
 		if (showErrorMessage){//If the error message should be on screen, creates it
-			GUI.Window(1, new Rect((originalWidth / 2) - 170, (originalHeight / 2) - 85, 300, 250), ErrorGUI, "Hello!");
+			GUI.Window(1, new Rect((originalWidth / 2) - 170, (originalHeight / 2) - 85, 300, 250), ErrorGUI, "Oh No!");
 		}
 		// Make the first button. If it is pressed, Application.Loadlevel (1) will be executed
 		//if(GUI.Button(new Rect(660,82,150,40), "Play")) {
@@ -79,16 +84,16 @@ public class MainMenu : MonoBehaviour {
 					showPopUp =false;
 				}
 				else{
-				/*string path = EditorUtility.OpenFilePanel(
-					"Load A Friend's Animal",
-					"",
-					"animal");
-					*/
-					string path = "";//TODO
-					if (!path.Equals("")){
-					Animal newAnimal = Animal.deserialiseAnimal(path);
-					currentPlayer.Stable.eggSlot = newAnimal;
-					}
+					m_fileBrowser = new FileBrowser(
+						new Rect(100, 100, 600, 500),
+						"Import an animal",
+						FileSelectedCallback
+						);
+					m_fileBrowser.SelectionPattern = "*.animal";
+					//m_fileBrowser.DirectoryImage = m_directoryImage;
+					//m_fileBrowser.FileImage = m_fileImage;
+				
+
 				}
 
 
@@ -105,13 +110,32 @@ public class MainMenu : MonoBehaviour {
 		//restore matrix before return
 		GUI.matrix = svMat;
 	}
+
+		protected void FileSelectedCallback(string path) {
+			m_fileBrowser = null;
+			importPath = path;
+			if (!importPath.Equals("")){
+				try{
+					Animal newAnimal = Animal.deserialiseAnimal(importPath);
+					currentPlayer.Stable.eggSlot = newAnimal;
+				}
+				catch(Exception e){
+					exception = true;
+					showErrorMessage =true;
+				}
+			}
+		}
+		
+		
 		void ErrorGUI(int windowID){
 			if (currentPlayer == null) {
 
-				GUI.Label(new Rect(65, 40, 200, 80), "It appears that you do not have a save game.\n Press play to get started!");
+								GUI.Label (new Rect (65, 40, 200, 80), "It appears that you do not have a save game.\n Press play to get started!");
 
-			}
-
+						}
+			else if (exception ==true) {
+				GUI.Label(new Rect(65, 40, 200, 80), "Something went wrong while opening the file! Is this a saved animal?");
+						}
 			else if (currentPlayer.Stable.eggSlot != null) {
 				GUI.Label(new Rect(65, 40, 200, 80), "Your stable already contains an egg.\n Go into your stable and hatch it first!");
 
@@ -121,6 +145,7 @@ public class MainMenu : MonoBehaviour {
 				
 			{
 				showErrorMessage = false;
+				exception = false;
 			}
 
 
