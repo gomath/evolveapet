@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Runtime.Serialization.Formatters.Binary; 
 using System.IO;
@@ -23,6 +22,13 @@ namespace EvolveAPet
 		public bool[,] guessedGenes; // All the genes in the animal. If the array member at [i][j] is true, that means the the jth gene on the ith chromosome has been guessed
 		public static Player playerInstance = null; // I should have thought of this earlier
 		public DateTime lastSaved;
+
+		public Animal animalForBreeding1;
+		public Animal animalForBreeding2;
+		public Chromosome[] chromosomes1;
+		public Chromosome[] chromosomes2;
+		public int animalToChooseForBreeding;
+		public int remainingAnimalsToBreed;
 
 
 		public Player(Stable s, string username)
@@ -95,7 +101,7 @@ namespace EvolveAPet
 						 // give no points in the event that there is no daily challenge
 			int points = 0 ;
 			int activeAnimalNo = Stable.activeAnimalNumber;
-			Animal activeAnimal = Stable.ElementAt(activeAnimalNo);
+			Animal activeAnimal = Stable.animalsInStable[activeAnimalNo];
 
 			/*6 traits filled in this order :
 			0.Colour

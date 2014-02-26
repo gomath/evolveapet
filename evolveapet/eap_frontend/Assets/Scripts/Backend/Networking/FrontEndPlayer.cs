@@ -14,6 +14,17 @@ public class FrontEndPlayer : MonoBehaviour
 				Player.Stable.Size = 5;
 				Player.Stable.AddPet (new Animal ());
 				Player.Stable.AddPet (new Animal ());
+		GameObject animal = (GameObject)Instantiate(Resources.Load ("Prefabs/animal"));
+		animal.GetComponent<PhysicalAnimal> ().animal = FrontEndPlayer.Player.Stable[0];
+		animal.GetComponent<PhysicalAnimal>().Build(animal);
+		animal.transform.Translate (new Vector2 (6, 3));
+
+
+		 animal = (GameObject)Instantiate(Resources.Load ("Prefabs/animal"));
+		animal.GetComponent<PhysicalAnimal> ().animal = FrontEndPlayer.Player.Stable[1];
+		animal.GetComponent<PhysicalAnimal>().Build(animal);
+		animal.transform.Translate (new Vector2 (-6, 3));
+
 				NetworkManager.SetPlayerData ();
 		}
 

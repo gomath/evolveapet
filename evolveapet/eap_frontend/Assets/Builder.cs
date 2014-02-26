@@ -25,15 +25,13 @@ namespace EvolveAPet {
 			
 			//Wait one frame for destroys to commit
 			yield return new WaitForSeconds(0f);
-			
+			int activeAnimalNo = Player.playerInstance.Stable.activeAnimalNumber;
 			//Create new animal
 			GameObject animal = (GameObject)Instantiate(Resources.Load ("Prefabs/animal"));
-			animal.GetComponent<PhysicalAnimal>().animal = new Animal();
+			animal.GetComponent<PhysicalAnimal> ().animal = Player.playerInstance.Stable.animalsInStable [activeAnimalNo];
 			animal.GetComponent<PhysicalAnimal>().Build(animal);
 			LinkedList<Animal> list= new LinkedList<Animal> ();
 			list.AddFirst (animal.GetComponent<PhysicalAnimal> ().animal);
-			player._stable = new Stable (list);
-			player._stable.activeAnimalNumber = 0;
 		}
 
 		void OnGUI() {
