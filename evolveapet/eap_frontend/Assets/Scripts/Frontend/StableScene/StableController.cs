@@ -75,7 +75,7 @@ public class StableController : MonoBehaviour {
 
 						Vector3 loc = camera.WorldToScreenPoint (new Vector3(rawPos.x, -rawPos.y,1)); 
 						loc = new Vector3(originalWidth*loc.x/Screen.width, originalHeight*loc.y/Screen.height,loc.z);
-						Vector3 newXY = loc + new Vector3 (-60, 60, 0);
+						Vector3 newXY = loc + new Vector3 (-75, 60, 0);
 
 						//compute relative positions for the buttons
 						Vector4 topButton = new Vector4 (newXY.x, newXY.y, 150, 35); //last two coords are height and length
