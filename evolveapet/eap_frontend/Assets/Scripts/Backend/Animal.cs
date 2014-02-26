@@ -231,8 +231,17 @@ namespace EvolveAPet
 			Animal offspring = new Animal(parent1, parent2, this, a);
 			return offspring;
 		}
-		
-	
+
+		public void AnimalName(Animal a) {
+			int pr = Global.rand.Next (12);
+			int mi = Global.rand.Next (13);
+			int po = Global.rand.Next (12);
+			string pre = Global.prefixes [pr];
+			string mid = Global.names [mi];
+			string post = Global.suffixes [po];
+			a.Name = (pre + mid + post);
+			Debug.Log (pre + mid + post);
+		}
 	}
 	
 }
