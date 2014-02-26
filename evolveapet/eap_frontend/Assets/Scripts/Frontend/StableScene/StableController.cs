@@ -35,8 +35,8 @@ public class StableController : MonoBehaviour {
 		GameObject a4=null;
 		GameObject a5=null;
 
-		int pointsForUnlock  = 10;
-		int pointsForNewAnimal = 5;
+		int pointsForUnlock  = -1;
+		int pointsForNewAnimal = -1;
 
 		public Animal[] potentialAnimals;
 		public GameObject[] potentialGameObjects;
@@ -81,9 +81,8 @@ public class StableController : MonoBehaviour {
 												Debug.LogWarning ("rand animal button pressed.");
 												if(Player.playerInstance.Points > pointsForUnlock) {
 													Player.playerInstance.Points -= pointsForNewAnimal;
-													Animal an = new Animal();
-													Player.playerInstance._stable.animalsInStable[i] = an;
-													potentialAnimals[i] = an;
+													Player.playerInstance._stable.AddPet(new Animal(), i);
+													potentialAnimals[i] = Player.playerInstance._stable.animalsInStable[i];
 													StartCoroutine("BuildAnimalAtIndex",i);
 
 												}
