@@ -96,13 +96,11 @@ public class StableController : MonoBehaviour {
 												if(numActiveStalls > 1) {
 													//release into wild
 													areOccupied[i] = false;
-<<<<<<< HEAD
 													//for now remove sprite
 													GameObject.Destroy(potentialGameObjects[i]);
 													Resources.UnloadUnusedAssets();
 													Player.playerInstance._stable.RemovePet(i);
 													//potentialAniamls[i].releaseIntoWild();
-=======
 													GameObject released = potentialGameObjects[i];
 
 													timeDown = 5;
@@ -115,7 +113,6 @@ public class StableController : MonoBehaviour {
 													}
 													released.transform.FindChild("animal skeleton").GetComponent<Animator>().SetTrigger("Walk");
 													//TODO Actually delete animal from player
->>>>>>> Egg slot now populates stable and animals can be released
 												} else {
 													//nope.
 												}
