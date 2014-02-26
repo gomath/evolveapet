@@ -30,7 +30,7 @@ public class NetworkManager : MonoBehaviour
 				
 				GUILayout.Label (PhotonNetwork.connectionStateDetailed.ToString ());
 				GUILayout.Label (PhotonNetwork.insideLobby.ToString ());
-				GUILayout.Label (FrontEndPlayer.Player.Stable.Count.ToString ());
+				GUILayout.Label (FrontEndPlayer.Player.Stable.Size.ToString ());
 				if (GUILayout.Button ("Player List")) {
 						if (!PlayerList.open)
 								Instantiate (Resources.Load ("Prefabs/Networking/PlayerList"), Vector2.zero, Quaternion.identity);

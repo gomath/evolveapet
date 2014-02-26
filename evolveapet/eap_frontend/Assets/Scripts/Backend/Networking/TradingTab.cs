@@ -87,10 +87,10 @@ public class TradingTab : MonoBehaviour
 				
 				
 				//GUI STUFF, chromozome choosing etc...
-		FrontEndPlayer.Player.Stable.activeAnimalNumber = ((int)(Random.value * 100)) % FrontEndPlayer.Player.Stable.Count;
-				selected_animal = FrontEndPlayer.Player.Stable [FrontEndPlayer.Player.Stable.activeAnimalNumber];
+		FrontEndPlayer.Player.Stable.activeAnimalNumber = ((int)(Random.value * 100)) % FrontEndPlayer.Player.Stable.Size;
+				selected_animal = FrontEndPlayer.Player.Stable .animalsInStable[FrontEndPlayer.Player.Stable.activeAnimalNumber];
 				byte[] animal_bytes = serialize (selected_animal);
-				if (TradingPlayer != null)
+		if (TradingPlayer != null)						
 						PhotonView.Get (this).RPC ("Breed", TradingPlayer, animal_bytes);
 				else
 						Busy ();
@@ -103,13 +103,13 @@ public class TradingTab : MonoBehaviour
 		{
 				Debug.Log ("Breed");
 				Animal mate = (Animal)deserialize (mate_bytes);
-				FrontEndPlayer.Player.Stable.AddPet (selected_animal.BreedMeRandomly (mate));
+		FrontEndPlayer.Player.Stable.AddPet (selected_animal.BreedMeRandomly (mate),FrontEndPlayer.Player.Stable.Size);
 				// do whatever else is needed
 		//Create new animal
 		GameObject animal = (GameObject)Instantiate(Resources.Load ("Prefabs/animal"));
-		animal.GetComponent<PhysicalAnimal> ().animal = FrontEndPlayer.Player.Stable.Last ();
+		animal.GetComponent<PhysicalAnimal> ().animal = FrontEndPlayer.Player.Stable.animalsInStable[FrontEndPlayer.Player.Stable.Size-1];
 		animal.GetComponent<PhysicalAnimal>().Build(animal);
-		animal.transform.Translate(new Vector2(-7+(FrontEndPlayer.Player.Stable.Count-3)*4,-3));
+		animal.transform.Translate(new Vector2(-7+(FrontEndPlayer.Player.Stable.Size-3)*4,-3));
 				CleanObject ();
 		}
 		
