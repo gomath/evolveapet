@@ -46,7 +46,10 @@ public class StableController : MonoBehaviour {
 
 		public GameObject egg;
 		public GameObject paddock;
+		GameObject hatchAnimal;
 		int tempSlot;
+		string name = "Enter Name";
+		bool renameBox;
 
 		float timeDown = 0;
 
@@ -69,6 +72,16 @@ public class StableController : MonoBehaviour {
 //			areOccupied = Player.playerInstance._stable.livingAnimals;
 //			areUnlocked = Player.playerInstance._stable.activeStableSlots;
 
+			if (renameBox) {
+				name = GUI.TextField(new Rect((originalWidth/2)-150,(originalHeight/2)+80,200,40),name);
+				if (GUI.Button (new Rect((originalWidth/2)+50,(originalHeight/2)+80,100,40),"Okay")) {
+					GameObject.Destroy(hatchAnimal);
+					timeDown = 0;
+					StartCoroutine("BuildAnimalAtIndex",tempSlot);
+					renameBox = false;
+				}
+			}
+
 			if (!buttonShow) return;
 			for (int i=0; i<6; i++) {
 						//get screen coordinates of stable[i] sprite to set button locs appropriately
@@ -77,7 +90,7 @@ public class StableController : MonoBehaviour {
 
 						Vector3 loc = camera.WorldToScreenPoint (new Vector3(rawPos.x, -rawPos.y,1)); 
 						loc = new Vector3(originalWidth*loc.x/Screen.width, originalHeight*loc.y/Screen.height,loc.z);
-						Vector3 newXY = loc + new Vector3 (-75, 60, 0);
+						Vector3 newXY = loc + new Vector3 (-75, 45, 0);
 
 						//compute relative positions for the buttons
 						Vector4 topButton = new Vector4 (newXY.x, newXY.y, 150, 35); //last two coords are height and length
@@ -245,6 +258,9 @@ public class StableController : MonoBehaviour {
 
 			potentialGameObjects [anIndex].GetComponent<PhysicalAnimal> ().animal = potentialAnimals [anIndex];
 
+			if (name != "Enter Name") {
+				potentialGameObjects [anIndex].GetComponent<PhysicalAnimal> ().animal.Name = name;
+			}
 			//build animal
 			potentialGameObjects[anIndex].GetComponent<PhysicalAnimal>().Build(potentialGameObjects[anIndex]);
 			potentialGameObjects [anIndex].transform.position = stableLocs [anIndex].position;
@@ -258,7 +274,7 @@ public class StableController : MonoBehaviour {
 		egg.SetActive(true);
 		yield return new WaitForSeconds(Random.Range(2f, 7f));
 		egg.GetComponent<Animator>().SetTrigger("Hatch");
-		GameObject hatchAnimal = (GameObject)Instantiate (Resources.Load ("Prefabs/animal"));
+		hatchAnimal = (GameObject)Instantiate (Resources.Load ("Prefabs/animal"));
 		hatchAnimal.GetComponent<PhysicalAnimal> ().animal = a;
 		hatchAnimal.transform.FindChild("animal skeleton").GetComponent<Animator>().SetTrigger("Hatch");
 		hatchAnimal.GetComponent<PhysicalAnimal>().Build(hatchAnimal);
@@ -266,11 +282,9 @@ public class StableController : MonoBehaviour {
 			r.sortingLayerName = "Foreground Animal";
 		}
 		hatchAnimal.transform.position = new Vector2(0,0);
-		yield return new WaitForSeconds(5f);
+		yield return new WaitForSeconds(1.8f);
+		renameBox = true;
 		
-		GameObject.Destroy(hatchAnimal);
-		timeDown = 0;
-		StartCoroutine("BuildAnimalAtIndex",tempSlot);
 	}
 
 
