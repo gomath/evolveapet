@@ -374,20 +374,27 @@ public class GenomeViewController : MonoBehaviour {
 
 	void SetGeneColor(int ch, int g, bool toggled){
 			Color c;
-			if (toggled) {
-				c = GeneScript.toggleColor;
-			} else {
-				if(player.guessedGenes[ch,g])
-					c = GeneScript.guessedColor;
-				else
-                    c = GeneScript.unknownColor;
-			}
+			Color temp;
+			if(player.guessedGenes[ch,g])
+				c = GeneScript.guessedColor;
+			else
+                c = GeneScript.unknownColor;
 
-		
-			physicalChromosomes[ch,0].transform.FindChild("gene " + g).GetComponent<GeneScript>().actualColor = c;
-			physicalChromosomes[ch,0].transform.FindChild("gene " + g).GetComponent<SpriteRenderer>().color = c;
-			physicalChromosomes[ch,1].transform.FindChild("gene " + g).GetComponent<GeneScript>().actualColor = c;
-			physicalChromosomes[ch,1].transform.FindChild("gene " + g).GetComponent<SpriteRenderer>().color = c;
+			if (toggled) {
+				temp = physicalChromosomes[ch,0].transform.FindChild("gene " + g).GetComponent<GeneScript>().actualColor;
+				c = new Color(temp.r, temp.g, temp.b, 255);
+				physicalChromosomes[ch,0].transform.FindChild("gene " + g).GetComponent<GeneScript>().actualColor = c;
+				physicalChromosomes[ch,0].transform.FindChild("gene " + g).GetComponent<SpriteRenderer>().color = c;
+				temp = physicalChromosomes[ch,0].transform.FindChild("gene " + g).GetComponent<GeneScript>().actualColor;
+				c = new Color(temp.r, temp.g, temp.b, 255);
+				physicalChromosomes[ch,1].transform.FindChild("gene " + g).GetComponent<GeneScript>().actualColor = c;
+				physicalChromosomes[ch,1].transform.FindChild("gene " + g).GetComponent<SpriteRenderer>().color = c;
+			} else {
+				physicalChromosomes[ch,0].transform.FindChild("gene " + g).GetComponent<GeneScript>().actualColor = c;
+				physicalChromosomes[ch,0].transform.FindChild("gene " + g).GetComponent<SpriteRenderer>().color = c;
+				physicalChromosomes[ch,1].transform.FindChild("gene " + g).GetComponent<GeneScript>().actualColor = c;
+				physicalChromosomes[ch,1].transform.FindChild("gene " + g).GetComponent<SpriteRenderer>().color = c;
+			}
 
 
 			quickView.SetGeneColor (ch, g, c);
