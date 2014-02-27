@@ -231,12 +231,12 @@ public class StableController : MonoBehaviour {
 		egg.GetComponent<Animator>().SetTrigger("Hatch");
 		GameObject hatchAnimal = (GameObject)Instantiate (Resources.Load ("Prefabs/animal"));
 		hatchAnimal.GetComponent<PhysicalAnimal> ().animal = a;
+		hatchAnimal.transform.FindChild("animal skeleton").GetComponent<Animator>().SetTrigger("Hatch");
 		hatchAnimal.GetComponent<PhysicalAnimal>().Build(hatchAnimal);
 		foreach (SpriteRenderer r in hatchAnimal.GetComponentsInChildren<SpriteRenderer>()) {
 			r.sortingLayerName = "Foreground Animal";
 		}
 		hatchAnimal.transform.position = new Vector2(0,0);
-		hatchAnimal.transform.FindChild("animal skeleton").GetComponent<Animator>().SetTrigger("Hatch");
 		yield return new WaitForSeconds(5f);
 		GameObject.Destroy(hatchAnimal);
 		timeDown = 0;
