@@ -174,9 +174,19 @@ namespace EvolveAPet
 
 			//If head, checks teeth shape
 			if (n == 2) {
-			genePos = motherChromosome.getTraitPosition(5);
-				int teethShapeInt = Genome.GetTrait(n,5);
-				teethShape = MyDictionary.GetShape(teethShapeInt);
+				genePos = Genome.MotherChromosomes[n].getTraitPosition(5);
+
+				Gene g1 = motherChromosome.Genes [genePos];
+				Gene g2 = fatherChromosome.Genes [genePos];
+				int gene1Trait = (int)g1.Trait;
+				int gene2Trait = (int)g2.Trait;
+				//Need to fudge the fact that carnivore is dominant over herbivore
+				if (gene1Trait==0 && gene2Trait==0){ // both herbivore shaped teeth
+					teethShape=MyDictionary.GetShape(0);
+				}else{
+					teethShape = MyDictionary.GetShape(1);
+				}
+
 			}
 
 			if (n == 4) {
