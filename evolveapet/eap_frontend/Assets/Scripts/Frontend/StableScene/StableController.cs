@@ -208,7 +208,7 @@ public class StableController : MonoBehaviour {
 		if (Player.playerInstance._stable.eggSlot != null) {
 				int i;
 				for(i = 0; i<6; i++) {
-					if (!areOccupied[i]) break;
+					if (!areOccupied[i]&&areUnlocked[i]) break;
 				}
 				buttonShow = false;
 				paddock.SetActive(true);
