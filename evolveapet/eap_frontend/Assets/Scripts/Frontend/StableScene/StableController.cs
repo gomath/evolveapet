@@ -12,6 +12,7 @@ public class StableController : MonoBehaviour {
 		public int numActiveStalls;
 		public bool[] areOccupied = new bool[6];
 		public bool[] areUnlocked = new bool[6];
+		public string[] animalNames;
 	
 		public Transform stable0;
 		public Transform stable1;
@@ -66,6 +67,8 @@ public class StableController : MonoBehaviour {
 			var svMat = GUI.matrix;
 			// substitute matrix to scale if screen nonstandard
 			GUI.matrix = Matrix4x4.TRS (Vector3.zero, Quaternion.identity, scale);
+//			areOccupied = Player.playerInstance._stable.livingAnimals;
+//			areUnlocked = Player.playerInstance._stable.activeStableSlots;
 
 			if (!buttonShow) return;
 			for (int i=0; i<6; i++) {
@@ -81,9 +84,18 @@ public class StableController : MonoBehaviour {
 						Vector4 topButton = new Vector4 (newXY.x, newXY.y, 150, 35); //last two coords are height and length
 						Vector4 bottomButton = topButton + new Vector4 (0, 30, 0, 0);
 
+						Vector3 newXYForLabel = loc + new Vector3 (-75, -100, 0);
+						
+						//compute relative positions for the buttons
+						Vector4 labelLoc = new Vector4 (newXYForLabel.x, newXYForLabel.y, 150, 35); //last two coords are height and length
+
 						if (areUnlocked [i]) {
 								if (areOccupied [i]) {
-										if (Player.playerInstance._stable.activeAnimalNumber != i) {
+									//TODO: CLEAN THIS UP
+									GUI.Box(new Rect(labelLoc.x,labelLoc.y,labelLoc.z,labelLoc.w), Player.playerInstance._stable.animalsInStable[i].Name);
+								
+
+									if (Player.playerInstance._stable.activeAnimalNumber != i) {
 												if (GUI.Button (new Rect (topButton.x, topButton.y, topButton.z, topButton.w), "Make Active")) {
 												
 														Debug.LogWarning ("Make Active pressed");
@@ -135,7 +147,7 @@ public class StableController : MonoBehaviour {
 								} else {
 										if (GUI.Button (new Rect (topButton.x, topButton.y, topButton.z, topButton.w), "New Random Animal")) {
 												Debug.LogWarning ("rand animal button pressed.");
-												if(Player.playerInstance.Points > pointsForUnlock) {
+												if(Player.playerInstance.Points > pointsForNewAnimal) {
 													Player.playerInstance.Points -= pointsForNewAnimal;
 													Player.playerInstance._stable.AddPet(new Animal(), i);
 													potentialAnimals[i] = Player.playerInstance._stable.animalsInStable[i];
@@ -155,6 +167,7 @@ public class StableController : MonoBehaviour {
 											areUnlocked[i] = true; 
 											padlocks[i].GetComponent<SpriteRenderer>().enabled = false; //fancy animations later
 											Player.playerInstance._stable.activeStableSlots[i] = true;
+											areOccupied[i] = true;
 										}
 								}
 						}
@@ -172,6 +185,7 @@ public class StableController : MonoBehaviour {
 
 			areOccupied = Player.playerInstance._stable.livingAnimals;
 			padlocks = new GameObject[]{padlock0,padlock1,padlock2, padlock3, padlock4,padlock5};
+			animalNames = new string[] {null,null,null,null,null,null};
 
 		//setup player's stable by instantiating user's animals
 		numActiveStalls = Player.playerInstance._stable.Size;
@@ -180,6 +194,8 @@ public class StableController : MonoBehaviour {
 		for (int i = 0; i< 6; i++) {
 			if (areUnlocked[i]) {
 					if(areOccupied[i]) {
+					
+
 
 					StartCoroutine ("BuildAnimalAtIndex", i);
 								
@@ -252,6 +268,7 @@ public class StableController : MonoBehaviour {
 		}
 		hatchAnimal.transform.position = new Vector2(0,0);
 		yield return new WaitForSeconds(5f);
+		
 		GameObject.Destroy(hatchAnimal);
 		timeDown = 0;
 		StartCoroutine("BuildAnimalAtIndex",tempSlot);
