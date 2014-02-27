@@ -60,7 +60,6 @@ public class StableController : MonoBehaviour {
 
 	void OnGUI() {
 			GUI.skin = mySkin;
-			
 			scale.x = Screen.width / originalWidth;
 			scale.y = Screen.height / originalHeight;
 			scale.z = 1;
@@ -90,10 +89,11 @@ public class StableController : MonoBehaviour {
 						Vector4 labelLoc = new Vector4 (newXYForLabel.x, newXYForLabel.y, 150, 35); //last two coords are height and length
 
 						if (areUnlocked [i]) {
-								if (areOccupied [i]) {
+
+								if (Player.playerInstance._stable.livingAnimals	 [i]) {
 									//TODO: CLEAN THIS UP
 									GUI.Box(new Rect(labelLoc.x,labelLoc.y,labelLoc.z,labelLoc.w), Player.playerInstance._stable.animalsInStable[i].Name);
-								
+
 
 									if (Player.playerInstance._stable.activeAnimalNumber != i) {
 												if (GUI.Button (new Rect (topButton.x, topButton.y, topButton.z, topButton.w), "Make Active")) {
@@ -166,8 +166,7 @@ public class StableController : MonoBehaviour {
 											pointsForUnlock += 10; //TODO: display required points for unlock
 											areUnlocked[i] = true; 
 											padlocks[i].GetComponent<SpriteRenderer>().enabled = false; //fancy animations later
-											Player.playerInstance._stable.activeStableSlots[i] = true;
-											areOccupied[i] = true;
+											Player.playerInstance._stable.unlockStableSlot(i);
 										}
 								}
 						}

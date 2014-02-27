@@ -33,7 +33,7 @@ namespace EvolveAPet
 		
 		public Player(Stable s, string username)
 		{
-			Points = 0;
+			Points = 200;
 			UserName = username;
 			NickName = username;
 			_stable = s;
@@ -45,7 +45,7 @@ namespace EvolveAPet
 		
 		public Player(string username)
 		{
-			Points = 0;
+			Points = 200;
 			UserName = username;
 			NickName = username;
 			_stable = new Stable();

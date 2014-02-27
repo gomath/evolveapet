@@ -52,7 +52,7 @@ namespace EvolveAPet
 
             // New animal has max. generations of your parents + 1
 			//Generation = (parent1.Generation > parent2.Generation) ? parent1.Generation+1 : parent2.Generation+1;
-
+			nameMeRandomly ();
 			BodyPartArray = new BodyPart[bodyPartNumber]; 
             for (int n = 0; n < bodyPartNumber; n++){
 				createBodyPart(n);
