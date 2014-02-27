@@ -109,11 +109,24 @@ public class StableController : MonoBehaviour {
 														r.sortingLayerName = "Foreground Animal";
 													}
 													released.transform.FindChild("animal skeleton").GetComponent<Animator>().SetTrigger("Walk");
-													//TODO Actually delete animal from player
+													//TODO Actually delete animal from player (done in line 118, no?)
+													Player.playerInstance._stable.RemovePet(i);
+
 
 													//GameObject.Destroy(potentialGameObjects[i]);
 													//Resources.UnloadUnusedAssets();
 													Player.playerInstance._stable.RemovePet(i);
+													
+													//TODO write fxn in Stable to get nearest animal to set to active
+													//for now this gets first animal in Player's stable
+													if(Player.playerInstance._stable.activeAnimalNumber == i) {
+														for(int j=0; j<6;j++) {
+															if(areOccupied[j]) {
+																Player.playerInstance._stable.activeAnimalNumber = j;
+																break;
+															}
+														}
+													}
 												} else {
 													//nope.
 												}
