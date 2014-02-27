@@ -89,7 +89,7 @@ public class MainMenu : MonoBehaviour {
 				}
 				else{
 					m_fileBrowser = new FileBrowser(
-						new Rect(100, 100, 600, 500),
+						new Rect(1100, 300, 600, 500),
 						"Import an animal",
 						FileSelectedCallback
 						);
