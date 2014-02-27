@@ -139,7 +139,7 @@ namespace EvolveAPet{
 				};*/
 				if (GUILayout.Button("Exit")){
 					Application.LoadLevel("MainMenu");
-					Player.autoSave();
+					Player.playerInstance.saveGame();
 
 				}
 			}

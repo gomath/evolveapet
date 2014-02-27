@@ -108,6 +108,7 @@ public class MainMenu : MonoBehaviour {
 		if(GUI.Button(new Rect(470,270,60,40), "Quit")) {
 			//quit
 			Player.playerInstance.saveGame();
+
 			Application.Quit();
 		}
 
@@ -117,7 +118,8 @@ public class MainMenu : MonoBehaviour {
 
 		protected void FileSelectedCallback(string path) {
 			m_fileBrowser = null;
-			importPath = path;
+			importPath = "";
+			if (path!=null) importPath = path;
 			if (!importPath.Equals("")){
 				try{
 					Animal newAnimal = Animal.deserialiseAnimal(importPath);

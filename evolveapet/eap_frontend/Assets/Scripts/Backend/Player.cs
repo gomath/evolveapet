@@ -67,7 +67,7 @@ namespace EvolveAPet
 			
 		}
 		public static void autoSave(){//Auto saves the game every 5 minutes
-			if (!(playerInstance.lastSaved.AddMinutes (5) > DateTime.Now)) {
+			if (!(playerInstance.lastSaved.AddSeconds (30) > DateTime.Now)) {
 				playerInstance.saveGame();			
 			}
 			
