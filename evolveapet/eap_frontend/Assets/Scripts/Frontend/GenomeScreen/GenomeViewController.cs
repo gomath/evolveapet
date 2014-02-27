@@ -13,7 +13,7 @@ public class GenomeViewController : MonoBehaviour {
 	Player player;
 		public int pointsForCorrectGuess = 10;
 		public int pointsForIncorrectGuess = 5;
-		public int costOfGeneTherapy = 3;
+		public int costOfGeneTherapy = 20;
 	Animal animal;
 	Genome g;
 	Chromosome[,] frontEndChromosomes;

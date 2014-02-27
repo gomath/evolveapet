@@ -35,8 +35,8 @@ public class StableController : MonoBehaviour {
 		GameObject a4=null;
 		GameObject a5=null;
 
-		int pointsForUnlock  = -1;
-		int pointsForNewAnimal = -1;
+		int pointsForUnlock  = 50; //TODO: Make this increase as you unlock stables
+		int pointsForNewAnimal = 20;
 
 		public Animal[] potentialAnimals;
 		public GameObject[] potentialGameObjects;
@@ -151,6 +151,7 @@ public class StableController : MonoBehaviour {
 										Debug.LogWarning ("unlock pressed");
 										if(Player.playerInstance.Points > pointsForUnlock) {
 											Player.playerInstance.Points -= pointsForUnlock;
+											pointsForUnlock += 10; //TODO: display required points for unlock
 											areUnlocked[i] = true; 
 											padlocks[i].GetComponent<SpriteRenderer>().enabled = false; //fancy animations later
 											Player.playerInstance._stable.activeStableSlots[i] = true;
