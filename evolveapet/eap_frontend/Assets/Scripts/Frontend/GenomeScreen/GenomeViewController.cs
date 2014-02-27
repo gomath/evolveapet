@@ -606,6 +606,11 @@ public class GenomeViewController : MonoBehaviour {
 								Gene temp = g.FrontEndGetGene(activeChromosome,i,k);
 								String tempName = (player.guessedGenes[activeChromosome,i]) ? temp.GetWholeNameDecoded() : temp.GetWholeNameEncoded();
 
+								if (temp.TraitName().Equals("shape")){ 
+								    animal.geneTherapyOnShape = true;
+								}
+
+
 								temp.Mutate(randomMutations[k,i,j]);
 								RandomMutationAction((EnumBodyPart)temp.ChromosomeNum);
 
