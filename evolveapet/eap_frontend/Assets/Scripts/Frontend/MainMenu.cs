@@ -118,7 +118,8 @@ public class MainMenu : MonoBehaviour {
 
 		protected void FileSelectedCallback(string path) {
 			m_fileBrowser = null;
-			importPath = path;
+			importPath = "";
+			if (path!=null) importPath = path;
 			if (!importPath.Equals("")){
 				try{
 					Animal newAnimal = Animal.deserialiseAnimal(importPath);
