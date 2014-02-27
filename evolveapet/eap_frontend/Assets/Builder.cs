@@ -9,16 +9,32 @@ namespace EvolveAPet {
 		// Use this for initialization
 		Player player = Player.playerInstance;
 
+		float originalWidth = 1098.0f;
+		float originalHeight = 618.0f;
+		Vector3 scale = new Vector3();
+		
+		public GUISkin mySkin;
+		
 		void Start () {
-			StartCoroutine("Build");
+			Build ();
 		}
 		
 		// Update is called once per frame
 		void Update () {
-		
+			
 		}
 
-		IEnumerator Build() {
+		void Build() {
+			int activeAnimalNo = Player.playerInstance.Stable.activeAnimalNumber;
+			//Create new animal
+			GameObject animal = GameObject.Find ("animal");
+			animal.GetComponent<PhysicalAnimal> ().animal = Player.playerInstance.Stable.animalsInStable [activeAnimalNo];
+			animal.GetComponent<PhysicalAnimal>().Build(animal);
+			LinkedList<Animal> list= new LinkedList<Animal> ();
+			list.AddFirst (animal.GetComponent<PhysicalAnimal> ().animal);
+		}
+		
+		IEnumerator Builds() {
 			//Remove the previous animal
 			GameObject.Destroy(GameObject.FindGameObjectWithTag("Animal"));
 			Resources.UnloadUnusedAssets();
@@ -33,34 +49,42 @@ namespace EvolveAPet {
 			LinkedList<Animal> list= new LinkedList<Animal> ();
 			list.AddFirst (animal.GetComponent<PhysicalAnimal> ().animal);
 		}
-
+		
 		void OnGUI() {
-			if (GUI.Button (new Rect(Screen.width-200,Screen.height-30,200, 30), "Build")) {
-				StartCoroutine("Build");
-			}
+			GUI.skin = mySkin;
+			
+			scale.x = Screen.width / originalWidth;
+			scale.y = Screen.height / originalHeight;
+			scale.z = 1;
+			var svMat = GUI.matrix;
+			// substitute matrix to scale if screen nonstandard
+			GUI.matrix = Matrix4x4.TRS (Vector3.zero, Quaternion.identity, scale);
+
 			string dailyChallengeStr = player.getDailyChallengeString ();
 			string completeBtnStr;
 			string countdown;
-
-			float center = Screen.width * 0.5f -200;
-			GUI.Label (new Rect (center, Screen.height * 0.05f, 400, 50), dailyChallengeStr);
-			if (player.currentDailyChallenge != -1) {//If player already has a daily challenge
-				
-				if (GUI.Button (new Rect (center, Screen.height * 0.1f +20, 400, 30), "Complete Daily Challenge!")) {
-					player.completeDailyChallenge ();
-								}
-			} else if (player.currentDailyChallenge == -1 && DateTime.Compare (DateTime.Today, player.dailyChallengeSetDate) != 0) {
-				if (GUI.Button (new Rect (center, Screen.height * 0.1f + 20, 400, 30), "New Daily Challenge")) {
-					player.newDailyChallenge(); // If it is not the day of the last completed daily challenge, then make a button to get a new one.
-										//Assumes player cannot travel backwards in time
-								}
-						} else {
-				
-				TimeSpan ts = player.dailyChallengeSetDate.AddDays(1).Subtract(DateTime.Now);//Gets how many hours till 12 AM until day after daily challenge
-				countdown = string.Format("{0} Hours, {1} Minutes, and {2} Seconds until new daily challenge!", ts.Hours, ts.Minutes, ts.Seconds);
-				//Counts down
-				GUI.Label (new Rect (center, Screen.height * 0.1f +20, 410, 30), countdown);
+			float center = originalWidth * 0.5f -200;
+			GUI.Label (new Rect (center, originalHeight * 0.05f, 400, 50), dailyChallengeStr);
+			TimeSpan ts = player.dailyChallengeSetDate.AddDays(1).Subtract(DateTime.Now);
+			countdown = string.Format("{0} Hours, {1} Minutes, and {2} Seconds until new daily challenge!", ts.Hours, ts.Minutes, ts.Seconds);
+			if (player.currentDailyChallenge == -1) {
+				//If player has no current daily challenge, then there are two possibilities. Either he needs a new one, or he needs to wait.
+				if (DateTime.Compare (DateTime.Today, player.dailyChallengeSetDate) != 0){
+					if (GUI.Button (new Rect (center, originalHeight * 0.1f + 20, 400, 40), "New Daily Challenge")) {
+						player.newDailyChallenge(); // If it is not the day of the last completed daily challenge, then make a button to get a new one.
+						//Assumes player cannot travel backwards in time
+					}
+				}else{
+					if (!(ts.Seconds <=0 && ts.Hours<=0 && ts.Minutes<=0)){
+						GUI.Label (new Rect (center, originalHeight * 0.1f, 400, 50), countdown);}
+				}				    
+			}else{
+				if (GUI.Button (new Rect (center, originalHeight * 0.1f +20, 400, 40), "Complete Daily Challenge!")) {
+					player.completeDailyChallenge();
+				}
 			}
+			
+			
 		}
 	}
 }

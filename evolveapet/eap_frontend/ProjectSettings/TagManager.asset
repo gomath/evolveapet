@@ -85,3 +85,11 @@ TagManager:
     userID: 6
     uniqueID: 1569313323
     locked: 0
+  - name: Foreground
+    userID: 7
+    uniqueID: 1691365701
+    locked: 0
+  - name: Foreground Animal
+    userID: 8
+    uniqueID: 434794095
+    locked: 0

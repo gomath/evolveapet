@@ -43,26 +43,52 @@ public class StableController : MonoBehaviour {
 		public Transform[] stableLocs;
 		public GameObject[] padlocks;
 
+		public GameObject egg;
+		public GameObject paddock;
+		int tempSlot;
+
+		float timeDown = 0;
+
+		bool buttonShow = true;
+
+		public GUISkin mySkin;
+		float originalWidth = 1098.0f;
+		float originalHeight = 618.0f;
+		Vector3 scale = new Vector3();
+
 
 	void OnGUI() {
+			GUI.skin = mySkin;
+			
+			scale.x = Screen.width / originalWidth;
+			scale.y = Screen.height / originalHeight;
+			scale.z = 1;
+			var svMat = GUI.matrix;
+			// substitute matrix to scale if screen nonstandard
+			GUI.matrix = Matrix4x4.TRS (Vector3.zero, Quaternion.identity, scale);
+
+			if (!buttonShow) return;
 			for (int i=0; i<6; i++) {
 						//get screen coordinates of stable[i] sprite to set button locs appropriately
 						//Screen coordinates have the origin in the bottom left, GUI coordinates have orogin at the top left
 						Vector3 rawPos = stableLocs [i].position;
 
 						Vector3 loc = camera.WorldToScreenPoint (new Vector3(rawPos.x, -rawPos.y,1)); 
-						Vector3 newXY = loc + new Vector3 (-60, 60, 0);
+						loc = new Vector3(originalWidth*loc.x/Screen.width, originalHeight*loc.y/Screen.height,loc.z);
+						Vector3 newXY = loc + new Vector3 (-75, 60, 0);
 
 						//compute relative positions for the buttons
-						Vector4 topButton = new Vector4 (newXY.x, newXY.y, 120, 20); //last two coords are height and length
+						Vector4 topButton = new Vector4 (newXY.x, newXY.y, 150, 35); //last two coords are height and length
 						Vector4 bottomButton = topButton + new Vector4 (0, 30, 0, 0);
 
 						if (areUnlocked [i]) {
 								if (areOccupied [i]) {
-										if (GUI.Button (new Rect (topButton.x, topButton.y, topButton.z, topButton.w), "Make Active")) {
+										if (Player.playerInstance._stable.activeAnimalNumber != i) {
+												if (GUI.Button (new Rect (topButton.x, topButton.y, topButton.z, topButton.w), "Make Active")) {
 												
-												Debug.LogWarning ("Make Active pressed");
-												Player.playerInstance._stable.activeAnimalNumber = i;
+														Debug.LogWarning ("Make Active pressed");
+														Player.playerInstance._stable.activeAnimalNumber = i;
+												}
 										}
 					
 										if (GUI.Button (new Rect (bottomButton.x, bottomButton.y, bottomButton.z, bottomButton.w), "Release Animal")) {
@@ -71,10 +97,23 @@ public class StableController : MonoBehaviour {
 													//release into wild
 													areOccupied[i] = false;
 													//for now remove sprite
-													GameObject.Destroy(potentialGameObjects[i]);
-													Resources.UnloadUnusedAssets();
+													
+													GameObject released = potentialGameObjects[i];
+
+													timeDown = 5;
+
+													buttonShow = false;
+													paddock.SetActive(true);
+													released.transform.position = new Vector2(0,0);
+													foreach (SpriteRenderer r in released.GetComponentsInChildren<SpriteRenderer>()) {
+														r.sortingLayerName = "Foreground Animal";
+													}
+													released.transform.FindChild("animal skeleton").GetComponent<Animator>().SetTrigger("Walk");
+													//TODO Actually delete animal from player
+
+													//GameObject.Destroy(potentialGameObjects[i]);
+													//Resources.UnloadUnusedAssets();
 													Player.playerInstance._stable.RemovePet(i);
-													//potentialAniamls[i].releaseIntoWild();
 												} else {
 													//nope.
 												}
@@ -138,7 +177,18 @@ public class StableController : MonoBehaviour {
 		
 
 		if (Player.playerInstance._stable.eggSlot != null) {
-				//Player.playerInstance.eggslot.hatch();
+				int i;
+				for(i = 0; i<6; i++) {
+					if (!areOccupied[i]) break;
+				}
+				buttonShow = false;
+				paddock.SetActive(true);
+				timeDown = 1000;
+				StartCoroutine("Hatch",Player.playerInstance._stable.eggSlot);
+				tempSlot = i;
+				Player.playerInstance._stable.AddPet(Player.playerInstance._stable.eggSlot, i);
+				potentialAnimals[i] = Player.playerInstance._stable.animalsInStable[i];
+				Player.playerInstance._stable.eggSlot = null;
 		}
 	}
 
@@ -147,7 +197,11 @@ public class StableController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+			timeDown = Mathf.Max(timeDown-(Time.deltaTime),0f);
+			if (timeDown == 0) {
+				paddock.SetActive(false);
+				buttonShow = true;
+			}
 	}
 
 	IEnumerator BuildAnimalAtIndex(int anIndex) {
@@ -169,6 +223,24 @@ public class StableController : MonoBehaviour {
 
 			//set position in bool array tracking stable occupations to true
 			areOccupied [anIndex] = true;
+	}
+
+	IEnumerator Hatch(Animal a) {
+		egg.SetActive(true);
+		yield return new WaitForSeconds(Random.Range(2f, 7f));
+		egg.GetComponent<Animator>().SetTrigger("Hatch");
+		GameObject hatchAnimal = (GameObject)Instantiate (Resources.Load ("Prefabs/animal"));
+		hatchAnimal.GetComponent<PhysicalAnimal> ().animal = a;
+		hatchAnimal.transform.FindChild("animal skeleton").GetComponent<Animator>().SetTrigger("Hatch");
+		hatchAnimal.GetComponent<PhysicalAnimal>().Build(hatchAnimal);
+		foreach (SpriteRenderer r in hatchAnimal.GetComponentsInChildren<SpriteRenderer>()) {
+			r.sortingLayerName = "Foreground Animal";
+		}
+		hatchAnimal.transform.position = new Vector2(0,0);
+		yield return new WaitForSeconds(5f);
+		GameObject.Destroy(hatchAnimal);
+		timeDown = 0;
+		StartCoroutine("BuildAnimalAtIndex",tempSlot);
 	}
 
 
