@@ -16,7 +16,11 @@ namespace EvolveAPet
 		public bool[] livingAnimals = {false,false,false,false,false,false};//The stable slots which contain a living animal
 		public Animal[] animalsInStable = new Animal[6];
 
-        public Stable()
+		public Animal GetActiveAnimal(){
+			return animalsInStable[activeAnimalNumber];		
+		}
+
+		public Stable()
         {
 
 
