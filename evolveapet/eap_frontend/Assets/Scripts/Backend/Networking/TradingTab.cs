@@ -10,10 +10,8 @@ public class TradingTab : MonoBehaviour
 
 		public PhotonPlayer TradingPlayer{ get; set; }
 
+		private Chromosome[] selected_chromozomes = null;
 		private Animal selected_animal;
-		//private const float THINKING_TIME = 20;
-		//private float timer;
-		//The timer was causing some unwanted events
 		bool trading_window = false;
 		float busy_timer = 0;
 
@@ -23,7 +21,7 @@ public class TradingTab : MonoBehaviour
 						busy_timer -= Time.deltaTime;
 						GUI.Window (1, new Rect ((float)(Screen.width / 2 - 50), (float)(Screen.height * 0.05), 200, 50), BusyWindow, "Failed");
 				}
-				//	if (timer > 0)
+				
 				if (trading_window)
 						
 						GUI.ModalWindow (0, new Rect (Screen.width / 2 - 50, (float)(Screen.height * 0.1), 300, 80), GUITradeRequest, "Trade Request");
@@ -33,7 +31,7 @@ public class TradingTab : MonoBehaviour
 		void GUITradeRequest (int windowID)
 		{
 				GUILayout.Label (TradingPlayer.name + " wants to breed with your selected pet");
-				//		GUILayout.Label ("Time left to make a decision: " + (int)timer);
+				
 				GUILayout.BeginHorizontal ();
 				if (GUILayout.Button ("Accept")) {
 						
@@ -47,7 +45,7 @@ public class TradingTab : MonoBehaviour
 				}
 
 				GUILayout.EndHorizontal ();
-				//timer -= Time.deltaTime;
+				
 
 
 		}
@@ -63,13 +61,13 @@ public class TradingTab : MonoBehaviour
 						if (TradingPlayer != null)
 								PhotonView.Get (this).RPC ("Busy", p);
 				}
-				//timer = THINKING_TIME;
+				
 
 		}
 
 		void AcceptTrade ()
 		{
-				//timer = 0;
+				
 				trading_window = false;
 				Debug.Log ("accepted");
 				if (TradingPlayer != null) {
@@ -87,37 +85,56 @@ public class TradingTab : MonoBehaviour
 				
 				
 				//GUI STUFF, chromozome choosing etc...
-		FrontEndPlayer.Player.Stable.activeAnimalNumber = ((int)(Random.value * 100)) % FrontEndPlayer.Player.Stable.Size;
-				selected_animal = FrontEndPlayer.Player.Stable .animalsInStable[FrontEndPlayer.Player.Stable.activeAnimalNumber];
+				StartCoroutine (WaitForChromozomesAndBreed ());
+
+		
+		}
+		
+		IEnumerator WaitForChromozomesAndBreed ()
+		{
+				while (selected_chromozomes == null) {
+						yield return new WaitForSeconds (1);
+
+				}
+				
+				FrontEndPlayer.Player.Stable.activeAnimalNumber = ((int)(Random.value * 100)) % FrontEndPlayer.Player.Stable.Size;
+				selected_animal = FrontEndPlayer.Player.Stable .animalsInStable [FrontEndPlayer.Player.Stable.activeAnimalNumber];
 				byte[] animal_bytes = serialize (selected_animal);
-		if (TradingPlayer != null)						
+				if (TradingPlayer != null)						
 						PhotonView.Get (this).RPC ("Breed", TradingPlayer, animal_bytes);
 				else
 						Busy ();
-		
 		}
 
-		//NEEDS revision
 		[RPC]
 		void Breed (byte[] mate_bytes)
 		{
+				StartCoroutine (WaitForChromozomesToBreed (mate_bytes));
+		}
+
+		//NEEDS revision
+		IEnumerator WaitForChromozomesToBreed (byte[] mate_bytes)
+		{
+				while (selected_chromozomes == null) {
+						yield return new WaitForSeconds (1);
+			
+				}
 				Debug.Log ("Breed");
 				Animal mate = (Animal)deserialize (mate_bytes);
-		FrontEndPlayer.Player.Stable.AddPet (selected_animal.BreedMeRandomly (mate),FrontEndPlayer.Player.Stable.Size);
+				FrontEndPlayer.Player.Stable.AddPet (selected_animal.BreedMeRandomly (mate), FrontEndPlayer.Player.Stable.Size);
 				// do whatever else is needed
-		//Create new animal
-		GameObject animal = (GameObject)Instantiate(Resources.Load ("Prefabs/animal"));
-		animal.GetComponent<PhysicalAnimal> ().animal = FrontEndPlayer.Player.Stable.animalsInStable[FrontEndPlayer.Player.Stable.Size-1];
-		animal.GetComponent<PhysicalAnimal>().Build(animal);
-		animal.transform.Translate(new Vector2(-7+(FrontEndPlayer.Player.Stable.Size-3)*4,-3));
+				//Create new animal
+				GameObject animal = (GameObject)Instantiate (Resources.Load ("Prefabs/animal"));
+				animal.GetComponent<PhysicalAnimal> ().animal = FrontEndPlayer.Player.Stable.animalsInStable [FrontEndPlayer.Player.Stable.Size - 1];
+				animal.GetComponent<PhysicalAnimal> ().Build (animal);
+				animal.transform.Translate (new Vector2 (-7 + (FrontEndPlayer.Player.Stable.Size - 3) * 4, -3));
 				CleanObject ();
 		}
-		
+	
 		[RPC]
 		void CleanObject ()
 		{
 				trading_window = false;
-				//timer = 0;
 				selected_animal = null;
 				TradingPlayer = null;
 				

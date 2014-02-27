@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using EvolveAPet;
-//not tested for connection drop
+
 public class NetworkManager : MonoBehaviour
 {
 		
@@ -9,10 +9,16 @@ public class NetworkManager : MonoBehaviour
 		void Start ()
 		{
 				//PhotonNetwork.offlineMode = true;
-	
 				Connect ();
 		}
-	
+
+		void OnFailedToConnectToPhoton (DisconnectCause cause)
+		{
+				Debug.Log (cause.ToString ());
+				PhotonNetwork.offlineMode = true;
+				Connect ();
+		}
+
 		void Connect ()
 		{
 		
@@ -30,7 +36,7 @@ public class NetworkManager : MonoBehaviour
 				
 				GUILayout.Label (PhotonNetwork.connectionStateDetailed.ToString ());
 				GUILayout.Label (PhotonNetwork.insideLobby.ToString ());
-				GUILayout.Label (FrontEndPlayer.Player.Stable.Size.ToString ());
+				GUILayout.Label (FrontEndPlayer.Player.Stable.Size.ToString());
 				if (GUILayout.Button ("Player List")) {
 						if (!PlayerList.open)
 								Instantiate (Resources.Load ("Prefabs/Networking/PlayerList"), Vector2.zero, Quaternion.identity);
