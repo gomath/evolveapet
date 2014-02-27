@@ -22,6 +22,8 @@ public class TetradsViewController : MonoBehaviour {
 	public static Color NUMBER_COLOR = new Color32(70,70,70,255);
 	public GUISkin myskin;
 
+	public Transform move;
+
 	// Use this for initialization
 	void Start () {
 		// Initializing magnified chromosomes
@@ -41,7 +43,13 @@ public class TetradsViewController : MonoBehaviour {
 		}
 		player.remainingAnimalsToBreed--;
 		
-		a.Name = "My Pet " + player.remainingAnimalsToBreed;
+		//Creates the animal in the scene
+		GameObject animal = (GameObject)Instantiate(Resources.Load ("Prefabs/animal"));
+			animal.GetComponent<PhysicalAnimal>().animal = a;
+		animal.GetComponent<PhysicalAnimal>().Build(animal);
+		animal.transform.position = move.position;
+		animal.transform.localScale = new Vector3(0.75f,0.75f,1);
+
 		g = a.Genome;
 		
 		//Chromosome[,] ch = g.CreateTetradsForBreeding();

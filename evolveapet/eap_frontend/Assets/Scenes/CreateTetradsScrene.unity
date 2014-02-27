@@ -12698,6 +12698,32 @@ SpriteRenderer:
   m_SortingLayerID: 2229174299
   m_Sprite: {fileID: 21300006, guid: 8d92f061dce0394419fec42166dcecd5, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: .431372553}
+--- !u!1 &788301524
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 788301525}
+  m_Layer: 0
+  m_Name: animal move-to
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &788301525
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 788301524}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.53000021, y: -2.44000006, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1 &793383957
 GameObject:
   m_ObjectHideFlags: 0
@@ -25568,6 +25594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeChromosome: {fileID: 0}
   myskin: {fileID: 11400000, guid: e3b883a08ff8eb04cae26114ecf69cac, type: 2}
+  move: {fileID: 788301525}
 --- !u!1 &1590168180
 GameObject:
   m_ObjectHideFlags: 0
