@@ -22,11 +22,6 @@ public class GenomeViewController : MonoBehaviour {
 	int numOfGenesOnActiveChromosome;
 	String[,] geneNamesToDisplay;
 
-	
-	
-	
-
-
 	QuickViewScript quickView;
 	
 	// GUI members
@@ -72,30 +67,9 @@ public class GenomeViewController : MonoBehaviour {
 			transform.FindChild ("ControlAnchors").GetComponent<ControlAnchorsScript> ().showBreedButton = false;
 
 			// GETTING REAL ANIMAL AND PLAYER
-			/*
 			player = Player.playerInstance;
-			animal = player.Stable[player.Stable.activeAnimalNumber];
+			animal = player.Stable.GetActiveAnimal ();
 			g = animal.Genome;
-			*/
-
-			// GETTING RANDOM ANIMAL AND PLAYER
-			animal = new Animal ();
-			g = animal.Genome;
-
-			player = new Player(new Stable(), "DefaultPlayer");
-				// TODO remove afterwards
-				// Randomizing which genes has been guessed correctly
-				for (int i=0; i<Global.NUM_OF_CHROMOSOMES; i++) {
-					for(int j=0; j<6; j++){
-						if(Global.rand.Next(3) == 0){
-							player.guessedGenes[i,j] = true;
-						} else {
-							player.guessedGenes[i,j] = false;
-						}
-					}
-				}
-			player.Points = 10; // TODO hardcoded
-
 
 			if (!animal.cacheInitialized) {
 				InitializeCaches();
