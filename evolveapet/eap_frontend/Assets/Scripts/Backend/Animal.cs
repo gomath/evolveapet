@@ -17,7 +17,7 @@ namespace EvolveAPet
         public int Generation { set; get; }
         public string Name { set; get; }
 		public Genome Genome { set; get; }
-        public BodyPart[] BodyPartArray { get; private set; }
+		public BodyPart[] BodyPartArray { set; get; }
         // each animal will be given a genome and handed both its parents
         public bool Egg { get; set; }
 		public Animal[] Parent { set; get;} 
@@ -168,8 +168,10 @@ namespace EvolveAPet
 			//Decodes Shape
 			genePos = Genome.MotherChromosomes[n].getTraitPosition(4);
 			if (genePos != -1) {
-				int shapeNo =Genome.GetTrait(n,4);
+			
+				int shapeNo = Genome.GetTrait(n,4);
 				shapeStr = MyDictionary.GetShape(shapeNo);
+
 			}
 
 			//If head, checks teeth shape
@@ -181,10 +183,10 @@ namespace EvolveAPet
 				int gene1Trait = (int)g1.Trait;
 				int gene2Trait = (int)g2.Trait;
 				//Need to fudge the fact that carnivore is dominant over herbivore
-				if (gene1Trait==0 && gene2Trait==0){ // both herbivore shaped teeth
-					teethShape=MyDictionary.GetShape(0);
+				if (gene1Trait==1 && gene2Trait==1){ // both herbivore shaped teeth
+					teethShape=MyDictionary.GetShape(1);
 				}else{
-					teethShape = MyDictionary.GetShape(1);
+					teethShape = MyDictionary.GetShape(0);
 				}
 
 			}
