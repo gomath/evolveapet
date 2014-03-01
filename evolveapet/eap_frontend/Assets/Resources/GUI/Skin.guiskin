@@ -87,13 +87,13 @@ MonoBehaviour:
       m_TextColor: {r: 1, g: 1, b: 1, a: 1}
     m_OnNormal:
       m_Background: {fileID: 2800000, guid: f133105d2ad46104bb9b6fa654d4ad46, type: 3}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_TextColor: {r: .691176474, g: .142301053, b: .142301053, a: 1}
     m_OnHover:
       m_Background: {fileID: 2800000, guid: 0f317c468b7bf0142b4c58b3c1cc3de0, type: 3}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_TextColor: {r: .686274529, g: .141176477, b: .141176477, a: 1}
     m_OnActive:
       m_Background: {fileID: 2800000, guid: c8c4bfb209c47504a897847ada2f5c28, type: 3}
-      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_TextColor: {r: .686274529, g: .141176477, b: .141176477, a: 1}
     m_OnFocused:
       m_Background: {fileID: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}

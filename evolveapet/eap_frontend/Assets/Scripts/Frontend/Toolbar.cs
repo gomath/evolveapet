@@ -16,6 +16,8 @@ namespace EvolveAPet{
 
 		public Texture coins;
 
+		public GameObject hint;
+
 		bool help;
 
 		private bool showBreedingPopup = false;
@@ -42,7 +44,7 @@ namespace EvolveAPet{
 		
 		// Update is called once per frame
 		void Update () {
-			
+			hint.SetActive(help);
 		}
 
 		void OnGUI() {
@@ -145,7 +147,7 @@ namespace EvolveAPet{
 			}
 
 			GUI.skin.button.fontSize = (50);
-			GUILayout.Toggle(help,"?","button",GUILayout.Width(75));
+			help = GUILayout.Toggle(help,"?","button",GUILayout.Width(75));
 			GUI.skin.button.fontSize = (0);
 
 			GUILayout.EndHorizontal();
