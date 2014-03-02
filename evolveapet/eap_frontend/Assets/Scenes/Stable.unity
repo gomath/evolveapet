@@ -2014,6 +2014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd2de16ea2f554f45949348d83791afa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  money: {fileID: 0}
   numActiveStalls: 0
   areOccupied: 
   areUnlocked: 
