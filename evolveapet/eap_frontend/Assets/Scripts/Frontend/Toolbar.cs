@@ -93,7 +93,7 @@ namespace EvolveAPet{
 
 				}
 				if (GUILayout.Button("Breed")) {
-					if (Player.playerInstance._stable.NumberOfUnlockedSlots - Player.playerInstance._stable.Size >0) showBreedingPopup = true;
+					if (Player.playerInstance.Stable.NumberOfUnlockedSlots - Player.playerInstance._stable.Size >0) showBreedingPopup = true;
 					Player.autoSave();
 
 				}
