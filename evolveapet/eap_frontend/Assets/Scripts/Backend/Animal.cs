@@ -58,7 +58,7 @@ namespace EvolveAPet
             for (int n = 0; n < bodyPartNumber; n++){
 				createBodyPart(n);
 			}
-
+			cullGrandparents ();
         }
 
 		public static Animal deserialiseAnimal(string path){
@@ -69,7 +69,20 @@ namespace EvolveAPet
 			return a;
 				}
 
-
+		public void cullGrandparents(){
+			if (this.Parent!= null) {
+						if (this.Parent [0].Parent !=null){
+							this.Parent [0].Parent [0] = null;
+							this.Parent [0].Parent [1] = null;
+						}
+					}
+			if (this.Parent!= null) {
+							if (this.Parent [1].Parent != null){
+								this.Parent [1].Parent [0] = null;
+								this.Parent [1].Parent [1] = null;
+						}
+					}
+		}
 		public void serialiseAnimal(){
 			string newFolder = Environment.CurrentDirectory + "/SavedAnimals";
 			Directory.CreateDirectory (newFolder);
@@ -257,6 +270,10 @@ namespace EvolveAPet
 			string mid = Global.names [mi];
 			string post = Global.suffixes [po];
 			Name = (pre + mid + post);
+			if (Name.Length>16){
+				Name = (mid + post);
+			}
+
 		}
 	}
 	

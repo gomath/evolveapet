@@ -21,6 +21,7 @@ namespace EvolveAPet{
 		bool help;
 
 		private bool showBreedingPopup = false;
+		private bool showCantBreedPopup = false;
 		private bool showLocalBreedingPopupPart = false;
 		private Animal[] animals = new Animal[6]{new Animal(),new Animal(),new Animal(),new Animal(),new Animal(),new Animal()};
 		private bool[] animalAlive = new bool[6]{true,true,true,true,true,true};
@@ -28,7 +29,8 @@ namespace EvolveAPet{
 		private bool[] localBreedingToggleSelected = new bool[]{false,false,false,false,false,false};
 		private string popupHeading = "Breed your perfect pet";
 		private float popupButtonHeight = 40f;
-		private float popuWindowHeight = 110f;
+		private float popupWindowHeight = 110f;
+		private float toggleInPopupHeight = 30f;
 
 		// Use this for initialization
 		void Start () {
@@ -93,7 +95,11 @@ namespace EvolveAPet{
 
 				}
 				if (GUILayout.Button("Breed")) {
-					if (Player.playerInstance._stable.NumberOfUnlockedSlots - Player.playerInstance._stable.Size >0) showBreedingPopup = true;
+					if (Player.playerInstance.Stable.NumberOfUnlockedSlots - Player.playerInstance._stable.Size >0) {
+						showBreedingPopup = true;
+					} else {
+						showCantBreedPopup = true;
+					}
 					Player.autoSave();
 
 				}
@@ -156,7 +162,14 @@ namespace EvolveAPet{
 			if(showBreedingPopup){
 				Vector3 u = Camera.main.WorldToScreenPoint(transform.FindChild("PopupAnchor").position);
 				Vector3 v = new Vector3 (originalWidth * u.x / Screen.width, originalHeight * u.y / Screen.height, 1f);
-				GUI.Window (2,new Rect(v.x,originalHeight-v.y,300,popuWindowHeight),PopupOnBreeding,popupHeading);
+				GUI.Window (2,new Rect(v.x,originalHeight-v.y,300,popupWindowHeight),PopupOnBreeding,popupHeading);
+			}
+
+			if (showCantBreedPopup) {
+				Vector3 u = Camera.main.WorldToScreenPoint(transform.FindChild("PopupAnchor").position);
+				Vector3 v = new Vector3 (originalWidth * u.x / Screen.width, originalHeight * u.y / Screen.height, 1f);
+				popupHeading = "Stable too small.";
+				GUI.Window (2,new Rect(v.x,originalHeight-v.y,300,180),PopupWhenCantBreed,popupHeading);		
 			}
 		}
 
@@ -172,14 +185,14 @@ namespace EvolveAPet{
 				GUILayout.EndHorizontal ();
 				
 				if (showLocalBreedingPopupPart) {
-					popuWindowHeight = 300f;
+					popupWindowHeight = 30f + 2 * popupButtonHeight + currentPlayer.Stable.Size * toggleInPopupHeight;//300f;
 					int numOfAnimalsSelected = 0;
 					int currentAnimalToAdd = 0;
 					int[] animalIndex = new int[2];
 
 					for(int i=0; i<stableSize; i++){
 						if(animalAlive[i]){
-							localBreedingToggleSelected[i] = GUILayout.Toggle(localBreedingToggleSelected[i],i+"");
+							localBreedingToggleSelected[i] = GUILayout.Toggle(localBreedingToggleSelected[i],animals[i].Name);
 							if(localBreedingToggleSelected[i]){
 								numOfAnimalsSelected ++;
 								
@@ -190,7 +203,7 @@ namespace EvolveAPet{
 					}
 					
 					if(numOfAnimalsSelected == 2){
-						popuWindowHeight = 340f;
+						popupWindowHeight = popupWindowHeight + popupButtonHeight;
 						if(GUILayout.Button("Breed",GUILayout.Height(popupButtonHeight))){
 							currentPlayer.animalForBreeding1 = animals[animalIndex[0]];
 							currentPlayer.animalForBreeding2 = animals[animalIndex[1]];
@@ -208,10 +221,24 @@ namespace EvolveAPet{
 				if (GUILayout.Button ("Close",GUILayout.Height(popupButtonHeight))) {
 					showBreedingPopup = false;
 					showLocalBreedingPopupPart = false;
-					popuWindowHeight = 110f;
+					popupWindowHeight = 110f;
 				}
 
 			GUILayout.EndVertical ();
+		}
+
+		void PopupWhenCantBreed(int id){
+			GUILayout.BeginVertical ();
+			GameObject.Find ("Main Camera").GetComponent<StableController> ().buttonShow = false;;
+			GUILayout.Label("You can't breed because you don't have enough slots in your stable. Try unlocking a stable slot or releasing some of your animals to wild.");
+
+			if (GUILayout.Button ("Close",GUILayout.Height(popupButtonHeight))) {
+				showCantBreedPopup = false;
+				GameObject.Find ("Main Camera").GetComponent<StableController> ().buttonShow = true;
+
+			}
+			GUILayout.EndVertical ();
+
 		}
 	}
 }

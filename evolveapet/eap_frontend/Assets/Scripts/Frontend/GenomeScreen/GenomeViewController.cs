@@ -467,12 +467,15 @@ public class GenomeViewController : MonoBehaviour {
 		ChangeColorWhenGuessed (ch,g);
 		UpdateNamesAndGenes ();
 		RandomizeGuessingCachesAndUpdateActive ();
+		RandomizeGeneTherapyCachesAndUpdateActive (); // to show decoded names of a options for gene therapy after guess
+
 	}
 	// Action to take when the player guesses incorrectly
 	void IncorrectGuessAction(){
 		animal.RemainingGuesses--;
 		player.Points += pointsForIncorrectGuess;
 		RandomizeGuessingCachesAndUpdateActive ();
+
 	}
 	
 	// Action to take after successful mutation
@@ -636,6 +639,7 @@ public class GenomeViewController : MonoBehaviour {
 			GUI.Box (new Rect(20,20,200,100),popupText);
 			if (GUI.Button (new Rect (20, 130, 80, 40), "Close")) {
 				CreateStringsForGuessing();
+
 				displayGuessPopup = false;
 			}
 		}
@@ -643,6 +647,7 @@ public class GenomeViewController : MonoBehaviour {
 		void PopupOnTherapy(int id){
 			GUI.Box (new Rect(20,20,200,200),popupText);
 			if (GUI.Button (new Rect (20, 250, 80, 40), "Close")) {
+
 				displayTherapyPopup = false;
 			}
 		}

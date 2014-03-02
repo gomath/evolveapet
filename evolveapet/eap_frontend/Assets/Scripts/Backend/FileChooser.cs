@@ -12,7 +12,8 @@ public enum FileBrowserType {
 }
 
 public class FileBrowser {
-	
+	public GUISkin myskin = (GUISkin)Resources.Load("MetalGUISkin");
+
 	// Called when the user clicks cancel or select
 	public delegate void FinishedCallback(string path);
 	// Defaults to working directory
@@ -121,7 +122,7 @@ public class FileBrowser {
 		m_screenRect = screenRect;
 		m_browserType = FileBrowserType.File;
 		m_callback = callback;
-		SetNewDirectory(Directory.GetCurrentDirectory());
+		SetNewDirectory(System.Environment.GetEnvironmentVariable("USERPROFILE"));
 		SwitchDirectoryNow();
 	}
 	
@@ -228,7 +229,7 @@ public class FileBrowser {
 	Vector3 scale = new Vector3();
 	
 	public void OnGUI() {
-		
+		GUI.skin = myskin;
 		scale.x = Screen.width / originalWidth;
 		scale.y = Screen.height / originalHeight;
 		scale.z = 1;
