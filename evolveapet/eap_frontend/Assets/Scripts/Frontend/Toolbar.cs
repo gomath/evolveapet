@@ -97,11 +97,14 @@ namespace EvolveAPet{
 				if (GUILayout.Button("Animal")){
 					Application.LoadLevel("Animal");
 					Player.autoSave();
-
+					
+					Player.playerInstance.Stable.guiEnabled = true;
 				}
 				if (GUILayout.Button("Genome")){
 					Application.LoadLevel("GenomeScene");
 					Player.autoSave();
+					
+					Player.playerInstance.Stable.guiEnabled = true;
 
 				}
 				if (GUILayout.Button("Breed")) {
@@ -111,11 +114,15 @@ namespace EvolveAPet{
 						showCantBreedPopup = true;
 					}
 					Player.autoSave();
+					
+					Player.playerInstance.Stable.guiEnabled = true;
 
 				}
 				if (GUILayout.Button("Exit")){
 					Application.LoadLevel("MainMenu");
 					Player.autoSave();
+					
+					Player.playerInstance.Stable.guiEnabled = true;
 				}
 
 
@@ -138,6 +145,7 @@ namespace EvolveAPet{
 				if (GUILayout.Button("Exit")){
 					Application.LoadLevel("MainMenu");
 					Player.autoSave();
+
 				}
 			}
 
@@ -214,7 +222,8 @@ namespace EvolveAPet{
 				GetPlayerList ();
 			if (GUILayout.Button ("Close")) {
 				networkPopup = false;
-				
+				Player.playerInstance.Stable.guiEnabled = true;
+
 				
 			}
 			GUILayout.EndHorizontal ();
@@ -231,14 +240,16 @@ namespace EvolveAPet{
 		void PopupOnBreeding(int id){
 			GUILayout.BeginVertical ();
 				GUILayout.BeginHorizontal();
-				Player.playerInstance.Stable.guiEnabled = false;
 					if (GUILayout.Button ("Breed locally",GUILayout.Height(popupButtonHeight))) {
 						showLocalBreedingPopupPart = true;
+				
+				Player.playerInstance.Stable.guiEnabled = false;
 					}
 					if (GUILayout.Button ("Breed with a friend",GUILayout.Height(popupButtonHeight))) {
 				networkPopup=true;
 				showBreedingPopup=false;
-
+				
+				Player.playerInstance.Stable.guiEnabled = false;
 					}
 				GUILayout.EndHorizontal ();
 				
@@ -279,8 +290,9 @@ namespace EvolveAPet{
 				if (GUILayout.Button ("Close",GUILayout.Height(popupButtonHeight))) {
 					showBreedingPopup = false;
 					showLocalBreedingPopupPart = false;
-				Player.playerInstance.Stable.guiEnabled = true;
 					popupWindowHeight = 110f;
+				Player.playerInstance.Stable.guiEnabled = true;
+
 				}
 
 			GUILayout.EndVertical ();
@@ -294,6 +306,8 @@ namespace EvolveAPet{
 			if (GUILayout.Button ("Close",GUILayout.Height(popupButtonHeight))) {
 				showCantBreedPopup = false;
 				GameObject.Find ("Main Camera").GetComponent<StableController> ().buttonShow = true;
+				Player.playerInstance.Stable.guiEnabled = true;
+
 
 			}
 			GUILayout.EndVertical ();
