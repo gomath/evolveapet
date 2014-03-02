@@ -8,6 +8,8 @@ public class NetworkManager : MonoBehaviour
 
 		void Start ()
 		{
+		if (GameObject.Find ("TradingTab(Clone)") == null)
+						Instantiate (Resources.Load ("Prefabs/Networking/TradingTab"));
 				//PhotonNetwork.offlineMode = true;
 		if(!PhotonNetwork.connected)
 				Connect ();

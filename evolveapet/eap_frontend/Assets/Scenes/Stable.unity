@@ -2150,6 +2150,7 @@ MonoBehaviour:
   padlocks: []
   egg: {fileID: 1466473139}
   paddock: {fileID: 1706597360}
+  buttonShow: 1
   mySkin: {fileID: 11400000, guid: e3b883a08ff8eb04cae26114ecf69cac, type: 2}
 --- !u!1 &1646848540
 GameObject:
@@ -2193,67 +2194,6 @@ Animator:
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1
---- !u!1 &1657400750
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100000, guid: aacaf45ff480f0f41972f4db3d32fda8, type: 2}
-  m_PrefabInternal: {fileID: 1886454533}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1657400753}
-  - 114: {fileID: 1657400752}
-  - 114: {fileID: 1657400751}
-  m_Layer: 0
-  m_Name: TradingTab
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1657400751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400000, guid: aacaf45ff480f0f41972f4db3d32fda8,
-    type: 2}
-  m_PrefabInternal: {fileID: 1886454533}
-  m_GameObject: {fileID: 1657400750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 277891640df6e52479914c8316ce8a3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1657400752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400002, guid: aacaf45ff480f0f41972f4db3d32fda8,
-    type: 2}
-  m_PrefabInternal: {fileID: 1886454533}
-  m_GameObject: {fileID: 1657400750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  subId: 2
-  ownerId: 0
-  group: 0
-  prefixBackup: -1
-  observed: {fileID: 0}
-  synchronization: 0
-  onSerializeTransformOption: 3
-  onSerializeRigidBodyOption: 2
-  instantiationId: 0
---- !u!4 &1657400753
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400000, guid: aacaf45ff480f0f41972f4db3d32fda8, type: 2}
-  m_PrefabInternal: {fileID: 1886454533}
-  m_GameObject: {fileID: 1657400750}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
 --- !u!1 &1706597360
 GameObject:
   m_ObjectHideFlags: 0
@@ -2480,50 +2420,6 @@ Animator:
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1
---- !u!1001 &1886454533
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400000, guid: aacaf45ff480f0f41972f4db3d32fda8, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: aacaf45ff480f0f41972f4db3d32fda8, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: aacaf45ff480f0f41972f4db3d32fda8, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: aacaf45ff480f0f41972f4db3d32fda8, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: aacaf45ff480f0f41972f4db3d32fda8, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: aacaf45ff480f0f41972f4db3d32fda8, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: aacaf45ff480f0f41972f4db3d32fda8, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400002, guid: aacaf45ff480f0f41972f4db3d32fda8, type: 2}
-      propertyPath: subId
-      value: 2
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: aacaf45ff480f0f41972f4db3d32fda8, type: 2}
-  m_RootGameObject: {fileID: 1657400750}
-  m_IsPrefabParent: 0
-  m_IsExploded: 1
 --- !u!1 &1924668756
 GameObject:
   m_ObjectHideFlags: 0
@@ -2606,6 +2502,7 @@ MonoBehaviour:
   level: 0
   coins: {fileID: 2800000, guid: b42c4fbce4f0d3944906437ee6d29eef, type: 3}
   hint: {fileID: 1412653057}
+  scrollPosition: {x: 0, y: 0}
 --- !u!4 &2075691546
 Transform:
   m_ObjectHideFlags: 0
