@@ -7168,7 +7168,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 2d4c241761517bf4ba0d34619a77f461, type: 2}
       propertyPath: helpT
       value: 
-      objectReference: {fileID: 2800000, guid: ea6c6975ac594d3409a2aaad65835010, type: 3}
+      objectReference: {fileID: 2800000, guid: 538de98dc66f8c44394602bc2e9438c9, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2d4c241761517bf4ba0d34619a77f461, type: 2}
   m_RootGameObject: {fileID: 2091276195}
@@ -34307,7 +34307,7 @@ MonoBehaviour:
   mySkin: {fileID: 11400000, guid: e3b883a08ff8eb04cae26114ecf69cac, type: 2}
   level: 3
   coins: {fileID: 2800000, guid: b42c4fbce4f0d3944906437ee6d29eef, type: 3}
-  helpT: {fileID: 2800000, guid: ea6c6975ac594d3409a2aaad65835010, type: 3}
+  helpT: {fileID: 2800000, guid: 538de98dc66f8c44394602bc2e9438c9, type: 3}
   scrollPosition: {x: 0, y: 0}
 --- !u!4 &2091276197
 Transform:
