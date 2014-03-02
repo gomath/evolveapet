@@ -272,7 +272,7 @@ public class GenomeViewController : MonoBehaviour {
 	
 
 	void BoxClicked(int boxNumber){
-			Debug.Log ("Box " + boxNumber + " clicked.");
+			//Debug.Log ("Box " + boxNumber + " clicked.");
 			ActivateChromosome (boxNumber);
     }
 	
@@ -587,7 +587,7 @@ public class GenomeViewController : MonoBehaviour {
 
 				}
 				// TODO remove
-				GUI.Box(new Rect(0,0,300,30),correct);
+				//GUI.Box(new Rect(0,0,300,30),correct);
 
 			} else if(toolbarInt == 1){ // Gene therapy - always first (if exists)
 
