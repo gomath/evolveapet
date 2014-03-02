@@ -17,9 +17,9 @@ namespace EvolveAPet{
 
 		public Texture coins;
 
-		public GameObject hint;
-
 		bool help;
+
+		public Texture helpT;
 
 		private bool showBreedingPopup = false;
 		private bool showCantBreedPopup = false;
@@ -57,7 +57,6 @@ namespace EvolveAPet{
 		
 		// Update is called once per frame
 		void Update () {
-			hint.SetActive(help);
 		}
 
 		void OnGUI() {
@@ -187,6 +186,9 @@ namespace EvolveAPet{
 				Vector3 v = new Vector3 (originalWidth * u.x / Screen.width, originalHeight * u.y / Screen.height, 1f);
 				GUI.Window (2,new Rect(v.x,originalHeight-v.y,300,300),BreedOverNetwork,"Player List");
 			}
+
+			GUI.depth = -100;
+			if(help) GUI.Label(new Rect (0,0,originalWidth,originalHeight),helpT);
 
 		}
 

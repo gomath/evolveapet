@@ -1693,6 +1693,10 @@ Prefab:
       propertyPath: hint
       value: 
       objectReference: {fileID: 1412653057}
+    - target: {fileID: 11400000, guid: 2d4c241761517bf4ba0d34619a77f461, type: 2}
+      propertyPath: helpT
+      value: 
+      objectReference: {fileID: 2800000, guid: 0716598d6804f5f4dbff70bf2945879b, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2d4c241761517bf4ba0d34619a77f461, type: 2}
   m_RootGameObject: {fileID: 2075691544}
@@ -2128,6 +2132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   money: {fileID: 0}
+  saveIcon: {fileID: 0}
   numActiveStalls: 0
   areOccupied: 
   areUnlocked: 
@@ -2502,6 +2507,7 @@ MonoBehaviour:
   level: 0
   coins: {fileID: 2800000, guid: b42c4fbce4f0d3944906437ee6d29eef, type: 3}
   hint: {fileID: 1412653057}
+  helpT: {fileID: 2800000, guid: 0716598d6804f5f4dbff70bf2945879b, type: 3}
   scrollPosition: {x: 0, y: 0}
 --- !u!4 &2075691546
 Transform:
