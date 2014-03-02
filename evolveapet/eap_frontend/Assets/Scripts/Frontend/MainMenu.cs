@@ -15,6 +15,8 @@ public class MainMenu : MonoBehaviour {
 	Player currentPlayer;
 	protected string importPath = "";
 	protected FileBrowser m_fileBrowser;
+	protected Texture2D m_fileImage;
+	protected Texture2D m_directoryImage;
 	public GUISkin mySkin;
 	bool exception;
 
@@ -38,9 +40,9 @@ public class MainMenu : MonoBehaviour {
 				m_fileBrowser.OnGUI();
 			}
 		currentPlayer = Player.playerInstance; //Checks if there is already an instantiated player
-
+		m_fileImage = (Texture2D) Resources.Load("document icon");
+		m_directoryImage = (Texture2D)Resources.Load ("folder icon");
 		GUI.skin = mySkin;
-
 		scale.x = Screen.width / originalWidth;
 		scale.y = Screen.height / originalHeight;
 		scale.z = 1;
@@ -83,7 +85,7 @@ public class MainMenu : MonoBehaviour {
 			//Brings up a file choosing interface, then loads the animal into memory.
 			//If the stable's egg slot is full then throws an error message
 
-				if (currentPlayer ==null || currentPlayer.Stable.eggSlot != null){
+				if (currentPlayer ==null || currentPlayer.Stable.Size == currentPlayer.Stable.NumberOfUnlockedSlots){
 					showErrorMessage = true;
 					showPopUp =false;
 				}
@@ -93,9 +95,10 @@ public class MainMenu : MonoBehaviour {
 						"Import an animal",
 						FileSelectedCallback
 						);
+					
+					m_fileBrowser.DirectoryImage = m_directoryImage;
+					m_fileBrowser.FileImage = m_fileImage;
 					m_fileBrowser.SelectionPattern = "*.animal";
-					//m_fileBrowser.DirectoryImage = m_directoryImage;
-					//m_fileBrowser.FileImage = m_fileImage;
 				
 
 				}
@@ -142,9 +145,9 @@ public class MainMenu : MonoBehaviour {
 			else if (exception ==true) {
 				GUI.Label(new Rect(65, 40, 200, 80), "Something went wrong while opening the file! Is this a saved animal?");
 						}
-			else if (currentPlayer.Stable.eggSlot != null) {
-				GUI.Label(new Rect(65, 40, 200, 80), "Your stable already contains an egg.\n Go into your stable and hatch it first!");
+			else if (currentPlayer.Stable.Size == currentPlayer.Stable.NumberOfUnlockedSlots) {
 
+				GUI.Label(new Rect(65, 40, 200, 80), "Your stable is full, please make some room!");
 				
 			}
 			if (GUI.Button(new Rect(100, 170, 110, 50), "Close"))
