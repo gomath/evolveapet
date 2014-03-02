@@ -201,7 +201,7 @@ namespace EvolveAPet{
 			index = GUILayout.SelectionGrid (index, PlayerNames,1 ,GUILayout.Height(popupButtonHeight * PlayerNames.Length));
 			GUILayout.EndScrollView ();
 			GUILayout.BeginHorizontal ();
-			if (index != 0) {
+			//if (index != 0) {
 				if (GUILayout.Button ("Breed")) {
 					GameObject.Find ("TradingTab(Clone)").GetComponent<TradingTab> ().RequestTrade (Players.ElementAt (index));
 					networkPopup = false;
@@ -209,7 +209,7 @@ namespace EvolveAPet{
 					
 					
 				}
-			}
+			//}
 			if (GUILayout.Button ("Refresh"))
 				GetPlayerList ();
 			if (GUILayout.Button ("Close")) {
@@ -231,6 +231,7 @@ namespace EvolveAPet{
 		void PopupOnBreeding(int id){
 			GUILayout.BeginVertical ();
 				GUILayout.BeginHorizontal();
+				Player.playerInstance.Stable.guiEnabled = false;
 					if (GUILayout.Button ("Breed locally",GUILayout.Height(popupButtonHeight))) {
 						showLocalBreedingPopupPart = true;
 					}
@@ -278,6 +279,7 @@ namespace EvolveAPet{
 				if (GUILayout.Button ("Close",GUILayout.Height(popupButtonHeight))) {
 					showBreedingPopup = false;
 					showLocalBreedingPopupPart = false;
+				Player.playerInstance.Stable.guiEnabled = true;
 					popupWindowHeight = 110f;
 				}
 
