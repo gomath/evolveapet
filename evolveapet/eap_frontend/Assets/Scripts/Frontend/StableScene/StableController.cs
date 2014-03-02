@@ -9,6 +9,8 @@ using System.Linq;
  */
 namespace EvolveAPet {
 public class StableController : MonoBehaviour {
+		public Texture2D money;
+
 		public int numActiveStalls;
 		public bool[] areOccupied = new bool[6];
 		public bool[] areUnlocked = new bool[6];
@@ -20,6 +22,7 @@ public class StableController : MonoBehaviour {
 		public Transform stable3;
 		public Transform stable4;
 		public Transform stable5;
+
 
 		public GameObject padlock0;
 		public GameObject padlock1;
@@ -90,16 +93,16 @@ public class StableController : MonoBehaviour {
 
 						Vector3 loc = camera.WorldToScreenPoint (new Vector3(rawPos.x, -rawPos.y,1)); 
 						loc = new Vector3(originalWidth*loc.x/Screen.width, originalHeight*loc.y/Screen.height,loc.z);
-						Vector3 newXY = loc + new Vector3 (-75, 45, 0);
+						Vector3 newXY = loc + new Vector3 (-100, 45, 0);
 
 						//compute relative positions for the buttons
-						Vector4 topButton = new Vector4 (newXY.x, newXY.y, 150, 35); //last two coords are height and length
+						Vector4 topButton = new Vector4 (newXY.x, newXY.y, 200, 35); //last two coords are width and height
 						Vector4 bottomButton = topButton + new Vector4 (0, 30, 0, 0);
 
-						Vector3 newXYForLabel = loc + new Vector3 (-75, -100, 0);
+						Vector3 newXYForLabel = loc + new Vector3 (-100, -100, 0);
 						
 						//compute relative positions for the buttons
-						Vector4 labelLoc = new Vector4 (newXYForLabel.x, newXYForLabel.y, 150, 35); //last two coords are height and length
+						Vector4 labelLoc = new Vector4 (newXYForLabel.x, newXYForLabel.y, 200, 35); //last two coords are width and height
 
 						if (areUnlocked [i]) {
 
@@ -116,9 +119,9 @@ public class StableController : MonoBehaviour {
 												}
 										}
 					
+						if((Player.playerInstance._stable.Size > 2)) {
 										if (GUI.Button (new Rect (bottomButton.x, bottomButton.y, bottomButton.z, bottomButton.w), "Release Animal")) {
 												Debug.LogWarning ("Release Button pressed.");
-												if(numActiveStalls > 1) {
 													//release into wild
 													areOccupied[i] = false;
 													//for now remove sprite
@@ -134,7 +137,6 @@ public class StableController : MonoBehaviour {
 														r.sortingLayerName = "Foreground Animal";
 													}
 													released.transform.FindChild("animal skeleton").GetComponent<Animator>().SetTrigger("Walk");
-													//TODO Actually delete animal from player (done in line 118, no?)
 													Player.playerInstance._stable.RemovePet(i);
 
 
@@ -152,13 +154,14 @@ public class StableController : MonoBehaviour {
 															}
 														}
 													}
-												} else {
-													//nope.
-												}
 												
 										}
-								} else {
-										if (GUI.Button (new Rect (topButton.x, topButton.y, topButton.z, topButton.w), "New Random Animal [20 points]")) {
+								}
+					}else {
+										//TODO: add texture
+										GUI.Label(new Rect(topButton.x+100, topButton.y, 100,100), money);
+						Debug.LogWarning("position of label: "+topButton.x+" "+topButton.y);
+										if (GUI.Button (new Rect (topButton.x, topButton.y, topButton.z, topButton.w), "New Animal [20 points]")) {
 												Debug.LogWarning ("rand animal button pressed.");
 												if(Player.playerInstance.Points > pointsForNewAnimal) {
 													Player.playerInstance.Points -= pointsForNewAnimal;
