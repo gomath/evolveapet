@@ -382,11 +382,11 @@ public class GenomeViewController : MonoBehaviour {
 
 			if (toggled) {
 				temp = physicalChromosomes[ch,0].transform.FindChild("gene " + g).GetComponent<GeneScript>().actualColor;
-				c = new Color(temp.r, temp.g, temp.b, 255);
+				c = Color.black; //new Color(temp.r, temp.g, temp.b, 255);
 				physicalChromosomes[ch,0].transform.FindChild("gene " + g).GetComponent<GeneScript>().actualColor = c;
 				physicalChromosomes[ch,0].transform.FindChild("gene " + g).GetComponent<SpriteRenderer>().color = c;
 				temp = physicalChromosomes[ch,0].transform.FindChild("gene " + g).GetComponent<GeneScript>().actualColor;
-				c = new Color(temp.r, temp.g, temp.b, 255);
+				c = Color.black; //new Color(temp.r, temp.g, temp.b, 255);
 				physicalChromosomes[ch,1].transform.FindChild("gene " + g).GetComponent<GeneScript>().actualColor = c;
 				physicalChromosomes[ch,1].transform.FindChild("gene " + g).GetComponent<SpriteRenderer>().color = c;
 			} else {

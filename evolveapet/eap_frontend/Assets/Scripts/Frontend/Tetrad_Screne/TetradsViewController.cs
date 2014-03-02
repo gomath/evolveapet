@@ -220,7 +220,7 @@ public class TetradsViewController : MonoBehaviour {
 				} else {
 					Transform gene = temp.transform.FindChild("gene " + g);
 					Color c = gene.GetComponent<SpriteRenderer>().color;
-					gene.GetComponent<SpriteRenderer>().color = new Color(c.r,c.g,c.b,1);
+						gene.GetComponent<SpriteRenderer>().color = Color.black;//new Color(c.r,c.g,c.b,1);
 				}
 
 			}
