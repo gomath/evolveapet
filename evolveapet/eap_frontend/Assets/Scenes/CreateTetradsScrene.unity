@@ -612,7 +612,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.76745892
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -629,7 +629,7 @@ Transform:
   m_GameObject: {fileID: 33537836}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: .186824203, y: .186824143, z: -10}
-  m_LocalScale: {x: .884706199, y: 1.43583477, z: 1.45033824}
+  m_LocalScale: {x: 1.01532364, y: 1.64782059, z: 1.66446555}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!114 &33537842
@@ -33906,6 +33906,7 @@ MonoBehaviour:
   level: 3
   coins: {fileID: 2800000, guid: b42c4fbce4f0d3944906437ee6d29eef, type: 3}
   hint: {fileID: 1066800359}
+  scrollPosition: {x: 0, y: 0}
 --- !u!4 &2091276197
 Transform:
   m_ObjectHideFlags: 0
