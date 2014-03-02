@@ -65,7 +65,7 @@ namespace EvolveAPet
 			FileStream inStream = new FileStream (Environment.CurrentDirectory + "/save.sav", FileMode.Open);
 			a = bf.Deserialize(inStream) as Player;
 			Player.playerInstance = a;
-			
+			a.Stable.guiEnabled = true;
 		}
 		public static void autoSave(){//Auto saves the game every 5 minutes
 			if (!(playerInstance.lastSaved.AddSeconds (30) > DateTime.Now)) {
