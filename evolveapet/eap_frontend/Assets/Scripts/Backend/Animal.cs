@@ -262,6 +262,10 @@ namespace EvolveAPet
 			string mid = Global.names [mi];
 			string post = Global.suffixes [po];
 			Name = (pre + mid + post);
+			if (Name.Length>16){
+				Name = (mid + post);
+			}
+
 		}
 	}
 	
