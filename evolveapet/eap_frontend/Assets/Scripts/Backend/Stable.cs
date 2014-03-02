@@ -15,6 +15,7 @@ namespace EvolveAPet
 		public bool[] activeStableSlots = {true,true,true,false,false,false};//The stable slots that are unlocked 
 		public bool[] livingAnimals = {false,false,false,false,false,false};//The stable slots which contain a living animal
 		public Animal[] animalsInStable = new Animal[6];
+		public bool guiEnabled = false;
 
 		public Animal GetActiveAnimal(){
 			return animalsInStable[activeAnimalNumber];		
