@@ -158,7 +158,7 @@ public class StableController : MonoBehaviour {
 												
 										}
 								} else {
-										if (GUI.Button (new Rect (topButton.x, topButton.y, topButton.z, topButton.w), "New Random Animal")) {
+										if (GUI.Button (new Rect (topButton.x, topButton.y, topButton.z, topButton.w), "New Random Animal [20 points]")) {
 												Debug.LogWarning ("rand animal button pressed.");
 												if(Player.playerInstance.Points > pointsForNewAnimal) {
 													Player.playerInstance.Points -= pointsForNewAnimal;
@@ -172,7 +172,7 @@ public class StableController : MonoBehaviour {
 										}
 								}
 						} else {
-								if (GUI.Button (new Rect (topButton.x, topButton.y, topButton.z, topButton.w), "Unlock")) {
+								if (GUI.Button (new Rect (topButton.x, topButton.y, topButton.z, topButton.w), "Unlock [50 points]")) {
 										Debug.LogWarning ("unlock pressed");
 										if(Player.playerInstance.Points > pointsForUnlock) {
 											Player.playerInstance.Points -= pointsForUnlock;

@@ -1,14 +1,21 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MainMenuAnimalBuilder.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Backend/Genetics/Chromosome.cs">
     <Files>
-      <File FileName="Assets\Scripts\Frontend\GenomeScreen\BoxGenomeScreen.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Frontend\GenomeScreen\GeneScript.cs" Line="8" Column="54" />
-      <File FileName="Assets\Scripts\Frontend\GenomeScreen\ChromosomeScroller.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Frontend\GenomeScreen\QuickViewScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Frontend\GenomeScreen\ChromosomeScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Frontend\GenomeScreen\GenomeViewController.cs" Line="387" Column="13" />
-      <File FileName="Assets\MainMenuAnimalBuilder.cs" Line="16" Column="4" />
+      <File FileName="Assets/Scripts/Frontend/GenomeScreen/GenomeViewController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Backend/Stable.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Frontend/StableScene/StableController.cs" Line="12" Column="66" />
+      <File FileName="Assets/Builder.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Frontend/StableScene/StableControllerTestDeprecated.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Backend/Networking/FrontEndPlayer.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Frontend/StableScene/StableControllerTest.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/ClickTrigger.cs" Line="1" Column="1" />
+      <File FileName="Assets/Testing_Matej.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Frontend/GenomeScreen/QuickViewScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Frontend/GenomeScreen/GeneScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Frontend/GenomeScreen/ChromosomeScroller.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Backend/Animal.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Backend/Genetics/Chromosome.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
