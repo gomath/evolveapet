@@ -160,7 +160,7 @@ public class StableController : MonoBehaviour {
 					}else {
 										//TODO: add texture
 										GUI.Label(new Rect(topButton.x+100, topButton.y, 100,100), money);
-						Debug.LogWarning("position of label: "+topButton.x+" "+topButton.y);
+						//Debug.LogWarning("position of label: "+topButton.x+" "+topButton.y);
 										if (GUI.Button (new Rect (topButton.x, topButton.y, topButton.z, topButton.w), "New Animal [20 points]")) {
 												Debug.LogWarning ("rand animal button pressed.");
 												if(Player.playerInstance.Points > pointsForNewAnimal) {

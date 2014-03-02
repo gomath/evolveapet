@@ -99,16 +99,16 @@ public class TradingTab : MonoBehaviour
 		Application.LoadLevel ("CreateTetradsScrene");
 		}
 
-	bool CheckIfSet(){ if (Player.playerInstance.chromosomes1 == null) {selected_chromozomes=Player.playerInstance.chromosomes1;
-			return true;
+	bool CheckIfSet(){ if (Player.playerInstance.chromosomes1 != null) {selected_chromozomes=Player.playerInstance.chromosomes1;
+			return false;
 				}
-		return false;}
+		return true;}
 		
 		IEnumerator WaitForChromozomesAndBreed ()
 		{
 				
 		while (CheckIfSet()) {
-						
+			Debug.Log("Still waiting on thetrad");
 						yield return new WaitForSeconds (1);
 
 				}
@@ -131,6 +131,7 @@ public class TradingTab : MonoBehaviour
 	IEnumerator WaitForChromozomesToBreed (byte[] mate_bytes,byte[] chromozomes_bytes)
 		{
 		while (CheckIfSet()) {
+			Debug.Log("Still waiting on thetrad in breed");
 						yield return new WaitForSeconds (1);
 			
 				}
