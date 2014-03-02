@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
+using System;
 
 
 /* this is untest code! here there be monsters!
@@ -10,6 +12,8 @@ using System.Linq;
 namespace EvolveAPet {
 public class StableController : MonoBehaviour {
 		public Texture2D money;
+		public Texture2D saveIcon;
+		string saveAnName;
 
 		public int numActiveStalls;
 		public bool[] areOccupied = new bool[6];
@@ -41,6 +45,8 @@ public class StableController : MonoBehaviour {
 
 		int pointsForUnlock  = -1;//50; //TODO: Make this increase as you unlock stables
 		int pointsForNewAnimal = -1;//20;
+
+		bool showPopup = false;
 
 		public Animal[] potentialAnimals;
 		public GameObject[] potentialGameObjects;
@@ -84,6 +90,9 @@ public class StableController : MonoBehaviour {
 					renameBox = false;
 				}
 			}
+			if (showPopup) {
+				GUI.Window(0, new Rect((originalWidth / 2) - 170, (originalHeight / 2) - 85, 300, 250), ShowGUI, "");			
+			}
 
 			if (!buttonShow) return;
 			for (int i=0; i<6; i++) {
@@ -100,6 +109,9 @@ public class StableController : MonoBehaviour {
 						Vector4 bottomButton = topButton + new Vector4 (0, 30, 0, 0);
 
 						Vector3 newXYForLabel = loc + new Vector3 (-100, -100, 0);
+
+						Vector3 newXYForSave = loc + new Vector3(+50,-100, 0);
+						Vector4 saveLoc = new Vector4(newXYForSave.x, newXYForSave.y, 50,35);
 						
 						//compute relative positions for the buttons
 						Vector4 labelLoc = new Vector4 (newXYForLabel.x, newXYForLabel.y, 200, 35); //last two coords are width and height
@@ -110,7 +122,14 @@ public class StableController : MonoBehaviour {
 									//TODO: CLEAN THIS UP
 									GUI.Box(new Rect(labelLoc.x,labelLoc.y,labelLoc.z,labelLoc.w), Player.playerInstance._stable.animalsInStable[i].Name);
 
+								if(GUI.Button (new Rect(saveLoc.x, saveLoc.y,saveLoc.z, saveLoc.w),"save")) {
 
+									//do popup to save animal
+									showPopup= true;
+									saveAnName = potentialAnimals[i].Name;
+									potentialAnimals[i].serialiseAnimal();
+
+								}
 									if (Player.playerInstance._stable.activeAnimalNumber != i) {
 												if (GUI.Button (new Rect (topButton.x, topButton.y, topButton.z, topButton.w), "Make Active")) {
 												
@@ -159,6 +178,7 @@ public class StableController : MonoBehaviour {
 								}
 					}else {
 										//TODO: add texture
+
 										GUI.Label(new Rect(topButton.x+100, topButton.y, 100,100), money);
 						//Debug.LogWarning("position of label: "+topButton.x+" "+topButton.y);
 										if (GUI.Button (new Rect (topButton.x, topButton.y, topButton.z, topButton.w), "New Animal [20 points]")) {
@@ -192,6 +212,8 @@ public class StableController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+			saveIcon = (Texture2D) Resources.Load ("save");
+			money = (Texture2D)Resources.Load ("Sprites/UI/money");
 			potentialAnimals = Player.playerInstance._stable.animalsInStable;
 			potentialGameObjects = new GameObject[]{a0,a1,a2,a3,a4,a5};
 			stableLocs = new Transform[]{stable0,stable1,stable2,stable3,stable4,stable5};
@@ -275,7 +297,7 @@ public class StableController : MonoBehaviour {
 
 	IEnumerator Hatch(Animal a) {
 		egg.SetActive(true);
-		yield return new WaitForSeconds(Random.Range(2f, 7f));
+		yield return new WaitForSeconds(UnityEngine.Random.Range(2f, 7f));
 		egg.GetComponent<Animator>().SetTrigger("Hatch");
 		hatchAnimal = (GameObject)Instantiate (Resources.Load ("Prefabs/animal"));
 		hatchAnimal.GetComponent<PhysicalAnimal> ().animal = a;
@@ -290,6 +312,20 @@ public class StableController : MonoBehaviour {
 		
 	}
 
+		void ShowGUI(int windowID){ //This is what is in the pop up window
+			string path = Environment.CurrentDirectory +"/SavedAnimals/" + saveAnName + DateTime.Now.ToString(" ddMM") + ".animal";
+			GUI.Label(new Rect(65, 20, 200, 200), "Your animal, "+saveAnName+" was saved to: "+path);
+			
+			if (GUI.Button(new Rect(100, 200, 110, 50), "Close"))
+				
+			{
+				//Creates a new player with an empty stable and the given name
+				showPopup = false;
+				
+			}
+		}
+
 
 }
+
 }
