@@ -40,8 +40,10 @@ public class GeneShowName : MonoBehaviour {
 		Vector3 v = new Vector3(originalWidth*u.x/Screen.width,originalHeight*u.y/Screen.height,1f);
 
 		float y = Adjust(v.y);
-		
-			GUI.Box (new Rect (v.x + 30, originalHeight - y - 10, 60, 30), gene.GetWholeNameEncoded());
+		Locus lBackend = new Locus (gene.ChromosomeNum, gene.GeneNum);
+		Locus lFrontend = Global.mapBtF[lBackend];
+		String geneName= (Player.playerInstance.guessedGenes[lFrontend.Chromosome,lFrontend.GeneNumber]) ? gene.GetWholeNameDecoded() : gene.GetWholeNameEncoded() ;
+		GUI.Box (new Rect (v.x + 30, originalHeight - y - 10, 180, 30), geneName);
 
 	}
 
