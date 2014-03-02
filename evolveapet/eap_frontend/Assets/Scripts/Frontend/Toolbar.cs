@@ -201,7 +201,7 @@ namespace EvolveAPet{
 			GUILayout.BeginHorizontal ();
 			if (GUILayout.Button ("Breed")) {
 
-				GameObject.Find ("TradingTab").GetComponent<TradingTab> ().RequestTrade (Players.ElementAt (index));
+				GameObject.Find ("TradingTab(Clone)").GetComponent<TradingTab> ().RequestTrade (Players.ElementAt (index));
 				networkPopup = false;
 				
 				
