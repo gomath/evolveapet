@@ -63,7 +63,6 @@ public class StableController : MonoBehaviour {
 		float timeDown = 0;
 
 		public bool buttonShow = true;
-
 		public GUISkin mySkin;
 		float originalWidth = 1098.0f;
 		float originalHeight = 618.0f;
@@ -139,7 +138,7 @@ public class StableController : MonoBehaviour {
 										}
 					
 						if((Player.playerInstance._stable.Size > 2)) {
-										if (GUI.Button (new Rect (bottomButton.x, bottomButton.y, bottomButton.z, bottomButton.w), "Release Animal")) {
+										if (GUI.Button (new Rect (bottomButton.x, bottomButton.y, bottomButton.z, bottomButton.w), "Release Animal") && Player.playerInstance._stable.guiEnabled==true) {
 												Debug.LogWarning ("Release Button pressed.");
 													//release into wild
 													areOccupied[i] = false;

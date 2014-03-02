@@ -231,6 +231,7 @@ namespace EvolveAPet{
 		void PopupOnBreeding(int id){
 			GUILayout.BeginVertical ();
 				GUILayout.BeginHorizontal();
+				Player.playerInstance.Stable.guiEnabled = false;
 					if (GUILayout.Button ("Breed locally",GUILayout.Height(popupButtonHeight))) {
 						showLocalBreedingPopupPart = true;
 					}
@@ -278,6 +279,7 @@ namespace EvolveAPet{
 				if (GUILayout.Button ("Close",GUILayout.Height(popupButtonHeight))) {
 					showBreedingPopup = false;
 					showLocalBreedingPopupPart = false;
+				Player.playerInstance.Stable.guiEnabled = true;
 					popupWindowHeight = 110f;
 				}
 
