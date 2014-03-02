@@ -80,16 +80,20 @@ public class TetradBehaviour : MonoBehaviour {
 	/// <param name="chromosomeNum">Chromosome number.</param>
 	/// <param name="ch">Ch.</param>
 	String GetGeneNamesInTetrad(int chromosomeNum,PhysicalChromosome[,] ch){
-		String res = "";
+		
+		String res = "#" + chromosomeNum + "\n";
+			switch (chromosomeNum) {
+			case 0: res = "Male\n"; break;
+			case 1: res = "Female\n"; break;
+			case 2: res = "Cross #1\n"; break;
+			case 3: res = "Cross #2\n"; break;
+			}
+		res += "\n";
 		String f = "{0,-10}";
 		for(int i=MyDictionary.numOfGenesOnChromosome[(EnumBodyPart)tetradNum]-1; i>=0; i--){
 				int split = ch[tetradNum,chromosomeNum].Chromosome.WhereHasBeenSplit;
 				String add = "";
-				if(i >= split && split != -1){
-					add = "-" + ch[tetradNum,chromosomeNum].Chromosome.Genes[i].GetWholeNameEncoded() + "-";
-				} else {
 					add = ch[tetradNum,chromosomeNum].Chromosome.Genes[i].GetWholeNameEncoded();
-				}
 				res += String.Format(f,add);
 				res += "\n";
 		}
@@ -122,17 +126,18 @@ public class TetradBehaviour : MonoBehaviour {
 			GUI.matrix = Matrix4x4.TRS (Vector3.zero, Quaternion.identity, scale);
 			Vector3 u = Camera.main.WorldToScreenPoint(transform.FindChild("description_anchor").position);
 			Vector3 v = new Vector3(originalWidth*u.x/Screen.width,originalHeight*u.y/Screen.height,1f);
-			int h = 120;
-			int w = 60;
+			int h = 150;
+			int w = 80;
+			int c = 20;
 
 			string geneNames = GetGeneNamesInTetrad (0, temp);
-			GUI.Box(new Rect (v.x, originalHeight - v.y, w, h), geneNames);
+			GUI.Box(new Rect (v.x-c, originalHeight - v.y, w, h), geneNames);
 			geneNames = GetGeneNamesInTetrad (1, temp);
-			GUI.Box(new Rect (v.x + w, originalHeight - v.y, w, h), geneNames);
+			GUI.Box(new Rect (v.x-c + w, originalHeight - v.y, w, h), geneNames);
 			geneNames = GetGeneNamesInTetrad (2, temp);
-			GUI.Box(new Rect (v.x, originalHeight - v.y + h, w, h), geneNames);
+			GUI.Box(new Rect (v.x-c, originalHeight - v.y + h, w, h), geneNames);
 			geneNames = GetGeneNamesInTetrad (3, temp);
-			GUI.Box(new Rect (v.x + w, originalHeight - v.y + h, w, h), geneNames);
+			GUI.Box(new Rect (v.x-c + w, originalHeight - v.y + h, w, h), geneNames);
 			
 	}
 }
