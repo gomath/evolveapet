@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
-
+using System.Linq;
+using System.Collections.Generic;
 namespace EvolveAPet{
 	public class Toolbar : MonoBehaviour {
 
@@ -28,12 +29,22 @@ namespace EvolveAPet{
 		private float popupButtonHeight = 40f;
 		private float popuWindowHeight = 110f;
 
+		public Vector2 scrollPosition;
+		
+		private string[] PlayerNames{ get; set; }
+		
+		private List<PhotonPlayer> Players{ get; set; }
+
+		bool networkPopup = false;
+
 		// Use this for initialization
 		void Start () {
 /*			if (currentPlayer == null) {
 				Player.playerInstance = new Player(new Stable(),"TestPlayer");			
 			}
 */
+			GetPlayerList ();
+
 			currentPlayer = Player.playerInstance; //Checks if there is already an instantiated player
 			animals = currentPlayer.Stable.animalsInStable;
 			animalAlive = currentPlayer.Stable.livingAnimals;
@@ -156,6 +167,47 @@ namespace EvolveAPet{
 				Vector3 v = new Vector3 (originalWidth * u.x / Screen.width, originalHeight * u.y / Screen.height, 1f);
 				GUI.Window (2,new Rect(v.x,originalHeight-v.y,300,popuWindowHeight),PopupOnBreeding,popupHeading);
 			}
+			if (networkPopup) {
+				Vector3 u = Camera.main.WorldToScreenPoint(transform.FindChild("PopupAnchor").position);
+				Vector3 v = new Vector3 (originalWidth * u.x / Screen.width, originalHeight * u.y / Screen.height, 1f);
+				GUI.Window (2,new Rect(v.x,originalHeight-v.y,300,300),BreedOverNetwork,"Player List");
+						}
+
+		}
+
+		int index;
+		void BreedOverNetwork(int id)
+		{
+
+			scrollPosition = GUILayout.BeginScrollView (scrollPosition, GUILayout.Width (200), GUILayout.Height (200));
+
+			index = GUILayout.SelectionGrid (index, PlayerNames,1 );
+			GUILayout.EndScrollView ();
+			GUILayout.BeginHorizontal ();
+			if (GUILayout.Button ("Breed")) {
+
+				GameObject.Find ("TradingTab").GetComponent<TradingTab> ().RequestTrade (Players.ElementAt (index));
+				networkPopup = false;
+				
+				
+				
+			}
+			if (GUILayout.Button ("Refresh"))
+				GetPlayerList ();
+			if (GUILayout.Button ("Close")) {
+				networkPopup = false;
+				
+				
+			}
+			GUILayout.EndHorizontal ();
+
+				}
+
+		void GetPlayerList ()
+		{
+			Players = NetworkManager.GetPlayerList ().ToList ();
+			PlayerNames = Players.Select (p => p.name).ToArray ();
+			
 		}
 
 		void PopupOnBreeding(int id){
@@ -165,7 +217,9 @@ namespace EvolveAPet{
 						showLocalBreedingPopupPart = true;
 					}
 					if (GUILayout.Button ("Breed with a friend",GUILayout.Height(popupButtonHeight))) {
-								
+				networkPopup=true;
+				showBreedingPopup=false;
+
 					}
 				GUILayout.EndHorizontal ();
 				
@@ -194,7 +248,7 @@ namespace EvolveAPet{
 							currentPlayer.animalForBreeding2 = animals[animalIndex[1]];
 							currentPlayer.remainingAnimalsToBreed = 2;
 							currentPlayer.animalToChooseForBreeding = 1;
-							
+						currentPlayer.network_breeding=false;
 							Application.LoadLevel("CreateTetradsScrene");
 							//GUILayout.Box ("Breeding scene");	
 						}

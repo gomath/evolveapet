@@ -29,7 +29,7 @@ namespace EvolveAPet
 		public Chromosome[] chromosomes2;
 		public int animalToChooseForBreeding;
 		public int remainingAnimalsToBreed;
-		
+		public bool network_breeding;
 		
 		public Player(Stable s, string username)
 		{

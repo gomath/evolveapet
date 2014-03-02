@@ -665,6 +665,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mySkin: {fileID: 11400000, guid: e3b883a08ff8eb04cae26114ecf69cac, type: 2}
+  network: {fileID: 0}
+  trading: {fileID: 0}
 --- !u!212 &1139050040
 SpriteRenderer:
   m_ObjectHideFlags: 0
