@@ -249,7 +249,7 @@ public class TetradsViewController : MonoBehaviour {
 		// substitute matrix to scale if screen nonstandard
 		GUI.matrix = Matrix4x4.TRS (Vector3.zero, Quaternion.identity, scale);
 		
-		GUI.skin = myskin;
+		//GUI.skin = myskin;
 		GUI.skin.label.fontSize = 20;
 		GUI.Label(new Rect(20,0,200,100),a.Name);
 		GUI.skin.label.fontSize = 0;

@@ -1,41 +1,32 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Frontend\Tetrad_Screne\GeneShowName.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Frontend\Tetrad_Screne\TetradsViewController.cs">
     <Files>
-      <File FileName="Assets\Scripts\Frontend\GenomeScreen\GenomeViewController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Frontend\GenomeScreen\GenomeViewController.cs" Line="572" Column="30" />
-      <File FileName="Assets\Scripts\Frontend\GenomeScreen\GeneScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Frontend\GenomeScreen\BoxGenomeScreen.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Backend\Stable.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Frontend\StableScene\StableController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Frontend\StableScene\StableController.cs" Line="296" Column="1" />
       <File FileName="Assets\Builder.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Frontend\StableScene\StableControllerTestDeprecated.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Frontend\StableScene\StableControllerTest.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ClickTrigger.cs" Line="1" Column="1" />
-      <File FileName="Assets\Testing_Matej.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Frontend\GenomeScreen\QuickViewScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Frontend\GenomeScreen\ChromosomeScroller.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Backend\Animal.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Backend\Animal.cs" Line="279" Column="2" />
       <File FileName="Assets\Scripts\Backend\Genetics\Chromosome.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Frontend\Toolbar.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Frontend\Tetrad_Screne\TetradsViewController.cs" Line="181" Column="1" />
+      <File FileName="Assets\Scripts\Frontend\Toolbar.cs" Line="299" Column="1" />
+      <File FileName="Assets\Scripts\Frontend\Tetrad_Screne\TetradsViewController.cs" Line="262" Column="1" />
       <File FileName="Assets\Scripts\Frontend\Tetrad_Screne\ControlAnchorsScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Frontend\Tetrad_Screne\GeneShowName.cs" Line="9" Column="19" />
+      <File FileName="Assets\Scripts\Frontend\Tetrad_Screne\GeneShowName.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Frontend\Tetrad_Screne\TetradBehaviour.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Frontend\Tetrad_Screne\PhysicalChromosome.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Backend\Player.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Backend\Player.cs" Line="161" Column="1" />
       <File FileName="Assets\Scripts\Frontend\Tetrad_Screne\MagnifyingGlassScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Frontend\Tetrad_Screne\TetradsScroll.cs" Line="65" Column="1" />
+      <File FileName="Assets\Scripts\Frontend\WaitingScript.cs" Line="28" Column="73" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Scripts" expanded="True">
-              <Node name="Backend" expanded="True" />
               <Node name="Frontend" expanded="True">
+                <Node name="GenomeScreen" expanded="True" />
                 <Node name="StableScene" expanded="True" />
                 <Node name="Tetrad_Screne" expanded="True">
-                  <Node name="GeneShowName.cs" selected="True" />
+                  <Node name="TetradsViewController.cs" selected="True" />
                 </Node>
               </Node>
             </Node>
