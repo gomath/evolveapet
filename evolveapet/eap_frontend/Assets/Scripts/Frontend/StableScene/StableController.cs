@@ -36,8 +36,8 @@ public class StableController : MonoBehaviour {
 		GameObject a4=null;
 		GameObject a5=null;
 
-		int pointsForUnlock  = 50; //TODO: Make this increase as you unlock stables
-		int pointsForNewAnimal = 20;
+		int pointsForUnlock  = -1;//50; //TODO: Make this increase as you unlock stables
+		int pointsForNewAnimal = -1;//20;
 
 		public Animal[] potentialAnimals;
 		public GameObject[] potentialGameObjects;
