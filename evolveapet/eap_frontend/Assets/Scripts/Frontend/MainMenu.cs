@@ -10,7 +10,8 @@ public class MainMenu : MonoBehaviour {
 	float originalHeight = 618.0f;
 	Vector3 scale = new Vector3();
 	bool showPopUp = false;
-	bool showErrorMessage = false;		
+	bool showErrorMessage = false;
+	bool showSuccess = false;
 	string playerName = "Enter your name here";
 	Player currentPlayer;
 	protected string importPath = "";
@@ -60,6 +61,11 @@ public class MainMenu : MonoBehaviour {
 		if (showErrorMessage){//If the error message should be on screen, creates it
 			GUI.Window(1, new Rect((originalWidth / 2) - 170, (originalHeight / 2) - 85, 300, 250), ErrorGUI, "Oh No!");
 		}
+		if (showSuccess) {
+				GUI.Window(1, new Rect((originalWidth / 2) - 170, (originalHeight / 2) - 85, 300, 250), SuccessGUI, "Success!");
+
+			}
+
 		// Make the first button. If it is pressed, Application.Loadlevel (1) will be executed
 		//if(GUI.Button(new Rect(660,82,150,40), "Play")) {
 		if(GUI.Button(new Rect(80,270,150,40), "Play")) {
@@ -70,6 +76,7 @@ public class MainMenu : MonoBehaviour {
 						
 						showPopUp = true;
 						showErrorMessage =false;
+						showSuccess = false;
 					}
 					else{
 						showPopUp = false;
@@ -135,34 +142,33 @@ public class MainMenu : MonoBehaviour {
 					exception = true;
 					showErrorMessage =true;
 				}
+				if (Player.playerInstance.Stable.eggSlot!=null){
+					showSuccess = true;
+				}
 			}
+
 		}
 		
 		
 		void ErrorGUI(int windowID){
-			if (currentPlayer == null) {
+						if (currentPlayer == null) {
 
 								GUI.Label (new Rect (65, 40, 200, 80), "It appears that you do not have a save game.\n Press play to get started!");
 
-						}
-			else if (exception ==true) {
-				GUI.Label(new Rect(65, 40, 200, 80), "Something went wrong while opening the file! Is this a saved animal?");
-						}
-			else if (currentPlayer.Stable.Size == currentPlayer.Stable.NumberOfUnlockedSlots) {
+						} else if (exception == true) {
+								GUI.Label (new Rect (65, 40, 200, 80), "Something went wrong while opening the file! Is this a saved animal?");
+						} else if (currentPlayer.Stable.Size == currentPlayer.Stable.NumberOfUnlockedSlots) {
 
-				GUI.Label(new Rect(65, 40, 200, 80), "Your stable is full, please make some room!");
+								GUI.Label (new Rect (65, 40, 200, 80), "Your stable is full, please make some room!");
 				
-			}
-			if (GUI.Button(new Rect(100, 170, 110, 50), "Close"))
-				
-			{
-				showErrorMessage = false;
-				exception = false;
-			}
+						} 
+						if (GUI.Button (new Rect (100, 170, 110, 50), "Close")) {
+								showErrorMessage = false;
+								exception = false;
+						}
 
 
-		}
-
+				}
 		void ShowGUI( int windowID){ //This is what is in the pop up window
 			GUI.Label(new Rect(65, 40, 200, 80), "Welcome to Evolve a Pet!\n");
 
@@ -178,6 +184,12 @@ public class MainMenu : MonoBehaviour {
 				player.saveGame();
 				Application.LoadLevel("Stable");
 
+			}
+		}
+		void SuccessGUI(int windowID){
+			GUI.Label (new Rect (65, 40, 200, 80), "Successfully imported " + Player.playerInstance.Stable.eggSlot.Name);
+			if (GUI.Button (new Rect (100, 170, 110, 50), "Close")) {
+				showSuccess = false;
 			}
 		}
 	}
