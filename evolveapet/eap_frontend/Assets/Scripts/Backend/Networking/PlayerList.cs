@@ -5,7 +5,6 @@ using System.Linq;
 
 public class PlayerList : MonoBehaviour
 {		
-		public static bool open = false;
 		public Vector2 scrollPosition;
 
 		private string[] PlayerNames{ get; set; }
@@ -15,13 +14,7 @@ public class PlayerList : MonoBehaviour
 		void Start ()
 		{
 				GetPlayerList ();
-				open = true;
-		}
-	
-		// Update is called once per frame
-		void Update ()
-		{
-	
+				
 		}
 	int index;
 		void OnGUI ()
@@ -64,7 +57,7 @@ public class PlayerList : MonoBehaviour
 
 		void CleanObject ()
 		{
-				open = false;
+				
 				Destroy (this.gameObject);
 		}
 }

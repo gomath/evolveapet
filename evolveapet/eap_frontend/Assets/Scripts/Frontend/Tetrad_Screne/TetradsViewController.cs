@@ -144,29 +144,40 @@ public class TetradsViewController : MonoBehaviour {
 	/// Called when choosing is finished and button clicked. 
 	/// </summary>
 	void TetradsChosen(){
-		Debug.Log ("Tetrads chosen");
-		Chromosome[] temp = new Chromosome[Global.NUM_OF_CHROMOSOMES];
-		for (int i=0; i<Global.NUM_OF_CHROMOSOMES; i++) {
-			temp[i] = transform.FindChild("Tetrads").FindChild("Tetrad_" + i).GetComponent<TetradBehaviour>().UnderlyingChromosome;
-		}
-		
-		Chromosome[] backendChromosomes = Global.FrontEndToBackendChromosomes (temp);
-		
-		if (player.animalToChooseForBreeding == 1) {
-			player.chromosomes1 = backendChromosomes;		
-		} else {
-			player.chromosomes2 = backendChromosomes;				
-		}
-		
-			if (player.remainingAnimalsToBreed > 0) {
-				player.animalToChooseForBreeding = 2;
-				Application.LoadLevel("CreateTetradsScrene");			
+	if (player.network_breeding == false) {
+					Debug.Log ("Tetrads chosen");
+					Chromosome[] temp = new Chromosome[Global.NUM_OF_CHROMOSOMES];
+					for (int i=0; i<Global.NUM_OF_CHROMOSOMES; i++) {
+							temp [i] = transform.FindChild ("Tetrads").FindChild ("Tetrad_" + i).GetComponent<TetradBehaviour> ().UnderlyingChromosome;
+					}
+
+					Chromosome[] backendChromosomes = Global.FrontEndToBackendChromosomes (temp);
+
+					if (player.animalToChooseForBreeding == 1) {
+							player.chromosomes1 = backendChromosomes;		
+					} else {
+							player.chromosomes2 = backendChromosomes;				
+					}
+
+					if (player.remainingAnimalsToBreed > 0) {
+							player.animalToChooseForBreeding = 2;
+							Application.LoadLevel ("CreateTetradsScrene");			
+					} else {
+							// End of local breeding
+							player._stable.eggSlot = new Animal (player.chromosomes1, player.chromosomes2, player.animalForBreeding1, player.animalForBreeding2);
+							Application.LoadLevel ("Stable");
+					}
 			} else {
-				// End of local breeding
-				player._stable.eggSlot = new Animal(player.chromosomes1,player.chromosomes2,player.animalForBreeding1,player.animalForBreeding2);
-				Application.LoadLevel("Stable");
+					Chromosome[] temp = new Chromosome[Global.NUM_OF_CHROMOSOMES];
+					for (int i=0; i<Global.NUM_OF_CHROMOSOMES; i++) {
+						temp [i] = transform.FindChild ("Tetrads").FindChild ("Tetrad_" + i).GetComponent<TetradBehaviour> ().UnderlyingChromosome;
+					}
+					
+					Chromosome[] backendChromosomes = Global.FrontEndToBackendChromosomes (temp);
+					player.chromosomes1 = backendChromosomes;
+					Application.LoadLevel ("Stable");
 			}
-	}
+		}
 
 	
 	// Set of methods for colouring the genes corresponding to various body parts

@@ -8,8 +8,12 @@ public class NetworkManager : MonoBehaviour
 
 		void Start ()
 		{
+		if (GameObject.Find ("TradingTab(Clone)") == null)
+						Instantiate (Resources.Load ("Prefabs/Networking/TradingTab"));
 				//PhotonNetwork.offlineMode = true;
+		if(!PhotonNetwork.connected)
 				Connect ();
+				
 		}
 
 		void OnFailedToConnectToPhoton (DisconnectCause cause)
@@ -22,27 +26,15 @@ public class NetworkManager : MonoBehaviour
 		void Connect ()
 		{
 		
-		
+				
 				if (PhotonNetwork.offlineMode)
 						OfflineConnect ();
 				else
 						PhotonNetwork.ConnectUsingSettings ("Alpha version");
 
-		
+		SetPlayerData ();
 		}
-	
-		void OnGUI ()
-		{	
-				
-				GUILayout.Label (PhotonNetwork.connectionStateDetailed.ToString ());
-				GUILayout.Label (PhotonNetwork.insideLobby.ToString ());
-				GUILayout.Label (FrontEndPlayer.Player.Stable.Size.ToString());
-				if (GUILayout.Button ("Player List")) {
-						if (!PlayerList.open)
-								Instantiate (Resources.Load ("Prefabs/Networking/PlayerList"), Vector2.zero, Quaternion.identity);
-				}
 
-		}
 	
 		void OnJoinedLobby ()
 		{
@@ -65,10 +57,10 @@ public class NetworkManager : MonoBehaviour
 				
 		}
 
-		public static void SetPlayerData ()
+		public void SetPlayerData ()
 		{		
 
-				PhotonNetwork.player.name = FrontEndPlayer.Player.UserName;
+		PhotonNetwork.player.name = Player.playerInstance.UserName;
 		}
 
 		void OnPhotonRandomJoinFailed ()
