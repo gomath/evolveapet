@@ -58,7 +58,7 @@ namespace EvolveAPet
             for (int n = 0; n < bodyPartNumber; n++){
 				createBodyPart(n);
 			}
-
+			cullGrandparents ();
         }
 
 		public static Animal deserialiseAnimal(string path){
@@ -69,7 +69,12 @@ namespace EvolveAPet
 			return a;
 				}
 
-
+		public void cullGrandparents(){
+			this.Parent [0].Parent [0] = null;
+			this.Parent [0].Parent [1] = null;
+			this.Parent [1].Parent [0] = null;
+			this.Parent [1].Parent [1] = null;
+		}
 		public void serialiseAnimal(){
 			string newFolder = Environment.CurrentDirectory + "/SavedAnimals";
 			Directory.CreateDirectory (newFolder);
