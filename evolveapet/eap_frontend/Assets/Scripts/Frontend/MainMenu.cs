@@ -1,4 +1,4 @@
-﻿//C#
+//C#
 using UnityEngine;
 using System.Collections;
 using System.IO;
@@ -19,11 +19,14 @@ public class MainMenu : MonoBehaviour {
 	protected Texture2D m_directoryImage;
 	public GUISkin mySkin;
 	bool exception;
+	
 
 		void Start(){
 
+
 			
 		}
+
 		void OnGUI () {
 
 			if (Player.playerInstance==null){
