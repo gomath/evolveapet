@@ -192,7 +192,7 @@ namespace EvolveAPet{
 
 		}
 
-		int index;
+		int index = 0;
 		void BreedOverNetwork(int id)
 		{
 
@@ -201,13 +201,14 @@ namespace EvolveAPet{
 			index = GUILayout.SelectionGrid (index, PlayerNames,1 ,GUILayout.Height(popupButtonHeight * PlayerNames.Length));
 			GUILayout.EndScrollView ();
 			GUILayout.BeginHorizontal ();
-			if (GUILayout.Button ("Breed")) {
-
-				GameObject.Find ("TradingTab(Clone)").GetComponent<TradingTab> ().RequestTrade (Players.ElementAt (index));
-				networkPopup = false;
-				
-				
-				
+			if (index != 0) {
+				if (GUILayout.Button ("Breed")) {
+					GameObject.Find ("TradingTab(Clone)").GetComponent<TradingTab> ().RequestTrade (Players.ElementAt (index));
+					networkPopup = false;
+					
+					
+					
+				}
 			}
 			if (GUILayout.Button ("Refresh"))
 				GetPlayerList ();
