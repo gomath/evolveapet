@@ -49,6 +49,7 @@ namespace EvolveAPet
 
   		public void unlockStableSlot(int stableSlot){
 			activeStableSlots [stableSlot] = true;	
+			//animalsInStable [stableSlot] = new Animal ();
 			getsize ();
 		}
 

@@ -2,7 +2,23 @@ fileFormatVersion: 2
 guid: dd2de16ea2f554f45949348d83791afa
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - money: {fileID: 2800000, guid: b42c4fbce4f0d3944906437ee6d29eef, type: 3}
+  - stable0: {instanceID: 0}
+  - stable1: {instanceID: 0}
+  - stable2: {instanceID: 0}
+  - stable3: {instanceID: 0}
+  - stable4: {instanceID: 0}
+  - stable5: {instanceID: 0}
+  - padlock0: {instanceID: 0}
+  - padlock1: {instanceID: 0}
+  - padlock2: {instanceID: 0}
+  - padlock3: {instanceID: 0}
+  - padlock4: {instanceID: 0}
+  - padlock5: {instanceID: 0}
+  - egg: {instanceID: 0}
+  - paddock: {instanceID: 0}
+  - mySkin: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

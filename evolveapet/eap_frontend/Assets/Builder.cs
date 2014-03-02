@@ -65,12 +65,12 @@ namespace EvolveAPet {
 			string countdown;
 			float center = originalWidth * 0.5f -200;
 			GUI.Label (new Rect (center, originalHeight * 0.05f, 400, 50), dailyChallengeStr);
-			TimeSpan ts = player.dailyChallengeSetDate.AddDays(1).Subtract(DateTime.Now);
-			countdown = string.Format("{0} Hours, {1} Minutes, and {2} Seconds until new daily challenge!", ts.Hours, ts.Minutes, ts.Seconds);
+			TimeSpan ts = player.dailyChallengeSetDate.AddHours(1).Subtract(DateTime.Now);
+			countdown = string.Format("{0} Hours, {1} Minutes, and {2} Seconds until new breeding challenge!", ts.Hours, ts.Minutes, ts.Seconds);
 			if (player.currentDailyChallenge == -1) {
 				//If player has no current daily challenge, then there are two possibilities. Either he needs a new one, or he needs to wait.
-				if (DateTime.Compare (DateTime.Today, player.dailyChallengeSetDate) != 0){
-					if (GUI.Button (new Rect (center, originalHeight * 0.1f + 20, 400, 40), "New Daily Challenge")) {
+				if (DateTime.UtcNow > player.dailyChallengeSetDate.AddHours(1)){
+					if (GUI.Button (new Rect (center, originalHeight * 0.1f + 20, 400, 40), "New Challenge!")) {
 						player.newDailyChallenge(); // If it is not the day of the last completed daily challenge, then make a button to get a new one.
 						//Assumes player cannot travel backwards in time
 					}
@@ -79,7 +79,7 @@ namespace EvolveAPet {
 						GUI.Label (new Rect (center, originalHeight * 0.1f, 400, 50), countdown);}
 				}				    
 			}else{
-				if (GUI.Button (new Rect (center, originalHeight * 0.1f +20, 400, 40), "Complete Daily Challenge!")) {
+				if (GUI.Button (new Rect (center, originalHeight * 0.1f +20, 400, 40), "Complete Challenge!")) {
 					player.completeDailyChallenge();
 				}
 			}

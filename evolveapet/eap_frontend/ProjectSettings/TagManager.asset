@@ -28,7 +28,7 @@ TagManager:
   Builtin Layer 5: 
   Builtin Layer 6: 
   Builtin Layer 7: 
-  User Layer 8: 
+  User Layer 8: Hint
   User Layer 9: 
   User Layer 10: 
   User Layer 11: 
@@ -61,10 +61,6 @@ TagManager:
     userID: 0
     uniqueID: 0
     locked: 0
-  - name: Chromosome
-    userID: 2
-    uniqueID: 2229174299
-    locked: 0
   - name: Stable
     userID: 4
     uniqueID: 179819607
@@ -76,6 +72,10 @@ TagManager:
   - name: Pet
     userID: 1
     uniqueID: 3108476755
+    locked: 0
+  - name: Chromosome
+    userID: 2
+    uniqueID: 2229174299
     locked: 0
   - name: Gate
     userID: 3
@@ -92,4 +92,8 @@ TagManager:
   - name: Foreground Animal
     userID: 8
     uniqueID: 434794095
+    locked: 0
+  - name: UI
+    userID: 9
+    uniqueID: 1650174099
     locked: 0

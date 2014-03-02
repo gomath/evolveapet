@@ -13,7 +13,7 @@ public class GenomeViewController : MonoBehaviour {
 	Player player;
 		public int pointsForCorrectGuess = 10;
 		public int pointsForIncorrectGuess = 5;
-		public int costOfGeneTherapy = 3;
+		public int costOfGeneTherapy = 20;
 	Animal animal;
 	Genome g;
 	Chromosome[,] frontEndChromosomes;
@@ -374,20 +374,27 @@ public class GenomeViewController : MonoBehaviour {
 
 	void SetGeneColor(int ch, int g, bool toggled){
 			Color c;
-			if (toggled) {
-				c = GeneScript.toggleColor;
-			} else {
-				if(player.guessedGenes[ch,g])
-					c = GeneScript.guessedColor;
-				else
-                    c = GeneScript.unknownColor;
-			}
+			Color temp;
+			if(player.guessedGenes[ch,g])
+				c = GeneScript.guessedColor;
+			else
+                c = GeneScript.unknownColor;
 
-		
-			physicalChromosomes[ch,0].transform.FindChild("gene " + g).GetComponent<GeneScript>().actualColor = c;
-			physicalChromosomes[ch,0].transform.FindChild("gene " + g).GetComponent<SpriteRenderer>().color = c;
-			physicalChromosomes[ch,1].transform.FindChild("gene " + g).GetComponent<GeneScript>().actualColor = c;
-			physicalChromosomes[ch,1].transform.FindChild("gene " + g).GetComponent<SpriteRenderer>().color = c;
+			if (toggled) {
+				temp = physicalChromosomes[ch,0].transform.FindChild("gene " + g).GetComponent<GeneScript>().actualColor;
+				c = Color.black; //new Color(temp.r, temp.g, temp.b, 255);
+				physicalChromosomes[ch,0].transform.FindChild("gene " + g).GetComponent<GeneScript>().actualColor = c;
+				physicalChromosomes[ch,0].transform.FindChild("gene " + g).GetComponent<SpriteRenderer>().color = c;
+				temp = physicalChromosomes[ch,0].transform.FindChild("gene " + g).GetComponent<GeneScript>().actualColor;
+				c = Color.black; //new Color(temp.r, temp.g, temp.b, 255);
+				physicalChromosomes[ch,1].transform.FindChild("gene " + g).GetComponent<GeneScript>().actualColor = c;
+				physicalChromosomes[ch,1].transform.FindChild("gene " + g).GetComponent<SpriteRenderer>().color = c;
+			} else {
+				physicalChromosomes[ch,0].transform.FindChild("gene " + g).GetComponent<GeneScript>().actualColor = c;
+				physicalChromosomes[ch,0].transform.FindChild("gene " + g).GetComponent<SpriteRenderer>().color = c;
+				physicalChromosomes[ch,1].transform.FindChild("gene " + g).GetComponent<GeneScript>().actualColor = c;
+				physicalChromosomes[ch,1].transform.FindChild("gene " + g).GetComponent<SpriteRenderer>().color = c;
+			}
 
 
 			quickView.SetGeneColor (ch, g, c);
@@ -460,12 +467,15 @@ public class GenomeViewController : MonoBehaviour {
 		ChangeColorWhenGuessed (ch,g);
 		UpdateNamesAndGenes ();
 		RandomizeGuessingCachesAndUpdateActive ();
+		RandomizeGeneTherapyCachesAndUpdateActive (); // to show decoded names of a options for gene therapy after guess
+
 	}
 	// Action to take when the player guesses incorrectly
 	void IncorrectGuessAction(){
 		animal.RemainingGuesses--;
 		player.Points += pointsForIncorrectGuess;
 		RandomizeGuessingCachesAndUpdateActive ();
+
 	}
 	
 	// Action to take after successful mutation
@@ -599,6 +609,11 @@ public class GenomeViewController : MonoBehaviour {
 								Gene temp = g.FrontEndGetGene(activeChromosome,i,k);
 								String tempName = (player.guessedGenes[activeChromosome,i]) ? temp.GetWholeNameDecoded() : temp.GetWholeNameEncoded();
 
+								if (temp.TraitName().Equals("shape")){ 
+								    animal.geneTherapyOnShape = true;
+								}
+
+
 								temp.Mutate(randomMutations[k,i,j]);
 								RandomMutationAction((EnumBodyPart)temp.ChromosomeNum);
 
@@ -624,6 +639,7 @@ public class GenomeViewController : MonoBehaviour {
 			GUI.Box (new Rect(20,20,200,100),popupText);
 			if (GUI.Button (new Rect (20, 130, 80, 40), "Close")) {
 				CreateStringsForGuessing();
+
 				displayGuessPopup = false;
 			}
 		}
@@ -631,6 +647,7 @@ public class GenomeViewController : MonoBehaviour {
 		void PopupOnTherapy(int id){
 			GUI.Box (new Rect(20,20,200,200),popupText);
 			if (GUI.Button (new Rect (20, 250, 80, 40), "Close")) {
+
 				displayTherapyPopup = false;
 			}
 		}

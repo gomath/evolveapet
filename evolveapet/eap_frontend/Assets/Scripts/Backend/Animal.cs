@@ -17,7 +17,7 @@ namespace EvolveAPet
         public int Generation { set; get; }
         public string Name { set; get; }
 		public Genome Genome { set; get; }
-        public BodyPart[] BodyPartArray { get; private set; }
+		public BodyPart[] BodyPartArray { set; get; }
         // each animal will be given a genome and handed both its parents
         public bool Egg { get; set; }
 		public Animal[] Parent { set; get;} 
@@ -25,6 +25,7 @@ namespace EvolveAPet
 		// Used in Genome screen - do not modify
 		public int RemainingGuesses = 5;
 		public bool cacheInitialized = false;
+		public bool geneTherapyOnShape;
 		// Guessing genes caches
 		public string[][,] cacheGuessingStrings;
 		public string[][] cacheCorrectGuesses;
@@ -52,12 +53,12 @@ namespace EvolveAPet
 
             // New animal has max. generations of your parents + 1
 			//Generation = (parent1.Generation > parent2.Generation) ? parent1.Generation+1 : parent2.Generation+1;
-
+			nameMeRandomly ();
 			BodyPartArray = new BodyPart[bodyPartNumber]; 
             for (int n = 0; n < bodyPartNumber; n++){
 				createBodyPart(n);
 			}
-
+			cullGrandparents ();
         }
 
 		public static Animal deserialiseAnimal(string path){
@@ -68,12 +69,24 @@ namespace EvolveAPet
 			return a;
 				}
 
-
+		public void cullGrandparents(){
+			if (this.Parent!= null) {
+						if (this.Parent [0].Parent !=null){
+							this.Parent [0].Parent [0] = null;
+							this.Parent [0].Parent [1] = null;
+						}
+					}
+			if (this.Parent!= null) {
+							if (this.Parent [1].Parent != null){
+								this.Parent [1].Parent [0] = null;
+								this.Parent [1].Parent [1] = null;
+						}
+					}
+		}
 		public void serialiseAnimal(){
 			string newFolder = Environment.CurrentDirectory + "/SavedAnimals";
 			Directory.CreateDirectory (newFolder);
-
-			string path = Environment.CurrentDirectory +"/SavedAnimals/" + this.Name + DateTime.Now.ToString("ddMM") + ".animal";
+			string path = Environment.CurrentDirectory +"/SavedAnimals/" + this.Name + DateTime.Now.ToString(" ddMM") + ".animal";
 			BinaryFormatter bf = new BinaryFormatter();
 			FileStream outStream = new FileStream(path,FileMode.OpenOrCreate);
 			bf.Serialize (outStream,this);
@@ -168,15 +181,30 @@ namespace EvolveAPet
 			//Decodes Shape
 			genePos = Genome.MotherChromosomes[n].getTraitPosition(4);
 			if (genePos != -1) {
-				int shapeNo =Genome.GetTrait(n,4);
+				if (geneTherapyOnShape || BodyPartArray[n]==null){
+				int shapeNo = Genome.GetTrait(n,4);
 				shapeStr = MyDictionary.GetShape(shapeNo);
+				}else shapeStr = BodyPartArray[n].shape; 
+				geneTherapyOnShape =false;
 			}
 
 			//If head, checks teeth shape
 			if (n == 2) {
-			genePos = motherChromosome.getTraitPosition(5);
-				int teethShapeInt = Genome.GetTrait(n,5);
-				teethShape = MyDictionary.GetShape(teethShapeInt);
+				genePos = Genome.MotherChromosomes[n].getTraitPosition(5);
+				
+				Gene g1 = motherChromosome.Genes [genePos];
+				Gene g2 = fatherChromosome.Genes [genePos];
+				string gene1Trait = g1.GetNameEncoded();
+				string gene2Trait = g2.GetNameEncoded();
+				//Need to fudge the fact that carnivore is dominant over herbivore
+				if (gene1Trait.ToLower().Equals("h") && gene2Trait.ToLower().Equals("h")){// both herbivore shaped teeth
+
+
+					teethShape=MyDictionary.GetShape(1);
+				}else{
+					teethShape = MyDictionary.GetShape(0);
+				}
+
 			}
 
 			if (n == 4) {
@@ -241,6 +269,10 @@ namespace EvolveAPet
 			string mid = Global.names [mi];
 			string post = Global.suffixes [po];
 			Name = (pre + mid + post);
+			if (Name.Length>16){
+				Name = (mid + post);
+			}
+
 		}
 	}
 	

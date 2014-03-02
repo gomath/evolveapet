@@ -12,7 +12,7 @@ namespace EvolveAPet {
 			animal.GetComponent<PhysicalAnimal>().animal = new Animal();
 			animal.GetComponent<PhysicalAnimal>().Build(animal);
 			animal.transform.position = move.position;
-			animal.transform.localScale = new Vector2(0.75f,0.75f);
+			animal.transform.localScale = new Vector3(0.75f,0.75f,1);
 		}
 		
 		// Update is called once per frame

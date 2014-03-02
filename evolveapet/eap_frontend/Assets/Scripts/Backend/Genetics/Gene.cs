@@ -375,7 +375,7 @@ namespace EvolveAPet
 		/// <returns>The whole name encoded.</returns>
 		public String GetWholeNameEncoded(){
 			String res = GetNameEncoded ();
-			if (_dominant) {
+			if (_dominant  && _trait != EnumTrait.TEETH_SHAPE) {
 				res = res.ToUpper();
 			}
 			String[] extra = GetEncodedAdditionalInfo ();
@@ -401,7 +401,7 @@ namespace EvolveAPet
 		/// <returns>The whole name encoded.</returns>
 		public String GetWholeNameDecoded(){
 			String res = GetNameDecoded ();
-			if (_dominant) {
+			if (_dominant && _trait != EnumTrait.TEETH_SHAPE) {
 				res = res.ToUpper();
 			}
 			String[] extra = GetDecodedAdditionalInfo ();

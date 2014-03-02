@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Runtime.Serialization.Formatters.Binary; 
 using System.IO;
-
+using UnityEngine;
 namespace EvolveAPet
 {
 	[Serializable]
@@ -33,7 +33,7 @@ namespace EvolveAPet
 		
 		public Player(Stable s, string username)
 		{
-			Points = 0;
+			Points = 200;
 			UserName = username;
 			NickName = username;
 			_stable = s;
@@ -45,7 +45,7 @@ namespace EvolveAPet
 		
 		public Player(string username)
 		{
-			Points = 0;
+			Points = 200;
 			UserName = username;
 			NickName = username;
 			_stable = new Stable();
@@ -91,26 +91,27 @@ namespace EvolveAPet
 		public String getDailyChallengeString(){
 			String str = "Today's challenge is : Breed an animal which ";
 			if (currentDailyChallenge == -1){
-				str = "You completed your last daily challenge on ";
-				str += dailyChallengeSetDate.ToShortDateString();
+				str = "You have recently completed a challenge. Come back soon!";
 			}
 			else str += allDailyChallenges [currentDailyChallenge] + ".";
 			return str;
 			
 		}
 		public void newDailyChallenge(){
-			if(DateTime.Compare(DateTime.Today, dailyChallengeSetDate) == 0) //Daily challenge was set today
+			if(dailyChallengeSetDate.AddHours(1) > DateTime.UtcNow) //Daily challenge was set today
 			{
 				currentDailyChallenge = -1;
+				Debug.Log(dailyChallengeSetDate);
 			}
-			
+
 			else{		
-				Random r = new Random();
+				System.Random r = new System.Random();
 				currentDailyChallenge = r.Next(0, allDailyChallenges.Length);
-				dailyChallengeSetDate = DateTime.Today;
+				dailyChallengeSetDate = DateTime.UtcNow;
 			}
-			
+
 		}
+
 		public void completeDailyChallenge(){ // the int is the number of points in the 
 			if (currentDailyChallenge != -1) {
 				// give no points in the event that there is no daily challenge
@@ -150,7 +151,7 @@ namespace EvolveAPet
 					}
 				}
 				
-				Points += points;
+				Points += points*10;
 				currentDailyChallenge = -1;
 			}
 		}
