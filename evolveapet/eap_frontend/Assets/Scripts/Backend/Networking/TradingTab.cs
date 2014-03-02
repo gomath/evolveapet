@@ -124,8 +124,10 @@ public class TradingTab : MonoBehaviour
 				Debug.Log ("Tetrads choosed");
 				byte[] animal_bytes = serialize (selected_animal);
 				byte[] chromozomes_bytes = serialize (selected_chromozomes);
-				if (TradingPlayer != null)						
+				if (TradingPlayer != null) {					
 						PhotonView.Get (this).RPC ("Breed", TradingPlayer, animal_bytes, chromozomes_bytes);
+			//Application.LoadLevel("waitingScene");
+				}
 				else
 						Busy ();
 		}
@@ -149,6 +151,7 @@ public class TradingTab : MonoBehaviour
 				Chromosome[] chromozomes = (Chromosome[])deserialize (chromozomes_bytes);
 				Animal child = new Animal (selected_chromozomes, chromozomes, selected_animal, mate);
 				Player.playerInstance.Stable.eggSlot = child;
+		Application.LoadLevel ("Stable");
 				CleanObject ();
 		}
 	

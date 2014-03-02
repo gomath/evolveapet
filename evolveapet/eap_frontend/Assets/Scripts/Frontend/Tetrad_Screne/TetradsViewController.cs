@@ -145,7 +145,7 @@ public class TetradsViewController : MonoBehaviour {
 	/// </summary>
 	void TetradsChosen(){
 	if (player.network_breeding == false) {
-					Debug.Log ("Tetrads chosen");
+				//	Debug.Log ("Tetrads chosen");
 					Chromosome[] temp = new Chromosome[Global.NUM_OF_CHROMOSOMES];
 					for (int i=0; i<Global.NUM_OF_CHROMOSOMES; i++) {
 							temp [i] = transform.FindChild ("Tetrads").FindChild ("Tetrad_" + i).GetComponent<TetradBehaviour> ().UnderlyingChromosome;
@@ -175,7 +175,7 @@ public class TetradsViewController : MonoBehaviour {
 					
 					Chromosome[] backendChromosomes = Global.FrontEndToBackendChromosomes (temp);
 					player.chromosomes1 = backendChromosomes;
-					Application.LoadLevel ("Stable");
+					Application.LoadLevel ("WaitingScene");
 			}
 		}
 
