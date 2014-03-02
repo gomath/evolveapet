@@ -43,8 +43,8 @@ public class StableController : MonoBehaviour {
 		GameObject a4=null;
 		GameObject a5=null;
 
-		int pointsForUnlock  = -1;//50; //TODO: Make this increase as you unlock stables
-		int pointsForNewAnimal = -1;//20;
+		int pointsForUnlock  = 5; //50; 
+		int pointsForNewAnimal = 2; //20;
 
 		bool showPopup = false;
 
@@ -181,7 +181,7 @@ public class StableController : MonoBehaviour {
 
 										//GUI.Label(new Rect(topButton.x+100, topButton.y, 100,100), money);
 						//Debug.LogWarning("position of label: "+topButton.x+" "+topButton.y);
-										if (GUI.Button (new Rect (topButton.x, topButton.y, topButton.z, topButton.w), "New Animal [20 points]")) {
+										if (GUI.Button (new Rect (topButton.x, topButton.y, topButton.z, topButton.w), "New Animal [" + pointsForNewAnimal +" points]")) {
 												Debug.LogWarning ("rand animal button pressed.");
 												if(Player.playerInstance.Points > pointsForNewAnimal) {
 													Player.playerInstance.Points -= pointsForNewAnimal;
@@ -195,7 +195,7 @@ public class StableController : MonoBehaviour {
 										}
 								}
 						} else {
-								if (GUI.Button (new Rect (topButton.x, topButton.y, topButton.z, topButton.w), "Unlock [50 points]")) {
+								if (GUI.Button (new Rect (topButton.x, topButton.y, topButton.z, topButton.w), "Unlock [" + pointsForUnlock + " points]")) {
 										Debug.LogWarning ("unlock pressed");
 										if(Player.playerInstance.Points > pointsForUnlock) {
 											Player.playerInstance.Points -= pointsForUnlock;

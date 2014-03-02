@@ -23,7 +23,7 @@ namespace EvolveAPet
 		public Animal[] Parent { set; get;} 
 
 		// Used in Genome screen - do not modify
-		public int RemainingGuesses = 5;
+		public int RemainingGuesses = 20;
 		public bool cacheInitialized = false;
 		public bool geneTherapyOnShape;
 		// Guessing genes caches

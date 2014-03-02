@@ -30,10 +30,11 @@ namespace EvolveAPet
 		public int animalToChooseForBreeding;
 		public int remainingAnimalsToBreed;
 		public bool network_breeding;
-		
+		private int playerStartingCapital = 100;
+
 		public Player(Stable s, string username)
 		{
-			Points = 200;
+			Points = playerStartingCapital;
 			UserName = username;
 			NickName = username;
 			_stable = s;
@@ -45,7 +46,7 @@ namespace EvolveAPet
 		
 		public Player(string username)
 		{
-			Points = 200;
+			Points = playerStartingCapital;
 			UserName = username;
 			NickName = username;
 			_stable = new Stable();

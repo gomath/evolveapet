@@ -11,9 +11,9 @@ public class GenomeViewController : MonoBehaviour {
 	GameObject activePair;
 
 	Player player;
-		public int pointsForCorrectGuess = 10;
-		public int pointsForIncorrectGuess = 5;
-		public int costOfGeneTherapy = 20;
+		int pointsForCorrectGuess = 30;
+		int pointsForIncorrectGuess = 10;
+		int costOfGeneTherapy = 3; //20;
 	Animal animal;
 	Genome g;
 	Chromosome[,] frontEndChromosomes;
@@ -486,7 +486,6 @@ public class GenomeViewController : MonoBehaviour {
 		RandomizeGeneTherapyCachesAndUpdateActive ();
 	}
 	
-
 	void OnGUI(){
 			GUI.skin = myskin;
 			
@@ -503,9 +502,11 @@ public class GenomeViewController : MonoBehaviour {
 			v = new Vector3 (originalWidth * u.x / Screen.width, originalHeight * u.y / Screen.height, 1f);
 
 			if (!displayGuessPopup && ! displayTherapyPopup) {
+					String geneTherapyString = "Gene therapy";
+
 					if(animal.RemainingGuesses == 0){
 						if(player.Points >= costOfGeneTherapy){
-							toolbarStrings = new string[] {"Genome","Gene therapy"};
+							toolbarStrings = new string[] {"Genome",geneTherapyString};
 							toolbarMode = "GENE_THERAPY";
 						} else {
 							toolbarStrings = new string[]{"Genome"};
@@ -513,7 +514,7 @@ public class GenomeViewController : MonoBehaviour {
 						}
 					} else {
 						if(player.Points >= costOfGeneTherapy){
-							toolbarStrings = new string[] {"Genome","Gene therapy","Guess genes"};
+							toolbarStrings = new string[] {"Genome",geneTherapyString,"Guess genes"};
 							toolbarMode = "BOTH";
 						} else {
 							toolbarStrings = new string[] {"Genome","Guess genes"};
@@ -564,13 +565,13 @@ public class GenomeViewController : MonoBehaviour {
 							bool correctGuess = guessingStrings[i,j] == correctGuesses[i];
 							if(correctGuess){
 								popupHeading = "Correct";
-								popupText = "Congratulations, you have correctly guessed this trait. ";
+								popupText = "Congratulations, you have correctly guessed this trait, earning " + pointsForCorrectGuess + " points. ";
 								popupText += "You have still " + animal.RemainingGuesses + " guesses left for this animal."; 
 								CorrectGuessAction(activeChromosome,i);
 							} else {
 								IncorrectGuessAction();
 								popupHeading = "Incorrect";
-								popupText = "I am sorry, but that was rather wrong.\nRemaining number of attempts is " + animal.RemainingGuesses + ". ";
+								popupText = "Don't worry, you still get " + pointsForIncorrectGuess + " points. " +"\nRemaining number of attempts is " + animal.RemainingGuesses + ". ";
 								if (animal.RemainingGuesses == 0){
 									popupText += "Try breeding your animal or load another animal to guess!";
 								}
@@ -618,7 +619,7 @@ public class GenomeViewController : MonoBehaviour {
 								RandomMutationAction((EnumBodyPart)temp.ChromosomeNum);
 
 								popupHeading = "Gene Therapy Successful";
-								popupText = "You have successfuly applied Gene therapy to mutate gene \"" + tempName + "\" to gene \"" + randomMutationsNames[k,i,j] + "\". ";   
+								popupText = "You have successfuly applied Gene therapy to mutate gene \"" + tempName + "\" to gene \"" + randomMutationsNames[k,i,j] + "\", costing you " + costOfGeneTherapy + ". ";   
 								popupText += "Return to the stable to view to see the changes in phenotype of the pet.";
 
 								displayTherapyPopup = true;
