@@ -201,7 +201,7 @@ namespace EvolveAPet{
 			index = GUILayout.SelectionGrid (index, PlayerNames,1 ,GUILayout.Height(popupButtonHeight * PlayerNames.Length));
 			GUILayout.EndScrollView ();
 			GUILayout.BeginHorizontal ();
-			//if (index != 0) {
+			if (Players.Count != 0) {
 				if (GUILayout.Button ("Breed")) {
 					GameObject.Find ("TradingTab(Clone)").GetComponent<TradingTab> ().RequestTrade (Players.ElementAt (index));
 					networkPopup = false;
@@ -209,7 +209,7 @@ namespace EvolveAPet{
 					
 					
 				}
-			//}
+			}
 			if (GUILayout.Button ("Refresh"))
 				GetPlayerList ();
 			if (GUILayout.Button ("Close")) {
