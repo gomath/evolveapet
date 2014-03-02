@@ -110,7 +110,7 @@ public class StableController : MonoBehaviour {
 
 						Vector3 newXYForLabel = loc + new Vector3 (-100, -100, 0);
 
-						Vector3 newXYForSave = loc + new Vector3(+50,-100, 0);
+						Vector3 newXYForSave = loc + new Vector3(+80,-100, 0);
 						Vector4 saveLoc = new Vector4(newXYForSave.x, newXYForSave.y, 50,35);
 						
 						//compute relative positions for the buttons

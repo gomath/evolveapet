@@ -186,7 +186,7 @@ namespace EvolveAPet{
 				Vector3 u = Camera.main.WorldToScreenPoint(transform.FindChild("PopupAnchor").position);
 				Vector3 v = new Vector3 (originalWidth * u.x / Screen.width, originalHeight * u.y / Screen.height, 1f);
 				GUI.Window (2,new Rect(v.x,originalHeight-v.y,300,300),BreedOverNetwork,"Player List");
-						}
+			}
 
 		}
 
@@ -196,7 +196,7 @@ namespace EvolveAPet{
 
 			scrollPosition = GUILayout.BeginScrollView (scrollPosition, GUILayout.Width (200), GUILayout.Height (200));
 
-			index = GUILayout.SelectionGrid (index, PlayerNames,1 );
+			index = GUILayout.SelectionGrid (index, PlayerNames,1 ,GUILayout.Height(popupButtonHeight));
 			GUILayout.EndScrollView ();
 			GUILayout.BeginHorizontal ();
 			if (GUILayout.Button ("Breed")) {
