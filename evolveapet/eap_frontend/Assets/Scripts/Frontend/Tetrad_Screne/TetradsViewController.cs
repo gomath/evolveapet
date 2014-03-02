@@ -144,7 +144,7 @@ public class TetradsViewController : MonoBehaviour {
 	/// Called when choosing is finished and button clicked. 
 	/// </summary>
 	void TetradsChosen(){
-		Debug.Log ("Tetrads chosen");
+		//Debug.Log ("Tetrads chosen");
 		Chromosome[] temp = new Chromosome[Global.NUM_OF_CHROMOSOMES];
 		for (int i=0; i<Global.NUM_OF_CHROMOSOMES; i++) {
 			temp[i] = transform.FindChild("Tetrads").FindChild("Tetrad_" + i).GetComponent<TetradBehaviour>().UnderlyingChromosome;
