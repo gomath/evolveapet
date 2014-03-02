@@ -502,7 +502,7 @@ public class GenomeViewController : MonoBehaviour {
 			v = new Vector3 (originalWidth * u.x / Screen.width, originalHeight * u.y / Screen.height, 1f);
 
 			if (!displayGuessPopup && ! displayTherapyPopup) {
-					String geneTherapyString = "Gene therapy";
+					String geneTherapyString = "Gene therapy [3 points]";
 
 					if(animal.RemainingGuesses == 0){
 						if(player.Points >= costOfGeneTherapy){
@@ -521,8 +521,9 @@ public class GenomeViewController : MonoBehaviour {
 							toolbarMode = "GUESSING";
 						}
 					}
-					
+				GUI.skin.button.fontSize = 13;
 					toolbarInt = GUI.SelectionGrid(new Rect (v.x, originalHeight - v.y, 300, 120), toolbarInt, toolbarStrings,2);
+				GUI.skin.button.fontSize = 0;
 				
 			}
 
