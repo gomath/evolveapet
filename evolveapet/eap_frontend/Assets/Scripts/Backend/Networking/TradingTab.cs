@@ -14,13 +14,21 @@ public class TradingTab : MonoBehaviour
 		private Animal selected_animal;
 		bool trading_window = false;
 		float busy_timer = 0;
+	
+	float originalWidth = 1098.0f;
+	float originalHeight = 618.0f;
+	Vector3 scale = new Vector3();
+	
+	public GUISkin mySkin;
 
-		void Awake(){
+
+	void Awake(){
 		DontDestroyOnLoad (gameObject);
 		}
 
 		void OnGUI ()
 		{
+		GUI.skin = mySkin;
 				if (busy_timer > 0) {
 						busy_timer -= Time.deltaTime;
 						GUI.Window (1, new Rect ((float)(Screen.width / 2 - 50), (float)(Screen.height * 0.05), 200, 50), BusyWindow, "Failed");
@@ -28,7 +36,7 @@ public class TradingTab : MonoBehaviour
 				
 				if (trading_window)
 						
-						GUI.ModalWindow (0, new Rect (Screen.width / 2 - 50, (float)(Screen.height * 0.1), 300, 80), GUITradeRequest, "Trade Request");
+						GUI.ModalWindow (0, new Rect (Screen.width / 2 - 50, (float)(Screen.height * 0.1), 300, 110), GUITradeRequest, "Breed Request");
 			
 		}
 

@@ -196,7 +196,7 @@ namespace EvolveAPet{
 
 			scrollPosition = GUILayout.BeginScrollView (scrollPosition, GUILayout.Width (200), GUILayout.Height (200));
 
-			index = GUILayout.SelectionGrid (index, PlayerNames,1 ,GUILayout.Height(popupButtonHeight));
+			index = GUILayout.SelectionGrid (index, PlayerNames,1 ,GUILayout.Height(popupButtonHeight * PlayerNames.Length));
 			GUILayout.EndScrollView ();
 			GUILayout.BeginHorizontal ();
 			if (GUILayout.Button ("Breed")) {

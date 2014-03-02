@@ -47,7 +47,7 @@ public class NetworkManager : MonoBehaviour
 		{
 
 
-				return PhotonNetwork.playerList;
+				return PhotonNetwork.otherPlayers;
 
 		}
 	
