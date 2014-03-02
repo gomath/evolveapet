@@ -53,7 +53,7 @@ public class StableController : MonoBehaviour {
 
 		float timeDown = 0;
 
-		bool buttonShow = true;
+		public bool buttonShow = true;
 
 		public GUISkin mySkin;
 		float originalWidth = 1098.0f;

@@ -21,6 +21,7 @@ namespace EvolveAPet{
 		bool help;
 
 		private bool showBreedingPopup = false;
+		private bool showCantBreedPopup = false;
 		private bool showLocalBreedingPopupPart = false;
 		private Animal[] animals = new Animal[6]{new Animal(),new Animal(),new Animal(),new Animal(),new Animal(),new Animal()};
 		private bool[] animalAlive = new bool[6]{true,true,true,true,true,true};
@@ -93,7 +94,11 @@ namespace EvolveAPet{
 
 				}
 				if (GUILayout.Button("Breed")) {
-					if (Player.playerInstance.Stable.NumberOfUnlockedSlots - Player.playerInstance._stable.Size >0) showBreedingPopup = true;
+					if (Player.playerInstance.Stable.NumberOfUnlockedSlots - Player.playerInstance._stable.Size >0) {
+						showBreedingPopup = true;
+					} else {
+						showCantBreedPopup = true;
+					}
 					Player.autoSave();
 
 				}
@@ -158,6 +163,13 @@ namespace EvolveAPet{
 				Vector3 v = new Vector3 (originalWidth * u.x / Screen.width, originalHeight * u.y / Screen.height, 1f);
 				GUI.Window (2,new Rect(v.x,originalHeight-v.y,300,popuWindowHeight),PopupOnBreeding,popupHeading);
 			}
+
+			if (showCantBreedPopup) {
+				Vector3 u = Camera.main.WorldToScreenPoint(transform.FindChild("PopupAnchor").position);
+				Vector3 v = new Vector3 (originalWidth * u.x / Screen.width, originalHeight * u.y / Screen.height, 1f);
+				popupHeading = "Stable too small.";
+				GUI.Window (2,new Rect(v.x,originalHeight-v.y,300,180),PopupWhenCantBreed,popupHeading);		
+			}
 		}
 
 		void PopupOnBreeding(int id){
@@ -212,6 +224,20 @@ namespace EvolveAPet{
 				}
 
 			GUILayout.EndVertical ();
+		}
+
+		void PopupWhenCantBreed(int id){
+			GUILayout.BeginVertical ();
+			GameObject.Find ("Main Camera").GetComponent<StableController> ().buttonShow = false;;
+			GUILayout.Label("You can't breed because you don't have enough slots in your stable. Try unlocking a stable slot or releasing some of your animals to wild.");
+
+			if (GUILayout.Button ("Close",GUILayout.Height(popupButtonHeight))) {
+				showCantBreedPopup = false;
+				GameObject.Find ("Main Camera").GetComponent<StableController> ().buttonShow = true;
+
+			}
+			GUILayout.EndVertical ();
+
 		}
 	}
 }
