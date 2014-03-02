@@ -86,8 +86,7 @@ namespace EvolveAPet
 		public void serialiseAnimal(){
 			string newFolder = Environment.CurrentDirectory + "/SavedAnimals";
 			Directory.CreateDirectory (newFolder);
-
-			string path = Environment.CurrentDirectory +"/SavedAnimals/" + this.Name + DateTime.Now.ToString("ddMM") + ".animal";
+			string path = Environment.CurrentDirectory +"/SavedAnimals/" + this.Name + DateTime.Now.ToString(" ddMM") + ".animal";
 			BinaryFormatter bf = new BinaryFormatter();
 			FileStream outStream = new FileStream(path,FileMode.OpenOrCreate);
 			bf.Serialize (outStream,this);
