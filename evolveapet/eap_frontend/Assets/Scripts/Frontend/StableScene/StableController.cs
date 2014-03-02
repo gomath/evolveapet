@@ -293,6 +293,7 @@ public class StableController : MonoBehaviour {
 
 			//set position in bool array tracking stable occupations to true
 			areOccupied [anIndex] = true;
+			name = "Enter Name"; //Reset name variable
 	}
 
 	IEnumerator Hatch(Animal a) {
@@ -319,7 +320,6 @@ public class StableController : MonoBehaviour {
 			if (GUI.Button(new Rect(100, 200, 110, 50), "Close"))
 				
 			{
-				//Creates a new player with an empty stable and the given name
 				showPopup = false;
 				
 			}
