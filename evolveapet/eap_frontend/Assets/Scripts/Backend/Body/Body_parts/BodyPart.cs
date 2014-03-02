@@ -11,7 +11,7 @@ namespace EvolveAPet
     {
 		public readonly int[] colour;
 		public readonly int size;
-		public readonly string shape;
+		public string shape;
 		public BodyPart (int[] rgbArray, int sizeNum, string shapeStr){
 			colour = rgbArray;
 			size = sizeNum;
