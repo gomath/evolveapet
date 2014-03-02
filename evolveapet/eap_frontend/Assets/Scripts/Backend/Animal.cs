@@ -70,14 +70,18 @@ namespace EvolveAPet
 				}
 
 		public void cullGrandparents(){
-			if (this.Parent [0] != null && this.Parent[0].Parent[0] !=null) {
+			if (this.Parent!= null) {
+						if (this.Parent [0].Parent !=null){
 							this.Parent [0].Parent [0] = null;
 							this.Parent [0].Parent [1] = null;
 						}
-			if (this.Parent [1] != null&& this.Parent[1].Parent[0] !=null) {
+					}
+			if (this.Parent!= null) {
+							if (this.Parent [1].Parent != null){
 								this.Parent [1].Parent [0] = null;
 								this.Parent [1].Parent [1] = null;
 						}
+					}
 		}
 		public void serialiseAnimal(){
 			string newFolder = Environment.CurrentDirectory + "/SavedAnimals";
