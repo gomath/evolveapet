@@ -33,7 +33,7 @@ namespace EvolveAPet
 		{"Boof", "Tom", "Emilian", "Matej", "Marianne", "Rudolph", "Nick", "Mary", "Pika", "Stuart", "Mox", "Maximillian", "Steve"};
 		public static string[] suffixes = new string[] 
 		{"asaurus", "ician", " Senior", " Junior", " II", " III", " IV", " V", "-nyan", "eleon", "fish", "chu"};//12
-		public readonly static String mapName = "one_to_one_mapping.map";
+		public readonly static String mapName = "Evolve a Pet_Data/one_to_one_mapping.map";
 		public static Dictionary<Locus,Locus> mapFtB; // map front-end to backend
 		public static Dictionary<Locus,Locus> mapBtF; // map back-end to frontend
 
