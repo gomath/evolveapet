@@ -638,7 +638,7 @@ public class GenomeViewController : MonoBehaviour {
 	}
 
 		void PopupOnGuess(int id){
-			GUI.Box (new Rect(20,20,200,100),popupText);
+			GUI.Box (new Rect(20,20,200,150),popupText);
 			if (GUI.Button (new Rect (20, 130, 80, 40), "Close")) {
 				CreateStringsForGuessing();
 
