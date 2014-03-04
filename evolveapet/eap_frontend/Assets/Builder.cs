@@ -49,7 +49,9 @@ namespace EvolveAPet {
 			LinkedList<Animal> list= new LinkedList<Animal> ();
 			list.AddFirst (animal.GetComponent<PhysicalAnimal> ().animal);
 		}
-		
+
+		TimeSpan ts;
+		int counter = 0;
 		void OnGUI() {
 			GUI.skin = mySkin;
 			
@@ -65,7 +67,8 @@ namespace EvolveAPet {
 			string countdown;
 			float center = originalWidth * 0.5f -200;
 			GUI.Label (new Rect (center, originalHeight * 0.05f, 400, 50), dailyChallengeStr);
-			TimeSpan ts = player.dailyChallengeSetDate.AddHours(1).Subtract(DateTime.Now);
+			if(counter == 0)
+				ts = player.dailyChallengeSetDate.AddHours(1).Subtract(DateTime.Now);
 			countdown = string.Format("{0} Hours, {1} Minutes, and {2} Seconds until new breeding challenge!", ts.Hours, ts.Minutes, ts.Seconds);
 			if (player.currentDailyChallenge == -1) {
 				//If player has no current daily challenge, then there are two possibilities. Either he needs a new one, or he needs to wait.
@@ -84,7 +87,7 @@ namespace EvolveAPet {
 				}
 			}
 			
-			
+			counter = (counter + 1) % 30;	
 		}
 	}
 }
